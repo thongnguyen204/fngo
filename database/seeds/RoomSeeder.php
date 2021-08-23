@@ -1,0 +1,29 @@
+<?php
+
+use App\Models\Room;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+
+class RoomSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //
+        for ($i=1; $i < 20; $i++) { 
+            $room = new Room([
+                'room_number' => rand(100,300),
+                'hotel_id' => rand(1,5),
+                'type' => rand(1,2),
+                'max_person' => rand(1,4),
+                'price_per_night' => rand(1000,4000),
+                'description' => Str::random(30),
+            ]);
+            $room->save();
+        }
+    }
+}
