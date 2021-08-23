@@ -3,7 +3,7 @@
 use App\Models\Receipt;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Str;use App\User;
 
 class ReceiptSeeder extends Seeder
 {
@@ -23,12 +23,13 @@ class ReceiptSeeder extends Seeder
 
         //         ]);
         // }
-        
-        $receipt = new Receipt;
-        $receipt->user_id = rand(2,3);
-        $receipt->price_sum = rand(1000,2000);
-        $receipt->description = Str::random(10);
-        $receipt->save();
+        for ($i=0; $i < 5; $i++) { 
+            $receipt = new Receipt;
+            $receipt->user_id = User::where('name','dialga11')->first()->id;
+            $receipt->price_sum = rand(1000,2000);
+            $receipt->description = Str::random(10);
+            $receipt->save();
+        }
 
     }
 }

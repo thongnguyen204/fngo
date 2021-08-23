@@ -15,12 +15,14 @@ class CreateReceiptDetailsTable extends Migration
     {
         Schema::create('receipt__details', function (Blueprint $table) {
             $table->integer('receipt_id');
-            $table->integer('category_id');
+            $table->integer('service_id');
+
+            $table->string('category');
             $table->integer('unit_price');
             $table->integer('quantity');
             $table->timestamps();
 
-            $table->primary(['receipt_id','category_id']);
+            $table->primary(['receipt_id','service_id']);
         });
     }
 

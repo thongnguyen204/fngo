@@ -9,10 +9,16 @@
 <body>
     <h1>users</h1>
     @foreach ($users as $user)
-        <div>
+        <div style="margin-bottom: 10px">
             name: {{$user->name}} - role: {{$user->role->name}}
-            <a href="{{route('users.edit',$user->id)}}">edit</a>
+            <a href="{{route('user.edit',$user->id)}}">edit</a>
+            <form style="" action="{{route('user.destroy',$user->id)}}" method="POST">
+                @csrf
+                @method('delete')
+                <button type="submit">Delete</button>
+            </form>
         </div>
+        
     @endforeach
 </body>
 </html>

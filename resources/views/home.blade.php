@@ -20,7 +20,7 @@
             </div>
             @if ($user->role->name == 'admin')
                 <div>
-                    <a href='{{route('users.index')}}'>Admin panel</a>
+                    <a href='{{route('user.index')}}'>Admin panel</a>
                 </div>
             @endif
         </div>

@@ -19,11 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/users','UserController')->middleware(['auth','role:admin']);
+Route::resource('/user','UserController')
+->middleware(['auth','role:admin']);
+
+Route::resource('/hotel','HotelController');
+//->middleware(['auth','role:admin']);
+
+Route::resource('/room','RoomController');
+//->middleware(['auth','role:admin']);
 
 Route::get('/test',function(){
-    $receipt = Receipt::find(10)->user->name;
-    return $receipt;
+    $user = User::where('name','thong')->first()->id;
+    return $user;
 });
 
 Auth::routes();

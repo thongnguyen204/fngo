@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Receipt;
-use App\User;
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class HotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('user.index')->with('users',$users);
+        $hotels = Hotel::all();
+        return view('hotel.index')->with('hotels',$hotels);
     }
 
     /**
@@ -28,6 +27,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('hotel.create');
     }
 
     /**
@@ -39,65 +39,61 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $hotel = new Hotel;
+        $hotel->name = $request->name;
+        $hotel->price_avg = $request->avg_price;
+        $hotel->save();
+        return redirect()->route('hotel.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
         //
-        return 'test';
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  int  $id
+     * @param \App\Models\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Hotel $hotel)
     {
         //
-        return view('user.edit')->with('user',$user);
+        return view('hotel.edit')->with('hotel',$hotel);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param \App\Models\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request,Hotel $hotel)
     {
         //
-        $user->name =  $request->name;
-        $user->email =  $request->email;
-        $user->save();
-        return redirect()->route('user.index');
+        $hotel->name =  $request->name;
+        $hotel->price_avg =  $request->avg_price;
+        $hotel->save();
+        return redirect()->route('hotel.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
+     * @param \App\Models\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Hotel $hotel)
     {
         //
-        $receipts = Receipt::all();
-        foreach ($receipts as $receipt) {
-            if($receipt->user_id == $user->id)
-            {
-                $receipt->delete();
-            }
-        }
-        $user->delete();
-        return redirect()->route('user.index');
     }
 }
