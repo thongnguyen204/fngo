@@ -1,3 +1,6 @@
+@extends('layouts.admin')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 </head>
 <body>
     <h1>users</h1>
-    @foreach ($users as $user)
+    {{-- @foreach ($users as $user)
         <div style="margin-bottom: 10px">
             name: {{$user->name}} - role: {{$user->role->name}}
             <a href="{{route('user.edit',$user->id)}}">edit</a>
@@ -18,7 +21,32 @@
                 <button type="submit">Delete</button>
             </form>
         </div>
+    @endforeach --}}
+    <table>
         
-    @endforeach
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach ($users as $user)
+            <tr>
+                <td>{{$user->name}}</td>
+                <td>{{$user->role->name}}</td>
+                <td><a href="{{route('user.edit',$user->id)}}">edit</a>
+                </td>
+                <td>
+                    <form style="" action="{{route('user.destroy',$user->id)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+    {{-- <a href="{{route('admin')}}">Admin panel</a> --}}
 </body>
 </html>
+@endsection

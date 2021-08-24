@@ -18,12 +18,6 @@
                 </div>
                 
             </div>
-            @if ($user->role->name == 'admin')
-                <div>
-                    <a href=''>Users manage</a>
-                </div>
-                
-            @endif
             
         </div>
     </div>

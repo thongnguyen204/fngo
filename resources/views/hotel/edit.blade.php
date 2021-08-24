@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+
+@section('content')
+
 <form action="{{route('hotel.update',$hotel->id)}}" method="POST">
     @csrf
     @method('PUT')
@@ -18,3 +22,4 @@
         </tr>
     </table>
 </form>
+@endsection

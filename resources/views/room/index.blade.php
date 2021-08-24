@@ -1,3 +1,8 @@
+@extends('layouts.admin')
+
+@section('content')
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +14,15 @@
 <body>
     <h1>Rooms</h1>
     <a href="{{route('room.create')}}">Add room</a>
-    <table style="border-spacing: 10px">
+    <table>
         <tr>
-            <th style="margin-right: 50px">Room number</th>
+            <th >Room number</th>
             <th>Type</th>
             <th>Max person</th>
             <th></th>
         </tr>
     @foreach ($rooms as $room)
-    <tr style = 'text-align:center'>
+    <tr>
         <td>{{$room->room_number}}</td>
         <td>{{$room->type}}</td>
         <td>{{$room->max_person}}</td>
@@ -36,3 +41,4 @@
     
 </body>
 </html>
+@endsection

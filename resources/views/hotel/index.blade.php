@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +13,14 @@
 <body>
     <h1>Hotels</h1>
     <a href="{{route('hotel.create')}}">Add hotel</a>
-    <table style="border-spacing: 10px">
+    <table>
         <tr>
-            <th style="margin-right: 50px">Name</th>
+            <th>Name</th>
             <th>Average price</th>
             <th></th>
         </tr>
     @foreach ($hotels as $hotel)
-    <tr style = 'text-align:center'>
+    <tr>
         <td><a href="{{route('room.show',$hotel->id)}}">{{$hotel->name}}</a></td>
         <td>{{$hotel->price_avg}}</td>
         <td><a href="{{route('hotel.edit',$hotel->id)}}">edit</a></td>
@@ -41,3 +45,4 @@
     
 </body>
 </html>
+@endsection
