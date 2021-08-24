@@ -15,25 +15,28 @@ use App\Models\Hotel;
 use App\Models\Receipt;
 use App\Models\Role;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin', function () {
+    return view('admin.index');
+})->middleware(['auth','role:admin'])->name('admin');
 
 Route::resource('/user','UserController')
 ->middleware(['auth','role:admin']);
 
-Route::resource('/hotel','HotelController');
-//->middleware(['auth','role:admin']);
+Route::resource('/hotel','HotelController')
+->middleware(['auth','role:admin']);
 
-Route::resource('/room','RoomController');
-//->middleware(['auth','role:admin']);
+Route::resource('/room','RoomController')
+->middleware(['auth','role:admin']);
 
 Route::get('/test',function(){
-    $hotels = Hotel::count();
-    return $hotels;
-    // return "count";
+    
+    return Auth::user();
+    
 });
 
 Auth::routes();

@@ -25,7 +25,7 @@ class ReceiptSeeder extends Seeder
         // }
         for ($i=0; $i < 5; $i++) { 
             $receipt = new Receipt;
-            $receipt->user_id = User::where('name','dialga11')->first()->id;
+            $receipt->user_id = User::where('name','dialga')->first()->id;
             $receipt->price_sum = rand(1000,2000);
             $receipt->description = Str::random(10);
             $receipt->save();

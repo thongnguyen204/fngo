@@ -29,7 +29,7 @@
                             @endif
                         @endforeach
                       </select>
-                      
+                </td> 
             </tr>
             <tr>
                 <td><label for="type">Type: </label></td>
@@ -45,6 +45,19 @@
                 <td><label for="price_per_night">Price per night: </label></td>
                 <td><input type="text" name="price_per_night" 
                     value="{{$room->price_per_night}}"/></td>
+            </tr>
+            <tr>
+                <td><label for="available">Available: </label></td>
+                <td>
+                    <select name="available" size="1">
+                        <option value="1" @if ($room->available == 1)
+                            {{"Selected"}}
+                        @endif>Yes</option>
+                        <option value="0" @if ($room->available == 0)
+                            {{"Selected"}}
+                        @endif>No</option>
+                      </select>
+                </td>
             </tr>
             <tr>
                 <td><label for="description">Description: </label></td>
