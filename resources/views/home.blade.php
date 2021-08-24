@@ -20,8 +20,9 @@
             </div>
             @if ($user->role->name == 'admin')
                 <div>
-                    <a href='{{route('user.index')}}'>Admin panel</a>
+                    <a href='{{route('user.index')}}'>Users manage</a>
                 </div>
+                <div><a href='{{route('hotel.index')}}'>Hotels manage</a></div>
             @endif
         </div>
     </div>
