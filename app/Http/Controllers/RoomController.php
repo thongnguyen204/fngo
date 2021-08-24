@@ -28,7 +28,8 @@ class RoomController extends Controller
     public function create()
     {
         //
-        return view('room.create');
+        $hotels = Hotel::all();
+        return view('room.create')->with('hotels',$hotels);
     }
 
     /**
@@ -48,7 +49,7 @@ class RoomController extends Controller
         $room->price_per_night = $request->price_per_night;
         $room->description = $request->description;
         $room->save();
-        return redirect()->route('room.index');
+        return redirect()->route('room.show',$room->hotel_id);
     }
 
     /**

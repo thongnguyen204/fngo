@@ -20,7 +20,7 @@ class CreateRoomsTable extends Migration
             $table->string('type');
             $table->integer('max_person');
             $table->integer('price_per_night');
-            $table->boolean('available');
+            $table->boolean('available')->default(false);
             $table->string('description');
 
 
