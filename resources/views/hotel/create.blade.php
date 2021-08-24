@@ -25,8 +25,6 @@
                 <td><button type="submit">Add</button></td>
             </tr>
         </table>
-        
-        
     </form>
 </body>
 </html>

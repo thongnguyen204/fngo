@@ -113,5 +113,9 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         //
+        $temp = $room->hotel_id;
+        
+        $room->delete();
+        return redirect()->route('room.show',$temp);
     }
 }

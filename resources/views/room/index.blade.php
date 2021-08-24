@@ -23,7 +23,7 @@
         <td>{{$room->max_person}}</td>
         <td><a href="{{route('room.edit',$room)}}">edit</a></td>
         <td>
-            <form action="{{route('room.destroy',$room->room_number)}}" method="POST">
+            <form action="{{route('room.destroy',$room->id)}}" method="POST">
                 @csrf
                 @method('delete')
                 <button type="submit">Delete</button>

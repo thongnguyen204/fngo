@@ -96,4 +96,9 @@ class HotelController extends Controller
     {
         //
     }
+    public function quantity()
+    {
+        $quantity = Hotel::count();
+        return $quantity;
+    }
 }

@@ -11,9 +11,11 @@
 |
 */
 
+use App\Models\Hotel;
 use App\Models\Receipt;
 use App\Models\Role;
 use App\User;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,8 +31,9 @@ Route::resource('/room','RoomController');
 //->middleware(['auth','role:admin']);
 
 Route::get('/test',function(){
-    $user = User::where('name','thong')->first()->id;
-    return $user;
+    $hotels = Hotel::count();
+    return $hotels;
+    // return "count";
 });
 
 Auth::routes();
