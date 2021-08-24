@@ -95,6 +95,12 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         //
+        $rooms = $hotel->room;
+        foreach ($rooms as $room) {
+            $room->delete();
+        }
+        $hotel->delete();
+        return redirect()->route('hotel.index');
     }
     public function quantity()
     {

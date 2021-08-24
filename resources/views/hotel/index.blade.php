@@ -25,7 +25,7 @@
         <td>{{$hotel->price_avg}}</td>
         <td><a href="{{route('hotel.edit',$hotel->id)}}">edit</a></td>
         <td>
-            <form action="{{route('hotel.destroy',$hotel->id)}}" method="POST">
+            <form action="{{route('hotel.destroy',$hotel)}}" method="POST">
                 @csrf
                 @method('delete')
                 <button type="submit">Delete</button>
