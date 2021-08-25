@@ -36,6 +36,7 @@
     </tr>
     @endforeach
     </table>
+    {{ $receipts->links() }}
 </body>
 </html>
 @endsection

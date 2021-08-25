@@ -46,6 +46,7 @@
             </tr>
         @endforeach
     </table>
+    {{ $users->links() }}
     {{-- <a href="{{route('admin')}}">Admin panel</a> --}}
 </body>
 </html>

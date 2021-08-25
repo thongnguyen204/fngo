@@ -13,12 +13,17 @@ class HotelSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=1; $i < 6; $i++) { 
-            $hotel = new Hotel([
-                'name' => 'Khach san '.$i,
-                'price_avg' => rand(1000,2000),
-            ]);
-            $hotel->save();
-        }
+        // for ($i=1; $i < 6; $i++) { 
+        //     $hotel = new Hotel([
+        //         'name' => 'Khach san '.$i,
+        //         'price_avg' => rand(1000,2000),
+        //     ]);
+        //     $hotel->save();
+        // }
+
+        $hotel = Hotel::create([
+            'name' => 'Khach san hoang thong',
+            'price_avg' => rand(1000,2000),
+        ]);
     }
 }

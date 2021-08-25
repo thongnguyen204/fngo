@@ -63,7 +63,7 @@ class RoomController extends Controller
     {
         //
         // $rooms = Room::where('hotel_id',1);
-        $rooms = Room::where('hotel_id',$id)->get();
+        $rooms = Room::where('hotel_id',$id)->paginate(10);
         
         // echo $id;
         return view('room.index')->with('rooms',$rooms);

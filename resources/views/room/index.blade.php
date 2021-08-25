@@ -38,7 +38,7 @@
 
     @endforeach
     </table>
-    
+    {{ $rooms->links() }}
 </body>
 </html>
 @endsection

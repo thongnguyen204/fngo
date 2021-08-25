@@ -14,22 +14,21 @@ class ReceiptSeeder extends Seeder
      */
     public function run()
     {
-        //R
-        // for ($i=0; $i < 10; $i++) { 
-        //         DB::table('receipts')->insert([
-        //             'user_id' => rand(2,3),
-        //             'price_sum' => rand(1000,2000),
-        //             'description' => Str::random(10),
-
-        //         ]);
-        // }
-        for ($i=0; $i < 5; $i++) { 
-            $receipt = new Receipt;
-            $receipt->user_id = User::where('name','thong')->first()->id;
-            $receipt->price_sum = rand(1000,2000);
-            $receipt->description = Str::random(15);
-            $receipt->save();
+        //
+        for ($i=0; $i < 20; $i++) { 
+                $receipt =  Receipt::create([
+                    'user_id' => User::where('name','thong')->first()->id,
+                    'price_sum' => rand(1000,2000),
+                    'description' => Str::random(10),
+                ]);
         }
+        // for ($i=0; $i < 5; $i++) { 
+        //     $receipt = new Receipt;
+        //     $receipt->user_id = User::where('name','thong')->first()->id;
+        //     $receipt->price_sum = rand(1000,2000);
+        //     $receipt->description = Str::random(15);
+        //     $receipt->save();
+        // }
 
     }
 }

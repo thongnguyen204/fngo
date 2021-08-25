@@ -42,7 +42,7 @@
         
     @endforeach
     </table>
-    
+    {{ $hotels->links() }}
 </body>
 </html>
 @endsection
