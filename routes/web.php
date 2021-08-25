@@ -27,6 +27,9 @@ Route::get('/admin', function () {
 Route::resource('/user','UserController')
 ->middleware(['auth','role:admin']);
 
+Route::resource('/receipt','ReceiptController')
+->middleware(['auth','role:admin']);
+
 Route::resource('/hotel','HotelController')
 ->middleware(['auth','role:admin']);
 

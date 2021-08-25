@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Receipt;
 use Illuminate\Http\Request;
 
 class ReceiptController extends Controller
@@ -14,6 +15,8 @@ class ReceiptController extends Controller
     public function index()
     {
         //
+        $receipts = Receipt::all();
+        return view('receipt.index')->with('receipts',$receipts);
     }
 
     /**
@@ -54,9 +57,11 @@ class ReceiptController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Receipt $receipt)
     {
-        //
+        // 
+        // return 'edit';
+        return view('receipt.edit')->with('receipt',$receipt);
     }
 
     /**
@@ -66,9 +71,13 @@ class ReceiptController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Receipt $receipt)
     {
         //
+        $receipt->price_sum =  $request->price_sum;
+        $receipt->description =  $request->description;
+        $receipt->save();
+        return redirect()->route('receipt.index');
     }
 
     /**

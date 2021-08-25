@@ -65,8 +65,6 @@
             </tr>
             <tr>
                 <td><label for="description">Description: </label></td>
-                {{-- <td><input type="text" name="description" 
-                    value="{{$room->description}}"/></td> --}}
                     <td>
                         <textarea cols="30" rows="8" name="description" 
                         value="{{$room->description}}">{{$room->description}}</textarea>
