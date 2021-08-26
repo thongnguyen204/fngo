@@ -30,6 +30,9 @@ Route::resource('/user','UserController')
 Route::resource('/receipt','ReceiptController')
 ->middleware(['auth','role:admin']);
 
+Route::resource('/receipt-detail','RecepitDetailController')
+->middleware(['auth','role:admin']);
+
 Route::resource('/hotel','HotelController')
 ->middleware(['auth','role:admin']);
 

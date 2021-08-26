@@ -39,6 +39,7 @@
     @endforeach
     </table>
     {{ $rooms->links() }}
+    <a href="{{route('hotel.index')}}">Back to hotels</a>
 </body>
 </html>
 @endsection

@@ -62,11 +62,6 @@ class RoomController extends Controller
     public function show($id)
     {
         //
-        // $rooms = Room::where('hotel_id',1);
-        $rooms = Room::where('hotel_id',$id)->paginate(10);
-        
-        // echo $id;
-        return view('room.index')->with('rooms',$rooms);
     }
 
     /**
@@ -114,9 +109,9 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         //
-        $temp = $room->hotel_id;
+        $temp = $room->hotel;
         
         $room->delete();
-        return redirect()->route('room.show',$temp);
+        return redirect()->route('hotel.show',$temp);
     }
 }

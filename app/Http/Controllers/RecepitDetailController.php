@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Receipt;
 use App\Models\Receipt_Detail;
 use Illuminate\Http\Request;
 
-class ReceiptController extends Controller
+class RecepitDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class ReceiptController extends Controller
     public function index()
     {
         //
-        $receipts = Receipt::paginate(10);
-        return view('receipt.index')->with('receipts',$receipts);
+        
     }
 
     /**
@@ -39,36 +37,33 @@ class ReceiptController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @param  Receipt $receipt
      * @return \Illuminate\Http\Response
      */
-    public function show(Receipt $receipt)
+    public function show($id)
     {
         //
-        $receiptDetails = Receipt_Detail::
-        where('receipt_id',$receipt->id)->paginate(10);
-
-        return view('receiptDetail.index')
-        ->with('receiptDetails',$receiptDetails);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Receipt_Detail $receipt;
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Receipt $receipt)
+    public function edit(Receipt_Detail $receiptDetail)
     {
-        // 
-        // return 'edit';
-        return view('receipt.edit')->with('receipt',$receipt);
+        //
+        return view('receiptDetail.edit')
+        ->with('receiptDetail',$receiptDetail);
+        // return $receiptDetail;
     }
 
     /**
@@ -78,13 +73,17 @@ class ReceiptController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Receipt $receipt)
+    public function update(Request $request, Receipt_Detail $receiptDetail)
     {
         //
-        $receipt->price_sum =  $request->price_sum;
-        $receipt->description =  $request->description;
-        $receipt->save();
-        return redirect()->route('receipt.index');
+        $id = $receiptDetail->id;
+        $quantity = $request->quantity;
+        $temp = $receiptDetail->receipt;
+        // $receipt_Detail->quantity = $request->quantity;
+        // $receipt_Detail->save();
+        Receipt_Detail::where('id', $id)
+      ->update(['quantity' => $quantity]);
+        return redirect()->route('receipt.show',$temp);
     }
 
     /**
@@ -93,9 +92,11 @@ class ReceiptController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Receipt_Detail $receipt_Detail)
     {
         //
-        
+        $temp = $receipt_Detail->receipt;
+        $receipt_Detail->delete();
+        return redirect()->route('receipt.show',$temp);
     }
 }

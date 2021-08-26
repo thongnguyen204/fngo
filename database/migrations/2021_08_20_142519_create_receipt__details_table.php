@@ -14,6 +14,7 @@ class CreateReceiptDetailsTable extends Migration
     public function up()
     {
         Schema::create('receipt__details', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('receipt_id');
             $table->integer('service_id');
 
@@ -22,7 +23,7 @@ class CreateReceiptDetailsTable extends Migration
             $table->integer('quantity');
             $table->timestamps();
 
-            $table->primary(['receipt_id','service_id']);
+            // $table->primary(['receipt_id','service_id']);
         });
     }
 

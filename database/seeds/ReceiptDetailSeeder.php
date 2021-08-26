@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Receipt;
 use Illuminate\Database\Seeder;
 use App\Models\Receipt_Detail;
 
@@ -13,12 +14,15 @@ class ReceiptDetailSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i < 5; $i++) { 
-            $receipt = new Receipt_Detail;
-            $receipt->user_id = User::where('name','dialga11')->first()->id;
-            $receipt->price_sum = rand(1000,2000);
-            $receipt->description = Str::random(10);
-            $receipt->save();
+        for ($i=1; $i < 25; $i++) { 
+            $room = Receipt_Detail::create([
+                'receipt_id' => rand(1,Receipt::count()),
+                'service_id' => rand(1,25),
+                'category' => "nơi ở",
+                'unit_price' => rand(1000,4000),
+                'quantity' => rand(1,10),
+            ]);
+            
         }
         
     }

@@ -15,6 +15,7 @@
     <a href="{{route('receipt.create')}}">Add receipt</a>
     <table>
         <tr>
+            <th>ID</th>
             <th>User</th>
             <th>Cost</th>
             <th></th>
@@ -22,9 +23,10 @@
         </tr>
     @foreach ($receipts as $receipt)
     <tr>
+        <td>{{$receipt->id}}</td>
         <td>{{$receipt->user->name}}</td>
         <td>{{$receipt->price_sum}}</td>
-        <td><a href="{{route('receipt.show',$receipt->id)}}">details</a></td>
+        <td><a href="{{route('receipt.show',$receipt)}}">details</a></td>
         <td><a href="{{route('receipt.edit',$receipt->id)}}">edit</a></td>
         <td>
             <form action="{{route('receipt.destroy',$receipt)}}" method="POST">

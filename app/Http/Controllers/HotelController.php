@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -50,11 +51,14 @@ class HotelController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     * @param \App\Models\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Hotel $hotel)
     {
         //
+        $rooms = Room::where('hotel_id',$hotel->id)->paginate(10);
+        return view('room.index')->with('rooms',$rooms);
     }
 
     /**

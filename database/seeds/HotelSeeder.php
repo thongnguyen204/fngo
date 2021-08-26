@@ -20,10 +20,11 @@ class HotelSeeder extends Seeder
         //     ]);
         //     $hotel->save();
         // }
-
-        $hotel = Hotel::create([
-            'name' => 'Khach san hoang thong',
-            'price_avg' => rand(1000,2000),
-        ]);
+        for ($i=1; $i < 10; $i++) { 
+            $hotel = Hotel::create([
+                'name' => 'Khach san '. $i,
+                'price_avg' => rand(1000,2000),
+            ]);
+        }
     }
 }
