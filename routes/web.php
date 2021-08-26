@@ -11,33 +11,40 @@
 |
 */
 
-use App\Models\Hotel;
-use App\Models\Receipt;
-use App\Models\Role;
-use App\User;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin', function () {
-    return view('admin.index');
-})->middleware(['auth','role:admin'])->name('admin');
 
-Route::resource('/user','UserController')
-->middleware(['auth','role:admin']);
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    
+    Route::get('/admin', function () {
+        return view('admin.index');
+    })->name('admin');
 
-Route::resource('/receipt','ReceiptController')
-->middleware(['auth','role:admin']);
+    Route::resource('/user','UserController')
+    ->except([
+        'create','store','show'
+    ]);
 
-Route::resource('/receipt-detail','RecepitDetailController')
-->middleware(['auth','role:admin']);
+    Route::resource('/receipt','ReceiptController')
+    ->except([
+        
+    ]);
 
-Route::resource('/hotel','HotelController')
-->middleware(['auth','role:admin']);
+    Route::resource('/receipt-detail','RecepitDetailController')
+    ->except([
+        'index','create', 'store', 'show'
+    ]);
 
-Route::resource('/room','RoomController')
-->middleware(['auth','role:admin']);
+    Route::resource('/hotel','HotelController');
+    
+    Route::resource('/room','RoomController')
+    ->except([
+        'index','show'
+    ]);
+});
 
 Route::get('/test',function(){
     

@@ -79,8 +79,6 @@ class RecepitDetailController extends Controller
         $id = $receiptDetail->id;
         $quantity = $request->quantity;
         $temp = $receiptDetail->receipt;
-        // $receipt_Detail->quantity = $request->quantity;
-        // $receipt_Detail->save();
         Receipt_Detail::where('id', $id)
       ->update(['quantity' => $quantity]);
         return redirect()->route('receipt.show',$temp);
