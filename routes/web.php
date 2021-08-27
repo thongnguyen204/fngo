@@ -11,7 +11,10 @@
 |
 */
 
+use App\Models\Receipt_Detail;
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Integer;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +26,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('admin.index');
     })->name('admin');
 
-    Route::resource('/user','UserController')
+    Route::resource('/users','UserController')
     ->except([
         'create','store','show'
     ]);
@@ -38,18 +41,41 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         'index','create', 'store', 'show'
     ]);
 
-    Route::resource('/hotel','HotelController');
-    
+    Route::resource('/hotel','HotelController')
+    ->except([
+        'index','show'
+    ]);
+
     Route::resource('/room','RoomController')
     ->except([
         'index','show'
     ]);
 });
 
+Route::middleware(['auth', 'role:user'])->group(function () {
+    
+    Route::get('/user', function () {
+        return view('user.index');
+    })->name('user');
+
+    
+});
+Route::get('hotel','HotelController@index')
+->middleware(['auth'])->name('hotel.index');
+
+Route::get('hotel/{hotel} ','HotelController@show')
+->middleware(['auth'])->name('hotel.show');
+
+use Carbon\Carbon;
 Route::get('/test',function(){
-    
-    return Auth::user();
-    
+    // $day = Auth::user()->created_at->toDateTimeString();
+    // $test =  date('d/m/Y',strtotime($day));
+    // var_dump($test);
+    // $day = "20/04/2000";
+    // $day2 = DateTime::createFromFormat('d/m/Y',$day);
+    // echo $day2->format('d/m/Y');
+    $receipt = Receipt_Detail::find(1);
+    echo $receipt->ht_booking;
 });
 
 Auth::routes();

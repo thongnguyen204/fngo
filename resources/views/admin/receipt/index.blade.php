@@ -12,7 +12,6 @@
 </head>
 <body>
     <h1>receipts</h1>
-    <a href="{{route('receipt.create')}}">Add receipt</a>
     <table>
         <tr>
             <th>ID</th>

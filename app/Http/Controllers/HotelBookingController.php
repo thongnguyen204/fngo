@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Receipt_Detail;
 use Illuminate\Http\Request;
 
-class RecepitDetailController extends Controller
+class HotelBookingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,6 @@ class RecepitDetailController extends Controller
     public function index()
     {
         //
-        
     }
 
     /**
@@ -37,7 +35,6 @@ class RecepitDetailController extends Controller
     public function store(Request $request)
     {
         //
-        
     }
 
     /**
@@ -54,16 +51,12 @@ class RecepitDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Receipt_Detail $receipt;
-     * 
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Receipt_Detail $receiptDetail)
+    public function edit($id)
     {
         //
-        return view('admin.receiptDetail.edit')
-        ->with('receiptDetail',$receiptDetail);
-        // return $receiptDetail;
     }
 
     /**
@@ -73,15 +66,9 @@ class RecepitDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Receipt_Detail $receiptDetail)
+    public function update(Request $request, $id)
     {
         //
-        $id = $receiptDetail->id;
-        $quantity = $request->quantity;
-        $temp = $receiptDetail->receipt;
-        Receipt_Detail::where('id', $id)
-      ->update(['quantity' => $quantity]);
-        return redirect()->route('receipt.show',$temp);
     }
 
     /**
@@ -90,11 +77,8 @@ class RecepitDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Receipt_Detail $receipt_Detail)
+    public function destroy($id)
     {
         //
-        $temp = $receipt_Detail->receipt;
-        $receipt_Detail->delete();
-        return redirect()->route('receipt.show',$temp);
     }
 }

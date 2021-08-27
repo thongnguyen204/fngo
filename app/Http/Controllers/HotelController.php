@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HotelController extends Controller
 {
@@ -17,7 +18,10 @@ class HotelController extends Controller
     {
         //
         $hotels = Hotel::paginate(10);
-        return view('hotel.index')->with('hotels',$hotels);
+        $role = Auth::user()->role->name;
+        // return $role;
+        $view = $role . ".hotel.index";
+        return view($view)->with('hotels',$hotels);
     }
 
     /**
@@ -28,7 +32,7 @@ class HotelController extends Controller
     public function create()
     {
         //
-        return view('hotel.create');
+        return view('admin.hotel.create');
     }
 
     /**
@@ -58,7 +62,7 @@ class HotelController extends Controller
     {
         //
         $rooms = Room::where('hotel_id',$hotel->id)->paginate(10);
-        return view('room.index')->with('rooms',$rooms);
+        return view('admin.room.index')->with('rooms',$rooms);
     }
 
     /**
@@ -71,7 +75,7 @@ class HotelController extends Controller
     public function edit(Hotel $hotel)
     {
         //
-        return view('hotel.edit')->with('hotel',$hotel);
+        return view('admin.hotel.edit')->with('hotel',$hotel);
     }
 
     /**

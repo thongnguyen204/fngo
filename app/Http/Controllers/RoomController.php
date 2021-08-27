@@ -29,7 +29,7 @@ class RoomController extends Controller
     {
         //
         $hotels = Hotel::all();
-        return view('room.create')->with('hotels',$hotels);
+        return view('admin.room.create')->with('hotels',$hotels);
     }
 
     /**
@@ -74,7 +74,7 @@ class RoomController extends Controller
     {
         //
         $hotels = Hotel::all();
-        return view('room.edit')->with('room',$room)
+        return view('admin.room.edit')->with('room',$room)
         ->with('hotels',$hotels);
     }
 

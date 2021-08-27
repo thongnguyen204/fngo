@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Receipt Detail</h1>
-    <a href="{{route('receipt-detail.create')}}">Add room</a>
+    {{-- <a href="{{route('receipt-detail.create')}}">Add room</a> --}}
     <table>
         <tr>
             <th >Service ID</th>

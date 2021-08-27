@@ -17,7 +17,7 @@ class ReceiptController extends Controller
     {
         //
         $receipts = Receipt::paginate(10);
-        return view('receipt.index')->with('receipts',$receipts);
+        return view('admin.receipt.index')->with('receipts',$receipts);
     }
 
     /**
@@ -54,7 +54,7 @@ class ReceiptController extends Controller
         $receiptDetails = Receipt_Detail::
         where('receipt_id',$receipt->id)->paginate(10);
 
-        return view('receiptDetail.index')
+        return view('admin.receiptDetail.index')
         ->with('receiptDetails',$receiptDetails);
     }
 
@@ -68,7 +68,7 @@ class ReceiptController extends Controller
     {
         // 
         // return 'edit';
-        return view('receipt.edit')->with('receipt',$receipt);
+        return view('admin.receipt.edit')->with('receipt',$receipt);
     }
 
     /**
@@ -93,9 +93,15 @@ class ReceiptController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Receipt $receipt)
     {
         //
+        $receiptDetails = $receipt->receipt_detail;
+        foreach ($receiptDetails as $receiptDetail) {
+            $receiptDetail->delete();
+        }
+        $receipt->delete();
+        return redirect()->route('receipt.index');
         
     }
 }

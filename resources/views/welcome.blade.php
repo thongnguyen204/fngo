@@ -71,7 +71,7 @@
                         @if(Auth::user()->role->name == 'admin')
                             <a href="{{ url('/admin') }}">Admin</a>
                         @else
-                            <a href="{{ url('/home') }}">Home</a>
+                            <a href="{{ url('/user') }}">Home</a>
                         @endif
                     @else
                         <a href="{{ route('login') }}">Login</a>

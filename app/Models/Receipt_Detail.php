@@ -14,4 +14,9 @@ class Receipt_Detail extends Model
     {
         return $this->belongsTo(Receipt::class);
     }
+    public function ht_booking()
+    {
+        return $this->hasOne(ht_booking::class);
+    }
+    
 }

@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         //
         $users = User::paginate(10);
-        return view('user.index')->with('users',$users);
+        return view('admin.user.index')->with('users',$users);
     }
 
     /**
@@ -62,7 +62,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        return view('user.edit')->with('user',$user);
+        return view('admin.user.edit')->with('user',$user);
     }
 
     /**

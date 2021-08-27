@@ -16,8 +16,7 @@ class CreateReceiptDetailsTable extends Migration
         Schema::create('receipt__details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('receipt_id');
-            $table->integer('service_id');
-
+            $table->integer('service_id')->unsigned();
             $table->string('category');
             $table->integer('unit_price');
             $table->integer('quantity');
