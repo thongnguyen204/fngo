@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 
 @section('content')
 
@@ -17,27 +17,22 @@
     <table>
         <tr>
             <th >Room number</th>
-            <th>Status</th>
             <th>Type</th>
             <th>Max person</th>
+            <th></th>
             <th></th>
         </tr>
     @foreach ($rooms as $room)
     <tr>
         <td>{{$room->room_number}}</td>
-        <td>@if ($room->available == 1)
-            online
-        @else
-            offline
-        @endif</td>
         <td>{{$room->type}}</td>
         <td>{{$room->max_person}}</td>
-        <td><a href="{{route('room.edit',$room)}}">edit</a></td>
+        <td><a href="">details</a></td>
         <td>
             <form action="{{route('room.destroy',$room->id)}}" method="POST">
                 @csrf
                 @method('delete')
-                <button type="submit">Delete</button>
+                <button type="submit">Order</button>
             </form>
         </td>
     </tr>

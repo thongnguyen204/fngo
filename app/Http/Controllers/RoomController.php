@@ -49,7 +49,7 @@ class RoomController extends Controller
         $room->price_per_night = $request->price_per_night;
         $room->description = $request->description;
         $room->save();
-        return redirect()->route('room.show',$room->hotel_id);
+        return redirect()->route('hotel.show',$room->hotel);
     }
 
     /**
@@ -89,15 +89,15 @@ class RoomController extends Controller
     {
         //
         
-        $temp = $room->hotel_id ;
         $room->room_number = $request->room_number;
         $room->hotel_id = $request->hotel_id;
         $room->type = $request->type;
         $room->max_person = $request->max_person;
         $room->price_per_night = $request->price_per_night;
+        $room->available = $request->available;
         $room->description = $request->description;
         $room->save();
-        return redirect()->route('room.show',$temp);
+        return redirect()->route('hotel.show',$room->hotel);
     }
 
     /**

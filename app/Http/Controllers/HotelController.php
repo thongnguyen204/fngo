@@ -61,8 +61,16 @@ class HotelController extends Controller
     public function show(Hotel $hotel)
     {
         //
-        $rooms = Room::where('hotel_id',$hotel->id)->paginate(10);
-        return view('admin.room.index')->with('rooms',$rooms);
+        if(Auth::user()->role_id == 1)
+            $rooms = Room::where('hotel_id',$hotel->id)->paginate(10);
+        else if (Auth::user()->role_id == 2)
+        $rooms = Room::where('hotel_id',$hotel->id)
+            ->where('available', 1)
+            ->paginate(10);
+        $role = Auth::user()->role->name;
+        // return $role;
+        $view = $role . ".room.index";
+        return view($view)->with('rooms',$rooms);
     }
 
     /**
