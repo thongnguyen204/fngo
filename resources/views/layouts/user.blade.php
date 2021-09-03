@@ -11,9 +11,10 @@
         table {width: 600px;}
         th,td {text-align: center;}
         table, th, td {
+            
             border: 1px solid black;
             border-collapse: collapse;
-        }   
+        }  
     </style>
 </head>
 <body>

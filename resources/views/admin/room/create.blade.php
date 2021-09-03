@@ -23,28 +23,22 @@
             <tr>
                 <td><label for="hotel_id">Hotel: </label></td>
                 <td>
-                    <select name="hotel_id" size="1">
-                        @foreach ($hotels
-                         as $hotel)
-                            <option value="{{$hotel->id}}">{{$hotel->name}}</option>
+                    {{$room->hotel->name}}
+                    <input type="hidden" name="hotel_id" 
+                    value="{{$room->hotel_id}}"
+                    />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="type_id">Type: </label></td>
+                <td>
+                    <select name="type_id" size="1">
+                        @foreach ($types
+                         as $type)
+                            <option value="{{$type->id}}">{{$type->name}}</option>
                         @endforeach
                       </select>
-                      
-            </tr>
-            <tr>
-                <td><label for="type">Type: </label></td>
-                <td><input type="text" name="type" 
-                    /></td>
-            </tr>
-            <tr>
-                <td><label for="max_person">Max person: </label></td>
-                <td><input type="text" name="max_person" 
-                    /></td>
-            </tr>
-            <tr>
-                <td><label for="price_per_night">Price per night: </label></td>
-                <td><input type="text" name="price_per_night" 
-                    /></td>
+                </td>
             </tr>
             <tr>
                 <td><label for="description">Description: </label></td>

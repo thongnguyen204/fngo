@@ -37,18 +37,17 @@
             </tr>
             <tr>
                 <td><label for="type">Type: </label></td>
-                <td><input type="text" name="type" 
-                    value="{{$room->type}}"/></td>
-            </tr>
-            <tr>
-                <td><label for="max_person">Max person: </label></td>
-                <td><input type="text" name="max_person" 
-                    value="{{$room->max_person}}"/></td>
-            </tr>
-            <tr>
-                <td><label for="price_per_night">Price per night: </label></td>
-                <td><input type="text" name="price_per_night" 
-                    value="{{$room->price_per_night}}"/></td>
+                <td>
+                    <select name="type_id" size="1">
+                        @foreach ($types as $type)
+                            @if ($type->name == $room->type->name)
+                            <option value="{{$type->id}}" selected>{{$type->name}}</option>
+                            @else
+                            <option value="{{$type->id}}">{{$type->name}}</option>
+                            @endif
+                        @endforeach
+                      </select>
+                </td>
             </tr>
             <tr>
                 <td><label for="available">Available: </label></td>

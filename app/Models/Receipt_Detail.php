@@ -6,9 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receipt_Detail extends Model
 {
+
+    private int $receipt_id;
+    private String $category;
+    private int $quantity;
+    private int $price;
+    public $table = "receipt_details";
+
+    
     //
     protected $fillable = [
-        'category_id','unit_price','quantity',
+        'receipt_id','category_id','unit_price','quantity',
     ];
     public function receipt()
     {

@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Rooms</h1>
-    <a href="{{route('room.create')}}">Add room</a>
+    <a href="{{route('room.create',$rooms->first())}}">Add room</a>
     <table>
         <tr>
             <th >Room number</th>
@@ -30,8 +30,8 @@
         @else
             offline
         @endif</td>
-        <td>{{$room->type}}</td>
-        <td>{{$room->max_person}}</td>
+        <td>{{$room->type->name}}</td>
+        <td>{{$room->type->max_person}}</td>
         <td><a href="{{route('room.edit',$room)}}">edit</a></td>
         <td>
             <form action="{{route('room.destroy',$room->id)}}" method="POST">

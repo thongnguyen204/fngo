@@ -30,6 +30,9 @@ class CreateHotelsTable extends Migration
      */
     public function down()
     {
+        Schema::table('hotels', function (Blueprint $table) {
+            $table->dropForeign('hotels_category_foreign');
+        });
         Schema::dropIfExists('hotels');
     }
 }

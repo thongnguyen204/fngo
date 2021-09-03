@@ -12,7 +12,7 @@
 */
 
 use App\Models\Receipt_Detail;
-use App\User;
+use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -48,8 +48,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('/room','RoomController')
     ->except([
-        'index','show'
+        'index','show','create'
     ]);
+    Route::get('/room/create/{room}','RoomController@create')
+    ->name('room.create');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -58,7 +60,19 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('user.index');
     })->name('user');
 
-    
+    Route::get('/order/{room}', function ($roomID) {
+        $room = Room::where('id',$roomID)->first();
+        return view('user.order.create')->with('room',$room);
+    })->name('orderForm');
+
+    Route::post('/order','RoomController@order')
+    ->name('room.order');
+
+    Route::resource('/HotelBooking','HotelBookingController')
+    ->except([
+        
+    ]);
+
 });
 Route::get('hotel','HotelController@index')
 ->middleware(['auth'])->name('hotel.index');
@@ -71,11 +85,11 @@ Route::get('/test',function(){
     // $day = Auth::user()->created_at->toDateTimeString();
     // $test =  date('d/m/Y',strtotime($day));
     // var_dump($test);
-    // $day = "20/04/2000";
-    // $day2 = DateTime::createFromFormat('d/m/Y',$day);
+    $day = "20/04/2000";
+    $day2 = DateTime::createFromFormat('d/m/Y',$day);
     // echo $day2->format('d/m/Y');
-    $receipt = Receipt_Detail::find(1);
-    echo $receipt->ht_booking;
+    var_dump($day2);
+    
 });
 
 Auth::routes();

@@ -13,10 +13,9 @@ class CreateReceiptDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('receipt__details', function (Blueprint $table) {
+        Schema::create('receipt_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('receipt_id')->unsigned();
-            $table->integer('service_id')->unsigned();
             $table->string('category');
             $table->integer('unit_price');
             $table->integer('quantity');
@@ -34,10 +33,10 @@ class CreateReceiptDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('receipt__details', function (Blueprint $table) {
-            $table->dropForeign('receipt__details_receipt_id_foreign');
+        Schema::table('receipt_details', function (Blueprint $table) {
+            $table->dropForeign('receipt_details_receipt_id_foreign');
         });
         
-        Schema::dropIfExists('receipt__details');
+        Schema::dropIfExists('receipt_details');
     }
 }

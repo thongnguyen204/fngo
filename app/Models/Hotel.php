@@ -20,4 +20,8 @@ class Hotel extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+    public function roomtype()
+    {
+        return $this->hasMany(RoomType::class);
+    }
 }

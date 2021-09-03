@@ -4,6 +4,7 @@ use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Integer;
 
 class RoomSeeder extends Seeder
 {
@@ -15,18 +16,29 @@ class RoomSeeder extends Seeder
     public function run()
     {
         //
-
-        for ($i=1; $i < 25; $i++) { 
+        $count = 1;
+        for ($i=1; $i < 10; $i++) {
             $room = new Room([
                 'room_number' => rand(100,400),
-                'hotel_id' => rand(1,Hotel::count()),
-                'type' => rand(1,2),
-                'max_person' => rand(1,4),
-                'price_per_night' => rand(1000,4000),
+                'hotel_id' => $i,
+                'type_id' => $count,
                 'description' => Str::random(40),
                 'available' => true,
             ]);
             $room->save();
+            $count++;
+        }
+        $count2 = 2;
+        for ($i=1; $i < 10; $i++) {
+            $room = new Room([
+                'room_number' => rand(100,400),
+                'hotel_id' => $i,
+                'type_id' => $count2,
+                'description' => Str::random(40),
+                'available' => true,
+            ]);
+            $room->save();
+            $count2++;
         }
     }
 }

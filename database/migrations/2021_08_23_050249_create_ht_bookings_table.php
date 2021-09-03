@@ -14,7 +14,7 @@ class CreateHtBookingsTable extends Migration
     public function up()
     {
         Schema::create('ht_bookings', function (Blueprint $table) {
-            $table->increments('receipt__detail_id');
+            $table->increments('receipt_detail_id');
             $table->integer('room_id')->unsigned();
             $table->date('arrive');
             $table->date('checkout');
@@ -22,6 +22,7 @@ class CreateHtBookingsTable extends Migration
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('receipt_detail_id')->references('id')->on('receipt_details');
         });
         // Schema::table('receipt__details', function (Blueprint $table) {
         //     $table->foreign('service_id')->references('id')->on('ht_bookings');
@@ -35,9 +36,9 @@ class CreateHtBookingsTable extends Migration
      */
     public function down()
     {
-        // Schema::table('receipt__details', function (Blueprint $table) {
-        //     $table->dropForeign('receipt_details_service_id_foreign');
-        // });
+        Schema::table('ht_bookings', function (Blueprint $table) {
+            $table->dropForeign('ht_bookings_room_id_foreign');
+        });
         Schema::dropIfExists('ht_bookings');
     }
 }

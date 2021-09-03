@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ht_booking extends Model
 {
+    
+
     //
     protected $fillable = [
         'room_id','arrive','checkout','description'
@@ -18,4 +20,5 @@ class ht_booking extends Model
     {
         return $this->hasOne(Room::class);
     }
+
 }

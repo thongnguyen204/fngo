@@ -3,11 +3,16 @@
 namespace App\Models;
 
 use App\User;
-// use App\Models\Receipt_Detail;
 use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
 {
+    private int $user_id;
+    private int $price_sum;
+    private String $description;
+
+    
+
     //
     protected $fillable = [
         'user_id','price_sum','description',
