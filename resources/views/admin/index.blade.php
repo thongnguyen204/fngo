@@ -11,7 +11,11 @@
 </div>
 
 <div>
-    <a href='{{route('receipt.index')}}'>Receipts manage</a>
+    <a href='{{route('receipt.index')}}'>Receipts queue</a>
+</div>
+
+<div>
+    <a href='{{route('receipt.indexAccepted')}}'>Receipts manage</a>
 </div>
 
 @endsection

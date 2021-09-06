@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 use App\Models\ht_booking;
 use App\Models\Receipt;
@@ -57,8 +58,8 @@ class HotelBookingController extends Controller
         $receiptDetail->category = "nơi ở";
         $price = $type->price_per_night;
 
-        // so luong
-        $quantity = rand(1,5); 
+        // so luong 1 phong duy nhat
+        $quantity = 1; 
 
         $receiptDetail->unit_price = $price;
         $receiptDetail->quantity = $quantity;
@@ -81,11 +82,21 @@ class HotelBookingController extends Controller
             $request->checkout);
         
         $booking = new ht_booking;
-        $booking->room_id = $request->room_id;
-        $booking->receipt_detail_id = $this->createReceiptDetail($request->room_id)->id;
+        $room_id = $request->room_id;
+        $booking->room_id = $room_id;
+
+        $booking->receipt_detail_id = 
+        $this->createReceiptDetail($room_id)->id;
+
         $booking->arrive = $arrive;
         $booking->checkout = $checkout;
-        $booking->description = "";
+
+        $room = Room::where('id',$room_id)->first();
+        $hotel = $room->hotel;
+
+        $description = $hotel->name." - ".$room->room_number;
+
+        $booking->description = $description;
         $booking->save();
         return redirect()->route('user');
     }
@@ -130,8 +141,9 @@ class HotelBookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ht_booking $HotelBooking)
     {
         //
+        
     }
 }

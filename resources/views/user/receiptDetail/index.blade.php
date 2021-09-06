@@ -8,13 +8,11 @@
     {{-- <a href="{{route('receipt-detail.create')}}">Add room</a> --}}
     <table>
         <tr>
-            
-            <th>category</th>
+            <th>Category</th>
             <th>Price</th>
             <th>Quantity</th>
             
-            <th></th>
-            <th></th>
+
             <th>Description</th>
         </tr>
     @foreach ($receiptDetails as $receiptDetail)
@@ -24,16 +22,6 @@
         <td>{{$receiptDetail->unit_price}}</td>
         <td>{{$receiptDetail->quantity}}</td>
 
-        
-        <td><a href="{{route('receipt-detail.edit'
-        ,$receiptDetail)}}">edit</a></td>
-        <td>
-            <form action="{{route('receipt-detail.destroy',$receiptDetail)}}" method="POST">
-                @csrf
-                @method('delete')
-                <button type="submit">Delete</button>
-            </form>
-        </td>
         <td>{{$receiptDetail->ht_booking->description}}</td>
     </tr>
 

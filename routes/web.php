@@ -30,15 +30,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     ->except([
         'create','store','show'
     ]);
+    Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
+    ->name('receipt.indexAccepted');
 
     Route::resource('/receipt','ReceiptController')
     ->except([
-        
+        'index','show'
     ]);
 
     Route::resource('/receipt-detail','RecepitDetailController')
     ->except([
-        'index','create', 'store', 'show'
+        'index','create', 'store',
     ]);
 
     Route::resource('/hotel','HotelController')
@@ -52,6 +54,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     ]);
     Route::get('/room/create/{room}','RoomController@create')
     ->name('room.create');
+
+    Route::post('accept/{receipt}','ReceiptController@receiptAccept')
+    ->name('receipt.accept');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -70,15 +75,31 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::resource('/HotelBooking','HotelBookingController')
     ->except([
-        
+        'index','create','show','edit','update','destroy'
     ]);
 
 });
-Route::get('hotel','HotelController@index')
-->middleware(['auth'])->name('hotel.index');
 
-Route::get('hotel/{hotel} ','HotelController@show')
-->middleware(['auth'])->name('hotel.show');
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('hotel','HotelController@index')
+    ->name('hotel.index');
+
+    Route::get('hotel/{hotel} ','HotelController@show')
+    ->name('hotel.show');
+
+    Route::get('receipt','ReceiptController@index')
+    ->name('receipt.index');
+
+    Route::get('receipt/{receipt}  ','ReceiptController@show')
+    ->name('receipt.show');
+    
+});
+
+
+
+
+
 
 use Carbon\Carbon;
 Route::get('/test',function(){

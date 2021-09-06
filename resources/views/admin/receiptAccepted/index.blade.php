@@ -20,12 +20,6 @@
         <td><a href="{{route('receipt.show',$receipt)}}">details</a></td>
         <td><a href="{{route('receipt.edit',$receipt->id)}}">edit</a></td>
         <td>
-            <form action="{{route('receipt.accept',$receipt)}}" method="POST">
-                @csrf
-                <button type="submit">Accept</button>
-            </form>
-        </td>
-        <td>
             <form action="{{route('receipt.destroy',$receipt)}}" method="POST">
                 @csrf
                 @method('delete')

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ReceiptStatus;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +20,11 @@ class DatabaseSeeder extends Seeder
             HotelSeeder::class,
             TypeSeeder::class,
             RoomSeeder::class,
-            
+            RoomSeeder::class,
+            RoomSeeder::class,
+            RoomSeeder::class,
+            RoomSeeder::class,
+            ReceiptStatusSeeder::class,
         ]);
     }
 }

@@ -3,16 +3,9 @@
 @section('content')
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hotel</title>
-</head>
+
 <body>
-    <h1>Rooms</h1>
+    <h1>{{$rooms->first()->hotel->name}}</h1>
     <a href="{{route('room.create',$rooms->first())}}">Add room</a>
     <table>
         <tr>
@@ -47,5 +40,4 @@
     {{ $rooms->links() }}
     <a href="{{route('hotel.index')}}">Back to hotels</a>
 </body>
-</html>
 @endsection

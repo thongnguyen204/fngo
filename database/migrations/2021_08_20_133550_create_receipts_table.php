@@ -16,7 +16,9 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('price_sum');
+            $table->integer('price_sum')->unsigned();
+
+            $table->integer('status_id')->unsigned()->default(3); //id 3 is waiting
             $table->string('description');
             $table->timestamps();
 
