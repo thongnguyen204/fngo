@@ -18,4 +18,5 @@
     <a href='{{route('receipt.indexAccepted')}}'>Receipts manage</a>
 </div>
 
+<img src="{{ URL::to('/img/eli.jpg') }}">
 @endsection
