@@ -13,6 +13,7 @@
 
 use App\Models\Receipt_Detail;
 use App\Models\Room;
+use App\Models\Trip;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -57,6 +58,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::post('accept/{receipt}','ReceiptController@receiptAccept')
     ->name('receipt.accept');
+
+    Route::resource('/tour','TourController')
+    ->except([
+        'index','show'
+    ]);
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -82,6 +88,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     
+    Route::get('tour','TourController@index')
+    ->name('tour.index');
+
+    Route::get('tour/{trip}  ','TourController@show')
+    ->name('tour.show');
+
     Route::get('hotel','HotelController@index')
     ->name('hotel.index');
 
@@ -103,13 +115,16 @@ Route::middleware(['auth'])->group(function () {
 
 use Carbon\Carbon;
 Route::get('/test',function(){
-    // $day = Auth::user()->created_at->toDateTimeString();
-    // $test =  date('d/m/Y',strtotime($day));
-    // var_dump($test);
-    $day = "20/04/2000";
-    $day2 = DateTime::createFromFormat('d/m/Y',$day);
-    // echo $day2->format('d/m/Y');
-    var_dump($day2);
+    // // $day = Auth::user()->created_at->toDateTimeString();
+    // // $test =  date('d/m/Y',strtotime($day));
+    // // var_dump($test);
+    // $day = "20/04/2000";
+    // $day2 = DateTime::createFromFormat('d/m/Y',$day);
+    // // echo $day2->format('d/m/Y');
+    // var_dump($day2);
+    $trip = Trip::find(1);
+    // $trip->subTrip()->attach(1);
+    return Trip::find(1)->subTrip;
     
 });
 

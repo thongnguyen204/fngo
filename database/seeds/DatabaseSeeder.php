@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\ReceiptStatus;
+use App\Models\SubTrip;
+use App\Models\TripSubtrip;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +27,8 @@ class DatabaseSeeder extends Seeder
             RoomSeeder::class,
             RoomSeeder::class,
             ReceiptStatusSeeder::class,
+            
+
         ]);
     }
 }
