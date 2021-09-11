@@ -19,7 +19,7 @@ class CreateRoomsTable extends Migration
             $table->integer('hotel_id')->unsigned();
             $table->integer('type_id')->unsigned();
             $table->boolean('available')->default(false);
-            $table->string('description');
+            $table->string('description')->nullable();
 
 
             $table->foreign('hotel_id')->references('id')->on('hotels');

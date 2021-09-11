@@ -19,7 +19,7 @@ class CreateHtBookingsTable extends Migration
             $table->integer('receipt_detail_id')->unsigned();
             $table->date('arrive');
             $table->date('checkout');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');

@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\SubTrip;
 use App\Models\Trip;
+use App\Repositories\TourRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TourController extends Controller
 {
+    private $tour;
+
+    public function __construct(TourRepositoryInterface $tour)
+    {
+        $this->tour = $tour;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,11 +24,14 @@ class TourController extends Controller
     public function index()
     {
         //
-        $trips = Trip::paginate(10);
+        $trips = $this->tour->all();
         $role = Auth::user()->role->name;
-        // return $role;
         $view = $role . ".tour.index";
         return view($view)->with('trips',$trips);
+    }
+    public function test()
+    {
+        return $this->tour->all();
     }
 
     /**
@@ -44,39 +54,22 @@ class TourController extends Controller
     public function store(Request $request)
     {
         //
-        $trip = new Trip;
-        $trip->title = $request->title;
-        $trip->content = $request->content;
-        $trip->save();
-        
-        for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
-            $subtrip = new SubTrip;
-            $subtrip->title = $request->subTripTitle[$i];
-            $subtrip->content = $request->subTripContent[$i];
-            $subtrip->save();
-            
-            $trip->subTrip()->attach($subtrip->id,['day' => $i]);
-        }
-        
+        $this->tour->store($request);
         return redirect()->route('tour.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
     public function show(Trip $trip)
     {
         //
-        
         $role = Auth::user()->role->name;
-        // return $role;
         $view = $role . ".tour.detail";
         return view($view)->with('trip',$trip->subTrip);
-        // return $tour->subTrip;
-        
     }
 
     /**
@@ -85,31 +78,38 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trip $tour)
     {
+        
         //
+        return view('admin.tour.edit')->with('tour',$tour);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Trip $tour
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trip $tour)
     {
+        
         //
+        $this->tour->update($request,$tour);
+        return redirect()->route('tour.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Trip $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trip $tour)
     {
         //
+        $this->tour->delete($tour->id);
+        return redirect()->route('tour.index');
     }
 }

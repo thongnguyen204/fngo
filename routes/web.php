@@ -122,11 +122,9 @@ Route::get('/test',function(){
     // $day2 = DateTime::createFromFormat('d/m/Y',$day);
     // // echo $day2->format('d/m/Y');
     // var_dump($day2);
-    $trip = Trip::find(1);
-    // $trip->subTrip()->attach(1);
-    return Trip::find(1)->subTrip;
-    
+
 });
+
 
 Auth::routes();
 

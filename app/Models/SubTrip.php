@@ -11,7 +11,7 @@ class SubTrip extends Model
 
     public function trip()
     {
-        return $this->belongsToMany(Trip::class,'trip_subtrips','trip_id','subTrip_id');
+        return $this->belongsTo(Trip::class);
     }
     
 }

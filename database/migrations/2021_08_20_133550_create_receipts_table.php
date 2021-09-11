@@ -19,7 +19,7 @@ class CreateReceiptsTable extends Migration
             $table->integer('price_sum')->unsigned();
 
             $table->integer('status_id')->unsigned()->default(3); //id 3 is waiting
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
 
             // $table->foreign('user_id')->references('id')->on('users');

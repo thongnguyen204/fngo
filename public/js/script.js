@@ -18,6 +18,7 @@ $(function(){
         $(x).remove();
         count--;
     });
-
+    var max_day = $("#day_number").val();
+    
   });
   

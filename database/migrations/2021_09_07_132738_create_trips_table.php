@@ -16,7 +16,7 @@ class CreateTripsTable extends Migration
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('content');
+            $table->string('content')->nullable();
             $table->timestamps();
         });
     }

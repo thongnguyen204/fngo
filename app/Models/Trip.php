@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Trip extends Model
 {
     //
+    protected $fillable = [
+        'title','content',
+    ];
     public function subTrip()
     {
-        return $this->belongsToMany(SubTrip::class,'trip_subtrips','trip_id','subTrip_id');
+        return $this->hasMany(SubTrip::class);
     }
 }
