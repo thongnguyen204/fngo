@@ -17,7 +17,10 @@
                     
                 </td>
             </tr>
-            
+            <tr>
+                <td><label for="price">Price </label></td>
+                <td><input type="number" name="price" size="40"/></td>
+            </tr>
             <tr>
                 <td><label for="content">Content </label></td>
                 <td><textarea name="content" rows="10" cols="50"></textarea></td>

@@ -9,6 +9,7 @@
     <table>
         <tr>
             <th>Title</th>
+            <th>Price</th>
             <th>Content</th>
             <th></th>
             <th></th>
@@ -16,6 +17,7 @@
     @foreach ($trips as $trip)
     <tr>
         <td><a href="{{route('tour.show',$trip)}}">{{$trip->title}}</a></td>
+        <td>{{$trip->price}}</td>
         <td>{{$trip->content}}</td>
         <td><a href="{{route('tour.edit',$trip)}}">edit</a></td>
         <td>

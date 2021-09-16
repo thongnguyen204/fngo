@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use App\Models\Room;
+use App\Repositories\HotelRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HotelController extends Controller
 {
+
+    private $hotel;
+
+    public function __construct(HotelRepositoryInterface $hotel)
+    {
+        $this->hotel = $hotel;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +25,8 @@ class HotelController extends Controller
     public function index()
     {
         //
-        $hotels = Hotel::paginate(10);
+        $hotels = $this->hotel->all();
         $role = Auth::user()->role->name;
-        // return $role;
         $view = $role . ".hotel.index";
         return view($view)->with('hotels',$hotels);
     }
@@ -44,31 +51,22 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         //
-        $hotel = new Hotel;
-        $hotel->name = $request->name;
-        $hotel->price_avg = $request->avg_price;
-        $hotel->save();
+        $this->hotel->store($request);
         return redirect()->route('hotel.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $hotel this is hotel id
      * @param \App\Models\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show($hotel)
     {
         //
-        if(Auth::user()->role_id == 1)
-            $rooms = Room::where('hotel_id',$hotel->id)->paginate(10);
-        else if (Auth::user()->role_id == 2)
-        $rooms = Room::where('hotel_id',$hotel->id)
-            ->where('available', 1)
-            ->paginate(10);
+        $rooms = $this->hotel->show($hotel);
         $role = Auth::user()->role->name;
-        // return $role;
         $view = $role . ".room.index";
         return view($view)->with('rooms',$rooms);
     }
@@ -96,9 +94,7 @@ class HotelController extends Controller
     public function update(Request $request,Hotel $hotel)
     {
         //
-        $hotel->name =  $request->name;
-        $hotel->price_avg =  $request->avg_price;
-        $hotel->save();
+        $this->hotel->update($request,$hotel);
         return redirect()->route('hotel.index');
     }
 
@@ -111,11 +107,7 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         //
-        $rooms = $hotel->room;
-        foreach ($rooms as $room) {
-            $room->delete();
-        }
-        $hotel->delete();
+        $this->hotel->delete($hotel->id);
         return redirect()->route('hotel.index');
     }
     public function quantity()

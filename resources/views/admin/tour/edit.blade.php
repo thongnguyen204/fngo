@@ -18,6 +18,13 @@
                     <input type="hidden" value="{{$tour->subTrip->count()}}" name="day_number" id="day_number"/>
                 </td>
             </tr>
+
+            <tr>
+                <td><label for="price">Price </label></td>
+                <td>
+                    <input type="text" value="{{$tour->price}}" name="price" size="40"/>
+                </td>
+            </tr>
             
             <tr>
                 <td><label for="content">Content </label></td>

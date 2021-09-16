@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 use \App\Models\Room;
 use \App\Models\Hotel;
 use App\Models\RoomType;
+use App\Repositories\RoomRespositoryInterface;
 use DateTime;
 use phpDocumentor\Reflection\Types\Integer;
 
 class RoomController extends Controller
 {
+    private $room;
+
+    public function __construct(RoomRespositoryInterface $room)
+    {
+        $this->room = $room;
+    }
     /**
      * Display a listing of the resource.
      * 
@@ -30,10 +37,9 @@ class RoomController extends Controller
     public function create(Room $room)
     {
         //
-        $types = RoomType::where('hotel_id',$room->hotel_id)->get();
+        $types = $this->room->getRoomType($room);
         return view('admin.room.create')->with('room',$room)
         ->with('types',$types);
-        // return $types;
     }
 
     /**
@@ -45,12 +51,7 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         //
-        $room = new Room;
-        $room->room_number = $request->room_number;
-        $room->hotel_id = $request->hotel_id;
-        $room->type_id = $request->type_id;
-        $room->description = $request->description;
-        $room->save();
+        $room = $this->room->store($request);
         return redirect()->route('hotel.show',$room->hotel);
     }
 
@@ -75,8 +76,8 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         //
-        $types = RoomType::where('hotel_id',$room->hotel_id)->get();
-        $hotels = Hotel::all();
+        $types = $this->room->getRoomType($room);
+        $hotels = $this->room->getAllHotel();
         return view('admin.room.edit')->with('room',$room)
         ->with('hotels',$hotels)
         ->with('types',$types);
@@ -93,13 +94,7 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         //
-        
-        $room->room_number = $request->room_number;
-        $room->hotel_id = $request->hotel_id;
-        $room->type_id = $request->type_id;
-        $room->available = $request->available;
-        $room->description = $request->description;
-        $room->save();
+        $this->room->update($request,$room);
         return redirect()->route('hotel.show',$room->hotel);
     }
 
@@ -112,9 +107,8 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         //
-        $temp = $room->hotel;
         
-        $room->delete();
+        $temp = $this->room->destroy($room);
         return redirect()->route('hotel.show',$temp);
     }
     public function test()

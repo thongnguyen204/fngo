@@ -105,6 +105,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('receipt/{receipt}  ','ReceiptController@show')
     ->name('receipt.show');
+    Route::get('/addCart/{trip}','CartController@TourAddCart')
+    ->name('TourAddCart');
     
 });
 

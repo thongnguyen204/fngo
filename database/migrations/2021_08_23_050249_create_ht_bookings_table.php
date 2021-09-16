@@ -23,7 +23,7 @@ class CreateHtBookingsTable extends Migration
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('receipt_detail_id')->references('id')->on('receipt_details');
+            $table->foreign('receipt_detail_id')->references('id')->on('receipt_details')->onDelete('cascade');
         });
     }
 

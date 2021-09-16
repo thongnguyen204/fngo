@@ -2,10 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\Trip;
 use Illuminate\Http\Request;
+use Session;
 
 class CartController extends Controller
 {
+    /**
+     * Add a product to cart
+     *
+     * @param Trip $trip
+     */
+    public function TourAddCart(Request $request, Trip $trip){
+        if($trip != null){
+            $oldCart = Session('Cart') ? Session('Cart') : null;
+            $newCart = new Cart($oldCart);
+            $newCart->addCart($trip,$trip->id);
+
+            $request->session()->put('Cart',$newCart);
+            dd(Session('Cart'));
+        }
+    }
     /**
      * Display a listing of the resource.
      *

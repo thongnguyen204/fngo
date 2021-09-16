@@ -2,12 +2,11 @@
 namespace App\Repositories;
 
 use App\Models\Trip;
-use App\Models\SubTrip;
 use Illuminate\Http\Request;
 
 interface TourRepositoryInterface
 {
-    public function delete($tourId);
+    public function delete($id);
 
     public function store(Request $request);
 

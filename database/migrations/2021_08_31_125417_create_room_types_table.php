@@ -22,7 +22,7 @@ class CreateRoomTypesTable extends Migration
             $table->integer('price_per_night');
 
             
-            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
             
         });
     }

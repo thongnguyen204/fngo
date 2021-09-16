@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubTrip;
 use App\Models\Trip;
 use App\Repositories\TourRepositoryInterface;
 use Illuminate\Http\Request;
@@ -29,11 +28,7 @@ class TourController extends Controller
         $view = $role . ".tour.index";
         return view($view)->with('trips',$trips);
     }
-    public function test()
-    {
-        return $this->tour->all();
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receipt_Detail;
+use App\Repositories\ReceiptDetailRepositoryInterface;
 use Illuminate\Http\Request;
 
 class RecepitDetailController extends Controller
 {
+    private $receipt_detail;
+    
+    public function __construct(ReceiptDetailRepositoryInterface $receipt_detail)
+    {
+        $this->receipt_detail = $receipt_detail;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -76,11 +84,7 @@ class RecepitDetailController extends Controller
     public function update(Request $request, Receipt_Detail $receiptDetail)
     {
         //
-        $id = $receiptDetail->id;
-        $quantity = $request->quantity;
-        $temp = $receiptDetail->receipt;
-        Receipt_Detail::where('id', $id)
-      ->update(['quantity' => $quantity]);
+        $temp = $this->receipt_detail->update($request,$receiptDetail);
         return redirect()->route('receipt.show',$temp);
     }
 
@@ -93,13 +97,7 @@ class RecepitDetailController extends Controller
     public function destroy(Receipt_Detail $receipt_detail)
     {
         //
-        // xoa booking truoc
-        $booking = $receipt_detail->ht_booking();
-        $booking->delete();
-        $temp = $receipt_detail->receipt;
-        $receipt_detail->delete();
+        $temp = $this->receipt_detail->delete($receipt_detail);
         return redirect()->route('receipt.show',$temp);
-
-        // return $receipt_detail;
     }
 }

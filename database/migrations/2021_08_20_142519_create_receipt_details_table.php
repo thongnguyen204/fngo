@@ -22,7 +22,7 @@ class CreateReceiptDetailsTable extends Migration
             $table->timestamps();
 
             // $table->primary(['receipt_id','service_id']);
-            $table->foreign('receipt_id')->references('id')->on('receipts');
+            $table->foreign('receipt_id')->references('id')->on('receipts')->onDelete('cascade');
         });
     }
 

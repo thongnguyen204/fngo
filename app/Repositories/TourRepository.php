@@ -5,14 +5,15 @@ use App\Models\SubTrip;
 use Illuminate\Http\Request;
 class TourRepository implements TourRepositoryInterface
 {
-    public function delete($tourId)
+    public function delete($id)
     {
-        Trip::destroy($tourId);
+        Trip::destroy($id);
     }
 
     public function store(Request $request){
         $tour = new Trip;
         $tour->title = $request->title;
+        $tour->price = $request->price;
         $tour->content = $request->content;
         $tour->save();
         
@@ -31,6 +32,7 @@ class TourRepository implements TourRepositoryInterface
     public function update(Request $request, Trip $tour){
         $count = 0;
         $tour->title = $request->title;
+        $tour->price = $request->price;
         $tour->content = $request->content;
 
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 

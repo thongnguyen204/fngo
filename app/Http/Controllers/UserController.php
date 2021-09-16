@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Receipt;
 use App\User;
 use Illuminate\Http\Request;
+use App\Repositories\UserRepositoryInterface;
 
 class UserController extends Controller
 {
+    private $user;
+    public function __construct(UserRepositoryInterface $user)
+    {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::paginate(10);
+        $users = $this->user->all();
         return view('admin.user.index')->with('users',$users);
     }
 
@@ -75,10 +81,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
-        $user->name =  $request->name;
-        $user->email =  $request->email;
-        $user->save();
-        return redirect()->route('user.index');
+        $this->user->update($request,$user);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -90,14 +94,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
-        $receipts = Receipt::all();
-        foreach ($receipts as $receipt) {
-            if($receipt->user_id == $user->id)
-            {
-                $receipt->delete();
-            }
-        }
-        $user->delete();
-        return redirect()->route('user.index');
+        
+        $this->user->delete($user->id);
+        return redirect()->route('users.index');
     }
 }

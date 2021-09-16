@@ -22,7 +22,7 @@ class CreateRoomsTable extends Migration
             $table->string('description')->nullable();
 
 
-            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
         });
     }
 
