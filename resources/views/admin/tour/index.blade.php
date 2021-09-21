@@ -2,11 +2,11 @@
 @section('content')
 
 <body>
-    <h1>Tours</h1>
+    <div class="container">
     
 
     <a href="{{route('tour.create')}}">Create tour</a>
-    <table>
+    <table  class="table">
         <tr>
             <th>Title</th>
             <th>Price</th>
@@ -31,5 +31,6 @@
     @endforeach
     </table>
     {{ $trips->links() }}
+</div>
 </body>
 @endsection

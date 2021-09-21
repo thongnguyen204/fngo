@@ -3,9 +3,9 @@
 @section('content')
 
 <body>
-    <h1>Hotels</h1>
+    
     <a href="{{route('hotel.create')}}">Add hotel</a>
-    <table>
+    <table class="table">
         <tr>
             <th>Name</th>
             <th>Average price</th>

@@ -13,11 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('users', function (Blueprint $table) {
+            $defaultAvatarUrl = 'https://res.cloudinary.com/dloeyqk30/image/upload/v1632037462/FnGO/UserAvatar/default_xu2gaz.png';
             $table->increments('id');
             $table->integer('role_id')->default(2);
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone');
+            $table->string('gender');
+            $table->string('avatar')->default($defaultAvatarUrl);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

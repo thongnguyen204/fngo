@@ -1,25 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
-
+<div class="container">
 <form action="{{route('hotel.update',$hotel)}}" method="POST">
     @csrf
     @method('PUT')
-    <table>
-        <tr>
-            <td><label for="name">Name: </label></td>
-            <td><input type="text" name="name" 
-                value="{{$hotel->name}}"/></td>
-        </tr>
-        <tr>
-            <td><label for="avg_price">Average price: </label></td>
-            <td><input type="text" name="avg_price" 
-                value="{{$hotel->price_avg}}"/></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button type="submit">Update</button></td>
-        </tr>
-    </table>
+    <div class="form-group">
+        <label for="name">Name: </label>
+        <input class="form-control" value="{{$hotel->name}}" type="text" name="name"/>
+    </div>
+    <div class="form-group">
+        <label for="avg_price">Average price: </label>
+        <input class="form-control" value="{{$hotel->price_avg}}" type="text" name="avg_price" />
+    </div>
+        <button class="btn btn-primary" type="submit">Update</button>
 </form>
+</div>
 @endsection

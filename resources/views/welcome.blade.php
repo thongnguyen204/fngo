@@ -68,11 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        @if(Auth::user()->role->name == 'admin')
-                            <a href="{{ url('/admin') }}">Admin</a>
-                        @else
-                            <a href="{{ url('/user') }}">Home</a>
-                        @endif
+                        <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -88,15 +84,11 @@
                     FnGO
                 </div>
 
-                {{-- <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>  --}}
+                <div class="links">
+                    <a href='{{route('hotel.index')}}'>Hotels</a>
+                    <a href='{{route('tour.index')}}'>Tours</a>
+                    
+                </div> 
             </div>
         </div>
     </body>

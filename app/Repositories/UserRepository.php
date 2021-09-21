@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\User;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 
 class UserRepository implements UserRepositoryInterface{
@@ -15,6 +16,12 @@ class UserRepository implements UserRepositoryInterface{
     public function update(Request $request, User $user){
         $user->name =  $request->name;
         $user->email =  $request->email;
+        $user->phone =  $request->phone;
+        $user->gender =  $request->gender;
+        $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
+            'folder' => 'FnGO/UserAvatar',
+        ])->getSecurePath();
+        $user->avatar =  $uploadedFileUrl;
         $user->save();
     }
 }

@@ -3,8 +3,8 @@
 @section('content')
 
 <body>
-    <h1>receipts</h1>
-    <table>
+    <div class="container">
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>User</th>
@@ -36,6 +36,7 @@
     @endforeach
     </table>
     {{ $receipts->links() }}
+</div>
 </body>
 
 @endsection

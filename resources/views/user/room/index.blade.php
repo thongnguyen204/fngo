@@ -4,8 +4,9 @@
 
 
 <body>
+    <div class="container">
     <h1>Rooms</h1>
-    <table>
+    <table class="table">
         <tr>
             <th >Room number</th>
             <th>Type</th>
@@ -24,7 +25,7 @@
         <td>
             <form action="{{route('orderForm',$room)}}" method="GET">
                 @csrf
-                <button type="submit">Order</button>
+                <button class="btn btn-primary" type="submit">Order</button>
             </form>
         </td>
     </tr>
@@ -32,7 +33,8 @@
     @endforeach
     </table>
     {{ $rooms->links() }}
-    <a href="{{route('hotel.index')}}">Back to hotels</a>
+    
+</div>
 </body>
 
 @endsection

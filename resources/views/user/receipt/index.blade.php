@@ -1,10 +1,11 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 
 @section('content')
 
 <body>
+    <div class="container">
     <h1>receipts</h1>
-    <table>
+    <table class="table">
         <tr>
             <th>ID</th>
             {{-- <th>Name</th> --}}
@@ -25,5 +26,6 @@
     @endforeach
     </table>
     {{ $receipts->links() }}
+</div>
 </body>
 @endsection

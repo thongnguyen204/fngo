@@ -14,6 +14,8 @@
 use App\Models\Receipt_Detail;
 use App\Models\Room;
 use App\Models\Trip;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -29,7 +31,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('/users','UserController')
     ->except([
-        'create','store','show'
+        'create','store','show','edit'
     ]);
     Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
     ->name('receipt.indexAccepted');
@@ -107,6 +109,14 @@ Route::middleware(['auth'])->group(function () {
     ->name('receipt.show');
     Route::get('/addCart/{trip}','CartController@TourAddCart')
     ->name('TourAddCart');
+
+    Route::get('users/{user}/edit','UserController@edit')
+    ->middleware('userInfo')
+    ->name('users.edit');
+
+    Route::get('users/{user}','UserController@show')
+    ->middleware('userInfo')
+    ->name('users.show');
     
 });
 
@@ -115,8 +125,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-use Carbon\Carbon;
-Route::get('/test',function(){
+Route::get('/upload',function(){
     // // $day = Auth::user()->created_at->toDateTimeString();
     // // $test =  date('d/m/Y',strtotime($day));
     // // var_dump($test);
@@ -124,8 +133,15 @@ Route::get('/test',function(){
     // $day2 = DateTime::createFromFormat('d/m/Y',$day);
     // // echo $day2->format('d/m/Y');
     // var_dump($day2);
+    return view('upload');
 
 });
+Route::post('/upload',function(Request $request){
+    $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
+        'folder' => 'FnGO/UserAvatar',
+    ])->getSecurePath();
+    dd($uploadedFileUrl);
+})->name('upload');
 
 
 Auth::routes();

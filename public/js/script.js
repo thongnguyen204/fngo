@@ -21,4 +21,27 @@ $(function(){
     var max_day = $("#day_number").val();
     
   });
-  
+
+  //show Image name on input after chose from device
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+
+  //show image before save
+  $(document).ready(function(){
+    // Prepare the preview for profile picture
+        $("#customFile").change(function(){
+            readURL(this);
+        });
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {
+                $('#avatar').attr('src', e.target.result).fadeIn('slow');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }

@@ -56,7 +56,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        
+        return view('admin.user.edit')->with('user',$user);
     }
 
     /**
@@ -82,7 +82,7 @@ class UserController extends Controller
     {
         //
         $this->user->update($request,$user);
-        return redirect()->route('users.index');
+        return redirect()->route('users.show',$user);
     }
 
     /**

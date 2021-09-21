@@ -4,25 +4,20 @@
 
 
 <body>
-    <h1>Add new hotel</h1>
-
-    <form action="{{route('hotel.store')}}" method="POST">
-        @csrf
-        <table>
-            <tr>
-                <td><label for="name">Name: </label></td>
-                <td><input type="text" name="name"/></td>
-            </tr>
-            <tr>
-                <td><label for="avg_price">Average price: </label></td>
-                <td><input type="text" name="avg_price" /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button type="submit">Add</button></td>
-            </tr>
-        </table>
-    </form>
+    <div class="container">
+        <form action="{{route('hotel.store')}}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="name">Name: </label>
+                <input class="form-control"  type="text" name="name"/>
+            </div>
+            <div class="form-group">
+                <label for="avg_price">Average price: </label>
+                <input class="form-control"  type="text" name="avg_price" />
+            </div>
+                <button class="btn btn-primary" type="submit">Add</button>
+        </form>
+    </div>
 </body>
 
 @endsection

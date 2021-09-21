@@ -2,6 +2,7 @@
 @section('content')
 
 <body>
+    <div class="container">
     <h1>Tours</h1>
     <table>
         <tr>
@@ -25,5 +26,6 @@
     @endforeach
     </table>
     {{ $trips->links() }}
+</div>
 </body>
 @endsection

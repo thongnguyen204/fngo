@@ -5,15 +5,16 @@
 
 
 <body>
-    <h1>{{$rooms->first()->hotel->name}}</h1>
+    <div class="container">
+    <h1 class="text-center">{{$rooms->first()->hotel->name}}</h1>
     <a href="{{route('room.create',$rooms->first())}}">Add room</a>
-    <table>
+    <table class="table">
         <tr>
             <th >Room number</th>
             <th>Status</th>
             <th>Type</th>
             <th>Max person</th>
-            <th></th>
+            <th></th><th></th>
         </tr>
     @foreach ($rooms as $room)
     <tr>
@@ -30,7 +31,7 @@
             <form action="{{route('room.destroy',$room->id)}}" method="POST">
                 @csrf
                 @method('delete')
-                <button type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">Delete</button>
             </form>
         </td>
     </tr>
@@ -38,6 +39,7 @@
     @endforeach
     </table>
     {{ $rooms->links() }}
-    <a href="{{route('hotel.index')}}">Back to hotels</a>
+    
+    </div>
 </body>
 @endsection
