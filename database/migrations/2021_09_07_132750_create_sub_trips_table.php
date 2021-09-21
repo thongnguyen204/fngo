@@ -13,14 +13,14 @@ class CreateSubTripsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_trips', function (Blueprint $table) {
+        Schema::create('sub_tours', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('trip_id')->unsigned();
+            $table->integer('tour_id')->unsigned();
             $table->string('title');
             $table->integer('day')->unsigned();
             $table->string('content')->nullable();
             
-            $table->foreign('trip_id')->references('id')->on('trips')->onDelete('cascade');
+            $table->foreign('tour_id')->references('id')->on('tours')->onDelete('cascade');
         });
     }
 
@@ -31,10 +31,10 @@ class CreateSubTripsTable extends Migration
      */
     public function down()
     {
-        Schema::table('sub_trips', function (Blueprint $table) {
-            $table->dropForeign('sub_trips_trip_id_foreign');    
+        Schema::table('sub_tours', function (Blueprint $table) {
+            $table->dropForeign('sub_tours_tour_id_foreign');    
         });
         
-        Schema::dropIfExists('sub_trips');
+        Schema::dropIfExists('sub_tours');
     }
 }

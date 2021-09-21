@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserRequest extends FormRequest
 {
@@ -13,7 +14,10 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if(Auth::user())
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -25,7 +29,10 @@ class UserRequest extends FormRequest
     {
         return [
             //
-            
+            'email' => 'email|string|max:255',
+            'name' => 'string|max:255',
+            'phone' => ['regex:/[0-9]/','min:10','max:11'],
+            'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000'
         ];
     }
 }

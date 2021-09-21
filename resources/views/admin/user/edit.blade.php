@@ -24,7 +24,12 @@
                     
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" name="email" class="form-control" value="{{$user->email}}"></div>
+                    <div class="col-md-12">
+                        <label class="labels">Email</label><input type="text" name="email" class="form-control" value="{{$user->email}}">
+                        @if ($errors->has('email'))
+                                <strong>Email error</strong>
+                        @endif
+                    </div>
                     <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="{{$user->phone}}"></div>
                     <div class="col-md-12">
                         <label class="labels" for="gender">Gender</label>

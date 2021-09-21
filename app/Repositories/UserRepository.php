@@ -18,10 +18,13 @@ class UserRepository implements UserRepositoryInterface{
         $user->email =  $request->email;
         $user->phone =  $request->phone;
         $user->gender =  $request->gender;
-        $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
-            'folder' => 'FnGO/UserAvatar',
-        ])->getSecurePath();
-        $user->avatar =  $uploadedFileUrl;
+        if(!empty($request->file('avatar')))
+        {
+            $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
+                'folder' => 'FnGO/UserAvatar',
+            ])->getSecurePath();
+            $user->avatar =  $uploadedFileUrl;
+        }
         $user->save();
     }
 }
