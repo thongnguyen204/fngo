@@ -69,7 +69,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        return view('admin.user.edit')->with('user',$user);
+        $role = $user->role->name;
+        $view = $role . '.user.edit';
+        return view($view)->with('user',$user);
+        
     }
 
     /**

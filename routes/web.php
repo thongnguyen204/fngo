@@ -31,7 +31,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('/users','UserController')
     ->except([
-        'create','store','show','edit'
+        'create','store','show','edit','update'
     ]);
     Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
     ->name('receipt.indexAccepted');
@@ -117,6 +117,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users/{user}','UserController@show')
     ->middleware('userInfo')
     ->name('users.show');
+
+    Route::put('users/{user}','UserController@update')
+    ->middleware('userInfo')
+    ->name('users.update');
     
 });
 
