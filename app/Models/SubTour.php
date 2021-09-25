@@ -4,19 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SubTrip extends Model
+class SubTour extends Model
 {
     //
-    protected $table = 'sub_tours';
     public $timestamps = false;
     protected $fillable = [
         'title','content','tour_id',
         
     ];
 
-    public function trip()
+    public function tour()
     {
-        return $this->belongsTo(Trip::class);
+        return $this->belongsTo(Tour::class);
     }
-    
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TourRequest;
+use App\Models\Tour;
 use App\Models\Trip;
 use App\Repositories\TourRepositoryInterface;
 use Illuminate\Http\Request;
@@ -43,10 +45,10 @@ class TourController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  TourRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TourRequest $request)
     {
         //
         $this->tour->store($request);
@@ -59,12 +61,14 @@ class TourController extends Controller
      * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
-    public function show(Trip $trip)
+    public function show(Tour $trip)
     {
         //
         $role = Auth::user()->role->name;
         $view = $role . ".tour.detail";
-        return view($view)->with('trip',$trip->subTrip);
+        return view($view)->with('trip',$trip->subTour)
+        ->with('tour',$trip);
+        // return $trip->subTour;
     }
 
     /**
@@ -73,7 +77,7 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trip $tour)
+    public function edit(Tour $tour)
     {
         
         //
@@ -84,10 +88,10 @@ class TourController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Trip $tour
+     * @param  Tour $tour
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $tour)
+    public function update(Request $request, Tour $tour)
     {
         
         //
@@ -98,10 +102,10 @@ class TourController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Trip $trip
+     * @param  Tour $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trip $tour)
+    public function destroy(Tour $tour)
     {
         //
         $this->tour->delete($tour->id);

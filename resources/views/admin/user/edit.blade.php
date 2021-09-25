@@ -12,6 +12,11 @@
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFile" name="avatar" >
                 <label class="custom-file-label" for="customFile">Choose file</label>
+                @if ($errors->has('avatar'))
+                    @foreach ($errors->get('avatar') as $error)
+                        <div class="col-md-12">{{ $error }}</div>
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="col-md-5 border-right">
@@ -21,16 +26,29 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-12"><label class="labels">Name</label><input type="text" name="name" class="form-control" placeholder="" value="{{$user->name}}"></div>
-                    
+                    @if ($errors->has('name'))
+                        @foreach ($errors->get('name')  as $error)
+                            <div class="col-md-12">{{ $error }}</div>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label class="labels">Email</label><input type="text" name="email" class="form-control" value="{{$user->email}}">
                         @if ($errors->has('email'))
-                                <strong>Email error</strong>
+                            @foreach ($errors->get('email') as $error)
+                                <strong>{{ $error }}</strong>
+                            @endforeach
                         @endif
                     </div>
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="{{$user->phone}}"></div>
+                    <div class="col-md-12">
+                        <label class="labels">Mobile Number</label><input type="text" name="phone" class="form-control" value="{{$user->phone}}">
+                        @if ($errors->has('phone'))
+                        @foreach ($errors->get('phone') as $error)
+                            <div class="col-md-12">{{ $error }}</div>
+                        @endforeach
+                    @endif
+                    </div>
                     <div class="col-md-12">
                         <label class="labels" for="gender"></label>
                         <select class="form-control" id="gender" name="gender">

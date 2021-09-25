@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Trip;
+use App\Models\Tour;
 use Illuminate\Database\Seeder;
 
-class TripSeeder extends Seeder
+class TourSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,18 +13,17 @@ class TripSeeder extends Seeder
     public function run()
     {
         //
-        $trip1 =  Trip::create([
+        $tour =  Tour::create([
             'title' => 'ĐÀ LẠT – 4N3Đ – THÀNH PHỐ SƯƠNG MÙ',
             'content' => 'Tham quan 1 vong ĐÀ LẠT',
             'tour_code' => '2042000',
             'price' => 3000000,
-            'day_start' => DateTime::createFromFormat('Y-m-d',
+            'departure_date' => DateTime::createFromFormat('Y-m-d',
             '2000-04-20'),
-            'place_start' => 'TPHCM',
-            'space_available' => 10,
-            'time_start' => '05:30',
+            'departure_place' => 'TPHCM',
+            'passenger_num' => 10,
+            'departure_time' => '05:30',
             'day_number' => 4,
         ]);
-        
     }
 }

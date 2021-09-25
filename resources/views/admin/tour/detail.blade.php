@@ -2,7 +2,8 @@
 @section('content')
 
 <body>
-    <h1>subtrip</h1>
+    <h1>{{$tour->title}}</h1>
+    <div>{{$tour->content}}</div>
     <table>
         <tr>
             <th>Title</th>

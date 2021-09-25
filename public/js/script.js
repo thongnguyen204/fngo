@@ -3,12 +3,11 @@ var count = 0;
 $(function(){
     $("#addDay").on('click',function(){
         count++;
-        var table = "<table id='"+count+"'>"+
-        "<tr> <td>Title</td>"+
-        "<td><input type='text' name='subTripTitle["+count+"]' size='40'/></td>"
-        +"</tr>"
-        +"<tr><td>Content</td><td><textarea name='subTripContent["+count+"]' rows='10' cols='50'></textarea></td></tr>"
-        +"</table>";
+        var table = "<div id='"+count+"'>"+
+        "<label for='title'>Title </label>"+
+        "<input class='form-control' type='text' name='subTripTitle["+count+"]' />"
+        +"<label for='content'>Content</label><textarea class='form-control' name='subTripContent["+count+"]' rows='10' cols='50'></textarea>"
+        +"</div>";
 
         $("#day").append(table);
         

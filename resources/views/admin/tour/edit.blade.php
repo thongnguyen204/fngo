@@ -15,7 +15,7 @@
                 <td><label for="title">Title </label></td>
                 <td>
                     <input type="text" value="{{$tour->title}}" name="title" size="40"/>
-                    <input type="hidden" value="{{$tour->subTrip->count()}}" name="day_number" id="day_number"/>
+                    <input type="hidden" value="{{$tour->subTour->count()}}" name="day_number" id="day_number"/>
                 </td>
             </tr>
 
@@ -33,7 +33,7 @@
         </table>
         <h2>Sub Trip</h2>
         <div id="day">
-            @foreach ($tour->subTrip as $subTrip)
+            @foreach ($tour->subTour as $subTrip)
             <table id="{{$subTrip->day}}">
                 <tr>
                     <td><label for="title">Title </label></td>

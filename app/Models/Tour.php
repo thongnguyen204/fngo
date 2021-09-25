@@ -4,18 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trip extends Model
+class Tour extends Model
 {
     //
-    protected $table = 'tours';
     protected $fillable = [
         'title','content','tour_code',
         'price','day_start','place_start',
         'space_available','time_start',
         'day_number'
     ];
-    public function subTrip()
+    public function subTour()
     {
-        return $this->hasMany(SubTrip::class);
+        return $this->hasMany(SubTour::class);
     }
 }

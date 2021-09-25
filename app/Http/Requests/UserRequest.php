@@ -29,10 +29,11 @@ class UserRequest extends FormRequest
     {
         return [
             //
-            'email' => 'email|string|max:255',
-            'name' => 'string|max:255',
-            'phone' => ['regex:/[0-9]/','min:10','max:11'],
-            'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000'
+            'email' => 'required|email|string|max:255',
+            'name' => 'required|string|max:55',
+            // 'phone' => 'digits_between:10,11',
+            'phone' => 'digits_between:10,11',
+            'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ];
     }
 }

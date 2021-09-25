@@ -6,7 +6,7 @@
 <body>
     <h1>Receipt Detail</h1>
     {{-- <a href="{{route('receipt-detail.create')}}">Add room</a> --}}
-    <table>
+    <table class="table">
         <tr>
             
             <th>category</th>

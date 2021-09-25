@@ -75,11 +75,13 @@ class HotelBookingController extends Controller
     }
     public function store(Request $request)
     {
+        // $request->arrive la String
         //kieu du lieu datetime
         $arrive = DateTime::createFromFormat('Y-m-d',
             $request->arrive);
         $checkout = DateTime::createFromFormat('Y-m-d',
             $request->checkout);
+        
         
         $booking = new ht_booking;
         $room_id = $request->room_id;

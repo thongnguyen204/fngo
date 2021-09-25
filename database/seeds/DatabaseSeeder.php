@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             RoomSeeder::class,
             RoomSeeder::class,
             ReceiptStatusSeeder::class,
-            
+            TourSeeder::class,
+            SubTourSeeder::class,
 
         ]);
     }

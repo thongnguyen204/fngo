@@ -4,12 +4,11 @@ $(function(){
     var count1 = max_day;
     $("#addDayEdit").on('click',function(){
         count1++;
-        var table = "<table id='"+count1+"'>"+
-        "<tr> <td>Title</td>"+
-        "<td><input type='text' name='subTripTitle["+count1+"]' size='40'/></td>"
-        +"</tr>"
-        +"<tr><td>Content</td><td><textarea name='subTripContent["+count1+"]' rows='10' cols='50'></textarea></td></tr>"
-        +"</table>";
+        var table = "<div id='"+count1+"'>"+
+        "<label for='title'>Title </label>"+
+        "<input class='form-control'  type='text' name='subTripTitle["+count1+"]'/>"
+        +"<label for='content'>Content</label><textarea class='form-control' name='subTripContent["+count1+"]' rows='10' cols='50'></textarea>"
+        +"</div>";
         $("#day").append(table);
     });
     $("#removeDayEdit").on('click',function(){
