@@ -11,7 +11,7 @@
             @csrf
                 <div class="form-group row">
                     <label for="title">Title </label>
-                    <input class="form-control" type="text" name="title" />
+                    <input class="form-control" type="text" name="title" value="{{ old('title') }}"/>
                     @if ($errors->has('title'))
                         @foreach ($errors->get('title') as $error)
                             <strong>{{ $error }}</strong>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="price">Price </label>
-                    <input class="form-control" type="number" name="price" />
+                    <input class="form-control" type="number" name="price" value="{{ old('price') }}"/>
                     @if ($errors->has('price'))
                         @foreach ($errors->get('price') as $error)
                             <strong>{{ $error }}</strong>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="passenger_num">Number of passengers </label>
-                    <input class="form-control" type="number" min="0" name="passenger_num" />
+                    <input class="form-control" type="number" min="0" name="passenger_num" value="{{ old('passenger_num') }}"/>
                     @if ($errors->has('passenger_num'))
                         @foreach ($errors->get('passenger_num') as $error)
                             <strong>{{ $error }}</strong>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="day_number"> Days</label></td>
-                    <input class="form-control" type="number" min="0" name="day_number" />
+                    <input class="form-control" type="number" min="0" name="day_number" value="{{ old('day_number') }}"/>
                     @if ($errors->has('day_number'))
                         @foreach ($errors->get('day_number') as $error)
                             <strong>{{ $error }}</strong>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="departure_date">Departure date</label></td>
-                    <input class="form-control" type="date" name="departure_date" />
+                    <input class="form-control" type="date" name="departure_date" value="{{ old('departure_date') }}"/>
                     @if ($errors->has('departure_date'))
                         @foreach ($errors->get('departure_date') as $error)
                             <strong>{{ $error }}</strong>
@@ -56,9 +56,9 @@
                 </div>
                 <div class="form-group  row">
                     <div class="col"></div>
-                    <input class="form-control col-md-5" type="number" min="0" max="23" placeholder="Hour" name="departure_hour" />
+                    <input class="form-control col-md-5" type="number" min="0" max="23" placeholder="Hour" name="departure_hour" value="{{ old('departure_hour') }}"/>
                     <div class="col"></div>
-                    <input class="form-control col-md-5" type="number" min="0" max="59" placeholder="Minute" name="departure_minute" />
+                    <input class="form-control col-md-5" type="number" min="0" max="59" placeholder="Minute" name="departure_minute" value="{{ old('departure_minute') }}"/>
                     <div class="col"></div>
                     @if ($errors->has('departure_hour'))
                         @foreach ($errors->get('departure_hour') as $error)
@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="departure_place">Departure place </label>
-                    <input class="form-control" type="text" name="departure_place" />
+                    <input class="form-control" type="text" name="departure_place" value="{{ old('departure_place') }}"/>
                     @if ($errors->has('departure_place'))
                         @foreach ($errors->get('departure_place') as $error)
                             <strong>{{ $error }}</strong>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group row">
                     <td><label for="content">Content </label></td>
-                    <td><textarea class="form-control" name="content" rows="10" cols="50"></textarea></td>
+                    <td><textarea class="form-control" name="content" rows="10" cols="50">{{ old('content') }}</textarea></td>
                     @if ($errors->has('content'))
                         @foreach ($errors->get('content') as $error)
                             <strong>{{ $error }}</strong>
@@ -92,6 +92,12 @@
             <h2 class="d-flex justify-content-center">Sub Trip</h2>
             
             <div class="form-group" id="day"></div>
+            @if ($errors->has('subTripTitle.*'))
+                {{-- @foreach ($errors->get('subTripTitle.*') as $error)
+                    <strong>{{ $error }}</strong>
+                @endforeach --}}
+                con cac
+            @endif
             <div class="d-flex justify-content-end">
                 <button class="btn btn-primary" type="button" id="addDay">Add</button>
                 <button class="btn btn-secondary" type="button" id="removeDay">Remove</button>

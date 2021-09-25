@@ -5,7 +5,8 @@ $(function(){
         count++;
         var table = "<div id='"+count+"'>"+
         "<label for='title'>Title </label>"+
-        "<input class='form-control' type='text' name='subTripTitle["+count+"]' />"
+        "<input class='form-control' type='text' name='subTripTitle["+count+"]'/>"
+        
         +"<label for='content'>Content</label><textarea class='form-control' name='subTripContent["+count+"]' rows='10' cols='50'></textarea>"
         +"</div>";
 

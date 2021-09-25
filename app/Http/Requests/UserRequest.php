@@ -29,11 +29,12 @@ class UserRequest extends FormRequest
     {
         return [
             //
-            'email' => 'required|email|string|max:255',
-            'name' => 'required|string|max:55',
-            // 'phone' => 'digits_between:10,11',
-            'phone' => 'digits_between:10,11',
-            'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'email'          => 'required|email|string|max:255',
+            'name'           => 'required|string|max:55',
+            // 'phone'       => 'digits_between:10,11',
+            'phone'          => 'digits_between:10,11',
+            'avatar'         => 'mimes:jpeg,jpg,png,gif|max:10000',
+            
         ];
     }
 }

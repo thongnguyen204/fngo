@@ -69,8 +69,9 @@
                     
                 </div>
                 <div class="row mt-3">
-                    
+                
                 </div>
+                
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
             </div>
         </div>
