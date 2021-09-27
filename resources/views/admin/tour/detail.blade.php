@@ -8,7 +8,7 @@
         <div class="">
             <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$tour->main_image}}">
         </div>
-        <h1>Schedule</h1>
+        <h1>{{__('tour.Schedule')}}</h1>
         
         @foreach ($trip as $subtrip)
             <div>
