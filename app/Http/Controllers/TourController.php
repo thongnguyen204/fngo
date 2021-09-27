@@ -68,7 +68,7 @@ class TourController extends Controller
         $view = $role . ".tour.detail";
         return view($view)->with('trip',$trip->subTour)
         ->with('tour',$trip);
-        // return $trip->subTour;
+        
     }
 
     /**
@@ -91,12 +91,12 @@ class TourController extends Controller
      * @param  Tour $tour
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tour $tour)
+    public function update(TourRequest $request, Tour $tour)
     {
         
         //
         $this->tour->update($request,$tour);
-        return redirect()->route('tour.index');
+        return redirect()->route('tour.edit',$tour);
     }
 
     /**

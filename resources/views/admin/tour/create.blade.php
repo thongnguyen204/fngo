@@ -81,8 +81,8 @@
                     @endif
                 </div>
                 <div class="form-group row">
-                    <td><label for="content">Content </label></td>
-                    <td><textarea class="form-control" name="content" rows="10" cols="50">{{ old('content') }}</textarea></td>
+                    <label for="content">Content </label>
+                    <textarea class="form-control" name="content" rows="10" cols="50">{{ old('content') }}</textarea>
                     @if ($errors->has('content'))
                         @foreach ($errors->get('content') as $error)
                             <strong>{{ $error }}</strong>
@@ -96,7 +96,7 @@
                 {{-- @foreach ($errors->get('subTripTitle.*') as $error)
                     <strong>{{ $error }}</strong>
                 @endforeach --}}
-                con cac
+                error
             @endif
             <div class="d-flex justify-content-end">
                 <button class="btn btn-primary" type="button" id="addDay">Add</button>

@@ -67,13 +67,13 @@
 
                 <div class="links">
                     @if (Auth::user()->role->name == 'admin')
-                    <a href='{{route('users.index')}}'>Users manage</a>
-                    <a href='{{route('receipt.index')}}'>Receipts queue</a>
-                    <a href='{{route('receipt.indexAccepted')}}'>Receipts manage</a>
+                    <a href='{{route('users.index')}}'>{{__('common.Users manage')}}</a>
+                    <a href='{{route('receipt.index')}}'>{{__('common.Receipts queue')}}</a>
+                    <a href='{{route('receipt.indexAccepted')}}'>{{__('common.Receipts manage')}}</a>
                     @endif
-                    <a href='{{route('hotel.index')}}'>Hotels</a>
-                    <a href='{{route('tour.index')}}'>Tours</a>
-                    <a href='{{route('receipt.index')}}'>Receipts</a>
+                    <a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
+                    <a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a>
+                    <a href='{{route('receipt.index')}}'>{{__('common.Receipt')}}</a>
                     
                 </div> 
             </div>

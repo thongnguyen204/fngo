@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Models\Receipt;
 use App\User;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepositoryInterface;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -63,17 +64,32 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
         //
+
         $role = $user->role->name;
         $view = $role . '.user.edit';
-        return view($view)->with('user',$user);
-        
+        return (view($view)->with('user',$user));
+        // return (view('admin.user.edit')->with('user',Auth::user()));
+        // return(view('home')->with('user',$user));
+        // dd($lang,$user->name);
     }
+    public function profile($lang){
+        // $user = User::find($id);
+        // $role = $user->role->name;
+        // $view = $role . '.user.edit';
+        // dd($lang);
+        
+        return(view('home')->with('user',Auth::user()));
+        // return view('test')->with('user',Auth::user());
+
+        // return (view('admin.user.edit')->with('user',Auth::user()));
+        
+    }   
 
     /**
      * Update the specified resource in storage.
@@ -86,7 +102,7 @@ class UserController extends Controller
     {
         //
         $this->user->update($request,$user);
-        return redirect()->route('users.show',$user);
+        return redirect()->route('users.show',[$user]);
     }
 
     /**

@@ -18,10 +18,10 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->role->name}}</td>
                 {{-- <td><a href="{{route('users.show',$user)}}">details</a> --}}
-                <td><a href="{{route('users.edit',$user)}}">details</a>
+                <td><a href="{{route('users.edit',[$user])}}">details</a>
                 </td>
                 <td>
-                    <form style="" action="{{route('users.destroy',$user->id)}}" method="POST">
+                    <form onsubmit="return confirm('Delete this account?');" action="{{route('users.destroy',[$user->id])}}" method="POST">
                         @csrf
                         @method('delete')
                         <div class="">

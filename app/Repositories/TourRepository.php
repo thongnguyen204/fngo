@@ -28,8 +28,18 @@ class TourRepository implements TourRepositoryInterface
         $tour->departure_place = $request->departure_place;
         $tour->day_number = $request->day_number;
 
+        // them so 0 vao dau gio va phut
+        if($request->departure_hour < 10) $departure_hour = "0".($request->departure_hour);
+        else $departure_hour = $request->departure_minute;
+        if($request->departure_minute < 10) $departure_minute = "0".$request->departure_minute;
+        else $departure_minute = $request->departure_minute;
+        
         //ngoai view co 2 input hour va minute
-        $departure_time = $request->departure_hour .":". $request->departure_minute;
+
+
+        $tour->departure_hour = $request->departure_hour;
+        $tour->departure_minute = $request->departure_minute;
+        $departure_time = $departure_hour .":". $departure_minute;
         $tour->departure_time = $departure_time;
 
         $tour->content = $request->content;
@@ -47,15 +57,15 @@ class TourRepository implements TourRepositoryInterface
     public function all(){
         return $trips = Tour::paginate(10);
     }
-    public function update(Request $request, Tour $tour){
+    public function update(TourRequest $request, Tour $tour){
         $count = 0;
         $tour->title = $request->title;
         $tour->price = $request->price;
         $tour->content = $request->content;
 
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
-            if(isset($tour->subTrip[$i-1])){
-                $subtrip = $tour->subTrip[$i-1];
+            if(isset($tour->subTour[$i-1])){
+                $subtrip = $tour->subTour[$i-1];
                 $subtrip->title = $request->subTripTitle[$i];
                 $subtrip->content = $request->subTripContent[$i];
                 $subtrip->save();
@@ -63,17 +73,17 @@ class TourRepository implements TourRepositoryInterface
             else{
                 $subtrip = new SubTour;
                 $subtrip->title = $request->subTripTitle[$i];
-                $subtrip->trip_id = $tour->id;
+                $subtrip->tour_id = $tour->id;
                 $subtrip->day = $i;
                 $subtrip->content = $request->subTripContent[$i];
                 $subtrip->save();
             }
             $count++;
         }
-        $max = $tour->subTrip->count();
+        $max = $tour->subTour->count();
         if($count < $max){
             for($i = 0; $i<($max - $count);$i++){
-                $tour->subTrip[$count+$i]->delete();
+                $tour->subTour[$count+$i]->delete();
             }
         }
         $tour->save();

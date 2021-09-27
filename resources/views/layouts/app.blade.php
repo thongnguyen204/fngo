@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                     {{-- FnGO --}}
                 </a>
@@ -41,13 +41,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('welcome.Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('welcome.Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -69,6 +70,8 @@
                                 </div>
                             </li>
                         @endguest
+                        <a class="nav-link" href="{{ route(Route::currentRouteName(), 'vn')}}">VN</a>
+                        <a class="nav-link" href="{{ route(Route::currentRouteName(), 'en')}}">EN</a>
                     </ul>
                 </div>
             </div>

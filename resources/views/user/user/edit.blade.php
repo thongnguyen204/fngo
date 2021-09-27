@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<form action="{{route('users.update',$user)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('users.update',[app()->getLocale(),$user])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 <div  class="container rounded bg-white mt-5 mb-5">

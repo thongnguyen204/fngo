@@ -29,25 +29,24 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/home') }}">
+            <a class="navbar-brand" href="{{ route('home') }}">
                 {{ config('app.name', 'Laravel') }}
-                {{-- FnGO --}}
             </a>
             <div id="menu">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('hotel.index')}}">Hotels</a>
+                    <a class="nav-link" href="{{route('hotel.index')}}">{{__('welcome.Hotels')}}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('tour.index')}}">Tours</a>
+                    <a class="nav-link" href="{{route('tour.index')}}">{{__('welcome.Tours')}}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{route('receipt.index')}}">Receipts</a>
+                    <a class="nav-link" href="{{route('receipt.index')}}">{{__('common.Receipt')}}</a>
                   </li>
                   @if (Auth::user()->role->name == 'admin')
-                    <li class="nav-item"><a class="nav-link" href='{{route('users.index')}}'>Users manage</a></li>
-                    <li class="nav-item"><a class="nav-link" href='{{route('receipt.index')}}'>Receipts queue</a></li>
-                    <li class="nav-item"><a class="nav-link" href='{{route('receipt.indexAccepted')}}'>Receipts manage</a></li>
+                    <li class="nav-item"><a class="nav-link" href='{{route('users.index')}}'>{{__('common.Users manage')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href='{{route('receipt.index')}}'>{{__('common.Receipts queue')}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href='{{route('receipt.indexAccepted')}}'>{{__('common.Receipts manage')}}</a></li>
                     @endif
                 </ul>
             </div>
@@ -64,30 +63,40 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
+                
+                <ul class="navbar-nav ml-auto">
+                    @foreach (config('app.available_locales') as $locale)
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{route('language',$locale)}}"
+                                @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                        </li>
+                    @endforeach
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('welcome.Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('welcome.Register') }}</a>
                             </li>
                         @endif
                     @else
                         <li class="nav-item dropdown">
+                            
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('users.edit',Auth::user()) }}">
-                                    {{ __('Account settings') }}
+                                <a class="dropdown-item" href="{{route('users.edit', Auth::user())}} ">
+                                    {{ __('common.Account settings') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('common.Logout') }}
                                 </a>
                                 
 

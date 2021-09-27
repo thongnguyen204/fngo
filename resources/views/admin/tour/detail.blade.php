@@ -2,19 +2,22 @@
 @section('content')
 
 <body>
-    <h1>{{$tour->title}}</h1>
-    <div>{{$tour->content}}</div>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Content</th>
-        </tr>
-    @foreach ($trip as $subtrip)
-    <tr>
-        <td><a href="{{route('tour.show',$subtrip)}}">{{$subtrip->title}}</a></td>
-        <td>{{$subtrip->content}}</td>
-    </tr>
-    @endforeach
-    </table>
-    
+    <div class="container">
+        <h1>{{$tour->title}}</h1>
+        <div>{{$tour->content}}</div>
+        <div class="">
+            <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$tour->main_image}}">
+        </div>
+        <h1>Schedule</h1>
+        
+        @foreach ($trip as $subtrip)
+            <div>
+                <h3>{{$subtrip->title}}</h3>
+            </div>
+            <div>
+                {{$subtrip->content}}
+            </div>
+        @endforeach
+    </div>
+</body>
 @endsection

@@ -5,7 +5,7 @@
     <div class="container">
     
 
-    <a href="{{route('tour.create')}}">Create tour</a>
+    <a href="{{route('tour.create',app()->getLocale())}}">Create tour</a>
     <table  class="table">
         <tr>
             <th>Title</th>
@@ -16,15 +16,15 @@
         </tr>
     @foreach ($trips as $trip)
     <tr>
-        <td><a href="{{route('tour.show',$trip)}}">{{$trip->title}}</a></td>
+        <td><a href="{{route('tour.show',[app()->getLocale(),$trip])}}">{{$trip->title}}</a></td>
         <td>{{$trip->price}}</td>
         
-        <td><a href="{{route('tour.edit',$trip)}}">edit</a></td>
+        <td><a href="{{route('tour.edit',[app()->getLocale(),$trip])}}">edit</a></td>
         <td>
-            <form action="{{route('tour.destroy',$trip)}}" method="POST">
+            <form  action="{{route('tour.destroy',[app()->getLocale(),$trip])}}" method="POST">
                 @csrf
                 @method('delete')
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">{{__('common.Delete')}}</button>
             </form>
         </td>
     </tr>

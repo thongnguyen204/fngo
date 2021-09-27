@@ -14,5 +14,5 @@ interface TourRepositoryInterface
 
     public function all();
 
-    public function update(Request $request, Tour $tour);
+    public function update(TourRequest $request, Tour $tour);
 }

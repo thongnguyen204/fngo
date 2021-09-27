@@ -37,8 +37,8 @@ class TourRequest extends FormRequest
             'content'           => 'required|string|max:200',
             'departure_minute'  => 'required|max:2',
             'departure_hour'    => 'required|max:2',
-            'subTripTitle'      => 'required|array|min:1',
-            'subTripTitle.*'    => 'required|string',
+            'subTripTitle'      => 'array|min:1',
+            'subTripTitle.*'    => 'string',
         ];
     }
 }

@@ -67,13 +67,22 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    {{-- @foreach (config('app.available_locales') as $locale)
+                <div class="nav-item">
+                    <a 
+                       href="{{route(Route::currentRouteName(), $locale)}}"
+                        @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
+                </div>
+            @endforeach --}}
+                    <a  href="{{ route('language', 'vn')}}">VN</a>
+                    <a  href="{{ route('language', 'en')}}">EN</a>
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login' ) }}">{{__('welcome.Login')}}</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">{{__('welcome.Register')}}</a>
                         @endif
                     @endauth
                 </div>
@@ -85,8 +94,8 @@
                 </div>
 
                 <div class="links">
-                    <a href='{{route('hotel.index')}}'>Hotels</a>
-                    <a href='{{route('tour.index')}}'>Tours</a>
+                    <a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
+                    <a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a>
                     
                 </div> 
             </div>
