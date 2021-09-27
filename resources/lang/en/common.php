@@ -17,7 +17,8 @@ return [
     'Other' => 'Other',
     'Save Profile' => 'Save Profile',
     'Choose avatar' => 'Choose avatar',
-    'Edit' => 'Edit'
+    'Edit' => 'Edit',
+    'Home' => 'Home',
 ]
 
 ?>

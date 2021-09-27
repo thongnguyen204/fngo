@@ -17,7 +17,8 @@ return [
     'Other' => 'Khác',
     'Save Profile' => 'Lưu thông tin',
     'Choose avatar' => 'Chọn ảnh đại diện',
-    'Edit' => 'Sửa'
+    'Edit' => 'Sửa',
+    'Home' => 'Trang chủ',
 ]
 
 ?>
