@@ -14,5 +14,7 @@ interface TourRepositoryInterface
 
     public function all();
 
+    public function search($keyword);
+
     public function update(TourRequest $request, Tour $tour);
 }

@@ -22,13 +22,18 @@ class TourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $trips = $this->tour->all();
+        if($request->search)
+            $trips = $this->tour->search($request->search);
+        else
+            $trips = $this->tour->all();
+
         $role = Auth::user()->role->name;
         $view = $role . ".tour.index";
         return view($view)->with('trips',$trips);
+        
     }
     
     /**

@@ -6,7 +6,14 @@
     
 
     <a href="{{route('tour.create')}}">{{__('tour.Create')}}</a>
-
+    <form action="{{route('tour.index')}}" method="GET">
+        <div class="input-group mb-3">
+            <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="" aria-label="search" aria-describedby="basic-addon2">
+            <div  class="input-group-append">
+                <button style="width: 100px" class="btn btn-outline-secondary" type="submit">{{__('tour.Search')}}</button>
+            </div>
+        </div>
+    </form>
     <div class="row">
         @foreach ($trips as $trip)
             <div class="card col-md-4">

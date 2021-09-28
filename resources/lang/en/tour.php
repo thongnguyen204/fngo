@@ -17,6 +17,7 @@ return [
     'Edit' => 'Edit',
     'Init' => 'Create',
     'Choose image' => 'Choose image',
+    'Search' => 'Search',
 ]
 
 ?>

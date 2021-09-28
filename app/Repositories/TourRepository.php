@@ -7,6 +7,8 @@ use App\Models\Tour;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class TourRepository implements TourRepositoryInterface
 {
     public function delete($id)
@@ -62,9 +64,20 @@ class TourRepository implements TourRepositoryInterface
             $subtrip->save();
         }
     }
+
+    // lay tat ca tour theo thu tu moi nhat, 12 tour moi trang
     public function all(){
-        return $trips = Tour::paginate(10);
+        //
+        return Tour::orderBy('id','desc')->paginate(12);
     }
+
+    public function search($keyword)
+    {
+        return Tour::where('title','like','%'.$keyword.'%')
+            ->orderBy('id','desc')
+            ->paginate(12);
+    }
+
     public function update(TourRequest $request, Tour $tour){
         $count = 0;
         $tour->title = $request->title;
