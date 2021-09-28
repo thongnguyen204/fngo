@@ -5,6 +5,9 @@
 <form action="{{route('users.update',[$user])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
+
+
+
 <div  class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-5 border-right">
@@ -38,7 +41,7 @@
                         <label class="labels">Email</label><input type="text" name="email" class="form-control" value="{{$user->email}}">
                         @if ($errors->has('email'))
                             @foreach ($errors->get('email') as $error)
-                                <strong>{{ $error }}</strong>
+                            <div class="col-md-12">{{ $error }}</div>
                             @endforeach
                         @endif
                     </div>

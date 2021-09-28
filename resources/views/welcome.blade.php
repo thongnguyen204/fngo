@@ -77,7 +77,7 @@
                     <a  href="{{ route('language', 'vn')}}">VN</a>
                     <a  href="{{ route('language', 'en')}}">EN</a>
                     @auth
-                        <a href="{{ route('home') }}">Home</a>
+                        <a href="{{ route('home') }}">{{__('common.Home')}}</a>
                     @else
                         <a href="{{ route('login' ) }}">{{__('welcome.Login')}}</a>
 

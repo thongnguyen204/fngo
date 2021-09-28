@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Http\Requests\TourRequest;
 use App\Models\SubTour;
 use App\Models\Tour;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use DateTime;
 use Illuminate\Http\Request;
 class TourRepository implements TourRepositoryInterface
@@ -43,6 +44,13 @@ class TourRepository implements TourRepositoryInterface
         $tour->departure_time = $departure_time;
 
         $tour->content = $request->content;
+        if(!empty($request->file('mainImg')))
+        {
+            $uploadedFileUrl = Cloudinary::upload($request->file('mainImg')->getRealPath(),[
+                'folder' => 'FnGO/TourImage',
+            ])->getSecurePath();
+            $tour->main_image =  $uploadedFileUrl;
+        }
         $tour->save();
         
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
@@ -62,6 +70,15 @@ class TourRepository implements TourRepositoryInterface
         $tour->title = $request->title;
         $tour->price = $request->price;
         $tour->content = $request->content;
+
+        if(!empty($request->file('mainImg')))
+        {
+            $uploadedFileUrl = Cloudinary::upload($request->file('mainImg')->getRealPath(),[
+                'folder' => 'FnGO/TourImage',
+            ])->getSecurePath();
+            $tour->main_image =  $uploadedFileUrl;
+        }
+        
 
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
             if(isset($tour->subTour[$i-1])){

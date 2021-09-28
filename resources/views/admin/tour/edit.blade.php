@@ -7,9 +7,11 @@
     <h1 class="d-flex justify-content-center">{{__('tour.Edit')}}</h1>
     
     <div class="container">
-        <form action="{{route('tour.update',$tour)}}" method="POST">
+        <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
+        <form action="{{route('tour.update',$tour)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <input type="hidden" id="formType" name="formType" value="edit">
                 <div class="form-group row">
                     <label for="title">{{__('tour.Title')}}</label>
                     <input class="form-control" type="text" name="title" value="{{ $tour->title }}"/>
@@ -93,6 +95,17 @@
                         @endforeach
                     @endif
                 </div>
+            
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" name="mainImg" value="{{$tour->main_image}}" >
+                <label class="custom-file-label" for="customFile">{{__('common.Choose avatar')}}</label>
+                @if ($errors->has('mainImg'))
+                    @foreach ($errors->get('mainImg') as $error)
+                        <div class="col-md-12">{{ $error }}</div>
+                    @endforeach
+                @endif
+            </div>
+                
             <h2 class="d-flex justify-content-center">{{__('tour.Schedule')}}</h2>
             <div id="day">
                 @foreach ($tour->subTour as $subTrip)

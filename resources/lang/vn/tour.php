@@ -14,6 +14,8 @@ return [
     'Remove' => 'Xóa',
     'Update' => 'Cập nhật',
     'Edit' => 'Chỉnh sửa',
+    'Init' => 'Tạo',
+    'Choose image' => 'Chọn hình ảnh',
 
 ]
 
