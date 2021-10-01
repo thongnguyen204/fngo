@@ -19,6 +19,7 @@ return [
     'Choose avatar' => 'Chọn ảnh đại diện',
     'Edit' => 'Sửa',
     'Home' => 'Trang chủ',
+    'Admin dashboard' => 'Quản trị',
 ]
 
 ?>

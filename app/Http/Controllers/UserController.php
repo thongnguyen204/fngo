@@ -58,7 +58,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        return view('admin.user.edit')->with('user',$user);
+        $role = Auth::user()->role->name;
+        $view = $role . '.user.edit';
+        return (view($view)->with('user',$user));
     }
 
     /**
@@ -71,13 +73,15 @@ class UserController extends Controller
     {
         //
 
-        $role = $user->role->name;
+        $role = Auth::user()->role->name;
         $view = $role . '.user.edit';
         return (view($view)->with('user',$user));
         // return (view('admin.user.edit')->with('user',Auth::user()));
         // return(view('home')->with('user',$user));
         // dd($lang,$user->name);
     }
+    
+    // ham de test dual language
     public function profile($lang){
         // $user = User::find($id);
         // $role = $user->role->name;

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\Trip;
+use App\Models\Room;
+use App\Models\Tour;
+
 use Illuminate\Http\Request;
+
 use Session;
 
 class CartController extends Controller
@@ -12,18 +15,66 @@ class CartController extends Controller
     /**
      * Add a product to cart
      *
-     * @param Trip $trip
+     * @param String $product_code
      */
-    public function TourAddCart(Request $request, Trip $trip){
-        if($trip != null){
-            $oldCart = Session('Cart') ? Session('Cart') : null;
-            $newCart = new Cart($oldCart);
-            $newCart->addCart($trip,$trip->id);
+    public function TourAddCart(Request $request, $product_code){
+        if($product_code != null){
 
-            $request->session()->put('Cart',$newCart);
-            dd(Session('Cart'));
+            if(strpos($product_code,'tour')!==false)
+                {
+                    $product = Tour::where('product_code',$product_code)->first();
+                }
+            else if(strpos($product_code,'room')!==false)
+                {
+                    $product = Room::where('product_code',$product_code)->first();
+                }
+        
+            if($product != null)
+            {
+                $oldCart = Session('Cart') ? Session('Cart') : null;
+                $newCart = new Cart($oldCart);
+                $newCart->addCart($product,$product->product_code);
+                
+                $request->session()->put('Cart',$newCart);
+
+                return __('cart.Success');
+            }
+            else{
+                return __('cart.Fail');
+            }
+
         }
+        return __('cart.Fail');
+        // return redirect()->back()->with('error','0');
+        
+            
     }
+
+    public function deleteCart(Request $request, $product_code){
+        $oldCart = Session('Cart') ? Session('Cart') : null;
+        $newCart = new Cart($oldCart);
+        $newCart->deleteCart($product_code);
+
+        if(Count($newCart->products)>0)
+            $request->session()->put('Cart',$newCart);
+        else
+            $request->session()->forget('Cart',$newCart); 
+        
+        
+
+        return view('cart.body')->with('noti',__('cart.Deleted'));
+    }
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -32,6 +83,8 @@ class CartController extends Controller
     public function index()
     {
         //
+        $newCart = session('Cart');
+        return view('cart.index')->with('newCart',$newCart);
     }
 
     /**

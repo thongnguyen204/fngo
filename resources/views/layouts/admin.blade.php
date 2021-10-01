@@ -7,20 +7,21 @@
     <title>FnGO</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <style>
-        table {width: 600px;}
-        th,td {text-align: center;}
-        
-        #footer {
-            
-            /* Height of the footer*/ 
-            color: #000;
-        }
-        #menu{
-            
-        }
-    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -40,9 +41,8 @@
                     <a class="nav-link" href="{{route('receipt.index')}}">{{__('common.Receipt')}}</a>
                   </li>
                   @if (Auth::user()->role->name == 'admin')
-                    <li class="nav-item"><a class="nav-link" href='{{route('users.index')}}'>{{__('common.Users manage')}}</a></li>
-                    <li class="nav-item"><a class="nav-link" href='{{route('receipt.index')}}'>{{__('common.Receipts queue')}}</a></li>
-                    <li class="nav-item"><a class="nav-link" href='{{route('receipt.indexAccepted')}}'>{{__('common.Receipts manage')}}</a></li>
+                    
+                    
                     @endif
                 </ul>
             </div>
@@ -68,6 +68,7 @@
                                 @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
                         </li>
                     @endforeach
+                </ul>
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
@@ -83,25 +84,41 @@
                         <li class="nav-item dropdown">
                             
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                <i style="font-size: 25px" class="bi bi-person-circle"></i> <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                @if (Auth::user()->role->name == 'admin')
+                                    <a class="dropdown-item" href="{{url('/dashboard')}}">
+                                        {{ __('common.Admin dashboard') }}
+                                    </a>
+                                @endif
+                                
+
                                 <a class="dropdown-item" href="{{route('users.edit', Auth::user())}} ">
                                     {{ __('common.Account settings') }}
                                 </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('common.Logout') }}
                                 </a>
                                 
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
                             
                         </li>
+                        @if (Auth::user()->role->name == 'user')
+                            <li class="nav-item cartIcon">
+                                <form action="{{route('cart.index')}}" method="GET">
+                                    <button type="submit" class="btn"><i style="font-size: 25px" class="bi bi-cart"></i></button>
+                                </form>
+                            </li>
+                    
+                        @endif
+                        
                     @endguest
                 </ul>
             </div>
@@ -123,4 +140,10 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{{-- alertify --}}
+
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+
 </html>

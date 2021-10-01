@@ -1,31 +1,74 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 @section('content')
-
+<style>
+    
+    .ajs-message.ajs-custom {
+    color: #ffffff;
+    /* background-color: #d9edf7;   */
+    background: rgba(91, 189, 114, 0.95);
+    border-color: #31708f; 
+}
+    
+</style>
 <body>
     <div class="container">
-    <h1>Tours</h1>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Content</th>
+    
+    
+    <a href="{{route('tour.create')}}">{{__('tour.Create')}}</a>
+    <form action="{{route('tour.index')}}" method="GET">
+        <div class="input-group mb-3">
+            <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="" aria-label="search" aria-describedby="basic-addon2">
+            <div  class="input-group-append">
+                <button style="width: 100px" class="btn btn-outline-secondary" type="submit">{{__('tour.Search')}}</button>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        @foreach ($trips as $trip)
+            <div class="card col-md-4">
+                
+                <div class="card-body">
+                    <a href="{{route('tour.show',$trip)}}">
+                        <img height="200px" style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$trip->main_image}}">
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <a href="{{route('tour.show',$trip)}}">
+                            <div class="col-md-12">{{$trip->title}}</div>
+                        </a>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">{{$trip->price}}</div>
+                        <div class="col">
 
-        </tr>
-    @foreach ($trips as $trip)
-    <tr>
-        <td><a href="{{route('tour.show',$trip)}}">{{$trip->title}}</a></td>
-        <td>{{$trip->price}}</td>
-        <td>{{$trip->content}}</td>
-        <td>
-            <form action="{{route('TourAddCart',$trip)}}" method="GET">
-                @csrf
-                <button type="submit">Add Cart</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
-    </table>
+                        </div>
+                        <div class="col">
+                            <span class="glyphicon glyphicon-ok"></span>
+                                <button onclick="addCart('{{$trip->product_code}}')" type="button" style="width: 65px" class="btn btn-success"><i style="font-size: 25px" class="fa fa-cart-plus"></i></button>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        @endforeach
+    </div>
+    
     {{ $trips->links() }}
 </div>
 </body>
+<script>
+    function addCart(id){
+        $.ajax({
+            url: "addCart/"+id ,
+            type:'GET',   
+        }).done(function(respone){
+            
+            var icon = '<span class="bi bi-bag-check test"></span>';
+            alertify.notify(icon +" " +respone, 'custom');
+        });
+    }
+</script>
 @endsection

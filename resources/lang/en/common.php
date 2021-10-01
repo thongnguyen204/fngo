@@ -19,6 +19,7 @@ return [
     'Choose avatar' => 'Choose avatar',
     'Edit' => 'Edit',
     'Home' => 'Home',
+    'Admin dashboard' => 'Admin dashboard',
 ]
 
 ?>

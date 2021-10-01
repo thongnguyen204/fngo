@@ -18,6 +18,7 @@ return [
     'Init' => 'Create',
     'Choose image' => 'Choose image',
     'Search' => 'Search',
+    'Book' => 'Book'
 ]
 
 ?>

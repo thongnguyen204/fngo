@@ -17,6 +17,7 @@ return [
     'Init' => 'Tạo',
     'Choose image' => 'Chọn hình ảnh',
     'Search' => 'Tìm',
+    'Book' => 'Đặt',
 
 ]
 

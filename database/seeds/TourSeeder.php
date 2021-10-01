@@ -17,7 +17,7 @@ class TourSeeder extends Seeder
             $tour =  Tour::create([
                 'title' => 'ĐÀ LẠT – 4N3Đ – THÀNH PHỐ SƯƠNG MÙ',
                 'content' => 'Tham quan 1 vong ĐÀ LẠT',
-                'tour_code' => '2042000',
+                'product_code' => 'tour_'.$i,
                 'price' => 3000000,
                 'main_image' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1632636749/FnGO/TourImage/main/hinh-anh-ho-xuan-huong-da-lat-ve-dem-hinh1_utcmrz.jpg',
                 'departure_date' => DateTime::createFromFormat('Y-m-d',

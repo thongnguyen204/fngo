@@ -1,6 +1,7 @@
-@extends('layouts.admin')
+@extends('admin.dashboard.index')
 
-@section('content')
+@section('dashboard')
+
 
 <form action="{{route('users.update',[$user])}}" method="POST" enctype="multipart/form-data">
     @csrf

@@ -23,11 +23,16 @@ Route::get('/', function () {
 
 
     Auth::routes();
+
     Route::get('/', function () {
         return view('welcome');
     })->name('welcome');
     
     Route::middleware(['auth', 'role:admin'])->group(function () {
+        
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard.index');
+        })->name('dashboard');
         
         Route::get('/admin', function () {
             return view('admin.index');
@@ -111,8 +116,20 @@ Route::get('/', function () {
     
         Route::get('receipt/{receipt}','ReceiptController@show')
         ->name('receipt.show');
-        Route::get('/addCart/{trip}','CartController@TourAddCart')
+
+
+
+        // cart
+        Route::get('/addCart/{product}','CartController@TourAddCart')
         ->name('TourAddCart');
+
+        Route::get('/deleteCart/{product}','CartController@deleteCart')
+        ->name('deleteCart');
+
+        Route::get('cart','CartController@index')
+        ->name('cart.index');
+
+
     
         Route::get('users/{user}/edit','UserController@edit')
         ->middleware('userInfo')
