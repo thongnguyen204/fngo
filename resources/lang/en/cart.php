@@ -11,6 +11,7 @@ return [
     'Checkout'  => 'Checkout',
     'Update Cart'   => 'Update cart',
     'Deleted'       => 'Deleted',
+    'Update'   => 'Cart updated' ,
 ]
 
 ?>

@@ -14,9 +14,7 @@ class Hotel extends Model
 
     public $timestamps = false;
 
-    public function room(){
-        return $this->hasMany(Room::class);
-    }
+    
     public function category(){
         return $this->belongsTo(Category::class);
     }
@@ -24,4 +22,8 @@ class Hotel extends Model
     {
         return $this->hasMany(RoomType::class);
     }
+    public function CityProvince(){
+        return $this->belongsTo(CityProvince::class);
+    }
+
 }

@@ -34,12 +34,11 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Room $room)
+    public function create(Hotel $hotel)
     {
         //
-        $types = $this->room->getRoomType($room);
-        return view('admin.room.create')->with('room',$room)
-        ->with('types',$types);
+        
+        return view('admin.hotel.roomType.create')->with('hotel',$hotel);
     }
 
     /**
@@ -73,7 +72,7 @@ class RoomController extends Controller
      * @param \App\Models\Room $room
      * @return \Illuminate\Http\Response
      */
-    public function edit(Room $room)
+    public function edit(RoomType $room)
     {
         //
         $types = $this->room->getRoomType($room);
@@ -91,7 +90,7 @@ class RoomController extends Controller
      * @param \App\Models\Room $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, RoomType $room)
     {
         //
         $this->room->update($request,$room);
@@ -104,12 +103,13 @@ class RoomController extends Controller
      * @param \App\Models\Room $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy(RoomType $room)
     {
         //
         
-        $temp = $this->room->destroy($room);
-        return redirect()->route('hotel.show',$temp);
+        // $temp = $this->room->destroy($room);
+        // return redirect()->route('hotel.show',$temp);
+        return 'test';
     }
     public function test()
     {

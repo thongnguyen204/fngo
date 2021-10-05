@@ -15,9 +15,15 @@ class CreateHotelsTable extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('product_code')->default('hotel_');
             $table->string('name');
             $table->string('category')->default('nơi ở');
-            $table->integer('price_avg')->unsigned();
+            $table->string('avatar');
+            $table->string('address');
+            
+            $table->integer('city_province_id')->unsigned();
+            
+            $table->integer('price')->unsigned();
             
             $table->foreign('category')->references('name')->on('categories');
         });

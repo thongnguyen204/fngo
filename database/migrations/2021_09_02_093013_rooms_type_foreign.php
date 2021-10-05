@@ -14,11 +14,11 @@ class RoomsTypeForeign extends Migration
     public function up()
     {
         //
-        Schema::table('rooms', function (Blueprint $table) {
-            // $table->foreign('hotel_id')->references('hotel_id')->on('room_types');
-            // $table->foreign('type')->references('type')->on('room_types');
-            $table->foreign('type_id')->references('id')->on('room_types');
-        });
+        // Schema::table('rooms', function (Blueprint $table) {
+        //     // $table->foreign('hotel_id')->references('hotel_id')->on('room_types');
+        //     // $table->foreign('type')->references('type')->on('room_types');
+        //     $table->foreign('type_id')->references('id')->on('room_types');
+        // });
         
     }
 
@@ -30,8 +30,8 @@ class RoomsTypeForeign extends Migration
     public function down()
     {
         //
-        Schema::table('rooms', function (Blueprint $table) {
-            $table->dropForeign('rooms_type_id_foreign');
-        });
+        // Schema::table('rooms', function (Blueprint $table) {
+        //     $table->dropForeign('rooms_type_id_foreign');
+        // });
     }
 }

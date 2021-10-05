@@ -22,8 +22,8 @@ class CreateHtBookingsTable extends Migration
             $table->string('description')->nullable();
             $table->timestamps();
 
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('receipt_detail_id')->references('id')->on('receipt_details')->onDelete('cascade');
+            // $table->foreign('room_id')->references('id')->on('rooms');
+            // $table->foreign('receipt_detail_id')->references('id')->on('receipt_details')->onDelete('cascade');
         });
     }
 

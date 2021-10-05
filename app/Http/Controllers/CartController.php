@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Room;
 use App\Models\Tour;
-
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
 
 use Session;
@@ -42,12 +42,13 @@ class CartController extends Controller
             else{
                 return __('cart.Fail');
             }
-
         }
         return __('cart.Fail');
         // return redirect()->back()->with('error','0');
-        
-            
+    }
+    public function getCurrentCartQuantity()
+    {
+        return Session('Cart')->quantity;
     }
 
     public function deleteCart(Request $request, $product_code){
@@ -59,10 +60,22 @@ class CartController extends Controller
             $request->session()->put('Cart',$newCart);
         else
             $request->session()->forget('Cart',$newCart); 
-        
-        
-
         return view('cart.body')->with('noti',__('cart.Deleted'));
+    }
+
+    public function updateCart(Request $request)
+    {
+        // dd($request->data);
+        $data = $request->data;
+        foreach($data as $item){
+            $oldCart = Session('Cart') ?  Session('Cart') : null;
+            $newCart = new Cart($oldCart);
+            $newCart->updateCart($item["key"],$item['value']);
+
+            $request->session()->put('Cart',$newCart);
+        }
+        
+        return view('cart.body')->with('noti',__('cart.Update'));
     }
 
 

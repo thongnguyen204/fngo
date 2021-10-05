@@ -13,11 +13,32 @@ class RoomRespository implements RoomRespositoryInterface{
     }
     public function store(Request $request)
     {
-        $room = new Room;
-        $room->room_number = $request->room_number;
+        $room = new RoomType;
+        $room->name = $request->name;
         $room->hotel_id = $request->hotel_id;
-        $room->type_id = $request->type_id;
-        $room->description = $request->description;
+        $room->bed = $request->bed_num ."-".$request->bed_type;
+        $room->price = $request->price;
+        $room->area = $request->area;
+        $room->max_person = $request->bed_num  * $request->bed_type;
+        if(is_null($request->refund))
+            $room->refund = false;
+        else
+            $room->refund = $request->refund;
+
+        if(is_null($request->breakfast))
+            $room->breakfast = false;
+        else
+            $room->breakfast = $request->breakfast;
+        $room->price = $request->price;
+        if(!empty($request->file('avatar')))
+        {
+            $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
+                'folder' => 'FnGO/RoomImage',
+            ])->getSecurePath();
+            $room->avatar =  $uploadedFileUrl;
+        }
+        $room->save();
+        $room->product_code = "hotel_" . $request->hotel_id . "_room_" . $room->id;
         $room->save();
 
         return $room;
@@ -26,15 +47,33 @@ class RoomRespository implements RoomRespositoryInterface{
     {
         return Hotel::all();
     }
-    public function update(Request $request, Room $room){
-        $room->room_number = $request->room_number;
-        $room->hotel_id = $request->hotel_id;
-        $room->type_id = $request->type_id;
-        $room->available = $request->available;
-        $room->description = $request->description;
+    public function update(Request $request, RoomType $room){
+        $room->name = $request->name;
+        $room->bed = $request->bed_num ."-".$request->bed_type;
+        $room->price = $request->price;
+        $room->area = $request->area;
+        $room->max_person = $request->bed_num  * $request->bed_type;
+        if(is_null($request->refund))
+            $room->refund = false;
+        else
+            $room->refund = $request->refund;
+
+        if(is_null($request->breakfast))
+            $room->breakfast = false;
+        else
+            $room->breakfast = $request->breakfast;
+        $room->price = $request->price;
+        if(!empty($request->file('avatar')))
+        {
+            $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
+                'folder' => 'FnGO/RoomImage',
+            ])->getSecurePath();
+            $room->avatar =  $uploadedFileUrl;
+        }
         $room->save();
+
     }
-    public function destroy(Room $room){
+    public function destroy(RoomType $room){
         $temp = $room->hotel;
         $room->delete();
         return $temp;

@@ -9,6 +9,7 @@ return [
     'Days' => 'Số ngày',
     'Departure date' => 'Ngày khởi hành',
     'Departure place' => 'Nơi khởi hành',
+    'Departure time' => 'Giờ khởi hành',
     'Content' => 'Nội dung',
     'Add' => 'Thêm',
     'Remove' => 'Xóa',
@@ -18,6 +19,7 @@ return [
     'Choose image' => 'Chọn hình ảnh',
     'Search' => 'Tìm',
     'Book' => 'Đặt',
+    
 
 ]
 

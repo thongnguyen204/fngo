@@ -3,21 +3,66 @@
 
 <body>
     <div class="container">
-        <h1>{{$tour->title}}</h1>
-        <div>{{$tour->content}}</div>
-        <div class="">
-            <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$tour->main_image}}">
+        <h2>{{$tour->title}}</h2>
+        <div class="row">
+            <div class="col-md-8">
+                {{-- <div>{{$tour->content}}</div> --}}
+                <div class="">
+                    <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$tour->main_image}}">
+                </div>
+                <h1>{{__('tour.Schedule')}}</h1>
+
+                @foreach ($trip as $subtrip)
+                <div>
+                    <h3>{{$subtrip->title}}</h3>
+                </div>
+                <div>
+                    {{$subtrip->content}}
+                </div>
+                @endforeach
+            </div>
+            <div class="col ">
+                <div class="card">
+                    <div class="card-body ">
+                        <p class="d-flex justify-content-center"> {{$tour->price}}</p>
+                        <div class="d-flex justify-content-center" >
+                            <button type="button" class="btn btn-primary btn-lg">
+                                Add to cart now
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body test">
+                        <div>
+                            <ul class="list-group ">
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-calendar3"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Departure date')}}:</strong>
+                                    {{-- ham duoc viet trong model Tour --}}
+                                    {{$tour->day()}}
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-alarm"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Departure time')}}:</strong>
+                                    {{$tour->departure_time}}
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-people-fill"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Number of passengers')}}:</strong>
+                                    {{$tour->passenger_num}}
+                                </li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                  </div>
+            </div>
         </div>
-        <h1>{{__('tour.Schedule')}}</h1>
-        
-        @foreach ($trip as $subtrip)
-            <div>
-                <h3>{{$subtrip->title}}</h3>
-            </div>
-            <div>
-                {{$subtrip->content}}
-            </div>
-        @endforeach
     </div>
 </body>
+<script>
+    var day = document.getElementById('day').getAttribute('value');
+    // const myArr = str.split(" ");
+    console.log(day);
+</script>
 @endsection

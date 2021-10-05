@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CityProvince;
 use App\Models\Hotel;
 use App\Models\Room;
 use App\Repositories\HotelRepositoryInterface;
@@ -22,13 +23,21 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $hotels = $this->hotel->all();
+        if($request->search)
+            $hotels = $this->hotel->search($request->search);
+            
+        else
+            $hotels = $this->hotel->all();
+
         $role = Auth::user()->role->name;
         $view = $role . ".hotel.index";
         return view($view)->with('hotels',$hotels);
+        // dd($hotels);
+
+        
     }
 
     /**
@@ -65,10 +74,11 @@ class HotelController extends Controller
     public function show($hotel)
     {
         //
-        $rooms = $this->hotel->show($hotel);
+        $hotel = $this->hotel->show($hotel);
         $role = Auth::user()->role->name;
-        $view = $role . ".room.index";
-        return view($view)->with('rooms',$rooms);
+        $view = $role . ".hotel.detail";
+        return view($view)->with('hotel',$hotel);
+        // return $hotel;
     }
 
     /**
@@ -81,7 +91,8 @@ class HotelController extends Controller
     public function edit(Hotel $hotel)
     {
         //
-        return view('admin.hotel.edit')->with('hotel',$hotel);
+        $CityProvince = $this->hotel->getAllCityProvince();
+        return view('admin.hotel.edit')->with('hotel',$hotel)->with('cty_province',$CityProvince);
     }
 
     /**

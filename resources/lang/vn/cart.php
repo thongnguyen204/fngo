@@ -11,6 +11,7 @@ return [
     'Checkout'  => 'Thanh toán',
     'Update Cart'   => 'Cập nhật',
     'Deleted'       => 'Đã xóa sản phẩm',
+    'Update'        => 'Đã cập nhật giỏ hàng' ,
 ]
 
 ?>

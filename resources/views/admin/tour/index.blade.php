@@ -7,10 +7,10 @@
         <form action="{{route('tour.index')}}" method="GET">
             <div class="input-group mb-3">
                 <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
-                    placeholder="" aria-label="search" aria-describedby="basic-addon2">
+                    placeholder="">
                 <div class="input-group-append">
-                    <button style="width: 100px" class="btn btn-outline-secondary"
-                        type="submit">{{__('tour.Search')}}</button>
+                    <button style="width: 100px" class="btn btn-outline-secondary" type="submit"><i
+                            class="bi bi-search"></i></button>
                 </div>
             </div>
         </form>

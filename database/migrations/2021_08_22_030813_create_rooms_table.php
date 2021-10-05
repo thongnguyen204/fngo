@@ -13,17 +13,17 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('room_number');
-            $table->integer('hotel_id')->unsigned();
-            $table->integer('type_id')->unsigned();
-            $table->boolean('available')->default(false);
-            $table->string('description')->nullable();
+        // Schema::create('rooms', function (Blueprint $table) {
+        //     // $table->increments('id');
+        //     // $table->integer('room_number');
+        //     // $table->integer('hotel_id')->unsigned();
+        //     // $table->integer('type_id')->unsigned();
+        //     // $table->boolean('available')->default(false);
+        //     // $table->string('description')->nullable();
 
 
-            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
-        });
+        //     // $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
+        // });
     }
 
     /**
@@ -33,9 +33,9 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::table('rooms', function (Blueprint $table) {
-            $table->dropForeign('rooms_hotel_id_foreign');
-        });
-        Schema::dropIfExists('rooms');
+        // Schema::table('rooms', function (Blueprint $table) {
+        //     $table->dropForeign('rooms_hotel_id_foreign');
+        // });
+        // Schema::dropIfExists('rooms');
     }
 }

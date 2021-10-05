@@ -22,7 +22,7 @@ class TourRepository implements TourRepositoryInterface
             $request->departure_date);
             
         $tour = new Tour;
-        $tour->tour_code = $departure_date->format('d');
+        // $tour->tour_code = $departure_date->format('d');
         $tour->title = $request->title;
         $tour->price = $request->price;
         $tour->passenger_num = $request->passenger_num;
@@ -54,6 +54,7 @@ class TourRepository implements TourRepositoryInterface
             $tour->main_image =  $uploadedFileUrl;
         }
         $tour->save();
+        $tour->product_code = "tour_" . $tour->id;
         
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
             $subtrip = new SubTour;
@@ -63,6 +64,7 @@ class TourRepository implements TourRepositoryInterface
             $subtrip->content = $request->subTripContent[$i];
             $subtrip->save();
         }
+        $tour->save();
     }
 
     // lay tat ca tour theo thu tu moi nhat, 12 tour moi trang

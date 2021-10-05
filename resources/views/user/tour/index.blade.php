@@ -12,14 +12,12 @@
 </style>
 <body>
     <div class="container">
-    
-    
-    <a href="{{route('tour.create')}}">{{__('tour.Create')}}</a>
     <form action="{{route('tour.index')}}" method="GET">
         <div class="input-group mb-3">
             <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="" aria-label="search" aria-describedby="basic-addon2">
             <div  class="input-group-append">
-                <button style="width: 100px" class="btn btn-outline-secondary" type="submit">{{__('tour.Search')}}</button>
+                <button style="width: 100px" class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i>
+                </button>
             </div>
         </div>
     </form>
@@ -50,7 +48,6 @@
                             
                         </div>
                     </div>
-                    
                 </div>
             </div>
         @endforeach
@@ -65,9 +62,15 @@
             url: "addCart/"+id ,
             type:'GET',   
         }).done(function(respone){
-            
             var icon = '<span class="bi bi-bag-check test"></span>';
             alertify.notify(icon +" " +respone, 'custom');
+        });
+
+        $.ajax({
+            url: "cartQuantity" ,
+            type:'GET',   
+        }).done(function(respone){
+            $('#CartCount').text(respone);
         });
     }
 </script>

@@ -113,7 +113,15 @@
                         @if (Auth::user()->role->name == 'user')
                             <li class="nav-item cartIcon">
                                 <form action="{{route('cart.index')}}" method="GET">
-                                    <button type="submit" class="btn"><i style="font-size: 25px" class="bi bi-cart"></i></button>
+                                    <button type="submit" class="btn">
+                                        <i style="font-size: 25px" class="bi bi-cart"></i>
+                                        @if (Session::get('Cart') != null)
+                                            <span class='badge badge-warning' id='CartCount'> {{Session::get('Cart')->quantity}} </span>
+                                        @else
+                                            <span class='badge badge-warning' id='CartCount'> 0 </span>
+                                        @endif
+                                        
+                                    </button>
                                 </form>
                             </li>
                     

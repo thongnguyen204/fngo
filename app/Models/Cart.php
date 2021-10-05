@@ -43,4 +43,21 @@ class Cart extends Model
         // xoa doi tuong  $this->products[$product_code]
         unset($this->products[$product_code]);
     }
+
+    public function updateCart($product_code, $quantity)
+    {
+        // tru cai cu
+        $this->quantity -= $this->products[$product_code]['quantity'];
+        $this->price -= $this->products[$product_code]['price'];
+
+        // cap nhap cai moi
+        $this->products[$product_code]['quantity'] = $quantity;
+        $this->products[$product_code]['price'] = $quantity * $this->products[$product_code]['productInfo']->price;
+
+
+        //cong lai
+        $this->quantity += $this->products[$product_code]['quantity'];
+        $this->price += $this->products[$product_code]['price'];
+
+    }
 }

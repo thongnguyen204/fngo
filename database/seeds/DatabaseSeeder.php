@@ -21,14 +21,10 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             HotelSeeder::class,
             TypeSeeder::class,
-            RoomSeeder::class,
-            RoomSeeder::class,
-            RoomSeeder::class,
-            RoomSeeder::class,
-            RoomSeeder::class,
             ReceiptStatusSeeder::class,
             TourSeeder::class,
             SubTourSeeder::class,
+            CityProvinceSeeder::class,
 
         ]);
     }
