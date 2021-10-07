@@ -41,23 +41,28 @@
                         <td>
                             <div class="product-item">
                                 <a class="product-thumb" href="{{route('tour.show',$product['productInfo']->id)}}"><img style="width: 200px; height: 160px"
-                                        src="{{$product['productInfo']->main_image}}" alt="Product"></a>
+                                        src="{{$product['productInfo']->avatar}}" alt="Product"></a>
                                 <div class="product-info">
-                                    <h4 class="product-title"><a href="{{route('tour.show',$product['productInfo']->id)}}">{{$product['productInfo']->title}}</a></h4>
+                                    <h4 class="product-title"><a href="{{route('tour.show',$product['productInfo']->id)}}">{{$product['productInfo']->name}}</a></h4>
                                     
                                 </div>
                             </div>
                         </td>
+                        
                         <td class="text-center">
                             {{-- <div class="count-input">
                                 <input class="form-control" type="text" value="{{$product['quantity']}}">
                             </div> --}}
                             <div class="quantity">
-                                <div class="pro-qty">
+                                <span class="pro-qty">
                                     <input data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
-                                </div>
+                                    
+                                </span>
+                                
                             </div>
+                            
                         </td>
+
                         <td class="text-center text-lg text-medium">{{$product['price']}}đ</td>
 
                         <td class="text-center">
@@ -90,6 +95,7 @@
         <div class="shopping-cart-footer">
             <div class="column">
                 {{-- <a class="btn btn-outline-secondary" href=""><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a> --}}
+                
             </div>
             <div class="column">
                 <a class="update btn btn-primary" href="#!" data-toast="" data-toast-type="success" data-toast-position="topRight"
@@ -97,7 +103,9 @@
                     data-toast-message="is updated successfully!">
                     {{__('cart.Update Cart')}}
                 </a>
-                <a class="btn btn-success" href="#">{{__('cart.Checkout')}}</a>
+                
+                <a class="checkout btn btn-success" href="#!">{{__('cart.Checkout')}}</a>
+                <div id="paypal-button"></div>
             </div>
         </div>
     </div>
@@ -168,8 +176,71 @@
             
         });
     });
+    $(".checkout").on("click",function(){
+        var list= [];
+        $("table tbody tr td").each(function(){
+            $(this).find("input").each(function(){
+                var element = {key: $(this).data("id"),value: $(this).val()};
+                list.push(element);
+            });
+        });
+        // var list1 = [1,2,3];
+        
+        $.ajax({
+            url: "checkoutCart",
+            type:'POST',
+            data:{
+                "_token": "{{ csrf_token() }}",
+                "data": list,
+            }
+        }).done(function(respone){
+            // console.log(respone);
+        });
+    });
 
     
+
+</script>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+  paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'ARXQy4nMUiXnq6zEB8oVvv5a2THNl-4W9lJp4HNgIqmOcv1HxC9XUpdlnqstsUuPiSgES9hbJcGnLONt',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+      size: 'medium',
+      color: 'gold',
+      shape: 'pill',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '0.01',
+            currency: 'USD'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        window.alert('Thank you for your purchase!');
+      });
+    }
+  }, '#paypal-button');
 
 </script>
 @endif

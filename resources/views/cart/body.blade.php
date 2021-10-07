@@ -18,9 +18,9 @@
                 <td>
                     <div class="product-item">
                         <a class="product-thumb" href="{{route('tour.show',$product['productInfo']->id)}}"><img style="width: 200px; height: 160px"
-                                src="{{$product['productInfo']->main_image}}" alt="Product"></a>
+                                src="{{$product['productInfo']->avatar}}" alt="Product"></a>
                         <div class="product-info">
-                            <h4 class="product-title"><a href="{{route('tour.show',$product['productInfo']->id)}}">{{$product['productInfo']->title}}</a></h4>
+                            <h4 class="product-title"><a href="{{route('tour.show',$product['productInfo']->id)}}">{{$product['productInfo']->name}}</a></h4>
                             
                         </div>
                     </div>
@@ -74,7 +74,7 @@
             data-toast-message="is updated successfully!">
             {{__('cart.Update Cart')}}
         </a>
-        <a class="btn btn-success" href="#">{{__('cart.Checkout')}}</a>
+        <a class="checkout btn btn-success" href="#">{{__('cart.Checkout')}}</a>
     </div>
 </div>
 <input id="noti" type="hidden" value="{{$noti}}">
@@ -109,6 +109,26 @@
             type:'GET',   
         }).done(function(respone){
             $('#CartCount').text(respone);
+            
+        });
+    });
+    $(".checkout").on("click",function(){
+        var list= [];
+        $("table tbody tr td").each(function(){
+            $(this).find("input").each(function(){
+                var element = {key: $(this).data("id"),value: $(this).val()};
+                list.push(element);
+            });
+        });
+        // var list1 = [1,2,3]
+        $.ajax({
+            url: "checkoutCart",
+            type:'POST',
+            data:{
+                "_token": "{{ csrf_token() }}",
+                "data": list,
+            }
+        }).done(function(respone){
             
         });
     });

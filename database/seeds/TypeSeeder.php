@@ -25,7 +25,7 @@ class TypeSeeder extends Seeder
             'refund' => true,
             'breakfast' => true,
             'area' => 22,
-            'image' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
         ]);
         $normal =  RoomType::create([
             'product_code' => 'hotel_'.$i.'_room_',
@@ -37,7 +37,7 @@ class TypeSeeder extends Seeder
             'refund' => false,
             'breakfast' => false,
             'area' => 24,
-            'image' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
         ]);
     }
     }

@@ -8,6 +8,7 @@ use App\Models\ht_booking;
 use App\Models\Receipt;
 use App\Models\Receipt_Detail;
 use App\Models\Room;
+use App\Models\RoomType;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
 
@@ -28,9 +29,14 @@ class HotelBookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(RoomType $room)
     {
         //
+        return view('user.hotel.roomType.booking')->with('roomtype',$room);
+
+        
+
+        
     }
 
     /**

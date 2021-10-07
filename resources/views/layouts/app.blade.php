@@ -70,8 +70,8 @@
                                 </div>
                             </li>
                         @endguest
-                        <a class="nav-link" href="{{ route(Route::currentRouteName(), 'vn')}}">VN</a>
-                        <a class="nav-link" href="{{ route(Route::currentRouteName(), 'en')}}">EN</a>
+                        <a class="nav-link" href="{{ route('language', 'vn')}}">VN</a>
+                        <a class="nav-link" href="{{ route('language', 'en')}}">EN</a>
                     </ul>
                 </div>
             </div>

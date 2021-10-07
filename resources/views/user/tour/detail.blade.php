@@ -1,14 +1,23 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 @section('content')
-
+<style>
+    
+    .ajs-message.ajs-custom {
+    color: #ffffff;
+    /* background-color: #d9edf7;   */
+    background: rgba(91, 189, 114, 0.95);
+    border-color: #31708f; 
+}
+    
+</style>
 <body>
     <div class="container">
-        <h2>{{$tour->title}}</h2>
+        <h2>{{$tour->name}}</h2>
         <div class="row">
             <div class="col-md-8">
                 {{-- <div>{{$tour->content}}</div> --}}
                 <div class="">
-                    <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$tour->main_image}}">
+                    <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$tour->avatar}}">
                 </div>
                 <h1>{{__('tour.Schedule')}}</h1>
 
@@ -26,7 +35,7 @@
                     <div class="card-body ">
                         <p class="d-flex justify-content-center"> {{$tour->price}}</p>
                         <div class="d-flex justify-content-center" >
-                            <button type="button" class="btn btn-primary btn-lg">
+                            <button onclick="addCart('{{$tour->product_code}}')" type="button" class="btn btn-primary btn-lg">
                                 Add to cart now
                             </button>
                         </div>
@@ -61,8 +70,28 @@
     </div>
 </body>
 <script>
-    var day = document.getElementById('day').getAttribute('value');
-    // const myArr = str.split(" ");
-    console.log(day);
+    
+
+    function addCart(id){
+        var currentLocation = window.location;
+        console.log(currentLocation);
+        $.ajax({
+            url: "/addCart/"+id ,
+            type:'GET',
+            
+        }).done(function(respone){
+            var icon = '<span class="bi bi-bag-check test"></span>';
+            alertify.notify(icon +" " +respone, 'custom');
+        });
+
+        $.ajax({
+            url: "/cartQuantity" ,
+            type:'GET',   
+        }).done(function(respone){
+            $('#CartCount').text(respone);
+        });
+        
+    }
+
 </script>
 @endsection

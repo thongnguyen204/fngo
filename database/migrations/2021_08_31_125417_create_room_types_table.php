@@ -18,7 +18,7 @@ class CreateRoomTypesTable extends Migration
             $table->integer('hotel_id')->unsigned();
             $table->string('product_code')->default("default");
             $table->string('name');
-            $table->string('image')->default("https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg");
+            $table->string('avatar')->default("https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg");
             $table->string('bed');
             $table->integer('area')->unsigned();
             $table->integer('max_person');

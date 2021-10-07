@@ -98,6 +98,14 @@ Route::get('/', function () {
     });
     
     Route::middleware(['auth'])->group(function () {
+
+        //booking
+        Route::get('create/{room}','HotelBookingController@create')
+        ->name('booking.create');
+
+
+
+
         
         Route::get('tour','TourController@index')
         ->name('tour.index');
@@ -122,15 +130,20 @@ Route::get('/', function () {
         // cart
         Route::get('/addCart/{product}','CartController@TourAddCart')
         ->name('TourAddCart');
+        
 
         Route::get('/cartQuantity','CartController@getCurrentCartQuantity')
         ->name('cartQuantity');
+        
 
         Route::get('/deleteCart/{product}','CartController@deleteCart')
         ->name('deleteCart');
 
         Route::post('/updateCart','CartController@updateCart')
         ->name('updateCart');
+        
+        Route::post('/checkoutCart','CartController@checkoutCart')
+        ->name('checkoutCart');
 
         Route::get('cart','CartController@index')
         ->name('cart.index');

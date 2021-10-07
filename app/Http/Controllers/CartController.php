@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Room;
+use App\Models\RoomType;
 use App\Models\Tour;
 use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
@@ -12,24 +13,9 @@ use Session;
 
 class CartController extends Controller
 {
-    /**
-     * Add a product to cart
-     *
-     * @param String $product_code
-     */
-    public function TourAddCart(Request $request, $product_code){
-        if($product_code != null){
-
-            if(strpos($product_code,'tour')!==false)
-                {
-                    $product = Tour::where('product_code',$product_code)->first();
-                }
-            else if(strpos($product_code,'room')!==false)
-                {
-                    $product = Room::where('product_code',$product_code)->first();
-                }
-        
-            if($product != null)
+    public function Tour(Request $request,Tour $product)
+    {
+        if($product != null)
             {
                 $oldCart = Session('Cart') ? Session('Cart') : null;
                 $newCart = new Cart($oldCart);
@@ -42,10 +28,53 @@ class CartController extends Controller
             else{
                 return __('cart.Fail');
             }
+    }
+    public function Hotel(Request $request,RoomType $product)
+    {
+        if($product != null)
+            {
+                $oldCart = Session('Cart') ? Session('Cart') : null;
+                $newCart = new Cart($oldCart);
+
+                $product->product_code .= "_".$request->day;
+                $product->price *= $request->day;
+                
+                $newCart->addCart($product,$product->product_code);
+                
+                $request->session()->put('Cart',$newCart);
+
+                return __('cart.Success');
+            }
+            else{
+                return __('cart.Fail');
+            }
+    }
+    /**
+     * Add a product to cart
+     *
+     * @param String $product_code
+     */
+    public function TourAddCart(Request $request, $product_code){
+        if($product_code != null){
+            if(strpos($product_code,'tour')!==false)
+            {
+                $product = Tour::where('product_code',$product_code)->first();
+                return $this->Tour($request,$product);
+            }
+            else if(strpos($product_code,'hotel')!==false)
+            {
+                $product = RoomType::where('product_code',$product_code)->first();
+                return $this->Hotel($request,$product);
+                
+            }
         }
         return __('cart.Fail');
-        // return redirect()->back()->with('error','0');
+        // return $product_code;
     }
+
+    
+
+
     public function getCurrentCartQuantity()
     {
         return Session('Cart')->quantity;
@@ -76,6 +105,11 @@ class CartController extends Controller
         }
         
         return view('cart.body')->with('noti',__('cart.Update'));
+    }
+    public function checkoutCart(Request $request)
+    {
+        $data = $request->data;
+        
     }
 
 

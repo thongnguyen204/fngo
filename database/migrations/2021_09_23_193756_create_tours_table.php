@@ -16,8 +16,8 @@ class CreateToursTable extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product_code')->unique()->default('tour_');
-            $table->string('title');
-            $table->string('main_image');
+            $table->string('name');
+            $table->string('avatar');
             $table->bigInteger('price');
             $table->date('departure_date');
             $table->string('departure_place');

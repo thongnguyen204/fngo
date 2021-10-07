@@ -27,13 +27,13 @@
                 
                 <div class="card-body">
                     <a href="{{route('tour.show',$trip)}}">
-                        <img height="200px" style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$trip->main_image}}">
+                        <img height="200px" style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$trip->avatar}}">
                     </a>
                 </div>
                 <div class="card-footer">
                     <div class="row">
                         <a href="{{route('tour.show',$trip)}}">
-                            <div class="col-md-12">{{$trip->title}}</div>
+                            <div class="col-md-12">{{$trip->name}}</div>
                         </a>
                     </div>
                     
@@ -58,6 +58,8 @@
 </body>
 <script>
     function addCart(id){
+        var currentLocation = window.location;
+        console.log(currentLocation);
         $.ajax({
             url: "addCart/"+id ,
             type:'GET',   

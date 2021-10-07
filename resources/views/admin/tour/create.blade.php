@@ -12,10 +12,10 @@
             @csrf
             <input type="hidden" id="formType" name="formType" value="create">
                 <div class="form-group row">
-                    <label for="title">{{__('tour.Title')}}</label>
-                    <input class="form-control" type="text" name="title" value="{{ old('title') }}"/>
-                    @if ($errors->has('title'))
-                        @foreach ($errors->get('title') as $error)
+                    <label for="name">{{__('tour.Title')}}</label>
+                    <input class="form-control" type="text" name="name" value="{{ old('name') }}"/>
+                    @if ($errors->has('name'))
+                        @foreach ($errors->get('name') as $error)
                             <strong>{{ $error }}</strong>
                         @endforeach
                     @endif
@@ -92,10 +92,10 @@
                     @endif
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" name="mainImg" >
+                    <input type="file" class="custom-file-input" id="customFile" name="avatar" >
                     <label class="custom-file-label" for="customFile">{{__('common.Choose avatar')}}</label>
-                    @if ($errors->has('mainImg'))
-                        @foreach ($errors->get('mainImg') as $error)
+                    @if ($errors->has('avatar'))
+                        @foreach ($errors->get('avatar') as $error)
                             <div class="col-md-12">{{ $error }}</div>
                         @endforeach
                     @endif

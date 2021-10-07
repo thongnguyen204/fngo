@@ -23,7 +23,7 @@ class TourRepository implements TourRepositoryInterface
             
         $tour = new Tour;
         // $tour->tour_code = $departure_date->format('d');
-        $tour->title = $request->title;
+        $tour->name = $request->name;
         $tour->price = $request->price;
         $tour->passenger_num = $request->passenger_num;
         $tour->day_number = $request->day_number;
@@ -46,12 +46,12 @@ class TourRepository implements TourRepositoryInterface
         $tour->departure_time = $departure_time;
 
         $tour->content = $request->content;
-        if(!empty($request->file('mainImg')))
+        if(!empty($request->file('avatar')))
         {
-            $uploadedFileUrl = Cloudinary::upload($request->file('mainImg')->getRealPath(),[
+            $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
                 'folder' => 'FnGO/TourImage',
             ])->getSecurePath();
-            $tour->main_image =  $uploadedFileUrl;
+            $tour->avatar =  $uploadedFileUrl;
         }
         $tour->save();
         $tour->product_code = "tour_" . $tour->id;
@@ -75,23 +75,23 @@ class TourRepository implements TourRepositoryInterface
 
     public function search($keyword)
     {
-        return Tour::where('title','like','%'.$keyword.'%')
+        return Tour::where('name','like','%'.$keyword.'%')
             ->orderBy('id','desc')
             ->paginate(12);
     }
 
     public function update(TourRequest $request, Tour $tour){
         $count = 0;
-        $tour->title = $request->title;
+        $tour->name = $request->name;
         $tour->price = $request->price;
         $tour->content = $request->content;
 
-        if(!empty($request->file('mainImg')))
+        if(!empty($request->file('avatar')))
         {
-            $uploadedFileUrl = Cloudinary::upload($request->file('mainImg')->getRealPath(),[
+            $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
                 'folder' => 'FnGO/TourImage',
             ])->getSecurePath();
-            $tour->main_image =  $uploadedFileUrl;
+            $tour->avatar =  $uploadedFileUrl;
         }
         
 
