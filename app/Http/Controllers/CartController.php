@@ -36,10 +36,13 @@ class CartController extends Controller
                 $oldCart = Session('Cart') ? Session('Cart') : null;
                 $newCart = new Cart($oldCart);
 
-                $product->product_code .= "_".$request->day;
+                
                 $product->price *= $request->day;
+                $product->day = $request->day;
+                $product->checkin_date = $request->date;
                 
                 $newCart->addCart($product,$product->product_code);
+                
                 
                 $request->session()->put('Cart',$newCart);
 
@@ -69,7 +72,7 @@ class CartController extends Controller
             }
         }
         return __('cart.Fail');
-        // return $product_code;
+        // return $request->date;
     }
 
     

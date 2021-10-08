@@ -7,7 +7,7 @@
     <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
     {{-- <h1 class="d-flex justify-content-center">{{__('hotel.create room type')}}</h1> --}}
 
-    <div class="container">
+    <div class="container ">
         <div>
             <h3>{{$roomtype->name}}</h3>
             <div class="row">
@@ -75,12 +75,37 @@
                             </div>
                         </div>
                     </div>
+                    <div style="margin-top: 50px">
+                        <form>
+                            <div class="row">
+                              <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                                <div class="input-group mb-3">
+                                    <input type="number" class="form-control" id="day" min="1" value="1">
+                                    <div class="input-group-append">
+                                      <span class="input-group-text" id="basic-addon2">night(s)</span>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text" id="basic-addon3">Checkin date</span>
+                                    </div>
+                                    <input type="date" id="date" class="form-control" id="basic-url">
+                                </div>
+                              </div>
+                              <div class="col-12 col-md-12 com-lg-3">
+                                <button onclick="addCart()" type="button"  class="btn btn-success btn-lg btn-block"><i style="font-size: 25px" class="fa fa-cart-plus"></i></button>
+                              </div>
+                            </div>
+                          </form>
+                    </div>
                 </div>
             </div>
         </div>
         <input type="hidden" id="product_code" value="{{$roomtype->product_code}}">
-        <input type="number" id="day" min="1" value="1">
-        <button onclick="addCart()" type="button" style="width: 65px" class="btn btn-success"><i style="font-size: 25px" class="fa fa-cart-plus"></i></button>
+        
+        
     </div>
 
 
@@ -90,9 +115,10 @@
     function addCart(){
         var product_code = document.getElementById("product_code").value;
         var day = document.getElementById("day").value;
+        var date = document.getElementById("date").value;
         
         $.ajax({
-            url: "/addCart/"+product_code+"?day="+day ,
+            url: "/addCart/"+product_code+"?day="+day+"&"+"date="+date,
             type:'GET',
             
         }).done(function(respone){

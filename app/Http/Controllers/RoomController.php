@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use \App\Models\Room;
 use \App\Models\Hotel;
 use App\Models\RoomType;
-use App\Repositories\RoomRespositoryInterface;
+use App\Services\RoomServiceInterface;
 use DateTime;
 use phpDocumentor\Reflection\Types\Integer;
 
@@ -14,7 +14,7 @@ class RoomController extends Controller
 {
     private $room;
 
-    public function __construct(RoomRespositoryInterface $room)
+    public function __construct(RoomServiceInterface $room)
     {
         $this->room = $room;
     }
@@ -107,9 +107,9 @@ class RoomController extends Controller
     {
         //
         
-        // $temp = $this->room->destroy($room);
-        // return redirect()->route('hotel.show',$temp);
-        return 'test';
+        $temp = $this->room->destroy($room);
+        return redirect()->route('hotel.show',$temp);
+        
     }
     public function test()
     {

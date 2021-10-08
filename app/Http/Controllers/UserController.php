@@ -6,13 +6,14 @@ use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepositoryInterface;
+use App\Services\UserServiceInterface;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     private $user;
-    public function __construct(UserRepositoryInterface $user)
+    public function __construct(UserServiceInterface $user)
     {
         $this->user = $user;
     }

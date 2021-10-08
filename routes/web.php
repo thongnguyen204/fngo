@@ -92,7 +92,7 @@ Route::get('/', function () {
     
         Route::resource('/HotelBooking','HotelBookingController')
         ->except([
-            'index','create','show','edit','update','destroy'
+            'index','show','edit','update','destroy'
         ]);
     
     });
@@ -101,12 +101,14 @@ Route::get('/', function () {
 
         //booking
         Route::get('create/{room}','HotelBookingController@create')
-        ->name('booking.create');
+        ->name('hotelbooking.create');
+        Route::resource('booking','BookingController');
 
 
 
 
-        
+        Route::get('product/{code}','ProductController@showProduct')
+        ->name('product.show');
         Route::get('tour','TourController@index')
         ->name('tour.index');
     

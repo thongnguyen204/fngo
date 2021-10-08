@@ -16,7 +16,7 @@ class CreateRoomTypesTable extends Migration
         Schema::create('room_types', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('hotel_id')->unsigned();
-            $table->string('product_code')->default("default");
+            $table->string('product_code')->unique()->default("default");
             $table->string('name');
             $table->string('avatar')->default("https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg");
             $table->string('bed');

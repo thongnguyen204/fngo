@@ -1,15 +1,22 @@
 <?php
-namespace App\Repositories;
+namespace App\Services;
 
 use App\Models\Hotel;
 use App\Models\Room;
 use App\Models\RoomType;
+use App\Repositories\RoomRepositoryInterface;
+
 use Illuminate\Http\Request;
 
-class RoomRespository implements RoomRespositoryInterface{
+class RoomService implements RoomServiceInterface{
+    private $room;
+    public function __construct(RoomRepositoryInterface $room)
+    {
+        $this->room = $room;
+    }
     public function getRoomType(Room $room)
     {
-        return RoomType::where('hotel_id',$room->hotel_id)->get();
+        return $this->room->getRoomType($room);
     }
     public function store(Request $request)
     {
@@ -37,15 +44,15 @@ class RoomRespository implements RoomRespositoryInterface{
             ])->getSecurePath();
             $room->avatar =  $uploadedFileUrl;
         }
-        $room->save();
+        $this->room->store($room);
         $room->product_code = "hotel_" . $request->hotel_id . "_room_" . $room->id;
-        $room->save();
+        $this->room->store($room);
 
         return $room;
     }
     public function getAllHotel()
     {
-        return Hotel::all();
+        $this->room->getAllHotel();
     }
     public function update(Request $request, RoomType $room){
         $room->name = $request->name;
@@ -70,12 +77,13 @@ class RoomRespository implements RoomRespositoryInterface{
             ])->getSecurePath();
             $room->avatar =  $uploadedFileUrl;
         }
-        $room->save();
+        $this->room->store($room);
 
     }
     public function destroy(RoomType $room){
-        $temp = $room->hotel;
-        $room->delete();
-        return $temp;
+        return $this->room->destroy($room);
+    }
+    public function getRoomByCode($code){
+        return $this->room->getRoomByCode($code);
     }
 }

@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Receipt_Detail extends Model
 {
 
     private int $receipt_id;
-    private String $category;
+    private String $product_code;
+    private String $product_name;
     private int $quantity;
     private int $price;
-    
-    
 
+    
+    
     
     //
     protected $fillable = [
@@ -27,6 +29,12 @@ class Receipt_Detail extends Model
     {
         return $this->hasOne(ht_booking::class,'receipt_detail_id');
     }
+    public function product()
+    {
+        return $this->belongsTo(Products::class,'product_id');
+        
+    }
     public $table = "receipt_details";
+    
     
 }

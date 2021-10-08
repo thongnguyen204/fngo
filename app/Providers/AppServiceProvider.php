@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\BackendServiceProvider;
+use App\Services\BackendServiceProvider1;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,12 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->register(
-            BackendServiceProvider::class
+            BackendServiceProvider::class,
+            
+        );
+        $this->app->register(
+            
+            BackendServiceProvider1::class,
         );
         
         

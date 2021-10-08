@@ -2,7 +2,11 @@
 
 @section('dashboard')
 
-
+<style>
+    body {
+    
+}
+</style>
 <form action="{{route('users.update',[$user])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
@@ -11,7 +15,7 @@
 
 <div  class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        <div class="col-md-5 border-right">
+        <div class="col-md-6 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" id="avatar" width="150px" src="{{$user->avatar}}"><span class="font-weight-bold">{{$user->name}}</span><span class="text-black-50">{{$user->email}}</span><span> </span></div>
             
             <div class="custom-file">
@@ -24,7 +28,7 @@
                 @endif
             </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-6 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="col-md-12 ">{{__('common.Profile')}}</h4>
@@ -73,9 +77,7 @@
                     
                     
                 </div>
-                <div class="row mt-3">
                 
-                </div>
                 
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">{{__('common.Save Profile')}}</button></div>
             </div>

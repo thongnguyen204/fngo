@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories;
 
-interface BookingRepositoryInerface{
-    
+use Illuminate\Http\Request;
+
+interface BookingRepositoryInterface{
+    public function store($data);
 }

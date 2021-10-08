@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CityProvince;
 use App\Models\Hotel;
 use App\Models\Room;
-use App\Repositories\HotelRepositoryInterface;
+use App\Services\HotelServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +14,7 @@ class HotelController extends Controller
 
     private $hotel;
 
-    public function __construct(HotelRepositoryInterface $hotel)
+    public function __construct(HotelServiceInterface $hotel)
     {
         $this->hotel = $hotel;
     }

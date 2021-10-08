@@ -100,8 +100,8 @@
                                 </div>
                                 <div class="col">
                                     <div class="float-right">
-                                        <form action="{{route('booking.create',$roomtype)}}" method="GET">
-                                            <button id="bookbtn" type="submit" class="btn btn-primary">Add to cart now!</button>
+                                        <form action="{{route('hotelbooking.create',$roomtype)}}" method="GET">
+                                            <button id="bookbtn" type="submit" class="btn btn-primary">Booking now!</button>
                                         </form>
                                     </div>
                                 </div>

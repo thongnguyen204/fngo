@@ -32,6 +32,19 @@ class BackendServiceProvider extends ServiceProvider
             'App\Repositories\ReceiptDetailRepositoryInterface',
             'App\Repositories\ReceiptDetailRepository',
         );
+        $this->app->bind(
+            'App\Repositories\BookingRepositoryInterface',
+            'App\Repositories\BookingRepository',
+        );
+        $this->app->bind(
+            'App\Repositories\ProductRepositoryInterface',
+            'App\Repositories\ProductRepository',
+        );
+        $this->app->bind(
+            'App\Repositories\RoomRepositoryInterface',
+            'App\Repositories\RoomRepository',
+        );
+        
         
     }
 }

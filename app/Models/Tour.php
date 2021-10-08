@@ -18,6 +18,10 @@ class Tour extends Model
     {
         return $this->hasMany(SubTour::class);
     }
+    // public function receiptDetail()
+    // {
+    //     return $this->hasMany(Receipt_Detail::class,'product_code');
+    // }
     public function day(){
         
         $date = $this->departure_date;

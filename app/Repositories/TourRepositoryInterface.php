@@ -10,11 +10,12 @@ interface TourRepositoryInterface
 {
     public function delete($id);
 
-    public function store(TourRequest $request);
+    public function store(Tour $tour);
 
     public function all();
 
     public function search($keyword);
 
-    public function update(TourRequest $request, Tour $tour);
+    public function searchCode($product_code);
+    
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TourRequest;
 use App\Models\Tour;
 use App\Models\Trip;
-use App\Repositories\TourRepositoryInterface;
+use App\Services\TourServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +13,7 @@ class TourController extends Controller
 {
     private $tour;
 
-    public function __construct(TourRepositoryInterface $tour)
+    public function __construct(TourServiceInterface $tour)
     {
         $this->tour = $tour;
     }

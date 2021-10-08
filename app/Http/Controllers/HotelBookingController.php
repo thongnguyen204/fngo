@@ -45,18 +45,18 @@ class HotelBookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function createReceipt()
+    public function createReceipt1()
     {
         $receipt = new Receipt;
         $receipt->user_id = Auth::user()->id;
         $receipt->price_sum = 0;
         $receipt->description = "";
-        $receipt->save();
+        // $receipt->save();
         return $receipt;
     }
     public function createReceiptDetail(int $room_id)
     {
-        $receipt_id = $this->createReceipt()->id;
+        $receipt_id = $this->createReceipt1()->id;
         $room = Room::where('id',$room_id)->first();
         $type = $room->type;
         $receiptDetail = new Receipt_Detail;

@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receipt;
-use App\Repositories\ReceiptRepositoryInterface;
+
+use App\Services\ProductServiceInterface;
+use App\Services\ReceiptServiceInterface;
 use Illuminate\Http\Request;
 
 
 class ReceiptController extends Controller
 {
     private $receipt;
+    private $product;
 
-    public function __construct(ReceiptRepositoryInterface $receipt)
+    public function __construct(ReceiptServiceInterface $receipt,ProductServiceInterface $product)
     {
         $this->receipt = $receipt;
+        $this->product = $product;
     }
     /**
      * Display a listing of the resource.
@@ -82,6 +86,8 @@ class ReceiptController extends Controller
 
         return view($view)
         ->with('receiptDetails',$receiptDetails);
+        
+        
     }
 
     /**

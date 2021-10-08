@@ -1,6 +1,6 @@
-@extends('layouts.admin')
+@extends('admin.dashboard.index')
 
-@section('content')
+@section('dashboard')
 
 <body>
     <div class="container">

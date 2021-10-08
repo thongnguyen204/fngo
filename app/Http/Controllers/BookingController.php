@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\RoomRespositoryInterface;
+use App\Services\BookingServiceInterface;
 use Illuminate\Http\Request;
 
-class RoomTypeController extends Controller
+class BookingController extends Controller
 {
-    private $room;
-
-    public function __construct(RoomRespositoryInterface $room)
+    private $booking;
+    public function __construct(BookingServiceInterface $booking)
     {
-        $this->room = $room;
+        $this->booking = $booking;
     }
     /**
      * Display a listing of the resource.
@@ -42,6 +41,8 @@ class RoomTypeController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $this->booking->store($request);
     }
 
     /**

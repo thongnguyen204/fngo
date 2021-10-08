@@ -20,10 +20,11 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             CategorySeeder::class,
             HotelSeeder::class,
+            ProductCodeSeeder::class,
             TypeSeeder::class,
-            ReceiptStatusSeeder::class,
             TourSeeder::class,
             SubTourSeeder::class,
+            ReceiptStatusSeeder::class,
             CityProvinceSeeder::class,
 
         ]);

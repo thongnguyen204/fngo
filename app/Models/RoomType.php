@@ -7,6 +7,8 @@ use App\Models\Room;
 
 class RoomType extends Model
 {
+    public $day;
+    public $checkin_date;
     //
     protected $fillable = [
         'name','hotel_id','max_person','price_per_night'

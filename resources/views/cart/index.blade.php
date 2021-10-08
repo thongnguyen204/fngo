@@ -40,11 +40,26 @@
                     <tr>
                         <td>
                             <div class="product-item">
+                                @if($product['productInfo']->product_code[0] == 't')
                                 <a class="product-thumb" href="{{route('tour.show',$product['productInfo']->id)}}"><img style="width: 200px; height: 160px"
                                         src="{{$product['productInfo']->avatar}}" alt="Product"></a>
                                 <div class="product-info">
                                     <h4 class="product-title"><a href="{{route('tour.show',$product['productInfo']->id)}}">{{$product['productInfo']->name}}</a></h4>
-                                    
+                                @else
+                                <a class="product-thumb" href="{{route('hotel.show',$product['productInfo']->id)}}"><img style="width: 200px; height: 160px"
+                                    src="{{$product['productInfo']->avatar}}" alt="Product"></a>
+                            <div class="product-info">
+                                <h4 class="product-title"><a href="{{route('hotel.show',$product['productInfo']->id)}}">{{$product['productInfo']->name}}</a></h4>
+                                @endif
+
+                                    <div>
+                                        @if ($product['productInfo']->product_code[0] == 'h')
+                                        <div>
+                                            {{$product['productInfo']->day}} night(s)
+                                            {{$product['productInfo']->date}}
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </td>
@@ -55,7 +70,12 @@
                             </div> --}}
                             <div class="quantity">
                                 <span class="pro-qty">
-                                    <input data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
+                                    @if ($product['productInfo']->product_code[0] == 't')
+                                    <input data-price="{{$product['price']}}" data-day="1" data-date="" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
+                                    @else
+                                    <input data-price="{{$product['price']}}" data-day="{{$product['productInfo']->day}}" data-date="{{$product['productInfo']->checkin_date}}" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
+                                    @endif
+                                    
                                     
                                 </span>
                                 
@@ -180,14 +200,14 @@
         var list= [];
         $("table tbody tr td").each(function(){
             $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"),value: $(this).val()};
+                var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
                 list.push(element);
             });
         });
         // var list1 = [1,2,3];
         
         $.ajax({
-            url: "checkoutCart",
+            url: "booking",
             type:'POST',
             data:{
                 "_token": "{{ csrf_token() }}",

@@ -13,10 +13,10 @@
             @method('PUT')
             <input type="hidden" id="formType" name="formType" value="edit">
                 <div class="form-group row">
-                    <label for="title">{{__('tour.Title')}}</label>
-                    <input class="form-control" type="text" name="title" value="{{ $tour->title }}"/>
-                    @if ($errors->has('title'))
-                        @foreach ($errors->get('title') as $error)
+                    <label for="name">{{__('tour.Title')}}</label>
+                    <input class="form-control" type="text" name="name" value="{{ $tour->name }}"/>
+                    @if ($errors->has('name'))
+                        @foreach ($errors->get('name') as $error)
                             <strong>{{ $error }}</strong>
                         @endforeach
                     @endif

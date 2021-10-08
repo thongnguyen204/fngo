@@ -23,4 +23,8 @@ class ReceiptDetailRepository implements ReceiptDetailRepositoryInterface
         $receipt_detail->delete();
         return $temp;
     }
+    public function store(Receipt_Detail $receipt){
+        $receipt->save();
+        return $receipt;
+    }
 }

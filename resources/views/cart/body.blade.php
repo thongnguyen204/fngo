@@ -17,11 +17,17 @@
             <tr>
                 <td>
                     <div class="product-item">
+
                         <a class="product-thumb" href="{{route('tour.show',$product['productInfo']->id)}}"><img style="width: 200px; height: 160px"
                                 src="{{$product['productInfo']->avatar}}" alt="Product"></a>
                         <div class="product-info">
                             <h4 class="product-title"><a href="{{route('tour.show',$product['productInfo']->id)}}">{{$product['productInfo']->name}}</a></h4>
-                            
+                            <div>
+                                @if ($product['productInfo']->product_code[0] == 'h')
+                                    {{session::get($product['productInfo']->product_code.'day')}} night(s)
+                                    {{session::get($product['productInfo']->product_code.'date')}}
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </td>

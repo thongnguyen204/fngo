@@ -16,7 +16,7 @@ class TypeSeeder extends Seeder
         //
         for ($i=1; $i <= Hotel::count(); $i++) { 
         $vip =  RoomType::create([
-            'product_code' => 'hotel_'.$i.'_room_',
+            'product_code' => 'hotel_'.$i.'_room_1',
             'name' => 'Room 1',
             'hotel_id' => $i,
             'max_person' => 2,
@@ -28,7 +28,7 @@ class TypeSeeder extends Seeder
             'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
         ]);
         $normal =  RoomType::create([
-            'product_code' => 'hotel_'.$i.'_room_',
+            'product_code' => 'hotel_'.$i.'_room_2',
             'name' => 'Room 2',
             'hotel_id' => $i,
             'max_person' => 4,
