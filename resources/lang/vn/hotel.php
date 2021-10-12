@@ -8,6 +8,7 @@ return [
     'Price'     => 'Giá từ',
     'Choose avatar' => 'Chọn ảnh ngoài trang tìm kiếm',
     'Init'          => 'Thêm',
+    'Room type'     => 'Loại phòng',
 ]
 
 ?>

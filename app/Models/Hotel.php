@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+include 'functions.php';
 use Illuminate\Database\Eloquent\Model;
 // use App\Models\Room;
 
@@ -24,6 +24,9 @@ class Hotel extends Model
     }
     public function CityProvince(){
         return $this->belongsTo(CityProvince::class);
+    }
+    public function money($money){
+        return currency_format($money);
     }
 
 }

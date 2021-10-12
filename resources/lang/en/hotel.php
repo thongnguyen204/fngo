@@ -8,6 +8,7 @@ return [
     'Price'     => 'Price',
     'Choose avatar' => 'Choose image',
     'Init'          => 'Add',
+    'Room type'     => 'Room type',
     
 ]
 

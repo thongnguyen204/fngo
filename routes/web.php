@@ -30,10 +30,6 @@ Route::get('/', function () {
     
     Route::middleware(['auth', 'role:admin'])->group(function () {
         
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard.index');
-        })->name('dashboard');
-        
         Route::get('/admin', function () {
             return view('admin.index');
         })->name('admin');
@@ -42,8 +38,21 @@ Route::get('/', function () {
         ->except([
             'create','store','show','edit','update'
         ]);
+        
+        
+        
+        
+    });
+    Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard.index');
+        })->name('dashboard');
+
         Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
         ->name('receipt.indexAccepted');
+
+        Route::get('/receiptWaiting','ReceiptController@waitingIndex')
+        ->name('receipt.waiting');
     
         Route::resource('/receipt','ReceiptController')
         ->except([
@@ -74,26 +83,32 @@ Route::get('/', function () {
         ->except([
             'index','show'
         ]);
+        
+        // ------------ income -------------
+        Route::get('income','IncomeController@index')
+        ->name('income.index');
+        Route::get('income/{year}/{month}/{day}','IncomeController@day')
+        ->middleware('day','year')
+        ->name('income.day');
+        Route::get('income/{year}/{month}','IncomeController@month')
+        ->middleware('year','month')
+        ->name('income.month');
+        Route::get('income/{year}','IncomeController@year')
+        ->middleware('year')
+        ->name('income.year');
+        Route::get('income-current-day','IncomeController@incomeCurrentDay')
+        ->name('income.currentDay');
+        Route::get('income-current-month','IncomeController@incomeCurrentMonth')
+        ->name('income.currentMonth');
+        Route::get('income-current-year','IncomeController@incomeCurrentYear')
+        ->name('income.currentYear');
+
+    
     });
     
-    Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::middleware(['auth', 'roles:user,employee'])->group(function () {
         
-        Route::get('/user', function () {
-            return view('user.index');
-        })->name('user');
-    
-        Route::get('/order/{room}', function ($roomID) {
-            $room = Room::where('id',$roomID)->first();
-            return view('user.order.create')->with('room',$room);
-        })->name('orderForm');
-    
-        Route::post('/order','RoomController@order')
-        ->name('room.order');
-    
-        Route::resource('/HotelBooking','HotelBookingController')
-        ->except([
-            'index','show','edit','update','destroy'
-        ]);
+        
     
     });
     
@@ -159,6 +174,22 @@ Route::get('/', function () {
         
         
         ///
+        Route::get('/user', function () {
+            return view('user.index');
+        })->name('user');
+    
+        Route::get('/order/{room}', function ($roomID) {
+            $room = Room::where('id',$roomID)->first();
+            return view('user.order.create')->with('room',$room);
+        })->name('orderForm');
+    
+        Route::post('/order','RoomController@order')
+        ->name('room.order');
+    
+        Route::resource('/HotelBooking','HotelBookingController')
+        ->except([
+            'index','show','edit','update','destroy'
+        ]);
         
 
 

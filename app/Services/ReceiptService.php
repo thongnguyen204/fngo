@@ -24,16 +24,13 @@ class ReceiptService implements ReceiptServiceInterface
         return $this->receipt->getRoleName();
     }
     public function all(){
-        $role = $this->getRoleName();
         $user_id = Auth::user()->id;
-        if($role == 'admin')
-            $receipts = $this->receipt->getWaitingReceipt();
-        elseif($role == 'user')
-        {
-            $receipts = $this->receipt->getReceiptOfUser($user_id);
-        }
-        return $receipts;
+        return $this->receipt->getReceiptOfUser($user_id);
     }
+    public function getWaitingReceipt(){
+        return $this->receipt->getWaitingReceipt();
+    }
+    
     public function acceptedIndex(){
         return $this->receipt->getAcceptedIndex();
     }
@@ -62,5 +59,15 @@ class ReceiptService implements ReceiptServiceInterface
     }
     public function store(Receipt $receipt){
         return $this->receipt->store($receipt);
+    }
+    public function whereMonth($month,$year){
+        return $this->receipt->whereMonth($month,$year);
+    }
+    public function whereDay($day,$month,$year){
+        return $this->receipt->whereDay($day,$month,$year);
+        // return 11;
+    }
+    public function whereYear($year){
+        return $this->receipt->whereYear($year);
     }
 }

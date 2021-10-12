@@ -14,7 +14,7 @@ class TourRequest extends FormRequest
      */
     public function authorize()
     {
-        if(Auth::user()->role->name == 'admin')
+        if(Auth::user()->role->name != 'user')
             return true;
         else
             return false;
@@ -29,7 +29,7 @@ class TourRequest extends FormRequest
     {
         return [
             //
-            'title'             => 'required|string|max:50',
+            'name'              => 'required|string|max:50',
             'departure_place'   => 'required|string|max:10',
             'passenger_num'     => 'required|max:3',
             'price'             => 'required|max:15',

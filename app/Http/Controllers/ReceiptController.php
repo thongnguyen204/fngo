@@ -32,12 +32,20 @@ class ReceiptController extends Controller
         //
         $receipts = $this->receipt->all();
         $view = $this->receipt->getRoleName() . ".receipt.index";
-        return view($view)->with('receipts',$receipts);    
+        return view($view)->with('receipts',$receipts);
+        // return $receipts;   
+    }
+    public function myReceipt(){
+
+    }
+    public function waitingIndex(){
+        $receipts = $this->receipt->getWaitingReceipt();
+        $view = $this->receipt->getRoleName() . ".receipt.waiting";
+        return view($view)->with('receipts',$receipts);
     }
     
     public function acceptedIndex()
     {
-        
         $receipts = $this->receipt->acceptedIndex();
         $role = $this->receipt->getRoleName();
         $view = $role . ".receiptAccepted.index";
@@ -46,7 +54,7 @@ class ReceiptController extends Controller
     public function receiptAccept(Receipt $receipt)
     {
         $this->receipt->receiptAccept($receipt);
-        return redirect()->route('receipt.index');
+        return redirect()->route('receipt.waiting');
     }
 
     /**
@@ -86,8 +94,6 @@ class ReceiptController extends Controller
 
         return view($view)
         ->with('receiptDetails',$receiptDetails);
-        
-        
     }
 
     /**

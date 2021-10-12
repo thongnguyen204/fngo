@@ -10,6 +10,7 @@ return [
     'Days' => 'Days',
     'Departure date' => 'Departure date',
     'Departure place' => 'Departure place',
+    'Departure time' => 'Departure time',
     'Content' => 'Content',
     'Add' => 'Add',
     'Remove' => 'Remove',
@@ -18,7 +19,9 @@ return [
     'Init' => 'Create',
     'Choose image' => 'Choose image',
     'Search' => 'Search',
-    'Book' => 'Book'
+    'Book' => 'Book',
+    'Add cart' => 'ADD TO CART NOW',
+    'Contact' => 'CONTACT FOR MORE INFORMATION',
 ]
 
 ?>

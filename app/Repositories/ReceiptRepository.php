@@ -20,9 +20,10 @@ class ReceiptRepository implements ReceiptRepositoryInterface
         ->paginate(10);
     }
     public function getReceiptOfUser($user_id){
-        Receipt::where('user_id',$user_id)
-            ->paginate(10);
+        return Receipt::where('user_id',$user_id)
+        ->orderBy('id','desc')->get();
     }
+    
     public function getAcceptedIndex(){
         return Receipt::where('status_id',$this->receiptStatusAcceptedID)
         ->paginate(10);
@@ -40,10 +41,27 @@ class ReceiptRepository implements ReceiptRepositoryInterface
         Receipt::destroy($id);
     }
 
-    
-    
     public function store(Receipt $receipt){
         $receipt->save();
         return $receipt;
+    }
+    public function whereMonth($month,$year){
+        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
+        ->whereYear ('created_at', $year)
+        ->whereMonth('created_at', $month)
+        ->get();
+    }
+    public function whereDay($day,$month,$year){
+        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
+        ->whereYear ('created_at', $year)
+        ->whereMonth('created_at', $month)
+        ->whereDay  ('created_at', $day)
+        ->get();
+        // return $month;
+    }
+    public function whereYear($year){
+        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
+        ->whereYear ('created_at', $year)
+        ->get();
     }
 }

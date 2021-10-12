@@ -75,12 +75,8 @@
                                     @else
                                     <input data-price="{{$product['price']}}" data-day="{{$product['productInfo']->day}}" data-date="{{$product['productInfo']->checkin_date}}" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
                                     @endif
-                                    
-                                    
                                 </span>
-                                
                             </div>
-                            
                         </td>
 
                         <td class="text-center text-lg text-medium">{{$product['price']}}đ</td>
@@ -215,6 +211,7 @@
             }
         }).done(function(respone){
             // console.log(respone);
+            location.href = '/receipt';
         });
     });
 

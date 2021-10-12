@@ -25,9 +25,15 @@ class ProductService implements ProductServiceInterface{
     
     public function showProductDetail($code){
         if($code[0] == 't')
-            return $this->tour->getTourByCode($code);
+        {
+            $tour_id = $this->tour->getTourByCode($code)->id;
+            return redirect()->route('tour.show',$tour_id);
+        }
         else
-        return $this->room->getRoomByCode($code);
+        {
+            $hotel= $this->room->getRoomByCode($code)->hotel;
+            return redirect()->route('hotel.show',$hotel);
+        }
     }
     
     

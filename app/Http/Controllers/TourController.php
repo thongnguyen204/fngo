@@ -87,6 +87,7 @@ class TourController extends Controller
         
         //
         return view('admin.tour.edit')->with('tour',$tour);
+        // return $tour;
     }
 
     /**
@@ -102,6 +103,7 @@ class TourController extends Controller
         //
         $this->tour->update($request,$tour);
         return redirect()->route('tour.edit',$tour);
+        // return $request;
     }
 
     /**

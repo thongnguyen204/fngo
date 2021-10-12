@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+include 'functions.php';
 use Illuminate\Database\Eloquent\Model;
 
 class Tour extends Model
@@ -30,5 +30,8 @@ class Tour extends Model
         $year = date('Y',strtotime($date));
 
         return $day . "/" . $month . "/" . $year;
+    }
+    public function money($money){
+        return currency_format($money);
     }
 }

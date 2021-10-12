@@ -43,6 +43,7 @@ class BookingController extends Controller
         //
         
         $this->booking->store($request);
+         
     }
 
     /**

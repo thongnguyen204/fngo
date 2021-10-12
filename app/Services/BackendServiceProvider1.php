@@ -36,6 +36,10 @@ class BackendServiceProvider1 extends ServiceProvider
             'App\Services\ReceiptServiceInterface',
             'App\Services\ReceiptService',
         );
+        $this->app->bind(
+            'App\Services\IncomeServiceInterface',
+            'App\Services\IncomeService',
+        );
         
         
         

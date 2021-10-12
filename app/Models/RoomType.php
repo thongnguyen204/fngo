@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+include 'functions.php';
 use App\Models\Room;
 
 class RoomType extends Model
@@ -22,5 +23,8 @@ class RoomType extends Model
     public function hotel()
     {
         return $this->belongsTo(Hotel::class);
+    }
+    public function money($money){
+        return currency_format($money);
     }
 }

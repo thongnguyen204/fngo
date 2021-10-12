@@ -19,6 +19,8 @@ return [
     'Choose image' => 'Chọn hình ảnh',
     'Search' => 'Tìm',
     'Book' => 'Đặt',
+    'Add cart' => 'THÊM VÀO GIỎ HÀNG',
+    'Contact' => 'GỌI NGAY ĐỂ ĐƯỢC TƯ VẤN',
     
 
 ]

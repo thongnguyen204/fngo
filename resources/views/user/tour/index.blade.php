@@ -27,7 +27,7 @@
                 
                 <div class="card-body">
                     <a href="{{route('tour.show',$trip)}}">
-                        <img height="200px" style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid" src="{{$trip->avatar}}">
+                        <img height="200px" style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid rounded" src="{{$trip->avatar}}">
                     </a>
                 </div>
                 <div class="card-footer">

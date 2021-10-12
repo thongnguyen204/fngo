@@ -43,21 +43,24 @@ class BookingService implements BookingServiceInterface{
             $receipt1_detail->product_code = $product['key'];
             $receipt1_detail->quantity = $product['value'];
             $receipt1_detail->price = $product['price'];
+            $receipt1->price_sum += $receipt1_detail->price;
             if(!is_null($product['date'])){
-                $receipt1_detail->description = $product['date'];
+                $receipt1_detail->description = "checkin: ".$product['date'].'  '.$product['day'].' day(s)';
             }
             else   
             $receipt1_detail->description = "";
             $this->receipt_detail->store($receipt1_detail);
             // dd($product['key']);
         }
+        $run = $this->receipt->store($receipt1);
         // dd($data);
         
     }
     public function store(Request $request){
         // $this->booking->store($request->data);
         $this->createReceiptDetail($request->data);
-        // dd($request->data);
-        
+        foreach ($request->data as $product) {
+            $request->session()->forget('Cart');
+        }
     }
 }

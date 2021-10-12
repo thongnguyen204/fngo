@@ -24,7 +24,7 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav style="background-color: white" class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -37,9 +37,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('tour.index')}}">{{__('welcome.Tours')}}</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('receipt.index')}}">{{__('common.Receipt')}}</a>
-                  </li>
+                  
                   @if (Auth::user()->role->name == 'admin')
                     
                     
@@ -82,12 +80,11 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i style="font-size: 25px" class="bi bi-person-circle"></i> <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                                @if (Auth::user()->role->name == 'admin')
+                                @if (Auth::user()->role->name != 'user')
                                     <a class="dropdown-item" href="{{url('/dashboard')}}">
                                         {{ __('common.Admin dashboard') }}
                                     </a>
@@ -97,6 +94,13 @@
                                 <a class="dropdown-item" href="{{route('users.edit', Auth::user())}} ">
                                     {{ __('common.Account settings') }}
                                 </a>
+
+                                @if (Auth::user()->role->name != 'admin')
+                                    <a class="dropdown-item" href="{{url('/receipt')}}">
+                                        {{ __('common.Receipt') }}
+                                    </a>
+                                @endif
+                                
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -110,7 +114,7 @@
                             </div>
                             
                         </li>
-                        @if (Auth::user()->role->name == 'user')
+                        
                             <li class="nav-item cartIcon">
                                 <form action="{{route('cart.index')}}" method="GET">
                                     <button type="submit" class="btn">
@@ -125,7 +129,7 @@
                                 </form>
                             </li>
                     
-                        @endif
+                        
                         
                     @endguest
                 </ul>

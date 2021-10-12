@@ -64,7 +64,11 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' =>\App\Http\Middleware\CheckRole::class,
+        'roles' =>\App\Http\Middleware\CheckManyRole::class,
         'userInfo' =>\App\Http\Middleware\CheckUser::class,
+        'year' => \App\Http\Middleware\CheckYear::class,
+        'month' => \App\Http\Middleware\CheckMonth::class,
+        'day' => \App\Http\Middleware\CheckDay::class,
         
     ];
 

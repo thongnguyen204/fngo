@@ -1,7 +1,48 @@
 #money{
     font-size: 1.5em;
     font-weight: bold;
+    color: rgb(249, 109, 1);
+    float: right;
 }
 #bookbtn{
     margin-top: 2em;
+}
+.btnAddCart{
+    width: 100%;
+    background-color: #d6b244;
+    color: white;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+.btnAddCart:hover{
+    
+    color: white;
+    background-color: #1FAA59
+}
+body{
+    background-color: #e6eaed;
+}
+.searchBar{
+    margin-top: 20px;
+}
+.hotel-info{
+    padding-top: 0px;
+}
+.hotel-name-index{
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+.hotel-name-detail{
+    font-family: 'Raleway', sans-serif;
+    
+}
+.divide-bar{
+    height: 80px;
+    width: 100%;
+}
+.room-type-warpper{
+    /* margin-top: 50px; */
+}
+.btn-search{
+    background-color: white;
 }

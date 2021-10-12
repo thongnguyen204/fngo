@@ -18,6 +18,9 @@ class UserRepository implements UserRepositoryInterface{
         $user->email =  $request->email;
         $user->phone =  $request->phone;
         $user->gender =  $request->gender;
+        if(!empty($request->role)){
+            $user->role_id = $request->role;
+        }
         if(!empty($request->file('avatar')))
         {
             $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[

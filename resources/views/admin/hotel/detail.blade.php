@@ -24,7 +24,7 @@
                     <h3>{{$roomtype->name}}</h3> 
                     <div class="row">
                         <div class="col-md-4">
-                            <img style="max-width: 100%;" loading="lazy" alt="room image" class="img_fluid" src="{{$roomtype->image}}">
+                            <img style="max-width: 100%;" loading="lazy" alt="room image" class="img_fluid" src="{{$roomtype->avatar}}">
                         </div>
                         <div class="col-md-8">
                             <div class="row">

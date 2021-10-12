@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('product_code')->unique()->default("default");
             $table->string('name');
+            $table->string('avatar');
         });
     }
 

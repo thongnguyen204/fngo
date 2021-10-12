@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 interface ReceiptServiceInterface{
     public function getRoleName();
     public function all();
+    public function getWaitingReceipt();
     public function acceptedIndex();
     public function receiptAccept(Receipt $receipt);
     public function show(Receipt $receipt);
@@ -14,4 +15,7 @@ interface ReceiptServiceInterface{
     public function delete($id);
     public function getRoute(Receipt $receipt);
     public function store(Receipt $receipt);
+    public function whereMonth($month,$year);
+    public function whereDay($day,$month,$year);
+    public function whereYear($year);
 }

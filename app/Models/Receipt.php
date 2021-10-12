@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+include 'functions.php';
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,5 +28,8 @@ class Receipt extends Model
     public function status()
     {
         return $this->belongsTo(ReceiptStatus::class);
+    }
+    public function money($money){
+        return currency_format($money);
     }
 }

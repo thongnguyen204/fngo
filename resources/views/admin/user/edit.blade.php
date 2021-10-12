@@ -58,23 +58,36 @@
                         @endforeach
                     @endif
                     </div>
-                    <div class="col-md-12">
-                        <label class="labels" for="gender"></label>
-                        <select class="form-control" id="gender" name="gender">
-                            <option value="none" selected>{{__('common.Gender')}}</option>
-                            <option @if ($user->gender == 'male')
-                                selected
-                            @endif value="male" >{{__('common.Male')}}</option>
-                            <option @if ($user->gender == 'female')
-                                selected
-                            @endif value="female" >{{__('common.Female')}}</option>
-                            <option @if ($user->gender == 'other')
-                                selected
-                            @endif value="other" >{{__('common.Other')}}</option>
-                        </select>
-                        
-                    </div>
-                    
+
+                        <div class="col-12 col-md-6">
+                            <label class="labels" for="gender"></label>
+                            <select class="form-control" id="gender" name="gender">
+                                <option value="none" selected>{{__('common.Gender')}}</option>
+                                <option @if ($user->gender == 'male')
+                                    selected
+                                @endif value="male" >{{__('common.Male')}}</option>
+                                <option @if ($user->gender == 'female')
+                                    selected
+                                @endif value="female" >{{__('common.Female')}}</option>
+                                <option @if ($user->gender == 'other')
+                                    selected
+                                @endif value="other" >{{__('common.Other')}}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="labels" for="role"></label>
+                            <select class="form-control" id="role" name="role">
+                                <option @if ($user->role->name == 'admin')
+                                    selected
+                                @endif value="1" >{{__('role.Admin')}}</option>
+                                <option @if ($user->role->name == 'employee')
+                                    selected
+                                @endif value="3" >{{__('role.Employee')}}</option>
+                                <option @if ($user->role->name == 'user')
+                                    selected
+                                @endif value="2" >{{__('role.User')}}</option>
+                            </select>
+                        </div>
                     
                 </div>
                 

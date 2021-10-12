@@ -3,7 +3,7 @@
 return [
     
     'Name'      => 'Tên',
-    'Receipt' => 'Hóa đơn',
+    'Receipt' => 'Hóa đơn của tôi',
     'Users manage' => 'Quản lí người dùng',
     'Receipts queue' => 'Duyệt đơn',
     'Receipts manage' => 'Quản lí hóa đơn',
@@ -20,6 +20,11 @@ return [
     'Edit' => 'Sửa',
     'Home' => 'Trang chủ',
     'Admin dashboard' => 'Quản trị',
+    'Income'    => 'Thống kê thu nhập',
+    'Income1'    => 'Thu nhập',
+    'Day' => 'Ngày',
+    'Month' => 'Tháng',
+    'Year' => 'Năm',
 ]
 
 ?>

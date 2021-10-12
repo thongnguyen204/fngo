@@ -3,7 +3,7 @@
 return [
     
     'Name'      => 'Name',
-    'Receipt' => 'Receipt',
+    'Receipt' => 'My receipt',
     'Users manage' => 'Users manage',
     'Receipts queue' => 'Receipts queue',
     'Receipts manage' => 'Receipts manage',
@@ -20,6 +20,11 @@ return [
     'Edit' => 'Edit',
     'Home' => 'Home',
     'Admin dashboard' => 'Admin dashboard',
+    'Income'    => 'Income statistic',
+    'Income1'    => 'Income',
+    'Day' => 'Day',
+    'Month' => 'Month',
+    'Year' => 'Year',
 ]
 
 ?>
