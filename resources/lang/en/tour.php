@@ -18,7 +18,7 @@ return [
     'Edit' => 'Edit',
     'Init' => 'Create',
     'Choose image' => 'Choose image',
-    'Search' => 'Search',
+    'Search' => 'Search tour',
     'Book' => 'Book',
     'Add cart' => 'ADD TO CART NOW',
     'Contact' => 'CONTACT FOR MORE INFORMATION',

@@ -1,12 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
+<link href="{{ asset('css/tour.css') }}" rel="stylesheet">
 
-<script src="{{ asset('js/tourEdit/script.js') }}" defer></script>
-<body>
-    <h1 class="d-flex justify-content-center">{{__('tour.Edit')}}</h1>
-    
-    <div class="container">
+    <div style="margin-top:20px" class="container rounded bg-white contain-wrapper">
+        <h1 class="d-flex justify-content-center">{{__('tour.Edit')}}</h1>
         <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
         <form action="{{route('tour.update',$tour)}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -115,8 +113,8 @@
                         <input class="form-control"  type="text" value="{{$subTrip->title}}" name="subTripTitle[{{$subTrip->day}}]" size="40"/>
                     </div>
                     <div class="form-group row">
-                        <label for="content">{{__('tour.Content')}}</label></td>
-                        <textarea class="form-control"  name="subTripContent[{{$subTrip->day}}]" rows="10" cols="50">{{$subTrip->content}}</textarea></td>
+                        <label class="col-12" for="content">{{__('tour.Content')}}</label></td>
+                        <textarea id="subTripContent" class="ckeditor col-12"  name="subTripContent[{{$subTrip->day}}]" rows="10" cols="50">{{$subTrip->content}}</textarea></td>
                     </div>
                 </div>
                 @endforeach
@@ -128,6 +126,6 @@
             </div>
         </form>
     </div>
-</body>
 
+<script src="{{ asset('js/tourEdit/script.js') }}" defer></script>
 @endsection

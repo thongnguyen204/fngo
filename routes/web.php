@@ -124,17 +124,7 @@ Route::get('/', function () {
 
         Route::get('product/{code}','ProductController@showProduct')
         ->name('product.show');
-        Route::get('tour','TourController@index')
-        ->name('tour.index');
-    
-        Route::get('tour/{trip}','TourController@show')
-        ->name('tour.show');
-    
-        Route::get('hotel','HotelController@index')
-        ->name('hotel.index');
-    
-        Route::get('hotel/{hotel}','HotelController@show')
-        ->name('hotel.show');
+        
     
         Route::get('receipt','ReceiptController@index')
         ->name('receipt.index');
@@ -147,6 +137,8 @@ Route::get('/', function () {
         // cart
         Route::get('/addCart/{product}','CartController@TourAddCart')
         ->name('TourAddCart');
+        Route::get('/addCartRoom/{product}','CartController@RoomAddCart')
+        ->name('RoomAddCart');
         
 
         Route::get('/cartQuantity','CartController@getCurrentCartQuantity')
@@ -206,6 +198,19 @@ Route::get('/', function () {
 
         Route::get('/test', 'UserController@profile')->name('test');    
     });
+
+    // guest
+        Route::get('tour','TourController@index')
+        ->name('tour.index');
+    
+        Route::get('tour/{trip}','TourController@show')
+        ->name('tour.show');
+    
+        Route::get('hotel','HotelController@index')
+        ->name('hotel.index');
+    
+        Route::get('hotel/{hotel}','HotelController@show')
+        ->name('hotel.show');
     
     
     

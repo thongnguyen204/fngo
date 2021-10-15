@@ -20,7 +20,7 @@ $(function(){
         var table = "<div id='"+count1+"'>"+
         "<label for='title'>"+"</label>"+
         "<input placeholder='"+title+" "+count1+"' class='form-control'  type='text' name='subTripTitle["+count1+"]'/>"
-        +"<label for='content'></label><textarea class='form-control' name='subTripContent["+count1+"]' rows='10' cols='50'></textarea>"
+        +"<label for='content'></label><textarea style='display:none' id='subTripContent' class='form-control ckeditor' name='subTripContent["+count1+"]' rows='10' cols='50'></textarea>"
         +"</div>";
         $("#day").append(table);
     });

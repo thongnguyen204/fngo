@@ -14,7 +14,7 @@ class RoomService implements RoomServiceInterface{
     {
         $this->room = $room;
     }
-    public function getRoomType(Room $room)
+    public function getRoomType(RoomType $room)
     {
         return $this->room->getRoomType($room);
     }

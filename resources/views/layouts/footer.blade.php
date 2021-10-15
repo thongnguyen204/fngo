@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer id="footer" class="page-footer font-small blue">
+<footer style="margin-top: 20px;" id="footer" class="page-footer font-small bg-white blue">
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">

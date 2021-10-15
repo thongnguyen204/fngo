@@ -30,8 +30,14 @@ class TourController extends Controller
         else
             $trips = $this->tour->all();
 
-        $role = Auth::user()->role->name;
+        if(Auth::user() == null)
+            $role = 'user';
+        else{
+            $role = Auth::user()->role->name;
+        }
+
         $view = $role . ".tour.index";
+
         return view($view)->with('trips',$trips);
         
     }
@@ -58,6 +64,7 @@ class TourController extends Controller
         //
         $this->tour->store($request);
         return redirect()->route('tour.index');
+        // return 'ok';
     }
 
     /**
@@ -69,7 +76,12 @@ class TourController extends Controller
     public function show(Tour $trip)
     {
         //
-        $role = Auth::user()->role->name;
+        if(Auth::user() == null)
+            $role = 'user';
+        else{
+            $role = Auth::user()->role->name;
+        }
+
         $view = $role . ".tour.detail";
         return view($view)->with('trip',$trip->subTour)
         ->with('tour',$trip);

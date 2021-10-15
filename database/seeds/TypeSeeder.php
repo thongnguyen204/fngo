@@ -14,11 +14,10 @@ class TypeSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=1; $i <= Hotel::count(); $i++) { 
         $vip =  RoomType::create([
-            'product_code' => 'hotel_'.$i.'_room_1',
+            'product_code' => 'hotel_1_room_1',
             'name' => 'Room 1',
-            'hotel_id' => $i,
+            'hotel_id' => 1,
             'max_person' => 2,
             'price' => 2000000,
             'bed' => '1-2',
@@ -27,10 +26,24 @@ class TypeSeeder extends Seeder
             'area' => 22,
             'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
         ]);
-        $normal =  RoomType::create([
-            'product_code' => 'hotel_'.$i.'_room_2',
+        $vip =  RoomType::create([
+            'product_code' => 'hotel_1_room_2',
             'name' => 'Room 2',
-            'hotel_id' => $i,
+            'hotel_id' => 1,
+            'max_person' => 2,
+            'price' => 2000000,
+            'bed' => '1-2',
+            'refund' => true,
+            'breakfast' => true,
+            'area' => 22,
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
+        ]);
+
+
+        $normal =  RoomType::create([
+            'product_code' => 'hotel_2_room_1',
+            'name' => 'Room 1',
+            'hotel_id' => 2,
             'max_person' => 4,
             'price' => 3000000,
             'bed' => '2-2',
@@ -39,6 +52,17 @@ class TypeSeeder extends Seeder
             'area' => 24,
             'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
         ]);
-    }
+        $normal =  RoomType::create([
+            'product_code' => 'hotel_2_room_2',
+            'name' => 'Room 2',
+            'hotel_id' => 2,
+            'max_person' => 4,
+            'price' => 3000000,
+            'bed' => '2-2',
+            'refund' => false,
+            'breakfast' => false,
+            'area' => 24,
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
+        ]);
     }
 }

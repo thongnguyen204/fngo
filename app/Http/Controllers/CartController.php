@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CartRequest;
 use App\Models\Cart;
 use App\Models\Room;
 use App\Models\RoomType;
@@ -73,6 +74,12 @@ class CartController extends Controller
         }
         return __('cart.Fail');
         // return $request->date;
+    }
+    public function RoomAddCart(Request $request,$product_code){
+        if(isset($request->date))
+            return $this->TourAddCart($request,$product_code);
+        else
+            return __('hotel.Empty date');
     }
 
     

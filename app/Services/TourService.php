@@ -2,8 +2,10 @@
 namespace App\Services;
 
 use App\Http\Requests\TourRequest;
+use App\Models\Products;
 use App\Models\SubTour;
 use App\Models\Tour;
+use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\TourRepositoryInterface;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use DateTime;
@@ -13,8 +15,10 @@ use Illuminate\Support\Facades\DB;
 class TourService implements TourServiceInterface
 {
     private $tour;
-    public function __construct(TourRepositoryInterface $tour)
+    private $product;
+    public function __construct(ProductRepositoryInterface $product ,TourRepositoryInterface $tour)
     {
+        $this->product = $product;
         $this->tour = $tour;
     }
     public function delete($id)
@@ -71,6 +75,13 @@ class TourService implements TourServiceInterface
             $subtrip->save();
         }
         $this->tour->store($tour);
+
+        $product1 = new Products;
+        $product1->avatar = $tour->avatar;
+        $product1->product_code = $tour->product_code;
+        $product1->name = $tour->name;
+
+        $this->product->save($product1);
     }
 
     // lay tat ca tour theo thu tu moi nhat, 12 tour moi trang
@@ -127,6 +138,12 @@ class TourService implements TourServiceInterface
         }
         $this->tour->store($tour);
 
+        $product1 = $this->product->getProductByCode($tour->product_code);
+        $product1->avatar = $tour->avatar;
+        $product1->product_code = $tour->product_code;
+        $product1->name = $tour->name;
+
+        $this->product->save($product1);
         
     }
 }

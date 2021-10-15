@@ -1,6 +1,6 @@
-@extends('layouts.admin')
-
+@extends('layouts.user')
 @section('content')
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
         
         <form action="{{route('hotel.index')}}" method="GET">
             <div class="input-group mb-3 searchBar">
-                <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
+                <input placeholder="{{__('hotel.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
                     placeholder="">
                 <div class="input-group-append">
                     <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
@@ -24,7 +24,7 @@
             <div class="card col-md-4">
                 <div class="card-body">
                     <a href="{{route('hotel.show',$hotel)}}">
-                        <img height="200px" style="width: 100%;height: 100%;" loading="lazy" alt="hotek Image" class="img_fluid rounded"
+                        <img loading="lazy" alt="hotek Image" class="img_fluid rounded pictrure"
                             src="{{$hotel->avatar}}">
                     </a>
                 </div>
@@ -42,18 +42,13 @@
                         </div>
                         <div id="money" class="float-right col-6 col-sm-6 col-md-12 col-lg-6">
                             <div class="float-right" style="width: 130px">{{$hotel->money($hotel->price)}}</div>
-                            
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
             @endforeach
         </div>
         {{ $hotels->links() }}
     </div>
-
 
 @endsection

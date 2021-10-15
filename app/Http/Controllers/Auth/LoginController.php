@@ -28,14 +28,23 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = '/home';
+
+    public function showLoginForm()
+    {
+        session(['link' => URL::previous()]);
+        return view('auth.login');
+    }
+
     protected function authenticated(){
-        if(Auth::user()){
-            return redirect()->intended();
-        }
-        // if(Auth::user()->role->name == 'user'){
-        //     return redirect()->route('user');
+        // if(Auth::user()){
+        //     return redirect()->intended();
         // }
-        return redirect("welcome");
+        // // if(Auth::user()->role->name == 'user'){
+        // //     return redirect()->route('user');
+        // // }
+        // return redirect()->route('home');
+
+        return redirect(session('link'));
 
     }
 

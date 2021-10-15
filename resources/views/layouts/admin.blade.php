@@ -38,10 +38,7 @@
                     <a class="nav-link" href="{{route('tour.index')}}">{{__('welcome.Tours')}}</a>
                   </li>
                   
-                  @if (Auth::user()->role->name == 'admin')
-                    
-                    
-                    @endif
+                  
                 </ul>
             </div>
               
@@ -137,7 +134,7 @@
         </div>
     </nav>
     
-    <main>
+    <main style="min-height: 1000px">
         @yield('content')
     </main>
     @include('layouts.footer')
@@ -157,5 +154,10 @@
 
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
+{{-- ckeditor --}}
+<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
+<script>
+    // CKEDITOR.replace('subTripContent');
+</script>
 </html>

@@ -14,4 +14,8 @@ class ProductRepository implements ProductRepositoryInterface{
     public function getProductByCode($product_code){
         return Products::where('product_code',$product_code)->first();
     }
+    public function save(Products $products)
+    {
+        $products->save();
+    }
 }

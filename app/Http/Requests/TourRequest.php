@@ -39,7 +39,7 @@ class TourRequest extends FormRequest
             'departure_hour'    => 'required|max:2',
             'subTripTitle'      => 'array|min:1',
             'subTripTitle.*'    => 'string',
-            'mainImg'           => 'required_if:formType,create|mimes:jpeg,jpg,png,gif|max:10000',
+            'avatar'            => 'required_if:formType,create|mimes:jpeg,jpg,png,gif|max:10000',
         ];
     }
 }

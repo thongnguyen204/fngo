@@ -1,77 +1,67 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 @section('content')
-<style>
-    
-    .ajs-message.ajs-custom {
-    color: #ffffff;
-    /* background-color: #d9edf7;   */
-    background: rgba(91, 189, 114, 0.95);
-    border-color: #31708f; 
-}
-    
-</style>
-<body>
-    <div class="container">
+<link href="{{ asset('css/tour.css') }}" rel="stylesheet">
+
+
+<div style="max-width: 1300px;" class="container">
     <form action="{{route('tour.index')}}" method="GET">
-        <div class="input-group mb-3">
-            <input type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="" aria-label="search" aria-describedby="basic-addon2">
-            <div  class="input-group-append">
-                <button style="width: 100px" class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i>
+        <div class="input-group mb-3 searchBar">
+            <input placeholder="{{__('tour.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="">
+            <div class="input-group-append">
+                <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
+                        class="bi bi-search"></i>
                 </button>
             </div>
         </div>
     </form>
     <div class="row">
         @foreach ($trips as $trip)
-            <div class="card col-md-4">
-                
-                <div class="card-body">
+        <div class="card col-md-4">
+            <div class="card-body">
+
+                <a href="{{route('tour.show',$trip)}}">
+                    <img loading="lazy" alt="tour Image" class="img-fluid rounded pictrure" src="{{$trip->avatar}}">
+                </a>
+
+            </div>
+            <div class="card-body tour-info">
+                <div class="row">
                     <a href="{{route('tour.show',$trip)}}">
-                        <img height="200px" style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid rounded" src="{{$trip->avatar}}">
+                        <div class="col-md-12">{{$trip->name}}</div>
                     </a>
                 </div>
-                <div class="card-footer">
-                    <div class="row">
-                        <a href="{{route('tour.show',$trip)}}">
-                            <div class="col-md-12">{{$trip->name}}</div>
-                        </a>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col">{{$trip->price}}</div>
-                        <div class="col">
 
-                        </div>
-                        <div class="col">
-                            <span class="glyphicon glyphicon-ok"></span>
-                                <button onclick="addCart('{{$trip->product_code}}')" type="button" style="width: 65px" class="btn btn-success"><i style="font-size: 25px" class="fa fa-cart-plus"></i></button>
-                            
-                        </div>
+                <div class="row">
+                    <div class="col-6 col-sm-6 col-md-12 col-lg-6">
+                        <i class="bi bi-geo-alt-fill"></i>TPHCM
+                    </div>
+                    <div id="money" class="float-right col-6 col-sm-6 col-md-12 col-lg-6">
+                        <div class="float-right" style="width: 130px">{{$trip->money($trip->price)}}</div>
                     </div>
                 </div>
             </div>
+        </div>
         @endforeach
     </div>
-    
     {{ $trips->links() }}
 </div>
-</body>
+
 <script>
-    function addCart(id){
+    function addCart(id) {
         var currentLocation = window.location;
         console.log(currentLocation);
         $.ajax({
-            url: "addCart/"+id ,
-            type:'GET',   
-        }).done(function(respone){
+            url: "addCart/" + id,
+            type: 'GET',
+        }).done(function (respone) {
             var icon = '<span class="bi bi-bag-check test"></span>';
-            alertify.notify(icon +" " +respone, 'custom');
+            alertify.notify(icon + " " + respone, 'custom');
         });
 
         $.ajax({
-            url: "cartQuantity" ,
-            type:'GET',   
-        }).done(function(respone){
+            url: "cartQuantity",
+            type: 'GET',
+        }).done(function (respone) {
             $('#CartCount').text(respone);
         });
     }

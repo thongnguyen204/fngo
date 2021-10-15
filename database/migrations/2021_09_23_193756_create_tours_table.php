@@ -27,6 +27,7 @@ class CreateToursTable extends Migration
             $table->integer('departure_minute');
             $table->integer('day_number');
             $table->integer('tourGuide_id')->nullable();
+            $table->integer('city_province_id')->unsigned();
 
             $table->string('content')->nullable();
             $table->timestamps();

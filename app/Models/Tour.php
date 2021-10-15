@@ -18,6 +18,9 @@ class Tour extends Model
     {
         return $this->hasMany(SubTour::class);
     }
+    public function CityProvince(){
+        return $this->belongsTo(CityProvince::class);
+    }
     // public function receiptDetail()
     // {
     //     return $this->hasMany(Receipt_Detail::class,'product_code');

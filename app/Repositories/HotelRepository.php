@@ -28,7 +28,7 @@ class HotelRepository implements HotelRepositoryInterface
     }
     public function show($id)
     {
-        $hotel = Hotel::find($id)->first();
+        $hotel = Hotel::find($id);
         return $hotel;
     }
     

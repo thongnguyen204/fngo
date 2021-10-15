@@ -32,8 +32,14 @@ class HotelController extends Controller
         else
             $hotels = $this->hotel->all();
 
-        $role = Auth::user()->role->name;
+        if(Auth::user() == null)
+            $role = 'user';
+        else{
+            $role = Auth::user()->role->name;
+        }
+        
         $view = $role . ".hotel.index";
+        
         return view($view)->with('hotels',$hotels);
         // dd($hotels);
 
@@ -74,11 +80,18 @@ class HotelController extends Controller
     public function show($hotel)
     {
         //
-        $hotel = $this->hotel->show($hotel);
-        $role = Auth::user()->role->name;
+        $hotel1 = $this->hotel->show($hotel);
+
+        if(Auth::user() == null)
+            $role = 'user';
+        else{
+            $role = Auth::user()->role->name;
+        }
+
         $view = $role . ".hotel.detail";
-        return view($view)->with('hotel',$hotel);
-        // return $hotel;
+        
+        return view($view)->with('hotel',$hotel1);
+        // return $hotel1;
     }
 
     /**

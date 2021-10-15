@@ -7,7 +7,7 @@ use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class RoomRepository implements RoomRepositoryInterface{
-    public function getRoomType(Room $room)
+    public function getRoomType(RoomType $room)
     {
         return RoomType::where('hotel_id',$room->hotel_id)->get();
     }

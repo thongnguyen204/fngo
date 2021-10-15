@@ -16,7 +16,7 @@ $(function(){
         "<label for='title'>"+"</label>"+
         "<input placeholder='"+title+" "+count+"' class='form-control' type='text' name='subTripTitle["+count+"]'/>"
         
-        +"<label for='content'></label><textarea class='form-control' name='subTripContent["+count+"]' rows='10' cols='50'></textarea>"
+        +"<label for='content'></label><textarea style='display:none' class='form-control' name='subTripContent["+count+"]' rows='10' cols='50'></textarea>"
         +"</div>";
 
         $("#day").append(table);

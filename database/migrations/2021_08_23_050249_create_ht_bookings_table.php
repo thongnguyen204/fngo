@@ -35,11 +35,11 @@ class CreateHtBookingsTable extends Migration
     public function down()
     {
         
-        Schema::table('ht_bookings', function (Blueprint $table) {
-            $table->dropForeign('ht_bookings_room_id_foreign');
-            $table->dropForeign('ht_bookings_receipt_detail_id_foreign');
+        // Schema::table('ht_bookings', function (Blueprint $table) {
+        //     $table->dropForeign('ht_bookings_room_id_foreign');
+        //     $table->dropForeign('ht_bookings_receipt_detail_id_foreign');
             
-        });
+        // });
         Schema::dropIfExists('ht_bookings');
     }
 }

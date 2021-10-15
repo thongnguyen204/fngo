@@ -8,13 +8,14 @@
 <h1 class="d-flex justify-content-center">{{__('hotel.create room type')}}</h1>
 
 <div class="container">
-    <form action="{{route('room.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('room.update',$room)}}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <input type="hidden" name="hotel_id" value="{{$hotel->id}}">
         <div class="form-group row">
             <div class="col">
                 <label for="name">{{__('room.Name')}}</label>
-                <input class="form-control" type="text" name="name" value="{{ old('name') }}" />
+                <input class="form-control" type="text" name="name" value="{{ $room->name }}" />
                 @if ($errors->has('name'))
                     @foreach ($errors->get('name') as $error)
                         <strong>{{ $error }}</strong>
@@ -32,15 +33,24 @@
                         {{-- <option @if ($hotel->CityProvince->name == $cityProvince->name)
                             selected
                         @endif>{{$cityProvince->name}}</option> --}}
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                        
+                        <option @if ($room->bed[0] == '1')
+                            selected
+                        @endif value="1">1</option>
+                        <option @if ($room->bed[0] == '2')
+                            selected
+                        @endif value="2">2</option>
                     </select>
                     <select  class="form-control" name="bed_type">
                         {{-- <option @if ($hotel->CityProvince->name == $cityProvince->name)
                             selected
                         @endif>{{$cityProvince->name}}</option> --}}
-                        <option  value="1">single</option>
-                        <option value="2">double</option>
+                        <option @if ($room->bed[2] == '1')
+                            selected
+                        @endif value="1">single</option>
+                        <option @if ($room->bed[2] == '2')
+                            selected
+                        @endif value="2">double</option>
                     </select>
                 </div>
             </div>
@@ -49,7 +59,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Area</span>
                     </div>
-                    <input type="number" name="area" class="form-control" >
+                    <input type="number" value="{{$room->area}}" name="area" class="form-control" >
                     <div class="input-group-append">
                         <span class="input-group-text">sqm</span>
                     </div>
@@ -62,18 +72,22 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Price</span>
                     </div>
-                    <input type="number" name="price" class="form-control">
+                    <input value="{{$room->price}}" type="number" name="price" class="form-control">
                     </div>
             </div>
             <div class="col-md-6 d-flex align-items-center">
                 <span style="margin-right: 50px">
                     <label class="checkbox-inline">
-                        <input style="margin-right: 10px" type="checkbox" name="refund" value="1">Refundable
+                        <input @if ($room->refund == 1)
+                            checked
+                        @endif style="margin-right: 10px" type="checkbox" name="refund" value="1">Refundable
                     </label>
                 </span>
                 <span style="margin-right: 10px">
                     <label class="checkbox-inline">
-                        <input style="margin-right: 10px" type="checkbox" name="breakfast" value="1">With breakfast
+                        <input @if ($room->breakfast == 1)
+                        checked
+                    @endif style="margin-right: 10px" type="checkbox" name="breakfast" value="1">With breakfast
                     </label>
                 </span>
                     
@@ -97,7 +111,7 @@
         
         <div class="d-flex justify-content-end">
             
-            <button class="btn btn-success" type="submit">{{__('hotel.Init')}}</button>
+            <button class="btn btn-success" type="submit">{{__('hotel.Update')}}</button>
             </div>
         </div>
 

@@ -8,7 +8,7 @@ class Products extends Model
 {
     //
     protected $fillable = [
-        'product_code',
+        'product_code','name','avatar'
     ];
     public $timestamps = false;
     public function receipt(){

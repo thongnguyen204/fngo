@@ -17,7 +17,7 @@ return [
     'Edit' => 'Chỉnh sửa',
     'Init' => 'Tạo',
     'Choose image' => 'Chọn hình ảnh',
-    'Search' => 'Tìm',
+    'Search' => 'Tìm chuyến du lịch',
     'Book' => 'Đặt',
     'Add cart' => 'THÊM VÀO GIỎ HÀNG',
     'Contact' => 'GỌI NGAY ĐỂ ĐƯỢC TƯ VẤN',

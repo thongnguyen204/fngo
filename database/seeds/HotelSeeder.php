@@ -24,7 +24,7 @@ class HotelSeeder extends Seeder
             $hotel = Hotel::create([
                 'name' => 'Khach san '. $i,
                 'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
-                'price' => rand(1000,2000),
+                'price' => rand(1000000,2000000),
                 'address' => '36 - 38 Lâm Hoành, Phước Mỹ, Sơn Trà, Đà Nẵng, Việt Nam, 550000',
                 'city_province_id' => 3,
             ]);

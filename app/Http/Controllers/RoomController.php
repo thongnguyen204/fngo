@@ -77,9 +77,13 @@ class RoomController extends Controller
         //
         $types = $this->room->getRoomType($room);
         $hotels = $this->room->getAllHotel();
-        return view('admin.room.edit')->with('room',$room)
-        ->with('hotels',$hotels)
+
+        return view('admin.hotel.roomType.edit')->with('room',$room)
+        ->with('hotel',$room->hotel)
         ->with('types',$types);
+
+        // return ($room);
+        
         
     }
 
@@ -95,6 +99,8 @@ class RoomController extends Controller
         //
         $this->room->update($request,$room);
         return redirect()->route('hotel.show',$room->hotel);
+
+        // return $room;
     }
 
     /**

@@ -15,4 +15,8 @@ class CityProvince extends Model
     {
         return $this->hasMany(Hotel::class);
     }
+    public function tour()
+    {
+        return $this->hasMany(Tour::class);
+    }
 }
