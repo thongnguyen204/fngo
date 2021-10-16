@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CityProvince;
 use App\Models\Hotel;
 use App\Models\Room;
+use App\Services\CommentServiceInterface;
 use App\Services\HotelServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,11 @@ class HotelController extends Controller
 {
 
     private $hotel;
+    private $comment;
 
-    public function __construct(HotelServiceInterface $hotel)
+    public function __construct(CommentServiceInterface $comment,HotelServiceInterface $hotel)
     {
+        $this->comment = $comment;
         $this->hotel = $hotel;
     }
     /**
@@ -87,10 +90,23 @@ class HotelController extends Controller
         else{
             $role = Auth::user()->role->name;
         }
+        $comments = $this->comment->getAllCommentsOfProduct($hotel1->product_code);
+        
+        // convert comments json to plain old PHP array
+        $array = json_decode($comments,true);
+        
+        // check array have comment or not
+        $have_comment = true;
+        if(!$array)
+            $have_comment = false;
 
         $view = $role . ".hotel.detail";
         
-        return view($view)->with('hotel',$hotel1);
+        // return $comments;
+        return view($view)
+        ->with('comments',$comments) // json
+        ->with('have_comment',$have_comment)
+        ->with('hotel',$hotel1);
         // return $hotel1;
     }
 

@@ -19,6 +19,11 @@ class CommentSeeder extends Seeder
                 'user_id'    => 2,
                 'content' => 'Day la comment so ' .$i,
             ]);
+            Comment::create([
+                'product_id'    => 3,
+                'user_id'    => 2,
+                'content' => 'Day la comment so ' .$i,
+            ]);
         }
     }
 }

@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             AdminSeeder::class,
             CategorySeeder::class,
-            HotelSeeder::class,
+
             ProductCodeSeeder::class,
+            HotelSeeder::class,
             TypeSeeder::class,
             TourSeeder::class,
             SubTourSeeder::class,

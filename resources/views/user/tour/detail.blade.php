@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
 <link href="{{ asset('css/tour.css') }}" rel="stylesheet">
 <link href="{{ asset('css/comment.css') }}" rel="stylesheet">
 
