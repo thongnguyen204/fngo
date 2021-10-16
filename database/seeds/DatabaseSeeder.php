@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             SubTourSeeder::class,
             ReceiptStatusSeeder::class,
             CityProvinceSeeder::class,
+            CommentSeeder::class,
 
         ]);
     }

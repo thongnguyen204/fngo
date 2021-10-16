@@ -44,6 +44,10 @@ class BackendServiceProvider extends ServiceProvider
             'App\Repositories\RoomRepositoryInterface',
             'App\Repositories\RoomRepository',
         );
+        $this->app->bind(
+            'App\Repositories\CommentRepositoryInterface',
+            'App\Repositories\CommentRepository',
+        );
         
         
     }

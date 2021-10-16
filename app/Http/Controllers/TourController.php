@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TourRequest;
 use App\Models\Tour;
 use App\Models\Trip;
+use App\Services\CommentServiceInterface;
 use App\Services\TourServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,10 +13,12 @@ use Illuminate\Support\Facades\Auth;
 class TourController extends Controller
 {
     private $tour;
+    private $comment;
 
-    public function __construct(TourServiceInterface $tour)
+    public function __construct(CommentServiceInterface $comment,TourServiceInterface $tour)
     {
-        $this->tour = $tour;
+        $this->comment  = $comment;
+        $this->tour     = $tour;
     }
     /**
      * Display a listing of the resource.
@@ -82,9 +85,21 @@ class TourController extends Controller
             $role = Auth::user()->role->name;
         }
 
+        $comments = $this->comment->getAllCommentsOfProduct($trip->product_code);
+        
+        // convert comments json to plain old PHP array
+        $array = json_decode($comments,true);
+        
+        // check array have comment or not
+        $have_comment = true;
+        if(!$array)
+            $have_comment = false;
+        
         $view = $role . ".tour.detail";
         return view($view)->with('trip',$trip->subTour)
-        ->with('tour',$trip);
+        ->with('tour',$trip)
+        ->with('comments',$comments) // json
+        ->with('have_comment',$have_comment); // boolean
         
     }
 

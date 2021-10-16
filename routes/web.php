@@ -197,20 +197,33 @@ Route::get('/', function () {
         Route::get('/home', 'HomeController@index')->name('home');    
 
         Route::get('/test', 'UserController@profile')->name('test');    
+        
+        //comment
+        Route::post('comment','CommentController@addComment')
+        ->name('comment.add');
     });
 
     // guest
-        Route::get('tour','TourController@index')
-        ->name('tour.index');
+    Route::get('tour','TourController@index')
+    ->name('tour.index');
+
+    Route::get('tour/{trip}','TourController@show')
+    ->name('tour.show');
+
+    Route::get('hotel','HotelController@index')
+    ->name('hotel.index');
+
+    Route::get('hotel/{hotel}','HotelController@show')
+    ->name('hotel.show');
+
+
+
+    //comment
     
-        Route::get('tour/{trip}','TourController@show')
-        ->name('tour.show');
+    Route::get('comment/{product_code}','CommentController@getCommentsOfProduct')
+    ->name('comment.show');
+
     
-        Route::get('hotel','HotelController@index')
-        ->name('hotel.index');
-    
-        Route::get('hotel/{hotel}','HotelController@show')
-        ->name('hotel.show');
     
     
     

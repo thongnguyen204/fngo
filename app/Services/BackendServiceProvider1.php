@@ -40,6 +40,10 @@ class BackendServiceProvider1 extends ServiceProvider
             'App\Services\IncomeServiceInterface',
             'App\Services\IncomeService',
         );
+        $this->app->bind(
+            'App\Services\CommentServiceInterface',
+            'App\Services\CommentService',
+        );
         
         
         
