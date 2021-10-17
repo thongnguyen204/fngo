@@ -13,6 +13,14 @@ class ProductCodeSeeder extends Seeder
     public function run()
     {
         //
+        // a temporary product
+        Products::create([
+            'product_code' => 'temp',
+            'name' => 'name',
+            'avatar' => 'avatar',
+        ]);
+
+
             Products::create([
                 'product_code' => 'tour_1',
                 'name' => 'ĐÀ LẠT – 4N3Đ – THÀNH PHỐ SƯƠNG MÙ',

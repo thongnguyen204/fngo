@@ -86,6 +86,7 @@ body{
 
 }
 
+
 .sub-title {
     height: 100%;
 
@@ -114,4 +115,14 @@ body{
 }
 .admin-button{
     margin: 0 10px 10px 10px;
+}
+.create-form-container{
+    margin-top: 20px;
+    padding: 0 0px 20px 0px;
+}
+.blue-bar{
+    height: 15px;
+    width: 100%;
+    background-color: #3944F7;
+    margin-bottom: 20px;
 }

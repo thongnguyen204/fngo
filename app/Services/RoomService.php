@@ -44,9 +44,20 @@ class RoomService implements RoomServiceInterface{
             ])->getSecurePath();
             $room->avatar =  $uploadedFileUrl;
         }
+        // asgin this room to a temp product already seeded in db
+        $room->product_code = "temp";
         $this->room->store($room);
-        $room->product_code = "hotel_" . $request->hotel_id . "_room_" . $room->id;
-        $this->room->store($room);
+
+        // create a new product 
+        $product1 = new Products;
+        $product1->avatar = $room->avatar;
+        $product1->product_code = "hotel_" .$room->hotel->id ."_room_".$room->id;
+        $product1->name = $room->name;
+        $this->product->save($product1);
+
+        // asign room to new product
+        $room->product_code = $product1->product_code;
+        $this->room->store($room); 
 
         return $room;
     }

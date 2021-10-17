@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Http\Requests\TourRequest;
+use App\Models\CityProvince;
 use App\Models\SubTour;
 use App\Models\Tour;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -36,5 +37,9 @@ class TourRepository implements TourRepositoryInterface
         return Tour::where('product_code',$product_code)->first();
     }
 
+    public function getAllCityProvince()
+    {
+        return CityProvince::all();
+    }
     
 }

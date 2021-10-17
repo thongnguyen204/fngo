@@ -53,7 +53,9 @@ class TourController extends Controller
     public function create()
     {
         //
-        return view('admin.tour.create');
+        $CityProvince = $this->tour->getAllCityProvince();
+        return view('admin.tour.create')
+        ->with('cty_province',$CityProvince);
     }
 
     /**
@@ -67,7 +69,7 @@ class TourController extends Controller
         //
         $this->tour->store($request);
         return redirect()->route('tour.index');
-        // return 'ok';
+        // return $request;
     }
 
     /**

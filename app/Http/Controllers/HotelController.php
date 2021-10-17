@@ -57,7 +57,9 @@ class HotelController extends Controller
     public function create()
     {
         //
-        return view('admin.hotel.create');
+        $CityProvince = $this->hotel->getAllCityProvince();
+        return view('admin.hotel.create')
+        ->with('cty_province',$CityProvince);
     }
 
     /**
@@ -71,6 +73,7 @@ class HotelController extends Controller
         //
         $this->hotel->store($request);
         return redirect()->route('hotel.index');
+        // return $request;
     }
 
     /**
@@ -121,7 +124,8 @@ class HotelController extends Controller
     {
         //
         $CityProvince = $this->hotel->getAllCityProvince();
-        return view('admin.hotel.edit')->with('hotel',$hotel)->with('cty_province',$CityProvince);
+        return view('admin.hotel.edit')->with('hotel',$hotel)
+        ->with('cty_province',$CityProvince);
     }
 
     /**

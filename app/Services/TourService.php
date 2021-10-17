@@ -40,6 +40,7 @@ class TourService implements TourServiceInterface
         $tour->departure_date = $departure_date;
         $tour->departure_place = $request->departure_place;
         $tour->day_number = $request->day_number;
+        $tour->city_province_id = $request->cityProvince;
 
         // them so 0 vao dau gio va phut
         if($request->departure_hour < 10) $departure_hour = "0".($request->departure_hour);
@@ -63,8 +64,10 @@ class TourService implements TourServiceInterface
             ])->getSecurePath();
             $tour->avatar =  $uploadedFileUrl;
         }
-        $this->tour->store($tour);
-        $tour->product_code = "tour_" . $tour->id;
+
+        // asgin this tour to a temp product already seeded in db
+        $tour->product_code = "temp";
+        $this->tour->store($tour); 
         
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
             $subtrip = new SubTour;
@@ -74,14 +77,17 @@ class TourService implements TourServiceInterface
             $subtrip->content = $request->subTripContent[$i];
             $subtrip->save();
         }
-        $this->tour->store($tour);
-
+        
+        // create a new product 
         $product1 = new Products;
         $product1->avatar = $tour->avatar;
-        $product1->product_code = $tour->product_code;
+        $product1->product_code = "tour" .$tour->id;
         $product1->name = $tour->name;
-
         $this->product->save($product1);
+
+        // asign tour to new product
+        $tour->product_code = $product1->product_code;
+        $this->tour->store($tour); 
     }
 
     // lay tat ca tour theo thu tu moi nhat, 12 tour moi trang
@@ -103,6 +109,7 @@ class TourService implements TourServiceInterface
         $tour->name = $request->name;
         $tour->price = $request->price;
         $tour->content = $request->content;
+        $tour->city_province_id = $request->cityProvince;
 
         if(!empty($request->file('avatar')))
         {
@@ -144,6 +151,10 @@ class TourService implements TourServiceInterface
         $product1->name = $tour->name;
 
         $this->product->save($product1);
-        
+    
+    }
+    public function getAllCityProvince()
+    {
+        return $this->tour->getAllCityProvince();
     }
 }

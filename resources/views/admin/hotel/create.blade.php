@@ -3,15 +3,17 @@
 @section('content')
 
 
-<body>
-    <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
-    <h1 class="d-flex justify-content-center">{{__('hotel.Create')}}</h1>
 
-    <div class="container">
-        <form action="{{route('hotel.store')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" id="formType" name="formType" value="create">
-            <div class="form-group row">
+<input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
+
+
+<div class="container">
+    <h1 class="d-flex justify-content-center">{{__('hotel.Create')}}</h1>
+    <form action="{{route('hotel.store')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" id="formType" name="formType" value="create">
+        <div class="form-group row">
+            <div class="col">
                 <label for="name">{{__('hotel.Name')}}</label>
                 <input class="form-control" type="text" name="name" value="{{ old('name') }}" />
                 @if ($errors->has('name'))
@@ -20,7 +22,9 @@
                     @endforeach
                 @endif
             </div>
-            <div class="form-group row">
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8">
                 <label for="address">{{__('hotel.Address')}}</label>
                 <input class="form-control" type="text" name="address" value="{{ old('address') }}" />
                 @if ($errors->has('address'))
@@ -29,7 +33,18 @@
                     @endforeach
                 @endif
             </div>
-            <div class="form-group row">
+            <div class="col-md-4">
+                <label for="cityProvince">Province / City</label>
+                <select class="form-control" id="cityProvince" name="cityProvince">
+                    @foreach ($cty_province as $cityProvince)
+                        <option  value="{{$cityProvince->id}}">{{$cityProvince->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col">
                 <label for="price">{{__('hotel.Price')}}</label>
                 <input class="form-control" type="number" min="0" name="price" value="{{ old('price') }}" />
                 @if ($errors->has('price'))
@@ -38,7 +53,9 @@
                 @endforeach
                 @endif
             </div>
-            <div class="form-group row">
+        </div>
+        <div class="form-group row">
+            <div class="col">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile" name="avatar" >
                     <label class="custom-file-label" for="customFile">{{__('hotel.Choose avatar')}}</label>
@@ -49,17 +66,18 @@
                     @endif
                 </div>
             </div>
+        </div>
+        
+        <div class="d-flex justify-content-end">
             
-            <div class="d-flex justify-content-end">
-                
-                <button class="btn btn-success" type="submit">{{__('hotel.Init')}}</button>
-                </div>
+            <button class="btn btn-success" type="submit">{{__('hotel.Init')}}</button>
             </div>
+        </div>
 
-    </div>
-    
-    </form>
-    </div>
-</body>
+</div>
+
+</form>
+</div>
+
 
 @endsection

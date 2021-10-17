@@ -17,5 +17,7 @@ interface TourRepositoryInterface
     public function search($keyword);
 
     public function searchCode($product_code);
+
+    public function getAllCityProvince();
     
 }

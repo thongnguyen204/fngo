@@ -24,13 +24,14 @@
             <label for="cityProvince">Province / City</label>
             <select class="form-control" id="cityProvince">
                 @foreach ($cty_province as $cityProvince)
-                    <option @if ($hotel->CityProvince->name == $cityProvince->name)
+                    <option value="{{$cityProvince->id}}" @if ($hotel->city_province_id == $cityProvince->id)
                         selected
                     @endif>{{$cityProvince->name}}</option>
                 @endforeach
             </select>
         </div>
     </div>
+
     <div class="form-group ">
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" name="avatar" value="" >

@@ -18,4 +18,5 @@ interface TourServiceInterface
     public function getTourByCode($product_code);
 
     public function update(TourRequest $request, Tour $tour);
+    public function getAllCityProvince();
 }
