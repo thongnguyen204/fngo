@@ -49,6 +49,9 @@
             </div>
         </div>
     </div>
+<div style="margin-top: 20px" class="d-flex justify-content-end">
+    <a class="btn btn-success" href="{{route('room.create',$hotel)}}">Add room type</a>
+</div>
 </div>
 
 @foreach ($hotel->roomtype as $roomtype)
@@ -56,7 +59,6 @@
     <div class="room-type-warpper">
         <div class="admin-button">
             <div class="row">
-                <a class="btn btn-success col admin-button" href="{{route('room.create',$hotel)}}"><i class="bi bi-plus-lg"></i></a>
                 <a class="btn btn-primary col admin-button" href="{{route('room.edit',$roomtype)}}"><i class="bi bi-pencil-square"></i></a>
                 <div style="padding: 0px"  class="col admin-button" >
                     <form action=" {{route('room.destroy',$roomtype)}}" method="POST">
@@ -70,7 +72,7 @@
         <h3>{{$roomtype->name}}</h3>
         <div class="row">
             <div class="col-md-4">
-                <img style="max-width: 100%;" loading="lazy" alt="room image" class="img_fluid rounded"
+                <img style="width: 100%;" loading="lazy" alt="room image" class="img_fluid rounded"
                     src="{{$roomtype->avatar}}">
             </div>
             <div class="col-md-8">

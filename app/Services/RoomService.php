@@ -2,16 +2,20 @@
 namespace App\Services;
 
 use App\Models\Hotel;
+use App\Models\Products;
 use App\Models\Room;
 use App\Models\RoomType;
+use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\RoomRepositoryInterface;
-
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 
 class RoomService implements RoomServiceInterface{
     private $room;
-    public function __construct(RoomRepositoryInterface $room)
+    private $product;
+    public function __construct(ProductRepositoryInterface $product,RoomRepositoryInterface $room)
     {
+        $this->product = $product;
         $this->room = $room;
     }
     public function getRoomType(RoomType $room)

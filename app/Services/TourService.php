@@ -68,7 +68,7 @@ class TourService implements TourServiceInterface
         // asgin this tour to a temp product already seeded in db
         $tour->product_code = "temp";
         $this->tour->store($tour); 
-        
+
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
             $subtrip = new SubTour;
             $subtrip->title = $request->subTripTitle[$i];
