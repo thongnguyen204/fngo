@@ -3,13 +3,16 @@
 @section('content')
 
 
-
+<link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
 <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
 
 
-<div class="container">
-    <h1 class="d-flex justify-content-center">{{__('hotel.Create')}}</h1>
-    <form action="{{route('hotel.store')}}" method="POST" enctype="multipart/form-data">
+<div class="container create-form-container rounded bg-white">
+    <div class="blue-bar rounded-top"></div>
+    <h1 class="d-flex justify-content-center">
+        <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Create')}}</span>
+    </h1>
+    <form style="padding: 20px" action="{{route('hotel.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" id="formType" name="formType" value="create">
         <div class="form-group row">

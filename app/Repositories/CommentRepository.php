@@ -9,7 +9,6 @@ class CommentRepository implements CommentRepositoryInterface{
         return Comment::where('product_id',$productId)
             ->orderBy('id','desc')
             ->get();
-        
     }
 
     public function store($product_id,$user_id,$content)

@@ -50,7 +50,7 @@
             </div>
 
             <div class="subtrip-content">
-                {{$subtrip->content}}
+                {!! $subtrip->content !!}
             </div>
             @endforeach
 

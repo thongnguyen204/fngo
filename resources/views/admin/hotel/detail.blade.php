@@ -71,7 +71,7 @@
         </div>
         <h3>{{$roomtype->name}}</h3>
         <div class="row">
-            <div class="col-md-4">
+            <div style="margin-bottom: 10px" class="col-md-4 d-flex justify-content-center">
                 <img style="width: 100%;" loading="lazy" alt="room image" class="img_fluid rounded"
                     src="{{$roomtype->avatar}}">
             </div>
@@ -163,7 +163,7 @@
 
         $.ajax({
             url: "/cartQuantity",
-            type: 'GET',
+            type: 'GET',c
         }).done(function (respone) {
             $('#CartCount').text(respone);
         });

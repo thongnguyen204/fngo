@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Article;
 use App\Models\Receipt;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -45,5 +46,9 @@ class User extends Authenticatable
     public function reciept()
     {
         return $this->hasMany(Receipt::class);
+    }
+    public function article()
+    {
+        return $this->hasMany(Article::class);
     }
 }

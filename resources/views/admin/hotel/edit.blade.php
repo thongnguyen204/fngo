@@ -1,8 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-<form action="{{route('hotel.update',$hotel)}}" method="POST">
+
+<link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
+<div class="container create-form-container rounded bg-white">
+    <div class="blue-bar rounded-top"></div>
+<form style="padding: 20px" action="{{route('hotel.update',$hotel)}}" method="POST">
     @csrf
     @method('PUT')
     <div class="form-group">

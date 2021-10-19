@@ -37,7 +37,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('tour.index')}}">{{__('welcome.Tours')}}</a>
                   </li>
-                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('article.index')}}">{{__('welcome.Articles')}}</a>
+                  </li>
                   
                 </ul>
             </div>

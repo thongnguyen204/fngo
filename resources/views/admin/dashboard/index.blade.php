@@ -10,7 +10,7 @@
   <a class="nav-link" href='{{route('users.index')}}'>{{__('common.Users manage')}}</a>
   <a class="nav-link" href='{{route('receipt.waiting')}}'>{{__('common.Receipts queue')}}</a>
   <a class="nav-link" href='{{route('receipt.indexAccepted')}}'>{{__('common.Receipts manage')}}</a>
-  <a class="nav-link" href='{{route('income.index')}}'>{{__('common.Income')}}</a>
+  {{-- <a class="nav-link" href='{{route('income.index')}}'>{{__('common.Income')}}</a> --}}
   
   <button class="dropdown-btn">{{__('common.Income')}}
     <i class="bi bi-caret-down-fill"></i>

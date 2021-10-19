@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Article;
+use App\Services\ArticleCommentServiceInterface;
+use App\Services\ArticleServiceInterface;
+use Illuminate\Http\Request;
+
+class ArticleController extends Controller
+{
+    private $article;
+    private $comment;
+    public function __construct(ArticleCommentServiceInterface $comment,ArticleServiceInterface $article)
+    {
+        $this->comment = $comment;
+        $this->article = $article;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $articles = $this->article->getAllArticles();
+        return view('admin.article.index')
+        ->with('articles',$articles);
+        // return ($articles[0]->user);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Article $article)
+    {
+        //
+
+        $comments = $this->comment->getAllCommentsOfArticle($article->id);
+        
+        // convert comments json to plain old PHP array
+        $array = json_decode($comments,true);
+        
+        // check array have comment or not
+        $have_comment = true;
+        if(!$array)
+            $have_comment = false;
+        
+        return view('admin.article.detail')
+        ->with('article',$article)
+        ->with('comments',$comments) // json
+        ->with('have_comment',$have_comment); // boolean
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Article $article)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Article $article)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Article $article)
+    {
+        //
+    }
+}

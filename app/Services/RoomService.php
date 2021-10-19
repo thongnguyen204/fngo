@@ -1,9 +1,9 @@
 <?php
 namespace App\Services;
 
-use App\Models\Hotel;
+
 use App\Models\Products;
-use App\Models\Room;
+
 use App\Models\RoomType;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\RoomRepositoryInterface;

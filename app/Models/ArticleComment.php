@@ -5,17 +5,12 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class ArticleComment extends Model
 {
     //
-    protected $fillable = [
-        'content','user_id','product_id'
+    protected $fillable =[
+        'content','article_id','user_id'
     ];
-
-    public function product()
-    {
-        return $this->belongsTo(Products::class);
-    }
 
     public function user()
     {

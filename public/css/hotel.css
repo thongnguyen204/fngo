@@ -36,6 +36,10 @@ body{
     font-family: 'Raleway', sans-serif;
     
 }
+.create-form-container{
+    margin-top: 20px;
+    padding: 0 0px 20px 0px;
+}
 .divide-bar{
     height: 80px;
     width: 100%;
@@ -66,4 +70,15 @@ body{
 }
 .admin-button{
     margin: 0 10px 10px 10px;
+}
+.sub-title-warpper {
+    background-color: #ecd45a;
+    -webkit-border-radius: 25px;
+    padding: 5px;
+}
+.blue-bar{
+    height: 15px;
+    width: 100%;
+    background-color: #3944F7;
+    margin-bottom: 20px;
 }

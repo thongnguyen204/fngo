@@ -48,7 +48,14 @@ class BackendServiceProvider extends ServiceProvider
             'App\Repositories\CommentRepositoryInterface',
             'App\Repositories\CommentRepository',
         );
-        
+        $this->app->bind(
+            'App\Repositories\ArticleRepositoryInterface',
+            'App\Repositories\ArticleRepository',
+        );
+        $this->app->bind(
+            'App\Repositories\ArticleCommentRepositoryInterface',
+            'App\Repositories\ArticleCommentRepository',
+        );
         
     }
 }

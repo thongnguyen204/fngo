@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             ReceiptStatusSeeder::class,
             CityProvinceSeeder::class,
             CommentSeeder::class,
+            ArticleSeeder::class,
+            ArticleCommentSeeder::class,
 
         ]);
     }

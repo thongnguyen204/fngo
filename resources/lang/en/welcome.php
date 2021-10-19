@@ -5,6 +5,7 @@ return [
     'Tours'     => 'Tours',
     'Register'  => 'Register',
     'Login'     => 'Login',
+    'Articles'  => 'Articles',
 ]
 
 ?>

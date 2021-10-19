@@ -21,7 +21,6 @@ Route::get('/', function () {
     return redirect(app()->getLocale());
 });
 
-
     Auth::routes();
 
     Route::get('/', function () {
@@ -103,7 +102,13 @@ Route::get('/', function () {
         Route::get('income-current-year','IncomeController@incomeCurrentYear')
         ->name('income.currentYear');
 
-    
+        // ---------------blog-------------
+
+        Route::resource('article','ArticleController')
+        ->except([
+            'index','show'
+        ]);
+
     });
     
     Route::middleware(['auth', 'roles:user,employee'])->group(function () {
@@ -201,9 +206,14 @@ Route::get('/', function () {
         //comment
         Route::post('comment','CommentController@addComment')
         ->name('comment.add');
+        
+        Route::resource('articleComment','ArticleCommentController');
     });
 
     // guest
+
+
+
     Route::get('tour','TourController@index')
     ->name('tour.index');
 
@@ -217,13 +227,17 @@ Route::get('/', function () {
     ->name('hotel.show');
 
 
-
-    //comment
+    //-----------comment------------
     
     Route::get('comment/{product_code}','CommentController@getCommentsOfProduct')
     ->name('comment.show');
 
-    
+    //-----------blog------------
+
+    Route::get('article','ArticleController@index')
+    ->name('article.index');
+    Route::get('article/{article}','ArticleController@show')
+    ->name('article.show');
     
     
     
