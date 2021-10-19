@@ -4,7 +4,6 @@
 
 
 <link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
-<input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
 
 
 <div class="container create-form-container rounded bg-white">
@@ -74,7 +73,7 @@
         <div class="d-flex justify-content-end">
             
             <button class="btn btn-success" type="submit">{{__('hotel.Init')}}</button>
-            </div>
+            
         </div>
 
 </div>

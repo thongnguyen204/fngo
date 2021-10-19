@@ -7,7 +7,7 @@ body{
     margin-top: 20px;
     padding-top:20px;
     padding-bottom:20px;
-    max-width: 1100px;
+    max-width: 1200px;
 }
 .thumbnail{
     width: 100%;
@@ -56,4 +56,27 @@ a{
 }
 .main-image{
     margin: 20px 0 20px 0;
+}
+.admin-button-group{
+    padding: 0 0 20px 20px;
+}
+.admin-button{
+    margin: 0 10px 10px 10px;
+}
+
+/* create site */
+.sub-title-warpper {
+    background-color: #ecd45a;
+    -webkit-border-radius: 25px;
+    padding: 5px;
+}
+.create-form-container{
+    margin-top: 20px;
+    padding: 0 0px 20px 0px;
+}
+.blue-bar{
+    height: 15px;
+    width: 100%;
+    background-color: #3944F7;
+    margin-bottom: 20px;
 }

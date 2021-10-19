@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    private $article;
+    private $articleService;
     private $comment;
-    public function __construct(ArticleCommentServiceInterface $comment,ArticleServiceInterface $article)
+    public function __construct(ArticleCommentServiceInterface $comment,ArticleServiceInterface $articleService)
     {
         $this->comment = $comment;
-        $this->article = $article;
+        $this->articleService = $articleService;
     }
     /**
      * Display a listing of the resource.
@@ -24,8 +24,8 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = $this->article->getAllArticles();
-        return view('admin.article.index')
+        $articles = $this->articleService->getAllArticles();
+        return view('article.index')
         ->with('articles',$articles);
         // return ($articles[0]->user);
     }
@@ -38,6 +38,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('article.create');
     }
 
     /**
@@ -49,6 +50,8 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $article =  $this->articleService->store($request);
+        return redirect()->route('article.show',$article);
     }
 
     /**
@@ -86,6 +89,8 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         //
+        return view('article.edit')
+        ->with('article',$article);
     }
 
     /**
@@ -98,6 +103,9 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         //
+        $this->articleService->update($request,$article);
+        return redirect()->route('article.show',$article);
+        
     }
 
     /**
@@ -109,5 +117,7 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+        $this->articleService->destroy($article);
+        return redirect()->route('article.index');
     }
 }

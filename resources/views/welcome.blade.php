@@ -96,6 +96,7 @@
                 <div class="links">
                     <a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
                     <a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a>
+                    <a href='{{route('article.index')}}'>{{__('welcome.Articles')}}</a>
                     
                 </div> 
             </div>
