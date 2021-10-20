@@ -115,7 +115,9 @@ class TourController extends Controller
     {
         
         //
-        return view('admin.tour.edit')->with('tour',$tour);
+        $CityProvince = $this->tour->getAllCityProvince();
+        return view('admin.tour.edit')->with('tour',$tour)
+        ->with('cty_province',$CityProvince);
         // return $tour;
     }
 

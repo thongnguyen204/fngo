@@ -2,13 +2,16 @@
 
 @section('content')
 
-
+<link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
 
 <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
-<h1 class="d-flex justify-content-center">{{__('hotel.create room type')}}</h1>
 
-<div class="container">
-    <form action="{{route('room.update',$room)}}" method="POST" enctype="multipart/form-data">
+<div class="container create-form-container rounded bg-white">
+    <div class="blue-bar rounded-top"></div>
+    <h1 class="d-flex justify-content-center">
+        <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Edit')}}</span>
+    </h1>
+    <form style="padding: 20px" action="{{route('room.update',$room)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <input type="hidden" name="hotel_id" value="{{$hotel->id}}">
@@ -111,7 +114,7 @@
         
         <div class="d-flex justify-content-end">
             
-            <button class="btn btn-success" type="submit">{{__('hotel.Update')}}</button>
+            <button class="btn btn-primary" type="submit">{{__('hotel.Update')}}</button>
             </div>
         </div>
 

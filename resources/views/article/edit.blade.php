@@ -62,7 +62,7 @@
         </div>
         <div class="d-flex justify-content-end">
             
-            <button class="btn btn-success" type="submit">{{__('article.Update')}}</button>
+            <button class="btn btn-primary" type="submit">{{__('article.Update button')}}</button>
             
         </div>
     </form>

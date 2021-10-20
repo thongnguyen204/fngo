@@ -2,18 +2,16 @@
 
 @section('content')
 
-
 <link href="{{ asset('css/tour.css') }}" rel="stylesheet">
-<input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
-
 
 <div class="container create-form-container rounded bg-white">
-    <div class="blue-bar rounded-top"></div>
+    <div class="green-bar rounded-top"></div>
     <h1 class="d-flex justify-content-center ">
         <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('tour.Create')}}</span>
     </h1>
     <form style="padding: 20px" action="{{route('tour.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
         <input type="hidden" id="formType" name="formType" value="create">
             <div class="form-group row">
                 <div class="col">

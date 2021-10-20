@@ -9,4 +9,5 @@ interface ArticleRepositoryInterface{
     public function getAllArticles();
     public function store(Article $article);
     public function destroy(Article $article);
+    public function search($keyword);
 }

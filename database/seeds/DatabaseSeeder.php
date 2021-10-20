@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             AdminSeeder::class,
             CategorySeeder::class,
-
+            PaymentSeeder::class,
             ProductCodeSeeder::class,
             HotelSeeder::class,
             TypeSeeder::class,

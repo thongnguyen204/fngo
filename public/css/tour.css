@@ -103,13 +103,16 @@ body{
     margin-left: 10px;
 }
 .contain-wrapper{
-    max-width: 1500px;
+    max-width: 1140px;
     padding: 25px;
 }
 /* ckeditor */
 .cke_reset{
     width: 100%;
 }
+
+
+
 .admin-button-group{
     padding: 0 0 20px 20px;
 }
@@ -125,4 +128,10 @@ body{
     width: 100%;
     background-color: #3944F7;
     margin-bottom: 20px;
+}
+.green-bar{
+    height: 15px;
+    width: 100%;
+    background-color: #28a745;
+    margin-bottom: 20px;   
 }

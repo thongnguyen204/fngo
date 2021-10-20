@@ -21,10 +21,13 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $articles = $this->articleService->getAllArticles();
+        if($request->search)
+            $articles = $this->articleService->search($request->search);
+        else
+            $articles = $this->articleService->getAllArticles();
         return view('article.index')
         ->with('articles',$articles);
         // return ($articles[0]->user);

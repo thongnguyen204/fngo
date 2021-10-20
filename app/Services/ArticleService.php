@@ -55,4 +55,7 @@ class ArticleService implements ArticleServiceInterface{
     {
         $this->articleRepository->destroy($article);
     }
+    public function search($keyword){
+        return $this->articleRepository->search($keyword);
+    }
 }

@@ -5,6 +5,9 @@
 <link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
 <div class="container create-form-container rounded bg-white">
     <div class="blue-bar rounded-top"></div>
+    <h1 class="d-flex justify-content-center">
+        <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Edit')}}</span>
+    </h1>
 <form style="padding: 20px" action="{{route('hotel.update',$hotel)}}" method="POST">
     @csrf
     @method('PUT')

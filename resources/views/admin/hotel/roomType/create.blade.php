@@ -2,13 +2,17 @@
 
 @section('content')
 
-
+<link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
 
 <input type="hidden" id="lang" name="lang" value="{{app()->getLocale()}}">
-<h1 class="d-flex justify-content-center">{{__('hotel.create room type')}}</h1>
 
-<div class="container">
-    <form action="{{route('room.store')}}" method="POST" enctype="multipart/form-data">
+
+<div class="container create-form-container rounded bg-white">
+    <div class="green-bar rounded-top"></div>
+    <h1 class="d-flex justify-content-center">
+        <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Edit')}}</span>
+    </h1>
+    <form style="padding: 20px" action="{{route('room.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="hotel_id" value="{{$hotel->id}}">
         <div class="form-group row">

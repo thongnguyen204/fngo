@@ -7,7 +7,7 @@
 
 
 <div class="container create-form-container rounded bg-white">
-    <div class="blue-bar rounded-top"></div>
+    <div class="green-bar rounded-top"></div>
     <h1 class="d-flex justify-content-center">
         <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Create')}}</span>
     </h1>
