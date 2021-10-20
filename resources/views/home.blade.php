@@ -64,7 +64,9 @@
                 <div class="title m-b-md">
                     FnGO
                 </div>
-
+                @auth
+                    
+                
                 <div class="links">
                     @if (Auth::user()->role->name == 'admin')
                     <a href='{{route('users.index')}}'>{{__('common.Users manage')}}</a>
@@ -75,7 +77,8 @@
                     <a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a>
                     <a href='{{route('receipt.index')}}'>{{__('common.Receipt')}}</a>
                     
-                </div> 
+                </div>
+                @endauth
             </div>
         </div>
     </body>

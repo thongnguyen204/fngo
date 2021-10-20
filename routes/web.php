@@ -199,7 +199,7 @@ Route::get('/', function () {
         Route::put('users/{user}','UserController@update')
         ->middleware('userInfo')
         ->name('users.update');
-        Route::get('/home', 'HomeController@index')->name('home');    
+        
 
         Route::get('/test', 'UserController@profile')->name('test');    
         
@@ -213,7 +213,7 @@ Route::get('/', function () {
     // guest
 
 
-
+    Route::get('/home', 'HomeController@index')->name('home');    
     Route::get('tour','TourController@index')
     ->name('tour.index');
 
