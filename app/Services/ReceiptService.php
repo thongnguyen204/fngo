@@ -34,6 +34,28 @@ class ReceiptService implements ReceiptServiceInterface
     public function acceptedIndex(){
         return $this->receipt->getAcceptedIndex();
     }
+
+    // options = [id,userid,username]
+    public function search($keyword,$option){
+        if($keyword == null)
+            return $this->receipt->getAcceptedIndex();
+        if($option == 'id')
+            return $this->receipt->searchID($keyword);
+        if($option == 'userid')
+            return $this->receipt->searchUserID($keyword);
+        if($option == 'username')
+            // return $this->receipt->searchUserName($keyword);
+            return 1;
+        // neu k co option thi tra ve tat ca
+        return $this->receipt->getAcceptedIndex();
+    }
+
+    public function canceledIndex(){
+        return $this->receipt->getCanceledIndex();
+    }
+    public function paidIndex(){
+        return $this->receipt->getPaidIndex();
+    }
     public function receiptAccept(Receipt $receipt){
         $receipt->status_id = $this->receiptStatusAcceptedID;
         $this->receipt->saveReceipt($receipt);
@@ -57,6 +79,18 @@ class ReceiptService implements ReceiptServiceInterface
         else if($receipt->status_id == $this->receiptStatusWaitingID)
                 return 'receipt.index';
     }
+
+    //thanh toan hoac huy hoa don
+    public function receiptProcess(Receipt $receipt, $action){
+        if($action == 'pay')
+            return $this->receipt->pay($receipt);
+        if ($action == 'unpay')
+            return $this->receipt->unpay($receipt);
+        if ($action == 'cancel')
+            return $this->receipt->cancel($receipt);
+        return 'Undefine action';
+    }
+
     public function store(Receipt $receipt){
         return $this->receipt->store($receipt);
     }

@@ -15,7 +15,7 @@ class Receipt extends Model
 
     //
     protected $fillable = [
-        'user_id','price_sum','description',
+        'user_id','price_sum','description','payment_id'
     ];
     public function receipt_detail()
     {
@@ -29,7 +29,12 @@ class Receipt extends Model
     {
         return $this->belongsTo(ReceiptStatus::class);
     }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class);
+    }
     public function money($money){
         return currency_format($money);
     }
+
 }

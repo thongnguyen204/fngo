@@ -13,14 +13,17 @@ class ReceiptStatusSeeder extends Seeder
     public function run()
     {
         //
-        $Accepted = ReceiptStatus::create([
+        ReceiptStatus::create([
             'name' => 'Accepted'
         ]);
-        $Canceled = ReceiptStatus::create([
+        ReceiptStatus::create([
             'name' => 'Canceled'
         ]);
-        $Waiting = ReceiptStatus::create([
+        ReceiptStatus::create([
             'name' => 'Waiting'
+        ]);
+        ReceiptStatus::create([
+            'name' => 'Payment received'
         ]);
     }
 }

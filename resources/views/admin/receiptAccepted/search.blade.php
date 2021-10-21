@@ -72,7 +72,7 @@
         </tbody>
     </table>
     </div>
-    {{ $receipts->links() }}
+
 </div>
 
 @endsection

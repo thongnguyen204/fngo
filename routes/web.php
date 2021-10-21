@@ -47,8 +47,20 @@ Route::get('/', function () {
             return view('admin.dashboard.index');
         })->name('dashboard');
 
+
+        // ----- receipt ------
         Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
         ->name('receipt.indexAccepted');
+
+        Route::get('/receipt-search','ReceiptController@search')
+        ->name('receipt.search');
+
+        
+
+        Route::get('/receiptPaid','ReceiptController@paidIndex')
+        ->name('receipt.indexPaid');
+        Route::get('/receiptCanceled','ReceiptController@canceledIndex')
+        ->name('receipt.indexCanceled');
 
         Route::get('/receiptWaiting','ReceiptController@waitingIndex')
         ->name('receipt.waiting');
@@ -62,6 +74,18 @@ Route::get('/', function () {
         ->except([
             'index','create', 'store',
         ]);
+        Route::post('accept/{receipt}','ReceiptController@receiptAccept')
+        ->name('receipt.accept');
+
+        Route::get('pay/{receipt}','ReceiptController@receiptPay')
+        ->name('receipt.pay');
+        Route::get('unpay/{receipt}','ReceiptController@receiptUnPay')
+        ->name('receipt.unpay');
+
+        Route::get('cancel/{receipt}','ReceiptController@receiptCancel')
+        ->name('receipt.cancel');
+
+        
     
         Route::resource('/hotel','HotelController')
         ->except([
@@ -75,8 +99,7 @@ Route::get('/', function () {
         Route::get('/room/create/{hotel}','RoomController@create')
         ->name('room.create');
     
-        Route::post('accept/{receipt}','ReceiptController@receiptAccept')
-        ->name('receipt.accept');
+        
     
         Route::resource('/tour','TourController')
         ->except([

@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ReceiptRepository implements ReceiptRepositoryInterface
 {
-    private $receiptStatusAcceptedID = 1;
-    private $receiptStatusWaitingID = 3;
+    private $receiptStatusAcceptedID    = 1;
+    private $receiptStatusWaitingID     = 3;
+    private $receiptStatusCancledID     = 2;
+    private $receiptStatusPaidID        = 4;
 
     //get user's role name
     public function getRoleName(){
@@ -25,8 +27,29 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     }
     
     public function getAcceptedIndex(){
-        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
-        ->paginate(10);
+        return Receipt::where('status_id','!=',$this->receiptStatusWaitingID)
+        ->orderBy('id','desc')
+        ->paginate(20);
+    }
+    public function searchID($keyword){
+        return Receipt::find($keyword);
+    }
+    public function searchUserID($keyword){
+        return Receipt::where('user_id',$keyword)
+        ->orderBy('id','desc')->get();
+    }
+    // public function getAcceptedIndex(){
+    //     return Receipt::where('status_id','!=',$this->receiptStatusWaitingID)
+    //     ->orderBy('id','desc')
+    //     ->paginate(20);
+    // }
+    public function getPaidIndex(){
+        return Receipt::where('status_id',$this->receiptStatusPaidID)
+        ->paginate(20);
+    }
+    public function getCanceledIndex(){
+        return Receipt::where('status_id',$this->receiptStatusCancledID)
+        ->paginate(20);
     }
     public function saveReceipt(Receipt $receipt){
         $receipt->save();
@@ -45,6 +68,23 @@ class ReceiptRepository implements ReceiptRepositoryInterface
         $receipt->save();
         return $receipt;
     }
+
+    public function pay(Receipt $receipt){
+        $receipt->status_id = $this->receiptStatusPaidID;
+        $receipt->save();
+        return $receipt;
+    }
+    public function unpay(Receipt $receipt){
+        $receipt->status_id = $this->receiptStatusAcceptedID;
+        $receipt->save();
+        return $receipt;
+    }
+    public function cancel(Receipt $receipt){
+        $receipt->status_id = $this->receiptStatusCancledID;
+        $receipt->save();
+        return $receipt;
+    }
+
     public function whereMonth($month,$year){
         return Receipt::where('status_id',$this->receiptStatusAcceptedID)
         ->whereYear ('created_at', $year)

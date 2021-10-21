@@ -43,7 +43,8 @@ class ReceiptController extends Controller
         $view = $this->receipt->getRoleName() . ".receipt.waiting";
         return view($view)->with('receipts',$receipts);
     }
-    
+
+    // view accepted reciepts
     public function acceptedIndex()
     {
         $receipts = $this->receipt->acceptedIndex();
@@ -51,11 +52,54 @@ class ReceiptController extends Controller
         $view = $role . ".receiptAccepted.index";
         return view($view)->with('receipts',$receipts); 
     }
+    public function search(Request $request)
+    {   $keyword = $request->search;
+        $option = $request->searchOptions;
+        
+        
+        $receipts = $this->receipt->search($keyword,$option);
+        
+        // check collection vi get() tra ra collection, find thi khong
+        if(!($receipts instanceof \Illuminate\Database\Eloquent\Collection))
+            $receipts = array($receipts);
+            // return 'array';
+        
+        $role = $this->receipt->getRoleName();
+        // return $role;
+        $view = $role . ".receiptAccepted.search";
+        // var_dump ($receipts);
+        return view($view)->with('receipts',$receipts); 
+    }
+
+
+
     public function receiptAccept(Receipt $receipt)
     {
         $this->receipt->receiptAccept($receipt);
         return redirect()->route('receipt.waiting');
     }
+    public function receiptPay(Receipt $receipt)
+    {   
+        $action = 'pay';
+        $this->receipt->receiptProcess($receipt,$action);
+        return redirect()->route('receipt.indexAccepted');
+        // return $receipt;
+    }
+    public function receiptCancel(Receipt $receipt)
+    {
+        $action = 'cancel';
+        $this->receipt->receiptProcess($receipt,$action);
+        return redirect()->route('receipt.indexAccepted');
+        // return $receipt;
+    }
+    public function receiptUnPay(Receipt $receipt)
+    {   
+        $action = 'unpay';
+        $this->receipt->receiptProcess($receipt,$action);
+        return redirect()->route('receipt.indexAccepted');
+        // return $receipt;
+    }
+    
 
     /**
      * Show the form for creating a new resource.

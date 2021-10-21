@@ -19,7 +19,7 @@
     }
 </style>
 
-<div class="container padding-bottom-3x mb-1">
+<div class="container bg-white rounded padding-bottom-3x mb-1">
     <!-- Alert-->
     {{-- <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span
             class="alert-close" data-dismiss="alert"></span>&nbsp;&nbsp;With this purchase you will earn
