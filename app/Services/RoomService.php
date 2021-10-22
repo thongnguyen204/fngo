@@ -101,4 +101,7 @@ class RoomService implements RoomServiceInterface{
     public function getRoomByCode($code){
         return $this->room->getRoomByCode($code);
     }
+    public function getTopPurchases($number){
+        return $this->room->getTopPurchases($number);
+    }
 }

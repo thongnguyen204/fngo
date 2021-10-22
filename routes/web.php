@@ -43,8 +43,6 @@ Route::get('/', function () {
 
         
         
-        
-        
     });
     Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
         Route::get('/dashboard', function () {
@@ -58,6 +56,8 @@ Route::get('/', function () {
 
         Route::get('/receipt-search','ReceiptController@search')
         ->name('receipt.search');
+        Route::get('/receipt-waiting-search','ReceiptController@searchWaiting')
+        ->name('receiptWaiting.search');
 
         
 

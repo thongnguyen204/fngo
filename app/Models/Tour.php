@@ -12,7 +12,7 @@ class Tour extends Model
         'title','content','tour_code',
         'price','day_start','place_start',
         'space_available','time_start',
-        'day_number'
+        'day_number','purchases_number'
     ];
     public function subTour()
     {

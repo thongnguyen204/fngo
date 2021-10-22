@@ -32,18 +32,23 @@ class UserController extends Controller
     {   $keyword = $request->search;
         $option = $request->searchOptions;
         
-        
-        
         $users = $this->user->search($keyword,$option);
-        return $users;
-        // // check collection vi get() tra ra collection, find thi khong
-        // if(!($users instanceof \Illuminate\Database\Eloquent\Collection))
-        //     $users = array($users);
-        //     // return 'array';
+
+        // kiem tra co phan trang hay khong
+        if($users instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {
+            $view = "admin.user.index";
+            return view($view)->with('users',$users);
+        } 
+        // check collection vi get() tra ra collection, find thi khong
+
+        if($users != null && !($users instanceof \Illuminate\Database\Eloquent\Collection))
+            $users = array($users);
+        // var_dump ($users);
         
-        // $view = "admin.user.search";
-        // // var_dump ($receipts);
-        // return view($view)->with('users',$users); 
+        $view = "admin.user.search";
+        
+        return view($view)->with('users',$users); 
     }
 
     /**

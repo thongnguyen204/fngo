@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UserRepository implements UserRepositoryInterface{
     public function all(){
-        return User::paginate(10);
+        return User::paginate(20);
     }
 
     public function delete($id){
@@ -30,4 +30,20 @@ class UserRepository implements UserRepositoryInterface{
         }
         $user->save();
     }
+
+    public function searchID($keyword)
+    {
+        return User::find($keyword);
+    }
+    public function searchName($keyword){
+        return User::where('name','like','%'.$keyword.'%')
+        ->get();
+    }
+    public function searchPhone($keyword){
+        return User::where('phone','like','%'.$keyword.'%')
+        ->get();
+    }
+    public function searchEmail($keyword){
+        return User::where('email','like','%'.$keyword.'%')
+        ->get();    }
 }

@@ -9,4 +9,8 @@ interface UserRepositoryInterface{
 
     public function delete($id);
     public function update(Request $request, User $user);
+    public function searchID($keyword);
+    public function searchName($keyword);
+    public function searchPhone($keyword);
+    public function searchEmail($keyword);
 }

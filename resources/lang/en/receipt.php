@@ -7,6 +7,21 @@ return [
     'Total'             => 'Total',
     'Canceled'          => 'Canceled',
     'Received'          => 'Payment received',
+    'User'              => 'User',
+    'Cost'              => 'Cost',
+    'Payment'           => 'Payment',
+    'Order date'        => 'Order date',
+    'Actions'           => 'Actions',
+    'Status'            => 'Status',
+    'Paid'              => 'Paid',
+    'Unpay'             => 'Unpay',
+    'Cancel'            => 'Cancel',
+    'Offline'           => 'Cash',
+    'Banking'           => 'Banking',
+    "User's ID"         => "User's ID",
+    "Search"            => "Search",
+
+    
 ]
 
 ?>

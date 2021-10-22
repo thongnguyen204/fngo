@@ -1,85 +1,69 @@
 @extends('layouts.admin')
 
 @section('content')
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-            
-
-            <div class="content">
-                <div class="title m-b-md">
-                    FnGO
-                </div>
-                @auth
-                    
-                
-                <div class="links">
-                    @if (Auth::user()->role->name == 'admin')
-                    <a href='{{route('users.index')}}'>{{__('common.Users manage')}}</a>
-                    <a href='{{route('receipt.index')}}'>{{__('common.Receipts queue')}}</a>
-                    <a href='{{route('receipt.indexAccepted')}}'>{{__('common.Receipts manage')}}</a>
-                    @endif
-                    <a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
-                    <a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a>
-                    <a href='{{route('receipt.index')}}'>{{__('common.Receipt')}}</a>
-                    
-                </div>
-                @endauth
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<link href="{{ asset('css/home.css') }}" rel="stylesheet">
+<link href="{{ asset('css/tour.css') }}" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="slide">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img style="max-height: 500px" class="d-block w-100" src="https://res.cloudinary.com/dloeyqk30/image/upload/v1634910928/FnGO/home-banner/tokyo-banner_s4ydsk.jpg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img style="max-height: 500px" class="d-block w-100" src="https://res.cloudinary.com/dloeyqk30/image/upload/v1634911384/FnGO/home-banner/tokyo-banner1_ofhswb.jpg" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img style="max-height: 500px" class="d-block w-100" src="https://res.cloudinary.com/dloeyqk30/image/upload/v1634910928/FnGO/home-banner/tokyo-banner_s4ydsk.jpg" alt="Third slide">
+              </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+    <div class="container">
+        <div class="title-top">TOP TOUR</div>
+        <div class="row">
+            @foreach ($topTour as $trip)
+            <div class="card col-md-3">
+                <div class="card-body">
+                    <a href="{{route('tour.show',$trip)}}">
+                        <img loading="lazy" alt="tour Image" class="img-fluid rounded pictrure" src="{{$trip->avatar}}">
+                    </a>
+                </div>
+                <div class="card-body tour-info">
+                    <div class="row">
+                        <a class="link" href="{{route('tour.show',$trip)}}">
+                            <div  class="col-md-12 tour-name">{{$trip->name}}</div>
+                        </a>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-6 col-sm-6 col-md-12 col-lg-6">
+                            
+                        </div>
+                        <div id="money" class="float-right col-6 col-sm-6 col-md-12 col-lg-6">
+                            <div class="float-right" style="width: 130px">{{$trip->money($trip->price)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
-    </body>
+    </div>
+</body>
 @endsection

@@ -30,13 +30,24 @@ class ReceiptService implements ReceiptServiceInterface
     public function getWaitingReceipt(){
         return $this->receipt->getWaitingReceipt();
     }
+    public function searchWaiting($keyword,$option)
+    {
+        if($keyword == null)
+            return $this->receipt->getWaitingReceipt();
+        if($option == 'id')
+            return $this->receipt->getWaitingReceiptByID($keyword);
+        if($option == 'userid')
+            return $this->receipt->getWaitingReceiptByUserID($keyword);
+        return $this->receipt->getWaitingReceipt();
+    }
     
     public function acceptedIndex(){
         return $this->receipt->getAcceptedIndex();
     }
 
     // options = [id,userid,username]
-    public function search($keyword,$option){
+    public function search($keyword,$option)
+    {
         if($keyword == null)
             return $this->receipt->getAcceptedIndex();
         if($option == 'id')

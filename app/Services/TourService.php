@@ -157,4 +157,7 @@ class TourService implements TourServiceInterface
     {
         return $this->tour->getAllCityProvince();
     }
+    public function getTopPurchases($number){
+        return $this->tour->getTopPurchases($number);
+    }
 }

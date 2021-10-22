@@ -16,28 +16,31 @@
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio1" value="id">
-            <label class="form-check-label" for="inlineRadio1">Receipt's ID</label>
+            <label class="form-check-label" for="inlineRadio1">ID</label>
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio2" value="userid">
-            <label class="form-check-label" for="inlineRadio2">User's ID</label>
+            <label class="form-check-label" for="inlineRadio2">{{__("receipt.User's ID")}}</label>
         </div>
-        <div class="form-check form-check-inline">
+        {{-- <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio3" value="username">
             <label class="form-check-label" for="inlineRadio3">User's name</label>
-        </div>
+        </div> --}}
     </form>
+    @if (!$receipts)
+        {{__('receipt.Empty')}}
+    @else
     <div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">User</th>
-                <th scope="col">Cost</th>
-                <th scope="col">Status</th>
-                <th scope="col">Payment</th>
-                <th scope="col">Order date</th>
-                <th scope="col">Actions</th>
+                <th scope="col">{{__('receipt.User')}}</th>
+                <th scope="col">{{__('receipt.Cost')}}</th>
+                <th scope="col">{{__('receipt.Status')}}</th>
+                <th scope="col">{{__('receipt.Payment')}}</th>
+                <th scope="col">{{__('receipt.Order date')}}</th>
+                <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -47,11 +50,33 @@
                 <th scope="row"><a href="{{route('receipt.show',$receipt)}}">{{$receipt->id}}</a></th>
                 <td>{{$receipt->user->name}}</td>
                 <td>{{$receipt->money($receipt->price_sum)}}</td>
-                <td>{{$receipt->status->name}}</td>
-                <td>{{$receipt->payment->type}}</td>
+                
+                {{-- 1-accept  2-cancel  3-wait  4-receive --}}
+                <td>
+                    @if ($receipt->status_id == 1)
+                        {{__('receipt.Accepted')}}
+                    @else
+                        @if ($receipt->status_id == 2)
+                            {{__('receipt.Canceled')}}
+                        @else
+                            @if ($receipt->status_id == 3)
+                                {{__('receipt.Waiting')}}
+                            @else
+                                {{__('receipt.Received')}}
+                            @endif
+                        @endif
+                    @endif
+                </td>
+                {{-- 1-offline   2-banking --}}
+                <td>
+                    @if ($receipt->payment_id == 1)
+                        {{__('receipt.Offline')}}
+                    @else
+                        {{__('receipt.Banking')}}
+                    @endif
+                </td>
                 <td>{{$receipt->created_at}}</td>
                 <td class="row">
-
                     @if ($receipt->status_id == 4)
                     <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.unpay',$receipt->id)}}">Unpay</a>
                     @else
@@ -72,7 +97,7 @@
         </tbody>
     </table>
     </div>
-
+    @endif
 </div>
 
 @endsection

@@ -28,8 +28,18 @@ class ProductCodeSeeder extends Seeder
             ]);
             Products::create([
                 'product_code' => 'tour_2',
-                'name' => 'ĐÀ LẠT – 4N3Đ – THÀNH PHỐ SƯƠNG MÙ',
+                'name' => 'TOUR NHA TRANG 3N3Đ- LỄ 30/04',
                 'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1632636749/FnGO/TourImage/main/hinh-anh-ho-xuan-huong-da-lat-ve-dem-hinh1_utcmrz.jpg',
+            ]);
+            Products::create([
+                'product_code' => 'tour_3',
+                'name' => 'ĐÀ LẠT – 3N2Đ – THÀNH PHỐ NGÀN HOA',
+                'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R071dbf03938225c42bb0377bfc5cbfd0.jpg',
+            ]);
+            Products::create([
+                'product_code' => 'tour_4',
+                'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
+                'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
             ]);
 
 

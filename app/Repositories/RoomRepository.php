@@ -25,7 +25,14 @@ class RoomRepository implements RoomRepositoryInterface{
         $room->delete();
         return $temp;
     }
-    public function getRoomByCode($code){
-        return RoomType::where('product_code',$code)->first();
+    public function getRoomByCode($product_code){
+        return RoomType::where('product_code',$product_code)->first();
+    }
+
+    public function getTopPurchases($number)
+    {
+        return RoomType::orderBy('purchases_number','DESC')
+        ->take($number)
+        ->get();
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 interface ReceiptRepositoryInterface{
     public function getRoleName();
     public function getWaitingReceipt();
+    public function getWaitingReceiptByID($keyword);
+    public function getWaitingReceiptByUserID($keyword);
     public function getReceiptOfUser($user_id);
     public function saveReceipt(Receipt $receipt);
     

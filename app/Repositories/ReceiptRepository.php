@@ -21,6 +21,19 @@ class ReceiptRepository implements ReceiptRepositoryInterface
         return Receipt::where('status_id',$this->receiptStatusWaitingID)
         ->paginate(10);
     }
+    public function getWaitingReceiptByID($keyword)
+    {
+        return Receipt::where('id',$keyword)
+        ->where('status_id',$this->receiptStatusWaitingID)
+        ->get();
+    }
+    public function getWaitingReceiptByUserID($keyword)
+    {
+        return Receipt::where('user_id',$keyword)
+        ->where('status_id',$this->receiptStatusWaitingID)
+        ->get();
+    }
+    
     public function getReceiptOfUser($user_id){
         return Receipt::where('user_id',$user_id)
         ->orderBy('id','desc')->get();
@@ -86,13 +99,13 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     }
 
     public function whereMonth($month,$year){
-        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
+        return Receipt::where('status_id',$this->receiptStatusPaidID)
         ->whereYear ('created_at', $year)
         ->whereMonth('created_at', $month)
         ->get();
     }
     public function whereDay($day,$month,$year){
-        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
+        return Receipt::where('status_id',$this->receiptStatusPaidID)
         ->whereYear ('created_at', $year)
         ->whereMonth('created_at', $month)
         ->whereDay  ('created_at', $day)
@@ -100,7 +113,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
         // return $month;
     }
     public function whereYear($year){
-        return Receipt::where('status_id',$this->receiptStatusAcceptedID)
+        return Receipt::where('status_id',$this->receiptStatusPaidID)
         ->whereYear ('created_at', $year)
         ->get();
     }

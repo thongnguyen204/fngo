@@ -41,5 +41,11 @@ class TourRepository implements TourRepositoryInterface
     {
         return CityProvince::all();
     }
+    public function getTopPurchases($number)
+    {
+        return Tour::orderBy('purchases_number','DESC')
+        ->take($number)
+        ->get();
+    }
     
 }

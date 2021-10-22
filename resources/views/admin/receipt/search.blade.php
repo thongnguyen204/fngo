@@ -22,7 +22,11 @@
             <label class="form-check-label" for="inlineRadio2">{{__("receipt.User's ID")}}</label>
         </div>
     </form>
+    @if ($receipts->isEmpty())
+        {{__('receipt.Empty')}}
+    @else
     @foreach ($receipts as $receipt)
+    
     <div style="margin-top: 50px" class="card">
         <div class="card-header">
             <div class="row">
@@ -84,7 +88,7 @@
         </div>
       </div>
     @endforeach
-    {{ $receipts->links() }}
+    @endif
     </div>
     
 </body>

@@ -18,16 +18,14 @@
         @foreach ($trips as $trip)
         <div class="card col-md-4">
             <div class="card-body">
-
                 <a href="{{route('tour.show',$trip)}}">
                     <img loading="lazy" alt="tour Image" class="img-fluid rounded pictrure" src="{{$trip->avatar}}">
                 </a>
-
             </div>
             <div class="card-body tour-info">
                 <div class="row">
                     <a href="{{route('tour.show',$trip)}}">
-                        <div class="col-md-12">{{$trip->name}}</div>
+                        <div class="col-md-12 tour-name">{{$trip->name}}</div>
                     </a>
                 </div>
 

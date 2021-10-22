@@ -9,6 +9,19 @@ return [
     'Total'             => 'Tổng giá tiền',
     'Canceled'          => 'Đã hủy',
     'Received'          => 'Đã thanh toán',
+    'User'              => 'Người dùng',
+    'Cost'              => 'Giá',
+    'Payment'           => 'PT thanh toán',
+    'Order date'        => 'Ngày mua',
+    'Status'            => 'Trạng thái',
+    'Paid'              => 'Đã thanh toán',
+    'Unpay'             => 'Chưa thanh toán',
+    'Cancel'            => 'Hủy',
+    'Offline'           => 'Tiền mặt',
+    'Banking'           => 'Chuyển khoản',
+    "User's ID"         => "ID người dùng",
+    "Search"            => "Tìm hóa đơn",
+
     
 ]
 

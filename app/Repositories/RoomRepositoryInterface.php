@@ -10,5 +10,6 @@ interface RoomRepositoryInterface{
     public function store(RoomType $room);
     public function getAllHotel();
     public function destroy(RoomType $room);
-    public function getRoomByCode($code);
+    public function getRoomByCode($product_code);
+    public function getTopPurchases($number);
 }

@@ -25,5 +25,14 @@ class UserService implements UserServiceInterface{
     {
         if($keyword == null)
             return $this->user->all();
+        if($option == 'id')
+            return $this->user->searchID($keyword);
+        if($option == 'name')
+            return $this->user->searchName($keyword);
+        if($option == 'email')
+            return $this->user->searchEmail($keyword);
+        if($option == 'phone')
+            return $this->user->searchPhone($keyword);
+        return $this->user->all();
     }
 }

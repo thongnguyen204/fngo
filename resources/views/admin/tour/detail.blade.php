@@ -41,7 +41,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-9">
             {{-- <div>{{$tour->content}}</div> --}}
             <div style="margin-bottom: 50px" class="">
-                <img style="max-width: 100%;" loading="lazy" alt="tour Image" class="img_fluid rounded"
+                <img style="width: 100%;" loading="lazy" alt="tour Image" class="img_fluid rounded"
                     src="{{$tour->avatar}}">
             </div>
             <h3><i class="bi bi-geo-alt-fill"></i> {{__('tour.Schedule')}}</h3>

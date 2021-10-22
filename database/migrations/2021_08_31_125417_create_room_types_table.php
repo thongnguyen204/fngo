@@ -20,6 +20,7 @@ class CreateRoomTypesTable extends Migration
             $table->string('name');
             $table->string('avatar')->default("https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg");
             $table->string('bed');
+            $table->integer('purchases_number')->default(0);
             $table->integer('area')->unsigned();
             $table->integer('max_person');
             $table->boolean('refund')->default(0);

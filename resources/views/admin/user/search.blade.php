@@ -2,6 +2,8 @@
 
 @section('dashboard')
 
+{{-- search file dont have pagination --}}
+
 <link href="{{ asset('css/receipt.css') }}" rel="stylesheet">
 
 <div class="container bg-white rounded wrapper">
@@ -20,7 +22,7 @@
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio2" value="name">
-            <label class="form-check-label" for="inlineRadio2">{{__('user.Name')}}</label>
+            <label class="form-check-label" for="inlineRadio2">Name</label>
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio3" value="email">
@@ -28,17 +30,20 @@
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio4" value="phone">
-            <label class="form-check-label" for="inlineRadio4">{{__('user.Phone')}}</label>
+            <label class="form-check-label" for="inlineRadio4">Phone</label>
         </div>
     </form>
+    @if (!$users)
+        {{__('user.Empty')}}
+    @else
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">{{__("user.ID")}}</th>
-                    <th scope="col">{{__('user.Name')}}</th>
+                    <th scope="col">User's ID</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">{{__('user.Phone')}}</th>
+                    <th scope="col">Phone</th>
                     <th scope="col"></th>
                     
                 </tr>
@@ -64,8 +69,10 @@
             </tbody>
         </table>
     </div>
-    {{ $users->links() }}
+    @endif
+    
+
 </div>
 
-
+{{-- {{ $users->links() }} --}}
 @endsection

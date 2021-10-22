@@ -11,6 +11,8 @@ interface ReceiptServiceInterface{
     
     public function getWaitingReceipt();
 
+    public function searchWaiting($keyword,$option);
+
     public function acceptedIndex();
 
     public function search($keyword,$option);

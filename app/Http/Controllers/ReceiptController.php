@@ -43,6 +43,26 @@ class ReceiptController extends Controller
         $view = $this->receipt->getRoleName() . ".receipt.waiting";
         return view($view)->with('receipts',$receipts);
     }
+    public function searchWaiting(Request $request){
+        $keyword = $request->search;
+        $option = $request->searchOptions;
+        $receipts = $this->receipt->searchWaiting($keyword,$option);
+        
+        if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {
+            $view = "admin.receipt.waiting";
+            return view($view)->with('receipts',$receipts);
+        }
+        if($receipts != null &&  !($receipts instanceof \Illuminate\Database\Eloquent\Collection))
+            $receipts = array($receipts);
+            // return 'array';
+        
+        $role = $this->receipt->getRoleName();
+        // return $role;
+        $view = "admin.receipt.search";
+        // dd ($receipts);
+        return view($view)->with('receipts',$receipts); 
+    }
 
     // view accepted reciepts
     public function acceptedIndex()
@@ -59,8 +79,14 @@ class ReceiptController extends Controller
         
         $receipts = $this->receipt->search($keyword,$option);
         
+        if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {
+            $view = "admin.receiptAccepted.index";
+            // return $receipts;
+            return view($view)->with('receipts',$receipts);
+        } 
         // check collection vi get() tra ra collection, find thi khong
-        if(!($receipts instanceof \Illuminate\Database\Eloquent\Collection))
+        if($receipts != null &&  !($receipts instanceof \Illuminate\Database\Eloquent\Collection))
             $receipts = array($receipts);
             // return 'array';
         

@@ -12,4 +12,5 @@ interface RoomServiceInterface{
     public function getRoomByCode($code);
     public function update(Request $request, RoomType $room);
     public function destroy(RoomType $room);
+    public function getTopPurchases($number);
 }

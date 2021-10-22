@@ -5,6 +5,8 @@ use App\Models\Receipt;
 use App\Models\Receipt_Detail;
 use App\Repositories\BookingRepositoryInterface;
 use App\Repositories\ReceiptDetailRepositoryInterface;
+use App\Repositories\RoomRepositoryInterface;
+use App\Repositories\TourRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,15 +15,32 @@ class BookingService implements BookingServiceInterface{
     private $receipt;
     private $product;
     private $receipt_detail;
+    private $tourRepository;
+    private $roomRepository;
 
     private $receiptStatusAcceptedID = 1;
     private $receiptStatusWaitingID = 3;
-    public function __construct(ProductServiceInterface $product ,BookingRepositoryInterface $booking,ReceiptServiceInterface $receipt,ReceiptDetailRepositoryInterface $receipt_detail)
+    public function __construct(RoomRepositoryInterface $roomRepository,TourRepositoryInterface $tourRepository,ProductServiceInterface $product ,BookingRepositoryInterface $booking,ReceiptServiceInterface $receipt,ReceiptDetailRepositoryInterface $receipt_detail)
     {
+        $this->tourRepository = $tourRepository;
+        $this->roomRepository = $roomRepository;
         $this->product = $product;
         $this->booking = $booking;
         $this->receipt = $receipt;
         $this->receipt_detail = $receipt_detail;
+    }
+    public function updatePurchaseNumber($product_code)
+    {
+        if($product_code[0] == 't'){
+            $tour = $this->tourRepository->searchCode($product_code);
+            $tour->purchases_number++;
+            $this->tourRepository->store($tour);
+        }
+        else{
+            $room = $this->roomRepository->getRoomByCode($product_code);
+            $room->purchases_number++;
+            $this->roomRepository->store($room);
+        }
     }
     public function createReceipt()
     {
@@ -49,6 +68,9 @@ class BookingService implements BookingServiceInterface{
             }
             else   
             $receipt1_detail->description = "";
+
+            //update purchases number
+            $this->updatePurchaseNumber($product['key']);
             $this->receipt_detail->store($receipt1_detail);
             // dd($product['key']);
         }
