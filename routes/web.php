@@ -32,11 +32,15 @@ Route::get('/', function () {
         Route::get('/admin', function () {
             return view('admin.index');
         })->name('admin');
-    
+
+        // ----user---
         Route::resource('/users','UserController')
         ->except([
             'create','store','show','edit','update'
         ]);
+        Route::get('/user-search','UserController@search')
+        ->name('user.search');
+
         
         
         

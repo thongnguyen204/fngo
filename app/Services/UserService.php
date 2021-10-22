@@ -20,4 +20,10 @@ class UserService implements UserServiceInterface{
     public function update(Request $request, User $user){
         $this->user->update($request,$user);
     }
+    // options = [id,name,email,phone]
+    public function search($keyword,$option)
+    {
+        if($keyword == null)
+            return $this->user->all();
+    }
 }

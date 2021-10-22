@@ -51,13 +51,11 @@
                 <td>{{$receipt->payment->type}}</td>
                 <td>{{$receipt->created_at}}</td>
                 <td class="row">
-
                     @if ($receipt->status_id == 4)
                     <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.unpay',$receipt->id)}}">Unpay</a>
                     @else
                     <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.pay',$receipt->id)}}">Paid</a>
                     @endif
-                    
                     <a style="margin: 10px" class="btn btn-secondary col" href="{{route('receipt.cancel',$receipt->id)}}">Cancel</a>
                 </td>
                 <td>

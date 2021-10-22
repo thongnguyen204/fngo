@@ -28,6 +28,23 @@ class UserController extends Controller
         $users = $this->user->all();
         return view('admin.user.index')->with('users',$users);
     }
+    public function search(Request $request)
+    {   $keyword = $request->search;
+        $option = $request->searchOptions;
+        
+        
+        
+        $users = $this->user->search($keyword,$option);
+        return $users;
+        // // check collection vi get() tra ra collection, find thi khong
+        // if(!($users instanceof \Illuminate\Database\Eloquent\Collection))
+        //     $users = array($users);
+        //     // return 'array';
+        
+        // $view = "admin.user.search";
+        // // var_dump ($receipts);
+        // return view($view)->with('users',$users); 
+    }
 
     /**
      * Show the form for creating a new resource.
