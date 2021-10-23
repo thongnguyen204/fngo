@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Receipt;
 use App\Models\Receipt_Detail;
 use App\Repositories\BookingRepositoryInterface;
+use App\Repositories\HotelRepositoryInterface;
 use App\Repositories\ReceiptDetailRepositoryInterface;
 use App\Repositories\RoomRepositoryInterface;
 use App\Repositories\TourRepositoryInterface;
@@ -17,11 +18,13 @@ class BookingService implements BookingServiceInterface{
     private $receipt_detail;
     private $tourRepository;
     private $roomRepository;
+    private $hotelRepository;
 
     private $receiptStatusAcceptedID = 1;
     private $receiptStatusWaitingID = 3;
-    public function __construct(RoomRepositoryInterface $roomRepository,TourRepositoryInterface $tourRepository,ProductServiceInterface $product ,BookingRepositoryInterface $booking,ReceiptServiceInterface $receipt,ReceiptDetailRepositoryInterface $receipt_detail)
+    public function __construct(HotelRepositoryInterface $hotelRepository,RoomRepositoryInterface $roomRepository,TourRepositoryInterface $tourRepository,ProductServiceInterface $product ,BookingRepositoryInterface $booking,ReceiptServiceInterface $receipt,ReceiptDetailRepositoryInterface $receipt_detail)
     {
+        $this->hotelRepository = $hotelRepository;
         $this->tourRepository = $tourRepository;
         $this->roomRepository = $roomRepository;
         $this->product = $product;
@@ -40,6 +43,9 @@ class BookingService implements BookingServiceInterface{
             $room = $this->roomRepository->getRoomByCode($product_code);
             $room->purchases_number++;
             $this->roomRepository->store($room);
+            $hotel = $room->hotel;
+            $hotel->purchases_number++;
+            $this->hotelRepository->store($hotel);
         }
     }
     public function createReceipt()

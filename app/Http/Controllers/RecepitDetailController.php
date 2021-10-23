@@ -84,7 +84,9 @@ class RecepitDetailController extends Controller
     public function update(Request $request, Receipt_Detail $receiptDetail)
     {
         //
-        $temp = $this->receipt_detail->update($request,$receiptDetail);
+        $temp = $this->receipt_detail
+        ->update($request,$receiptDetail);
+
         return redirect()->route('receipt.show',$temp);
     }
 
@@ -97,7 +99,9 @@ class RecepitDetailController extends Controller
     public function destroy(Receipt_Detail $receipt_detail)
     {
         //
-        $temp = $this->receipt_detail->delete($receipt_detail);
+        $temp = $this->receipt_detail
+        ->delete($receipt_detail);
+        
         return redirect()->route('receipt.show',$temp);
     }
 }

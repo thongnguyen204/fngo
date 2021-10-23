@@ -20,7 +20,7 @@ class CreateHotelsTable extends Migration
             $table->string('category')->default('nơi ở');
             $table->string('avatar');
             $table->string('address');
-            
+            $table->integer('purchases_number')->default(0);
             $table->integer('city_province_id')->unsigned();
             
             $table->integer('price')->unsigned();

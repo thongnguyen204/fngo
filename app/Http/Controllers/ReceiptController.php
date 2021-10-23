@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receipt;
-
 use App\Services\ProductServiceInterface;
 use App\Services\ReceiptServiceInterface;
 use Illuminate\Http\Request;
@@ -14,7 +13,10 @@ class ReceiptController extends Controller
     private $receipt;
     private $product;
 
-    public function __construct(ReceiptServiceInterface $receipt,ProductServiceInterface $product)
+    public function __construct(
+        ReceiptServiceInterface $receipt,
+        ProductServiceInterface $product
+        )
     {
         $this->receipt = $receipt;
         $this->product = $product;
@@ -27,12 +29,15 @@ class ReceiptController extends Controller
 
     private $receiptStatusAcceptedID = 1;
     private $receiptStatusWaitingID = 3;
+
     public function index()
     {
         //
         $receipts = $this->receipt->all();
         $view = $this->receipt->getRoleName() . ".receipt.index";
-        return view($view)->with('receipts',$receipts);
+        
+        return view($view)
+        ->with('receipts',$receipts);
         // return $receipts;   
     }
     public function myReceipt(){
@@ -40,12 +45,14 @@ class ReceiptController extends Controller
     }
     public function waitingIndex(){
         $receipts = $this->receipt->getWaitingReceipt();
+        
         $view = $this->receipt->getRoleName() . ".receipt.waiting";
         return view($view)->with('receipts',$receipts);
     }
     public function searchWaiting(Request $request){
         $keyword = $request->search;
         $option = $request->searchOptions;
+        
         $receipts = $this->receipt->searchWaiting($keyword,$option);
         
         if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
@@ -58,10 +65,15 @@ class ReceiptController extends Controller
             // return 'array';
         
         $role = $this->receipt->getRoleName();
+        
         // return $role;
+        
         $view = "admin.receipt.search";
+        
         // dd ($receipts);
-        return view($view)->with('receipts',$receipts); 
+        
+        return view($view)
+        ->with('receipts',$receipts); 
     }
 
     // view accepted reciepts
@@ -70,12 +82,14 @@ class ReceiptController extends Controller
         $receipts = $this->receipt->acceptedIndex();
         $role = $this->receipt->getRoleName();
         $view = $role . ".receiptAccepted.index";
-        return view($view)->with('receipts',$receipts); 
+        
+        return view($view)
+        ->with('receipts',$receipts); 
     }
     public function search(Request $request)
-    {   $keyword = $request->search;
+    {   
+        $keyword = $request->search;
         $option = $request->searchOptions;
-        
         
         $receipts = $this->receipt->search($keyword,$option);
         
@@ -83,18 +97,24 @@ class ReceiptController extends Controller
         {
             $view = "admin.receiptAccepted.index";
             // return $receipts;
-            return view($view)->with('receipts',$receipts);
+            
+            return view($view)
+            ->with('receipts',$receipts);
         } 
         // check collection vi get() tra ra collection, find thi khong
-        if($receipts != null &&  !($receipts instanceof \Illuminate\Database\Eloquent\Collection))
+        if($receipts != null && !($receipts instanceof \Illuminate\Database\Eloquent\Collection))
             $receipts = array($receipts);
             // return 'array';
         
         $role = $this->receipt->getRoleName();
+        
         // return $role;
+        
         $view = $role . ".receiptAccepted.search";
         // var_dump ($receipts);
-        return view($view)->with('receipts',$receipts); 
+        
+        return view($view)
+        ->with('receipts',$receipts); 
     }
 
 
@@ -102,28 +122,35 @@ class ReceiptController extends Controller
     public function receiptAccept(Receipt $receipt)
     {
         $this->receipt->receiptAccept($receipt);
+
         return redirect()->route('receipt.waiting');
     }
     public function receiptPay(Receipt $receipt)
     {   
         $action = 'pay';
+        
         $this->receipt->receiptProcess($receipt,$action);
+        
         return redirect()->route('receipt.indexAccepted');
         // return $receipt;
     }
     public function receiptCancel(Receipt $receipt)
     {
         $action = 'cancel';
+        
         $this->receipt->receiptProcess($receipt,$action);
+        
         return redirect()->route('receipt.indexAccepted');
-        // return $receipt;
+
     }
     public function receiptUnPay(Receipt $receipt)
     {   
         $action = 'unpay';
+        
         $this->receipt->receiptProcess($receipt,$action);
+        
         return redirect()->route('receipt.indexAccepted');
-        // return $receipt;
+
     }
     
 
@@ -175,7 +202,8 @@ class ReceiptController extends Controller
     public function edit(Receipt $receipt)
     {
         // 
-        return view('admin.receipt.edit')->with('receipt',$receipt);
+        return view('admin.receipt.edit')
+        ->with('receipt',$receipt);
     }
 
     /**

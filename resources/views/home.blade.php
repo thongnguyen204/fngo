@@ -2,8 +2,9 @@
 
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-<link href="{{ asset('css/home.css') }}" rel="stylesheet">
-<link href="{{ asset('css/tour.css') }}" rel="stylesheet">
+<link href="{{ asset('css/home.css') }}"  rel="stylesheet">
+<link href="{{ asset('css/tour.css') }}"  rel="stylesheet">
+<link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
     
 </head>
 <body>
@@ -36,34 +37,123 @@
           </div>
     </div>
     <div class="container">
-        <div class="title-top">TOP TOUR</div>
-        <div class="row">
+        <div class="title-top rounded">
+          <i class="bi bi-camera-fill"></i>
+          {{__('home.top tour')}}
+        </div>
+        <div class="card-group">
+          <div class="row ">
             @foreach ($topTour as $trip)
-            <div class="card col-md-3">
-                <div class="card-body">
-                    <a href="{{route('tour.show',$trip)}}">
-                        <img loading="lazy" alt="tour Image" class="img-fluid rounded pictrure" src="{{$trip->avatar}}">
-                    </a>
-                </div>
-                <div class="card-body tour-info">
-                    <div class="row">
-                        <a class="link" href="{{route('tour.show',$trip)}}">
-                            <div  class="col-md-12 tour-name">{{$trip->name}}</div>
-                        </a>
-                    </div>
-    
-                    <div class="row">
-                        <div class="col-6 col-sm-6 col-md-12 col-lg-6">
-                            
-                        </div>
-                        <div id="money" class="float-right col-6 col-sm-6 col-md-12 col-lg-6">
-                            <div class="float-right" style="width: 130px">{{$trip->money($trip->price)}}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <div class="card col-6 col-sm-4 col-md-3">
+                  <div style="padding: 10px" class="card-img-top">
+                      <a href="{{route('tour.show',$trip)}}">
+                          <img loading="lazy" alt="tour Image" class="img-fluid rounded pictrure" src="{{$trip->avatar}}">
+                      </a>
+                  </div>
+                  <div class="card-body tour-info">
+                      <div class="row">
+                          <a class="link" href="{{route('tour.show',$trip)}}">
+                              <div  class="col-md-12 tour-name">{{$trip->name}}</div>
+                          </a>
+                      </div>
+      
+                      {{-- <div class="row">
+                          <div class="col-6 col-sm-6 col-md-12 col-lg-6">
+                              
+                          </div>
+                          <div id="money" class="float-right col-6 col-sm-6 col-md-12 col-lg-6">
+                              
+                          </div>
+                      </div> --}}
+                  </div>
+                  <div class="card-footer">
+                    <div id="money" class="float-right" style="width: 130px">{{$trip->money($trip->price)}}</div>
+                  </div>
+              </div>
             @endforeach
         </div>
+      </div>
+      <div class="more-btn-wrapper d-flex justify-content-center">
+        <a class="btn" href="{{route('tour.index')}}">
+          {{__('home.More')}}
+          <i style="margin-left: 5px" class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="container">
+
+      <div class="title-top rounded">
+        <i class="bi bi-house-door-fill"></i> 
+        {{__('home.top hotel')}}
+      </div>
+
+      <div class="card-group">
+        <div class="row">
+          @foreach ($topHotel  as $hotel)
+          <div class="card col-6 col-sm-4 col-md-3">
+              <div style="padding: 10px" class="card-img-top">
+                  <a  href="{{route('hotel.show',$hotel)}}">
+                      <img loading="lazy" alt="hotel Image" class="img_fluid rounded pictrure"
+                          src="{{$hotel->avatar}}">
+                  </a>
+              </div>
+              <div class="card-body hotel-info">
+                  <div class="row">
+                      <a class="link" href="{{route('hotel.show',$hotel)}}">
+                          <div class="col-md-12 tour-name ">{{$hotel->name}}</div>
+                      </a>
+                  </div>
+              </div>
+              <div class="card-footer">
+                <div id="money" class="float-right" style="width: 130px">{{$hotel->money($hotel->price)}}</div>
+              </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+
+      <div class="more-btn-wrapper d-flex justify-content-center">
+        <a class="btn" href="{{route('hotel.index')}}">
+          {{__('home.More')}}
+          <i style="margin-left: 5px" class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="title-top rounded">
+        <i class="bi bi-newspaper"></i>
+        {{__('home.top article')}}
+      </div>
+      <div class="card-group">
+        <div class="row">
+          @foreach ($topArticle as $article)
+            <div class="card col-6 col-sm-4 col-md-3">
+              <div style="padding: 10px" class="card-img-top">
+                <a href="{{route('article.show',$article)}}">
+                    <img loading="lazy" alt="article Image" class="img_fluid rounded pictrure"
+                        src="https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg">
+                </a>
+              </div>
+              <div class="card-body">
+                <a  class="link" href="{{route('article.show',$article)}}">
+                  <div class="card-title article-title">{{$article->title}}</div>
+                </a>
+                <p class="card-text">{{$article->abstract}}</p>
+                
+              </div>
+
+            </div>
+          @endforeach
+        </div>
+      </div>
+      <div class="more-btn-wrapper d-flex justify-content-center">
+        <a class="btn" href="{{route('article.index')}}">
+          {{__('home.More')}}
+          <i style="margin-left: 5px" class="bi bi-arrow-right"></i>
+        </a>
+      </div>
     </div>
 </body>
 @endsection

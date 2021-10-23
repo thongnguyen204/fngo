@@ -11,10 +11,15 @@ class ArticleController extends Controller
 {
     private $articleService;
     private $comment;
-    public function __construct(ArticleCommentServiceInterface $comment,ArticleServiceInterface $articleService)
+
+    public function __construct
+        (
+        ArticleCommentServiceInterface $comment,
+        ArticleServiceInterface $articleService
+        )
     {
-        $this->comment = $comment;
-        $this->articleService = $articleService;
+        $this->comment          = $comment;
+        $this->articleService   = $articleService;
     }
     /**
      * Display a listing of the resource.
@@ -28,6 +33,7 @@ class ArticleController extends Controller
             $articles = $this->articleService->search($request->search);
         else
             $articles = $this->articleService->getAllArticles();
+        
         return view('article.index')
         ->with('articles',$articles);
         // return ($articles[0]->user);
@@ -54,6 +60,7 @@ class ArticleController extends Controller
     {
         //
         $article =  $this->articleService->store($request);
+        
         return redirect()->route('article.show',$article);
     }
 
@@ -78,9 +85,9 @@ class ArticleController extends Controller
             $have_comment = false;
         
         return view('admin.article.detail')
-        ->with('article',$article)
-        ->with('comments',$comments) // json
-        ->with('have_comment',$have_comment); // boolean
+        ->with('article',       $article)
+        ->with('comments',      $comments)      // json
+        ->with('have_comment',  $have_comment); // boolean
     }
 
     /**
@@ -107,6 +114,7 @@ class ArticleController extends Controller
     {
         //
         $this->articleService->update($request,$article);
+        
         return redirect()->route('article.show',$article);
         
     }
@@ -121,6 +129,7 @@ class ArticleController extends Controller
     {
         //
         $this->articleService->destroy($article);
+        
         return redirect()->route('article.index');
     }
 }

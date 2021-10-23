@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     private $product;
+    
     public function __construct(ProductServiceInterface $product)
     {
         $this->product = $product;

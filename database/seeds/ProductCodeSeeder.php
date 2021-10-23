@@ -54,7 +54,18 @@ class ProductCodeSeeder extends Seeder
                 'name' => 'Hotel 2',
                 'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
             ]);
+            Products::create([
+                'product_code' => 'hotel_3',
+                'name' => 'Hotel 3',
+                'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            ]);
+            Products::create([
+                'product_code' => 'hotel_4',
+                'name' => 'Hotel 4',
+                'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            ]);
 
+            //hotel 1 seeder
             Products::create([
                 'product_code' => 'hotel_1_room_1',
                 'name' => 'Room 1',
@@ -75,6 +86,30 @@ class ProductCodeSeeder extends Seeder
             ]);
             Products::create([
                 'product_code' => 'hotel_2_room_2',
+                'name' => 'Room 2',
+                'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            ]);
+
+            //hotel 3 seeder
+            Products::create([
+                'product_code' => 'hotel_3_room_1',
+                'name' => 'Room 1',
+                'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            ]);
+            Products::create([
+                'product_code' => 'hotel_3_room_2',
+                'name' => 'Room 2',
+                'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            ]);
+
+            //hotel 4 seeder
+            Products::create([
+                'product_code' => 'hotel_4_room_1',
+                'name' => 'Room 1',
+                'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            ]);
+            Products::create([
+                'product_code' => 'hotel_4_room_2',
                 'name' => 'Room 2',
                 'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
             ]);

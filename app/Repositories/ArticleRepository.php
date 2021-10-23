@@ -21,4 +21,14 @@ class ArticleRepository implements ArticleRepositoryInterface{
             ->orderBy('id','desc')
             ->paginate(20);
     }
+    public function findArticle($id)
+    {
+        return Article::find($id);
+    }
+    public function getTopArticle($number)
+    {
+        return Article::orderBy('comment_number','DESC')
+        ->take($number)
+        ->get();
+    }
 }

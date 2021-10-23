@@ -29,6 +29,7 @@ class TourSeeder extends Seeder
                 'departure_minute' => 30,
                 'day_number' => 4,
                 'city_province_id' => 3,
+                'purchases_number' => 2,
             ]);
 
             
@@ -47,6 +48,7 @@ class TourSeeder extends Seeder
                 'departure_minute' => 30,
                 'day_number' => 4,
                 'city_province_id' => 3,
+                'purchases_number' => 3,
             ]);
 
             $tour =  Tour::create([
@@ -64,6 +66,7 @@ class TourSeeder extends Seeder
                 'departure_minute' => 30,
                 'day_number' => 4,
                 'city_province_id' => 3,
+                'purchases_number' => 1,
             ]);
 
             $tour =  Tour::create([
@@ -81,6 +84,7 @@ class TourSeeder extends Seeder
                 'departure_minute' => 30,
                 'day_number' => 4,
                 'city_province_id' => 3,
+                'purchases_number' => 4,
             ]);
     }
 }

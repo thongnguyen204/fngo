@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
 use Illuminate\Http\Request;
 use App\Models\ht_booking;
 use App\Models\Receipt;
@@ -32,11 +31,8 @@ class HotelBookingController extends Controller
     public function create(RoomType $room)
     {
         //
-        return view('user.hotel.roomType.booking')->with('roomtype',$room);
-
-        
-
-        
+        return view('user.hotel.roomType.booking')
+        ->with('roomtype',$room);
     }
 
     /**
@@ -52,6 +48,7 @@ class HotelBookingController extends Controller
         $receipt->price_sum = 0;
         $receipt->description = "";
         // $receipt->save();
+        
         return $receipt;
     }
     public function createReceiptDetail(int $room_id)
@@ -106,6 +103,7 @@ class HotelBookingController extends Controller
 
         $booking->description = $description;
         $booking->save();
+        
         return redirect()->route('user');
     }
 

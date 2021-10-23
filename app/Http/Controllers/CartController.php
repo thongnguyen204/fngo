@@ -106,7 +106,8 @@ class CartController extends Controller
     {
         // dd($request->data);
         $data = $request->data;
-        foreach($data as $item){
+        foreach($data as $item)
+        {
             $oldCart = Session('Cart') ?  Session('Cart') : null;
             $newCart = new Cart($oldCart);
             $newCart->updateCart($item["key"],$item['value']);

@@ -19,6 +19,27 @@ class ArticleCommentSeeder extends Seeder
                 'user_id'    => 2,
                 'content' => 'Day la comment so ' .$i,
             ]);
-         }
+        }
+        for ($i=1; $i < 9; $i++) {
+            ArticleComment::create([
+                'article_id'    => 2,
+                'user_id'    => 2,
+                'content' => 'Day la comment so ' .$i,
+            ]);
+        }
+        for ($i=1; $i < 8; $i++) {
+            ArticleComment::create([
+                'article_id'    => 3,
+                'user_id'    => 2,
+                'content' => 'Day la comment so ' .$i,
+            ]);
+        }
+        for ($i=1; $i < 7; $i++) {
+            ArticleComment::create([
+                'article_id'    => 4,
+                'user_id'    => 2,
+                'content' => 'Day la comment so ' .$i,
+            ]);
+        }
     }
 }

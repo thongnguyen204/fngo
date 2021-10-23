@@ -11,7 +11,9 @@ return [
     'Checkout'      => 'Checkout',
     'Update Cart'   => 'Update cart',
     'Deleted'       => 'Deleted',
-    'Update'        => 'Cart updated' ,
+    'Update'        => 'Cart updated',
+    'Empty'         => 'YOUR CART IS EMPTY',
+    'Add something' => 'Add any product you like :)',
 ]
 
 ?>

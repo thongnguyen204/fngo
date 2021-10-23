@@ -83,4 +83,8 @@ class HotelService implements HotelServiceInterface
     {
         return $this->hotel->getAllCityProvince();
     }
+    public function getTopPurchases($number)
+    {
+        return $this->hotel->getTopPurchases($number);
+    }
 }

@@ -58,4 +58,8 @@ class ArticleService implements ArticleServiceInterface{
     public function search($keyword){
         return $this->articleRepository->search($keyword);
     }
+    public function getTopArticle($number)
+    {
+        return $this->articleRepository->getTopArticle($number);
+    }
 }

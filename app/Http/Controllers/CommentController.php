@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
 use App\Services\CommentServiceInterface;
-use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
     //
     private $comment;
+
     public function __construct(CommentServiceInterface $comment)
     {
         $this->comment = $comment;
@@ -42,8 +42,8 @@ class CommentController extends Controller
         
 
         return view('comment.index')
-        ->with('product_code',$product_code)
-        ->with('comments',$comments)
-        ->with('have_comment',$have_comment);
+        ->with('product_code',  $product_code)
+        ->with('comments',      $comments)
+        ->with('have_comment',  $have_comment);
     }
 }

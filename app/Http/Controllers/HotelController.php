@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CityProvince;
 use App\Models\Hotel;
-use App\Models\Room;
 use App\Services\CommentServiceInterface;
 use App\Services\HotelServiceInterface;
 use Illuminate\Http\Request;
@@ -16,7 +14,10 @@ class HotelController extends Controller
     private $hotel;
     private $comment;
 
-    public function __construct(CommentServiceInterface $comment,HotelServiceInterface $hotel)
+    public function __construct(
+        CommentServiceInterface $comment,
+        HotelServiceInterface $hotel
+        )
     {
         $this->comment = $comment;
         $this->hotel = $hotel;
@@ -43,7 +44,8 @@ class HotelController extends Controller
         
         $view = $role . ".hotel.index";
         
-        return view($view)->with('hotels',$hotels);
+        return view($view)
+        ->with('hotels',$hotels);
         // dd($hotels);
 
         
@@ -58,6 +60,7 @@ class HotelController extends Controller
     {
         //
         $CityProvince = $this->hotel->getAllCityProvince();
+        
         return view('admin.hotel.create')
         ->with('cty_province',$CityProvince);
     }
@@ -72,6 +75,7 @@ class HotelController extends Controller
     {
         //
         $this->hotel->store($request);
+        
         return redirect()->route('hotel.index');
         // return $request;
     }
@@ -107,9 +111,9 @@ class HotelController extends Controller
         
         // return $comments;
         return view($view)
-        ->with('comments',$comments) // json
-        ->with('have_comment',$have_comment)
-        ->with('hotel',$hotel1);
+        ->with('comments',      $comments) // json
+        ->with('have_comment',  $have_comment)
+        ->with('hotel',         $hotel1);
         // return $hotel1;
     }
 
@@ -124,8 +128,10 @@ class HotelController extends Controller
     {
         //
         $CityProvince = $this->hotel->getAllCityProvince();
-        return view('admin.hotel.edit')->with('hotel',$hotel)
-        ->with('cty_province',$CityProvince);
+        
+        return view('admin.hotel.edit')
+        ->with('hotel',         $hotel)
+        ->with('cty_province',  $CityProvince);
     }
 
     /**
@@ -139,6 +145,7 @@ class HotelController extends Controller
     {
         //
         $this->hotel->update($request,$hotel);
+        
         return redirect()->route('hotel.index');
     }
 
@@ -152,11 +159,13 @@ class HotelController extends Controller
     {
         //
         $this->hotel->delete($hotel->id);
+        
         return redirect()->route('hotel.index');
     }
     public function quantity()
     {
         $quantity = Hotel::count();
+        
         return $quantity;
     }
 }

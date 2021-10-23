@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\Room;
 use \App\Models\Hotel;
 use App\Models\RoomType;
 use App\Services\RoomServiceInterface;
 use DateTime;
-use phpDocumentor\Reflection\Types\Integer;
+
 
 class RoomController extends Controller
 {
@@ -38,7 +37,8 @@ class RoomController extends Controller
     {
         //
         
-        return view('admin.hotel.roomType.create')->with('hotel',$hotel);
+        return view('admin.hotel.roomType.create')
+        ->with('hotel',$hotel);
     }
 
     /**
@@ -51,6 +51,7 @@ class RoomController extends Controller
     {
         //
         $room = $this->room->store($request);
+
         return redirect()->route('hotel.show',$room->hotel);
     }
 
@@ -76,11 +77,13 @@ class RoomController extends Controller
     {
         //
         $types = $this->room->getRoomType($room);
-        $hotels = $this->room->getAllHotel();
 
-        return view('admin.hotel.roomType.edit')->with('room',$room)
-        ->with('hotel',$room->hotel)
-        ->with('types',$types);
+        // $hotels = $this->room->getAllHotel();
+
+        return view('admin.hotel.roomType.edit')
+        ->with('room',  $room)
+        ->with('hotel', $room->hotel)
+        ->with('types', $types);
 
         // return ($room);
         

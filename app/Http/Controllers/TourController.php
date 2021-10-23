@@ -15,7 +15,10 @@ class TourController extends Controller
     private $tour;
     private $comment;
 
-    public function __construct(CommentServiceInterface $comment,TourServiceInterface $tour)
+    public function __construct(
+        CommentServiceInterface $comment,
+        TourServiceInterface $tour
+        )
     {
         $this->comment  = $comment;
         $this->tour     = $tour;
@@ -41,7 +44,8 @@ class TourController extends Controller
 
         $view = $role . ".tour.index";
 
-        return view($view)->with('trips',$trips);
+        return view($view)
+        ->with('trips',$trips);
         
     }
     
@@ -54,6 +58,7 @@ class TourController extends Controller
     {
         //
         $CityProvince = $this->tour->getAllCityProvince();
+        
         return view('admin.tour.create')
         ->with('cty_province',$CityProvince);
     }
@@ -68,6 +73,7 @@ class TourController extends Controller
     {
         //
         $this->tour->store($request);
+
         return redirect()->route('tour.index');
         // return $request;
     }
@@ -98,11 +104,11 @@ class TourController extends Controller
             $have_comment = false;
         
         $view = $role . ".tour.detail";
+
         return view($view)->with('trip',$trip->subTour)
-        ->with('tour',$trip)
-        ->with('comments',$comments) // json
-        ->with('have_comment',$have_comment); // boolean
-        
+        ->with('tour',          $trip)
+        ->with('comments',      $comments)      // json
+        ->with('have_comment',  $have_comment); // boolean
     }
 
     /**
@@ -116,9 +122,10 @@ class TourController extends Controller
         
         //
         $CityProvince = $this->tour->getAllCityProvince();
-        return view('admin.tour.edit')->with('tour',$tour)
-        ->with('cty_province',$CityProvince);
-        // return $tour;
+        
+        return view('admin.tour.edit')
+        ->with('tour',          $tour)
+        ->with('cty_province',  $CityProvince);
     }
 
     /**
@@ -133,6 +140,7 @@ class TourController extends Controller
         
         //
         $this->tour->update($request,$tour);
+        
         return redirect()->route('tour.edit',$tour);
         // return $request;
     }

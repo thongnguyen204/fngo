@@ -36,4 +36,10 @@ class HotelRepository implements HotelRepositoryInterface
     {
         return CityProvince::all();
     }
+    public function getTopPurchases($number)
+    {
+        return Hotel::orderBy('purchases_number','DESC')
+        ->take($number)
+        ->get();
+    }
 }

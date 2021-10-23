@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
-use App\Repositories\UserRepositoryInterface;
 use App\Services\UserServiceInterface;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     private $user;
+
     public function __construct(UserServiceInterface $user)
     {
         $this->user = $user;
@@ -26,7 +26,8 @@ class UserController extends Controller
     {
         //
         $users = $this->user->all();
-        return view('admin.user.index')->with('users',$users);
+        return view('admin.user.index')
+        ->with('users',$users);
     }
     public function search(Request $request)
     {   $keyword = $request->search;
@@ -38,7 +39,8 @@ class UserController extends Controller
         if($users instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {
             $view = "admin.user.index";
-            return view($view)->with('users',$users);
+            return view($view)
+            ->with('users',$users);
         } 
         // check collection vi get() tra ra collection, find thi khong
 
@@ -48,7 +50,8 @@ class UserController extends Controller
         
         $view = "admin.user.search";
         
-        return view($view)->with('users',$users); 
+        return view($view)
+        ->with('users',$users); 
     }
 
     /**
@@ -82,8 +85,11 @@ class UserController extends Controller
     {
         //
         $role = Auth::user()->role->name;
+
         $view = $role . '.user.edit';
-        return (view($view)->with('user',$user));
+
+        return (view($view)
+        ->with('user',$user));
     }
 
     /**
@@ -97,11 +103,12 @@ class UserController extends Controller
         //
 
         $role = Auth::user()->role->name;
+
         $view = $role . '.user.edit';
-        return (view($view)->with('user',$user));
-        // return (view('admin.user.edit')->with('user',Auth::user()));
-        // return(view('home')->with('user',$user));
-        // dd($lang,$user->name);
+
+        return (view($view)
+        ->with('user',$user));
+        
     }
     
     // ham de test dual language
@@ -141,7 +148,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
-        
         $this->user->delete($user->id);
         return redirect()->route('users.index');
     }

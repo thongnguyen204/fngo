@@ -56,9 +56,9 @@ class ArticleCommentController extends Controller
             $have_comment = false;
         
         return view('comment.article')
-        ->with('article_id',$article_id)
-        ->with('comments',$comments)
-        ->with('have_comment',$have_comment);
+        ->with('article_id',    $article_id)
+        ->with('comments',      $comments)
+        ->with('have_comment',  $have_comment);
     }
 
     /**

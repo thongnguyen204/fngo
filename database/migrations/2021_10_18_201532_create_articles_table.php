@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('abstract');
             $table->string('thumbnail');
             $table->longText('content');
+            $table->integer('comment_number')->unsigned()->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
