@@ -1,6 +1,6 @@
-@extends('admin.dashboard.index')
+@extends('layouts.admin')
 
-@section('dashboard')
+@section('content')
 <body>
     <div class="container">
     <h3>{{__('receipt.Receipt List')}}</h3>
@@ -10,14 +10,26 @@
             <div class="row">
                 <div class="col-6">#{{$receipt->id}}</div>
                 <div class="col-6">
-                    <div style="float: right" class="btn btn-success">
-                        @if($receipt->status->name == 'Waiting')
-                            {{__('receipt.Waiting')}}
-                        @endif
-                        @if($receipt->status->name == 'Accepted')
-                            {{__('receipt.Accepted')}}
-                        @endif
+                    @if($receipt->status->name == 'Waiting')
+                    <div style="float: right" class="btn btn-warning">
+                        {{__('receipt.Waiting')}}
                     </div>
+                    @endif
+                    @if($receipt->status->name == 'Accepted')
+                    <div style="float: right" class="btn btn-primary">
+                        {{__('receipt.Accepted')}}
+                    </div>
+                    @endif
+                    @if($receipt->status->name == 'Canceled')
+                    <div style="float: right" class="btn btn-secondary">
+                        {{__('receipt.Canceled')}}
+                    </div>
+                    @endif
+                    @if($receipt->status->name == 'Payment received')
+                    <div style="float: right" class="btn btn-success">
+                        {{__('receipt.Received')}}
+                    </div>
+                    @endif
                 </div>
             </div>
             <div class="row">

@@ -46,7 +46,7 @@
                 <div class="row d-none d-md-block">
                     <div class="col">
                         <div class="">
-                            <a href="{{route('article.show',$article)}}" type="button" class="btn btn-readmore">READ MORE</a>
+                            <a href="{{route('article.show',$article)}}" type="button" class="btn btn-readmore">{{__('article.Read more')}}</a>
                         </div>
                     </div>
                 </div>

@@ -33,8 +33,20 @@ class Receipt extends Model
     {
         return $this->belongsTo(Payment::class);
     }
+
     public function money($money){
         return currency_format($money);
+    }
+
+    public function createdDay(){
+        
+        $date = $this->created_at;
+        $day = date('d',strtotime($date));
+        $month = date('m',strtotime($date));
+        $year = date('Y',strtotime($date));
+        $time = date("H:i:s",strtotime($date));
+
+        return $day . "/" . $month . "/" . $year. " ".$time;
     }
 
 }

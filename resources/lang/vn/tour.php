@@ -21,6 +21,7 @@ return [
     'Book' => 'Đặt',
     'Add cart' => 'THÊM VÀO GIỎ HÀNG',
     'Contact' => 'GỌI NGAY ĐỂ ĐƯỢC TƯ VẤN',
+    'Login to buy' => 'ĐĂNG NHẬP ĐỂ MUA',
     
 
 ]

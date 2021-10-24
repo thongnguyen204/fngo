@@ -138,11 +138,13 @@
                 @endauth
 
                 @guest
-                    Login to comment
+                <div class="input-comment">
+                    <a href="{{route('login')}}">{{__('article.Login to comment')}}</a> 
+                </div>
                 @endguest
                 
                 @if (!$have_comment)
-                    Chua co binh luan
+                <div class="input-comment">{{__('article.Empty comment')}}</div>
                 @else
                     @foreach ($comments as $comment)
                     <div class="comment-wrapper rounded commented-section mt-2">

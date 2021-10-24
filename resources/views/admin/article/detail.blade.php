@@ -66,7 +66,9 @@
                 @endauth
 
                 @guest
-                <div class="input-comment">{{__('article.Login to comment')}}</div>
+                <div class="input-comment">
+                    <a href="{{route('login')}}">{{__('article.Login to comment')}}</a> 
+                </div>
                 @endguest
                 
                 @if (!$have_comment)

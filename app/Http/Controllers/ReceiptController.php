@@ -55,20 +55,22 @@ class ReceiptController extends Controller
         
         $receipts = $this->receipt->searchWaiting($keyword,$option);
         
+        $role = $this->receipt->getRoleName();
+        
         if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {
-            $view = "admin.receipt.waiting";
+            $view = $role .".receipt.waiting";
             return view($view)->with('receipts',$receipts);
         }
         if($receipts != null &&  !($receipts instanceof \Illuminate\Database\Eloquent\Collection))
             $receipts = array($receipts);
             // return 'array';
         
-        $role = $this->receipt->getRoleName();
+        
         
         // return $role;
         
-        $view = "admin.receipt.search";
+        $view = $role. ".receipt.search";
         
         // dd ($receipts);
         
@@ -93,9 +95,11 @@ class ReceiptController extends Controller
         
         $receipts = $this->receipt->search($keyword,$option);
         
+        $role = $this->receipt->getRoleName();
+        
         if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {
-            $view = "admin.receiptAccepted.index";
+            $view = $role . ".receiptAccepted.index";
             // return $receipts;
             
             return view($view)
@@ -106,7 +110,7 @@ class ReceiptController extends Controller
             $receipts = array($receipts);
             // return 'array';
         
-        $role = $this->receipt->getRoleName();
+        
         
         // return $role;
         

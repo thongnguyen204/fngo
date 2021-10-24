@@ -2,8 +2,6 @@
 
 @section('dashboard')
 
-<link href="{{ asset('css/receipt.css') }}" rel="stylesheet">
-
 <div class="container">
 <h3>{{__('receipt.Receipt List')}}</h3>
 <form style="margin-bottom: 20px" action="{{route('receiptWaiting.search')}}" method="GET">
@@ -25,13 +23,15 @@
         <label class="form-check-label" for="inlineRadio2">{{__("receipt.User's ID")}}</label>
     </div> --}}
 </form>
+@if ($receipts->isEmpty())
+    {{__('receipt.Empty')}}
+@else
 @foreach ($receipts as $receipt)
+
 <div style="margin-top: 50px" class="card">
     <div class="card-header">
         <div class="row">
-            <div class="col-6 receiptID">
-                #{{$receipt->id}}
-            </div>
+            <div class="col-6">#{{$receipt->id}}</div>
             <div class="col-6">
                 <div style="float: right" class="row">
                     <form action="{{route('receipt.accept',$receipt)}}" method="POST">
@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col">
-                {{$receipt->createdDay()}}
+                {{$receipt->created_at}}
             </div>
         </div>
     </div>
@@ -82,14 +82,14 @@
     <div class="card-footer">
         <div style="float: right;" class="row">
             <div  class="col-12">
-                {{__('receipt.Total')}}: 
-                <span class="receiptID">{{($receipt->money($receipt->price_sum))}}</span>
+                {{__('receipt.Total')}}: {{($receipt->money($receipt->price_sum))}}
+                    
             </div>
         </div>
     </div>
     </div>
 @endforeach
-{{ $receipts->links() }}
+@endif
 </div>
 
 

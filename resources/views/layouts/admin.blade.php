@@ -24,8 +24,8 @@
     
 </head>
 <body>
-    <nav style="background-color: white" class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <div  class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
@@ -40,7 +40,6 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('article.index')}}">{{__('welcome.Articles')}}</a>
                   </li>
-                  
                 </ul>
             </div>
               
@@ -114,7 +113,7 @@
                             <li class="nav-item cartIcon">
                                 <form action="{{route('cart.index')}}" method="GET">
                                     <button type="submit" class="btn">
-                                        <i style="font-size: 25px" class="bi bi-cart"></i>
+                                        <i style="color:white;font-size: 25px" class="bi bi-cart"></i>
                                         @if (Session::get('Cart') != null)
                                             <span class='badge badge-warning' id='CartCount'> {{Session::get('Cart')->quantity}} </span>
                                         @else

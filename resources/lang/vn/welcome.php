@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Hotels'    => 'Khách sạn',
-    'Tours'     => 'Du lịch',
+    'Hotels'    => 'KHÁCH SẠN',
+    'Tours'     => 'DU LỊCH',
     'Register'  => 'Đăng ký',
     'Login'     => 'Đăng nhập',
-    'Articles'  => 'Bài viết',
+    'Articles'  => 'BÀI VIẾT',
 ]
 
 ?>

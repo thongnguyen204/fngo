@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'Hotels'    => 'Hotels',
-    'Tours'     => 'Tours',
+    'Hotels'    => 'HOTELS',
+    'Tours'     => 'TOURS',
     'Register'  => 'Register',
     'Login'     => 'Login',
-    'Articles'  => 'Articles',
+    'Articles'  => 'ARTICLES',
 ]
 
 ?>

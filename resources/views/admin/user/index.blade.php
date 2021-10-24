@@ -6,7 +6,7 @@
 
 <div class="container bg-white rounded wrapper">
     <form style="margin-bottom: 20px" action="{{route('user.search')}}" method="GET">
-        <div style="margin-bottom: 0px" class="input-group searchBar">
+        <div style="margin-bottom: 10px" class="input-group searchBar">
             <input placeholder="{{__('user.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="">
             <div class="input-group-append">
                 <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
@@ -30,6 +30,27 @@
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio4" value="phone">
             <label class="form-check-label" for="inlineRadio4">{{__('user.Phone')}}</label>
         </div>
+        <div class="btn-toolbar my-2" role="toolbar" aria-label="Toolbar with button groups">
+            @if (!Auth::guest() && Auth::user()->role->name == 'admin')
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <a href="" class="btn btn-outline-primary">Show all</a>
+                </div>
+            @endif
+            
+            
+            <div class="btn-group mr-2" role="group" aria-label="Second group">
+              <a href="" class="btn btn-outline-secondary">Only user</a>
+              
+            </div>
+            
+            <div class="btn-group mr-2" role="group" aria-label="Third group">
+              <a href="" class="btn btn-outline-success">Only Employee</a>
+            </div>
+            
+            <div class="btn-group" role="group" aria-label="Fourth group">
+                <a href="" class="btn btn-outline-danger">Only Admin</a>
+              </div>
+          </div>
     </form>
     <div class="table-responsive">
         <table class="table table-striped">

@@ -11,6 +11,9 @@ return [
     'Abstract'          => 'Giới thiệu',
     'Choose thumbnail'  => 'Chọn ảnh',
     'Content'           => 'Nội dung',
+    'Read more'         => 'ĐỌC THÊM',
+    'Update'            => 'Cập nhật bài viết',
+    'Update button'     => 'Cập nhật',
 ]
 
 ?>

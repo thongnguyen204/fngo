@@ -34,6 +34,8 @@ class Tour extends Model
 
         return $day . "/" . $month . "/" . $year;
     }
+
+    
     public function money($money){
         return currency_format($money);
     }

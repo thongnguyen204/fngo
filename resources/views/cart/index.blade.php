@@ -115,7 +115,18 @@
         <div class="shopping-cart-footer">
             <div class="column">
                 {{-- <a class="btn btn-outline-secondary" href=""><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a> --}}
-                
+                <div class="form-check">
+                    <input class="form-check-input" value="offline" type="radio" name="payment" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      {{__('cart.Cashe')}}
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" value="banking" type="radio" name="payment" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        {{__('cart.Banking')}}
+                    </label>
+                  </div>
             </div>
             <div class="column">
                 <a class="update btn btn-primary" href="#!" data-toast="" data-toast-type="success" data-toast-position="topRight"
@@ -125,7 +136,7 @@
                 </a>
                 
                 <a class="checkout btn btn-success" href="#!">{{__('cart.Checkout')}}</a>
-                <div id="paypal-button"></div>
+                {{-- <div id="paypal-button"></div> --}}
             </div>
         </div>
     </div>

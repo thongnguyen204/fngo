@@ -21,6 +21,7 @@ return [
     'Banking'           => 'Chuyển khoản',
     "User's ID"         => "ID người dùng",
     "Search"            => "Tìm hóa đơn",
+    'ID input'          => "Nhập mã hóa đơn"
 
     
 ]

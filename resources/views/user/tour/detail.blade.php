@@ -61,10 +61,18 @@
                     <div class="card-body price-button">
                         <p class="d-flex justify-content-center money"> {{$tour->money($tour->price)}}</p>
                         <div class="d-flex justify-content-center">
+                            @auth
                             <button onclick="addCart('{{$tour->product_code}}')" type="button"
                                 class="btn btnAddCart btn-lg">
                                 {{__('tour.Add cart')}}
                             </button>
+                            @endauth
+                            @guest
+                                <a class="btn btnAddCart btn-lg" href="{{route('login')}}">
+                                    {{__('tour.Login to buy')}}
+                                </a>
+                            @endguest
+                            
                         </div>
                     </div>
                     <div style="padding: 0px" class="card-body">
@@ -127,11 +135,13 @@
                 @endauth
 
                 @guest
-                    Login to comment
+                <div class="input-comment">
+                    <a href="{{route('login')}}">{{__('article.Login to comment')}}</a> 
+                </div>
                 @endguest
                 
                 @if (!$have_comment)
-                    Chua co binh luan
+                <div class="input-comment">{{__('article.Empty comment')}}</div>
                 @else
                     @foreach ($comments as $comment)
                     <div class="comment-wrapper rounded commented-section mt-2">

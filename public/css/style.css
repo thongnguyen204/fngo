@@ -2,6 +2,10 @@
     background: rgb(99, 39, 120)
 } */
 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
 .form-control:focus {
     box-shadow: none;
     border-color: #BA68C8
@@ -97,3 +101,26 @@
 	width: 18px;
   }
 
+.navbar{
+    background-color: #0542bd!important;
+    color: white !important;
+}
+.navbar-light .navbar-nav .nav-link{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color:white;
+}
+.navbar-light  .navbar-brand{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+}
+.navbar-light .navbar-brand:hover{
+    color:white;
+}
