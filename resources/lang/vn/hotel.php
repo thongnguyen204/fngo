@@ -24,6 +24,10 @@ return [
     'Check-in date'     => 'Ngày nhận phòng',
     'Book now'          => 'Đặt ngay !',
     'Empty date'        => 'Không có ngày nhận phòng !!!',
+    'Edit'              => 'Chỉnh sửa',
+    'Average price'     => 'Giá',
+    'Province/City'     => 'Tỉnh/Thành Phố',
+    'Update'            => 'Cập nhật'
 ]
 
 ?>

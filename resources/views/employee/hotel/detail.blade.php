@@ -11,7 +11,6 @@
     
 </style>
 <div style="max-width: 1300px" class="container">
-    <a href="{{route('hotel.create')}}">{{__('hotel.Create')}}</a>
     <form action="{{route('hotel.index')}}" method="GET">
         <div class="input-group mb-3 searchBar">
             <input type="text" placeholder="{{__('hotel.Search')}}" name="search" value="{{ request()->get('search') }}"
@@ -24,7 +23,19 @@
     </form>
 </div>
 <div style="max-width: 1300px;padding: 20px;" class="container rounded bg-white">
-
+    <div class="admin-button">
+        <div class="row">
+            <a class="btn btn-success col admin-button" href="{{route('hotel.create')}}"><i class="bi bi-plus-lg"></i></a>
+            <a class="btn btn-primary col admin-button" href="{{route('hotel.edit',$hotel)}}"><i class="bi bi-pencil-square"></i></a>
+            <div style="padding: 0px"  class="col admin-button" >
+                <form action=" {{route('hotel.destroy',$hotel)}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button style="width: 100%" class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
     <h2 class="hotel-name-detail">{{$hotel->name}}</h2>
     <div>
         <i class="bi bi-pin-map-fill"></i> {{$hotel->address}}
@@ -38,15 +49,30 @@
             </div>
         </div>
     </div>
+<div style="margin-top: 20px" class="d-flex justify-content-end">
+    <a class="btn btn-success" href="{{route('room.create',$hotel)}}">Add room type</a>
+</div>
 </div>
 
 @foreach ($hotel->roomtype as $roomtype)
 <div style="max-width: 1300px;margin-top: 20px;padding: 20px;" class="container rounded bg-white">
     <div class="room-type-warpper">
+        <div class="admin-button">
+            <div class="row">
+                <a class="btn btn-primary col admin-button" href="{{route('room.edit',$roomtype)}}"><i class="bi bi-pencil-square"></i></a>
+                <div style="padding: 0px"  class="col admin-button" >
+                    <form action=" {{route('room.destroy',$roomtype)}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button style="width: 100%" class="btn btn-danger" type="submit"><i class="bi bi-trash-fill"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <h3>{{$roomtype->name}}</h3>
         <div class="row">
-            <div class="col-md-4">
-                <img style="max-width: 100%;" loading="lazy" alt="room image" class="img_fluid rounded"
+            <div style="margin-bottom: 10px" class="col-md-4 d-flex justify-content-center">
+                <img style="width: 100%;" loading="lazy" alt="room image" class="img_fluid rounded"
                     src="{{$roomtype->avatar}}">
             </div>
             <div class="col-md-8">
@@ -137,7 +163,7 @@
 
         $.ajax({
             url: "/cartQuantity",
-            type: 'GET',
+            type: 'GET',c
         }).done(function (respone) {
             $('#CartCount').text(respone);
         });

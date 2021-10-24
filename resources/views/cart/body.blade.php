@@ -53,7 +53,9 @@
                         </span>
                     </div>
                 </td>
-                <td class="text-center text-lg text-medium">{{$product['price']}}đ</td>
+                <td class="text-center text-lg text-medium">
+                {{Session::get('Cart')->money($product['price'])}}
+            </td>
 
                 <td class="text-center">
                     <a class="remove-from-cart" href="#!" data-toggle="tooltip" title=""
@@ -76,7 +78,7 @@
             <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
         </form> --}}
     </div>
-    <div class="column text-lg">{{__('cart.Total')}}: <span class="text-medium">{{Session::get('Cart')->totalPrice}}đ</span>
+    <div class="column text-lg">{{__('cart.Total')}}: <span class="text-medium">{{Session::get('Cart')->money(Session::get('Cart')->totalPrice)}}</span>
     </div>
 </div>
 

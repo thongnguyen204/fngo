@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+include 'functions.php';
 use Illuminate\Database\Eloquent\Model;
 
 class Products extends Model
@@ -18,5 +18,8 @@ class Products extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function money($money){
+        return currency_format($money);
     }
 }

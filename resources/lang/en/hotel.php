@@ -3,7 +3,7 @@
 return [
     
     'Create'            => 'Add new hotel',
-    'Name'              => 'Name',
+    'Name'              => 'Hotel name',
     'Address'           => 'Address',
     'Price'             => 'Price',
     'Choose avatar'     => 'Choose image',
@@ -24,7 +24,10 @@ return [
     'Check-in date'     => 'Check-in date',
     'Book now'          => 'Booking now !',
     'Empty date'        => 'Empty check-in date !!!!',
-    
+    'Edit'              => 'Edit',
+    'Average price'     => 'Average price',
+    'Province/City'     => 'Province/City',
+    'Update'            => 'Update'
 ]
 
 ?>

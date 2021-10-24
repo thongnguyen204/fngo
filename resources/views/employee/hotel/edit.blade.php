@@ -6,7 +6,7 @@
     @csrf
     @method('PUT')
     <div class="form-group">
-        <label for="name">Name: </label>
+        <label for="name">{{__('hotel.Name')}} </label>
         <input class="form-control" value="{{$hotel->name}}" type="text" name="name"/>
     </div>
 

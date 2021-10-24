@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+include 'functions.php';
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
@@ -49,6 +49,7 @@ class Cart extends Model
         // tru cai cu
         $this->quantity -= $this->products[$product_code]['quantity'];
         $this->price -= $this->products[$product_code]['price'];
+        $this->totalPrice -= $this->products[$product_code]['price'];
 
         // cap nhap cai moi
         $this->products[$product_code]['quantity'] = $quantity;
@@ -58,6 +59,10 @@ class Cart extends Model
         //cong lai
         $this->quantity += $this->products[$product_code]['quantity'];
         $this->price += $this->products[$product_code]['price'];
+        $this->totalPrice += $this->products[$product_code]['price'];
 
+    }
+    public function money($money){
+        return currency_format($money);
     }
 }
