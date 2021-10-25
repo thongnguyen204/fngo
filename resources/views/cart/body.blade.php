@@ -8,7 +8,7 @@
                 <th class="text-center">{{__('cart.Quantity')}}</th>
                 <th class="text-center">{{__('cart.Price')}}</th>
 
-                <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+                <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">{{__('cart.Clear Cart')}}</a></th>
             </tr>
         </thead>
         <tbody>
@@ -99,6 +99,7 @@
                 {{__('cart.Banking')}}
             </label>
         </div>
+        
     </div>
     <div class="column">
         <a class="update btn btn-primary" href="#!" data-toast="" data-toast-type="success" data-toast-position="topRight"
@@ -109,6 +110,16 @@
         <a class="checkout btn btn-success" href="#">{{__('cart.Checkout')}}</a>
     </div>
 </div>
+
+<div class="shopping-cart-footer">
+    <div class="column">
+        {{__('cart.paypal')}}
+    </div>
+    <div class="column">
+        <div id="paypal-button"></div>
+    </div>
+</div>
+
 <input id="noti" type="hidden" value="{{$noti}}">
 <script src="{{ asset('js/cart.js') }}" defer></script>
 <script>
@@ -146,8 +157,9 @@
             
         });
     });
-    $(".checkout").on("click",function(){
+    function checkout(payment){
         var list= [];
+        
         $("table tbody tr td").each(function(){
             $(this).find("input").each(function(){
                 var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
@@ -155,7 +167,7 @@
             });
         });
         // var list1 = [1,2,3];
-        
+        // console.log(list);
         $.ajax({
             url: "booking",
             type:'POST',
@@ -168,9 +180,58 @@
             // console.log(respone);
             location.href = '/receipt';
         });
+    }
+    $(".checkout").on("click",function(){
+        var payment =$('input[name="payment"]:checked').val();
+
+        checkout(payment);
     });
 </script>
-    
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+    var usd = $( "#totalUSD" ).val();
+  paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'ARXQy4nMUiXnq6zEB8oVvv5a2THNl-4W9lJp4HNgIqmOcv1HxC9XUpdlnqstsUuPiSgES9hbJcGnLONt',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+    size: 'medium',
+      color: 'gold',
+      shape: 'pill',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: usd,
+            currency: 'USD'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        // 3 is paypal
+        var payment = 3;
+        checkout(payment);
+      });
+    }
+  }, '#paypal-button');
+
+</script>
 @else
 <div class="container">
     <div class="row">

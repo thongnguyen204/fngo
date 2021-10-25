@@ -16,6 +16,8 @@ return [
     'Add something' => 'Add any product you like :)',
     'Cash'          => 'Cash',
     'Banking'       => 'Bank Transfer',
+    'paypal'        => 'Or checkout with PayPal',
+    'Clear Cart'    => 'Clear Cart',
 ]
 
 ?>

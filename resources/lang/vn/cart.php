@@ -14,8 +14,10 @@ return [
     'Update'        => 'Đã cập nhật giỏ hàng',
     'Empty'         => 'GIỎ HÀNG ĐANG TRỐNG',
     'Add something' => 'Hãy thêm những sản phẩm bạn thích :)',
-    'Cash'  => 'Tiền mặt',
-    'Banking'   => 'Chuyển khoản ngân hàng',
+    'Cash'          => 'Tiền mặt',
+    'Banking'       => 'Chuyển khoản ngân hàng',
+    'paypal'        => 'Hoặc thanh toán qua PayPal',
+    'Clear Cart'    => 'Xóa giỏ hàng',
 ]
 
 ?>

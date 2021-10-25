@@ -32,7 +32,7 @@
                         <th class="text-center">{{__('cart.Quantity')}}</th>
                         <th class="text-center">{{__('cart.Price')}}</th>
 
-                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">{{__('cart.Clear Cart')}}</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,8 +103,10 @@
                     <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
                 </form> --}}
             </div>
-            <div class="column text-lg">{{__('cart.Total')}}: <span class="text-medium">{{Session::get('Cart')->money(Session::get('Cart')->totalPrice)}}</span>
-                <!-- <span>{{Session::get('Cart')->money(Session::get('Cart')->totalPrice)}}</span> -->
+            <div class="column text-lg">{{__('cart.Total')}}: 
+                <span class="text-medium">{{Session::get('Cart')->money(Session::get('Cart')->totalPrice)}}</span>
+                {{-- <span>{{Session::get('Cart')->usd(Session::get('Cart')->totalPrice)}}</span>  --}}
+                <input id="totalUSD" type="hidden" value="{{Session::get('Cart')->VNDtoUSD(Session::get('Cart')->totalPrice)}}">
             </div>
         </div>
 
@@ -125,7 +127,8 @@
                         {{__('cart.Banking')}}
                     </label>
                 </div>
-                <div id="paypal-button"></div>
+                
+                
             </div>
             <div class="column">
                 <a class="update btn btn-primary" href="#!" data-toast="" data-toast-type="success" data-toast-position="topRight"
@@ -136,6 +139,14 @@
                 
                 <a class="checkout btn btn-success" href="#!">{{__('cart.Checkout')}}</a>
                 
+            </div>
+        </div>
+        <div class="shopping-cart-footer">
+            <div class="column">
+                {{__('cart.paypal')}}
+            </div>
+            <div class="column">
+                <div id="paypal-button"></div>
             </div>
         </div>
     </div>
@@ -206,8 +217,8 @@
             
         });
     });
-    $(".checkout").on("click",function(){
-        var payment =$('input[name="payment"]:checked').val();
+
+    function checkout(payment){
         var list= [];
         
         $("table tbody tr td").each(function(){
@@ -230,6 +241,13 @@
             // console.log(respone);
             location.href = '/receipt';
         });
+    }
+
+
+    $(".checkout").on("click",function(){
+        var payment =$('input[name="payment"]:checked').val();
+
+        checkout(payment);
     });
 
     
@@ -238,6 +256,7 @@
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
+var usd = $( "#totalUSD" ).val();
   paypal.Button.render({
     // Configure environment
     env: 'sandbox',
@@ -248,20 +267,20 @@
     // Customize button (optional)
     locale: 'en_US',
     style: {
-      size: 'small',
+      size: 'medium',
       color: 'gold',
       shape: 'pill',
     },
-
+    
     // Enable Pay Now checkout flow (optional)
     commit: true,
-
+    
     // Set up a payment
     payment: function(data, actions) {
       return actions.payment.create({
         transactions: [{
           amount: {
-            total: '0.01',
+            total: usd,
             currency: 'USD'
           }
         }]
@@ -273,28 +292,7 @@
         // Show a confirmation message to the buyer
         // 3 is paypal
         var payment = 3;
-        var list= [];
-        
-        $("table tbody tr td").each(function(){
-            $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
-                list.push(element);
-            });
-        });
-        // var list1 = [1,2,3];
-        console.log(payment);
-        $.ajax({
-            url: "booking",
-            type:'POST',
-            data:{
-                "_token": "{{ csrf_token() }}",
-                "data": list,
-                "payment": payment,
-            }
-        }).done(function(respone){
-            // console.log(respone);
-            location.href = '/receipt';
-        });
+        checkout(payment);
       });
     }
   }, '#paypal-button');
