@@ -89,6 +89,12 @@ Route::get('/', function () {
         Route::get('cancel/{receipt}','ReceiptController@receiptCancel')
         ->name('receipt.cancel');
 
+        Route::get('finish/{receipt}','ReceiptController@receiptFinish')
+        ->name('receipt.finish');
+
+        Route::get('un-finish/{receipt}','ReceiptController@receiptUnFinish')
+        ->name('receipt.un-finish');
+
         
     
         Route::resource('/hotel','HotelController')
@@ -239,6 +245,9 @@ Route::get('/', function () {
 
     // guest
 
+    Route::get('/payment',function(){
+        return view('payment.index');
+    });
 
     Route::get('/home', 'HomeController@index')->name('home');    
     Route::get('tour','TourController@index')

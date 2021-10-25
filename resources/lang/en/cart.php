@@ -14,6 +14,8 @@ return [
     'Update'        => 'Cart updated',
     'Empty'         => 'YOUR CART IS EMPTY',
     'Add something' => 'Add any product you like :)',
+    'Cash'          => 'Cash',
+    'Banking'       => 'Bank Transfer',
 ]
 
 ?>

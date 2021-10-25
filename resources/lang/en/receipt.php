@@ -20,7 +20,9 @@ return [
     'Banking'           => 'Banking',
     "User's ID"         => "User's ID",
     "Search"            => "Search",
-    'ID input'          => "Enter receipt's ID"
+    'ID input'          => "Enter receipt's ID",
+    "Finish"            => "Finish",
+    "Paypal"    => 'Paypal',
 
     
 ]

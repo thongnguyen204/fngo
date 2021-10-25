@@ -29,6 +29,8 @@ interface ReceiptRepositoryInterface{
     public function pay(Receipt $receipt);
     public function unpay(Receipt $receipt);
     public function cancel(Receipt $receipt);
+    public function finish(Receipt $receipt);
+    public function unfinish(Receipt $receipt);
 
     public function whereMonth($month,$year);
     public function whereDay($day,$month,$year);

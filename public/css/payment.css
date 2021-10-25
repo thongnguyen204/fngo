@@ -1,0 +1,11 @@
+body{
+    background-color: #e6eaed;
+}
+.wrapper{
+    margin: 20px 0px 20px 0px;
+}
+.container-payment{
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

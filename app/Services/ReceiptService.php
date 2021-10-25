@@ -69,6 +69,7 @@ class ReceiptService implements ReceiptServiceInterface
     }
     public function receiptAccept(Receipt $receipt){
         $receipt->status_id = $this->receiptStatusAcceptedID;
+        $receipt->accept_by = Auth::user()->id;
         $this->receipt->saveReceipt($receipt);
     }
     public function show(Receipt $receipt){
@@ -90,8 +91,12 @@ class ReceiptService implements ReceiptServiceInterface
         else if($receipt->status_id == $this->receiptStatusWaitingID)
                 return 'receipt.index';
     }
+    //hoan thanh hoa don
+    // public function finish(Receipt $receipt){
+    //     $this->receipt->finish($receipt);
+    // }
 
-    //thanh toan hoac huy hoa don
+    //thanh toan, huy, hoan thanh hoa don
     public function receiptProcess(Receipt $receipt, $action){
         if($action == 'pay')
             return $this->receipt->pay($receipt);
@@ -99,6 +104,10 @@ class ReceiptService implements ReceiptServiceInterface
             return $this->receipt->unpay($receipt);
         if ($action == 'cancel')
             return $this->receipt->cancel($receipt);
+        if ($action == 'finish')
+            return $this->receipt->finish($receipt);
+        if ($action == 'unfinish')
+            return $this->receipt->unfinish($receipt);
         return 'Undefine action';
     }
 

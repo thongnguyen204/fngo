@@ -94,6 +94,21 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     }
     public function cancel(Receipt $receipt){
         $receipt->status_id = $this->receiptStatusCancledID;
+        $receipt->cancel_by = Auth::user()->id;
+        $receipt->save();
+        return $receipt;
+    }
+
+    public function finish(Receipt $receipt){
+        $receipt->is_finish = true;
+        $receipt->finish_by = Auth::user()->id;
+        $receipt->save();
+        return $receipt;
+    }
+
+    public function unfinish(Receipt $receipt){
+        $receipt->is_finish = false;
+        $receipt->finish_by = null;
         $receipt->save();
         return $receipt;
     }

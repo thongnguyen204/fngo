@@ -30,9 +30,11 @@ interface ReceiptServiceInterface{
     public function delete($id);
     
     public function getRoute(Receipt $receipt);
+
+    //hoan thanh hoa don
+    // public function finish(Receipt $receipt);
     
-    
-    //thanh toan hoac huy hoa don
+    //thanh toan, huy, hoan thanh hoa don
     public function receiptProcess(Receipt $receipt, $action);
 
     

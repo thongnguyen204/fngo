@@ -19,10 +19,17 @@ class CreateReceiptsTable extends Migration
             $table->integer('price_sum')->unsigned();
             $table->integer('payment_id')->unsigned()->nullable();
             $table->integer('status_id')->unsigned()->default(3); //id 3 is waiting
+            $table->boolean('is_finish')->default(false);
+            $table->integer('accept_by')->unsigned()->nullable();
+            $table->integer('cancel_by')->unsigned()->nullable();
+            $table->integer('finish_by')->unsigned()->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
 
-            // $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user_id')  ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('accept_by')->references('id')->on('users');
+            $table->foreign('cancel_by')->references('id')->on('users');
+            
         });
     }
 
@@ -33,6 +40,11 @@ class CreateReceiptsTable extends Migration
      */
     public function down()
     {
+        Schema::table('receipts',function(Blueprint $table){
+            // $table->dropForeign('receipts_user_id_foreign');
+            $table->dropForeign('receipts_accept_by_foreign');
+            $table->dropForeign('receipts_cancel_by_foreign');
+        });
         Schema::dropIfExists('receipts');
     }
 }

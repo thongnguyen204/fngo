@@ -22,6 +22,7 @@ class BookingService implements BookingServiceInterface{
 
     private $receiptStatusAcceptedID = 1;
     private $receiptStatusWaitingID = 3;
+    private $receiptStatusReceivedID = 4;
     public function __construct(HotelRepositoryInterface $hotelRepository,RoomRepositoryInterface $roomRepository,TourRepositoryInterface $tourRepository,ProductServiceInterface $product ,BookingRepositoryInterface $booking,ReceiptServiceInterface $receipt,ReceiptDetailRepositoryInterface $receipt_detail)
     {
         $this->hotelRepository = $hotelRepository;
@@ -48,17 +49,20 @@ class BookingService implements BookingServiceInterface{
             $this->hotelRepository->store($hotel);
         }
     }
-    public function createReceipt()
+    public function createReceipt($payment)
     {
         $receipt1 = new Receipt;
         $receipt1->user_id = Auth::user()->id;
         $receipt1->price_sum = 0;
+        $receipt1->payment_id = $payment;
         $receipt1->description = "";
+        if($payment == 3)
+            $receipt1->status_id = $this->receiptStatusReceivedID;
         $receipt1 = $this->receipt->store($receipt1);
         return $receipt1;
     }
-    public function createReceiptDetail($data){
-        $receipt1 = $this->createReceipt();
+    public function createReceiptDetail($data,$payment){
+        $receipt1 = $this->createReceipt($payment);
         foreach ($data as $product ) {
             $product1 = $this->product->getProductByCode($product['key']);
             $product_id = $product1->id;
@@ -85,10 +89,11 @@ class BookingService implements BookingServiceInterface{
         
     }
     public function store(Request $request){
-        // $this->booking->store($request->data);
-        $this->createReceiptDetail($request->data);
+        // $this->booking->store($request->data,$request->payment);
+        $this->createReceiptDetail($request->data,$request->payment);
         foreach ($request->data as $product) {
             $request->session()->forget('Cart');
         }
+        // dd ($request->payment);
     }
 }

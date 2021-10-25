@@ -35,8 +35,10 @@
                 <th scope="col">{{__('receipt.User')}}</th>
                 <th scope="col">{{__('receipt.Cost')}}</th>
                 <th scope="col">{{__('receipt.Status')}}</th>
+                <th scope="col">{{__('receipt.Finish')}}</th>
                 <th scope="col">{{__('receipt.Payment')}}</th>
                 <th scope="col">{{__('receipt.Order date')}}</th>
+                <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -64,12 +66,23 @@
                         @endif
                     @endif
                 </td>
+                <td>
+                    @if ($receipt->is_finish)
+                    <i style="font-size: 30px;color:#1FAA59" class="bi bi-check-circle-fill"></i>
+                    @else
+                    <i style="font-size: 30px;color:#DE4839" class="bi bi-x-circle-fill"></i>
+                    @endif
+                </td>
                 {{-- 1-offline   2-banking --}}
                 <td>
                     @if ($receipt->payment_id == 1)
                         {{__('receipt.Offline')}}
                     @else
-                        {{__('receipt.Banking')}}
+                        @if ($receipt->payment_id == 2)
+                            {{__('receipt.Banking')}}
+                        @else
+                            {{__('receipt.Paypal')}}
+                        @endif
                     @endif
                 </td>
                 <td>{{$receipt->created_at}}</td>
@@ -82,6 +95,18 @@
                     <a style="margin: 10px" class="btn btn-secondary col" href="{{route('receipt.cancel',$receipt->id)}}">
                         <div class="d-flex align-items-center justify-content-center" style="height: 100%">{{__('receipt.Cancel')}}</div>
                     </a>
+                </td>
+                <td>
+                    @if ($receipt->is_finish)
+                        <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.un-finish',$receipt)}}">
+                            {{__('receipt.UnFinish')}}
+                        </a>
+                    @else
+                        <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.finish',$receipt)}}">
+                            {{__('receipt.Finish')}}
+                        </a>
+                    @endif
+                    
                 </td>
                 <td>
                     <form action="{{route('receipt.destroy',$receipt)}}" method="POST">

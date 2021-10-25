@@ -147,6 +147,26 @@ class ReceiptController extends Controller
         return redirect()->route('receipt.indexAccepted');
 
     }
+
+    public function receiptFinish(Receipt $receipt)
+    {
+        $action = 'finish';
+        
+        $this->receipt->receiptProcess($receipt,$action);
+        
+        return redirect()->route('receipt.indexAccepted');
+
+    }
+
+    public function receiptUnFinish(Receipt $receipt)
+    {
+        $action = 'unfinish';
+        
+        $this->receipt->receiptProcess($receipt,$action);
+        
+        return redirect()->route('receipt.indexAccepted');
+
+    }
     public function receiptUnPay(Receipt $receipt)
     {   
         $action = 'unpay';

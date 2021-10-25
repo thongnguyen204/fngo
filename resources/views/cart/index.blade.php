@@ -114,17 +114,18 @@
             <div class="column">
                 {{-- <a class="btn btn-outline-secondary" href=""><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a> --}}
                 <div class="form-check">
-                    <input class="form-check-input" value="offline" type="radio" name="payment" id="flexRadioDefault1" checked>
+                    <input class="form-check-input" value="1" type="radio" name="payment" id="flexRadioDefault1" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
-                      {{__('cart.Cashe')}}
+                      {{__('cart.Cash')}}
                     </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" value="banking" type="radio" name="payment" id="flexRadioDefault2">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" value="2" type="radio" name="payment" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
                         {{__('cart.Banking')}}
                     </label>
-                  </div>
+                </div>
+                <div id="paypal-button"></div>
             </div>
             <div class="column">
                 <a class="update btn btn-primary" href="#!" data-toast="" data-toast-type="success" data-toast-position="topRight"
@@ -134,7 +135,7 @@
                 </a>
                 
                 <a class="checkout btn btn-success" href="#!">{{__('cart.Checkout')}}</a>
-                {{-- <div id="paypal-button"></div> --}}
+                
             </div>
         </div>
     </div>
@@ -206,7 +207,9 @@
         });
     });
     $(".checkout").on("click",function(){
+        var payment =$('input[name="payment"]:checked').val();
         var list= [];
+        
         $("table tbody tr td").each(function(){
             $(this).find("input").each(function(){
                 var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
@@ -214,13 +217,14 @@
             });
         });
         // var list1 = [1,2,3];
-        
+        // console.log(list);
         $.ajax({
             url: "booking",
             type:'POST',
             data:{
                 "_token": "{{ csrf_token() }}",
                 "data": list,
+                "payment": payment,
             }
         }).done(function(respone){
             // console.log(respone);
@@ -244,7 +248,7 @@
     // Customize button (optional)
     locale: 'en_US',
     style: {
-      size: 'medium',
+      size: 'small',
       color: 'gold',
       shape: 'pill',
     },
@@ -267,7 +271,30 @@
     onAuthorize: function(data, actions) {
       return actions.payment.execute().then(function() {
         // Show a confirmation message to the buyer
-        window.alert('Thank you for your purchase!');
+        // 3 is paypal
+        var payment = 3;
+        var list= [];
+        
+        $("table tbody tr td").each(function(){
+            $(this).find("input").each(function(){
+                var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
+                list.push(element);
+            });
+        });
+        // var list1 = [1,2,3];
+        console.log(payment);
+        $.ajax({
+            url: "booking",
+            type:'POST',
+            data:{
+                "_token": "{{ csrf_token() }}",
+                "data": list,
+                "payment": payment,
+            }
+        }).done(function(respone){
+            // console.log(respone);
+            location.href = '/receipt';
+        });
       });
     }
   }, '#paypal-button');

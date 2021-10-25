@@ -21,7 +21,10 @@ return [
     'Banking'           => 'Chuyển khoản',
     "User's ID"         => "ID người dùng",
     "Search"            => "Tìm hóa đơn",
-    'ID input'          => "Nhập mã hóa đơn"
+    'ID input'          => "Nhập mã hóa đơn",
+    "Finish"            => "Hoàn thành",
+    "Not finish"        => "Chưa hoàn thành",
+    "Paypal"    => 'Paypal',
 
     
 ]

@@ -21,5 +21,9 @@ class PaymentSeeder extends Seeder
             'type' => 'bank transfer',
             'description' => '',
         ]);
+        Payment::create([
+            'type' => 'paypal',
+            'description' => '',
+        ]);
     }
 }
