@@ -23,6 +23,7 @@ return [
     'Add cart' => 'ADD TO CART NOW',
     'Contact' => 'CONTACT FOR MORE INFORMATION',
     'Login to buy' => 'LOGIN TO BUY',
+    'tour'  => 'TOURS',
 ]
 
 ?>

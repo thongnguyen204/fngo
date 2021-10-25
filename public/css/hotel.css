@@ -88,3 +88,16 @@ body{
     background-color: #28a745;
     margin-bottom: 20px;   
 }
+.title-top-hotel{
+    color: black;
+    margin: 20px 0px 20px 0px;
+    padding: 5px 20px 0px 20px;
+    background-color: red;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+.card{
+    padding-left: 0px;
+    padding-right: 0px;
+}

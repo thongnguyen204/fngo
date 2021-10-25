@@ -100,7 +100,7 @@
               <div class="card-body hotel-info">
                   <div class="row">
                       <a class="link" href="{{route('hotel.show',$hotel)}}">
-                          <div class="col-md-12 tour-name ">{{$hotel->name}}</div>
+                          <div class="col-md-12 tour-name hotel-name-index">{{$hotel->name}}</div>
                       </a>
                   </div>
               </div>

@@ -27,7 +27,8 @@ return [
     'Edit'              => 'Edit',
     'Average price'     => 'Average price',
     'Province/City'     => 'Province/City',
-    'Update'            => 'Update'
+    'Update'            => 'Update',
+    'Hotel' => 'HOTELS',
 ]
 
 ?>

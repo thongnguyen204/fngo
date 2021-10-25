@@ -69,10 +69,64 @@ class TourSeeder extends Seeder
                 'purchases_number' => 1,
             ]);
 
-            $tour =  Tour::create([
+            Tour::create([
                 'name' => ' NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
                 'content' => 'Tham quan 1 vong ĐÀ LẠT',
                 'product_code' => 'tour_4',
+                'price' => 3000000,
+                'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
+                'departure_date' => DateTime::createFromFormat('Y-m-d',
+                '2000-04-20'),
+                'departure_place' => 'TPHCM',
+                'passenger_num' => 10,
+                'departure_time' => '05:30',
+                'departure_hour' => 5,
+                'departure_minute' => 30,
+                'day_number' => 4,
+                'city_province_id' => 3,
+                'purchases_number' => 4,
+            ]);
+
+            Tour::create([
+                'name' => 'PHÚ YÊN – 3N2Đ – NƠI ĐẤT PHÚ TRỜI YÊN',
+                'content' => 'Tham quan 1 vong ĐÀ LẠT',
+                'product_code' => 'tour_5',
+                'price' => 3000000,
+                'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
+                'departure_date' => DateTime::createFromFormat('Y-m-d',
+                '2000-04-20'),
+                'departure_place' => 'TPHCM',
+                'passenger_num' => 10,
+                'departure_time' => '05:30',
+                'departure_hour' => 5,
+                'departure_minute' => 30,
+                'day_number' => 4,
+                'city_province_id' => 3,
+                'purchases_number' => 4,
+            ]);
+
+            Tour::create([
+                'name' => ' NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
+                'content' => 'Tham quan 1 vong ĐÀ LẠT',
+                'product_code' => 'tour_6',
+                'price' => 3000000,
+                'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9460745190600cb82108c9ff0e39cad3-1024x682.jpg',
+                'departure_date' => DateTime::createFromFormat('Y-m-d',
+                '2000-04-20'),
+                'departure_place' => 'TPHCM',
+                'passenger_num' => 10,
+                'departure_time' => '05:30',
+                'departure_hour' => 5,
+                'departure_minute' => 30,
+                'day_number' => 4,
+                'city_province_id' => 3,
+                'purchases_number' => 4,
+            ]);
+
+            Tour::create([
+                'name' => ' NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
+                'content' => 'Tham quan 1 vong ĐÀ LẠT',
+                'product_code' => 'tour_7',
                 'price' => 3000000,
                 'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
                 'departure_date' => DateTime::createFromFormat('Y-m-d',

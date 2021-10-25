@@ -27,7 +27,8 @@ return [
     'Edit'              => 'Chỉnh sửa',
     'Average price'     => 'Giá',
     'Province/City'     => 'Tỉnh/Thành Phố',
-    'Update'            => 'Cập nhật'
+    'Update'            => 'Cập nhật',
+    'Hotel' => 'KHÁCH SẠN',
 ]
 
 ?>

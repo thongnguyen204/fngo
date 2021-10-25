@@ -7,22 +7,31 @@
 
 <link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
 
-    <div style="max-width: 1300px;" class="container">
-        
-        <form action="{{route('hotel.index')}}" method="GET">
-            <div class="input-group mb-3 searchBar">
-                <input placeholder="{{__('hotel.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
-                    placeholder="">
-                <div class="input-group-append">
-                    <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
-                            class="bi bi-search"></i></button>
-                </div>
-            </div>
-        </form>
+<form style="max-width: 1300px" class="container" action="{{route('hotel.index')}}" method="GET">
+    <div class="input-group mb-3 searchBar">
+        <input placeholder="{{__('hotel.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
+            placeholder="">
+        <div class="input-group-append">
+            <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
+                    class="bi bi-search"></i></button>
+        </div>
+    </div>
+</form>
+
+<div class="title-top-hotel">
+    <div style="max-width: 1300px" class="container">
+        <i class="bi bi-house-door-fill"></i>
+        {{__('hotel.Hotel')}}
+    </div>
+</div>
+
+<div style="max-width: 1300px;" class="container">
+    
+    <div class="card-group">
         <div class="row">
             @foreach ($hotels  as $hotel)
             <div class="card col-md-4">
-                <div class="card-body">
+                <div style="padding: 10px" class="card-img-top">
                     <a href="{{route('hotel.show',$hotel)}}">
                         <img loading="lazy" alt="hotek Image" class="img_fluid rounded pictrure"
                             src="{{$hotel->avatar}}">
@@ -35,7 +44,7 @@
                         </a>
                     </div>
 
-                    <div class="row" >
+                    {{-- <div class="row" >
                         <div class="col-6 col-sm-6 col-md-12 col-lg-6">
                             <i class="bi bi-geo-alt-fill"></i>
                             {{$hotel->CityProvince->name}}
@@ -43,12 +52,21 @@
                         <div id="money" class="float-right col-6 col-sm-6 col-md-12 col-lg-6">
                             <div class="float-right" style="width: 130px">{{$hotel->money($hotel->price)}}</div>
                         </div>
-                    </div>
+                    </div> --}}
+                    
+                </div>
+                <div class="card-footer">
+                    <span class="">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        {{$hotel->CityProvince->name}}
+                    </span>
+                    <div id="money" class="float-right" style="width: 130px">{{$hotel->money($hotel->price)}}</div>
                 </div>
             </div>
             @endforeach
         </div>
-        {{ $hotels->links() }}
     </div>
+    {{ $hotels->links() }}
+</div>
 
 @endsection

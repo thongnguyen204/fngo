@@ -2,18 +2,24 @@
 @section('content')
 <link href="{{ asset('css/tour.css') }}" rel="stylesheet">
 
-
-<div style="max-width: 1300px;" class="container">
-    <form action="{{route('tour.index')}}" method="GET">
-        <div class="input-group mb-3 searchBar">
-            <input placeholder="{{__('tour.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="">
-            <div class="input-group-append">
-                <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
-                        class="bi bi-search"></i>
-                </button>
-            </div>
+<form style="max-width: 1300px;" class="container" action="{{route('tour.index')}}" method="GET">
+    <div class="input-group mb-3 searchBar">
+        <input placeholder="{{__('tour.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control" placeholder="">
+        <div class="input-group-append">
+            <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
+                    class="bi bi-search"></i>
+            </button>
         </div>
-    </form>
+    </div>
+</form>
+<div class="title-top-tour ">
+    <div style="max-width: 1300px" class="container">
+        <i class="bi bi-camera-fill"></i>
+        {{__('tour.tour')}}
+    </div>
+</div>
+<div style="max-width: 1300px;" class="container">
+    
     <div class="card-group">
         <div class="row">
             @foreach ($trips as $trip)

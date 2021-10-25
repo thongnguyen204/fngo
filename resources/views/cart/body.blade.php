@@ -12,7 +12,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach (Session::get('Cart')->products as $product)
             <tr>
                 <td>
@@ -54,9 +53,8 @@
                     </div>
                 </td>
                 <td class="text-center text-lg text-medium">
-                {{Session::get('Cart')->money($product['price'])}}
-            </td>
-
+                    {{Session::get('Cart')->money($product['price'])}}
+                </td>
                 <td class="text-center">
                     <a class="remove-from-cart" href="#!" data-toggle="tooltip" title=""
                         data-original-title="Remove item">
@@ -67,7 +65,6 @@
                 </td>
             </tr>
             @endforeach
-
         </tbody>
     </table>
 </div>
