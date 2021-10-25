@@ -11,95 +11,176 @@
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
+           :root{
+            --main-color:#F05123;
+           }
+           *{
+            margin: 0;
+            padding 0;
+            box-sizing: border-box;
+           }
+           a {
                 text-decoration: none;
-                text-transform: uppercase;
+           }
+
+           li{
+            list-style: none;
+           }
+           .container{
+            max-width: 1024px;
+            margin: auto;
+
+           }
+           .row{
+            display: flex;
+            flex-wrap: wrap;
+           }
+
+           header{
+            background-image: url("https://res.cloudinary.com/dloeyqk30/image/upload/v1634738398/FnGO/test/anh1_i5jxq5.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+           }
+
+           .bg-image{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-color: black;
+                opacity:  0.6;
+           } 
+           .top{
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+           }
+
+           .header-top{
+            justify-content: space-between;
+            padding: 20px 0;
+            align-items: center;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            .header-top p{
+            font-size: 25px;
+            letter-spacing: 2px;
+            color: var(--main-color);
+            font-weight: bold;
+           }
+
+           .header-top ul{
+            display: flex;
+           }
+           .header-top ul li{
+            margin-left: 40px;
+            position: relative;
+
+           }
+
+           .header-top ul li::after{
+            position: absolute;
+            content: "";
+            display: block;
+            bottom: -2px;
+            height: 4px;
+            width: 0%;
+            background-color: var(--main-color);
+            border-radius: 5px;
+            transition: all 0.5s ease;
+           }
+
+            .header-top ul li:hover::after{
+                width: 100%;
             }
+           .header-top ul li a{
+            color: white;
+             font-weight: bold;
+           }
+
+           .header-text{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            max-width: 700px;
+            min-width: 500px;
+            text-align:center;
+           }
+           .header-text h1{
+               font-family: sans-serif;
+               color: white;
+               font-weight: bold;
+               margin-bottom: 20px;
+               font-size: 32px; 
+           }
+           .header-text p{
+            font-family: sans-serif;
+            color: white;
+           }
+           .header-text button{
+            width: 150px;height: 40px;
+            margin-top: 20px;
+            background-color: white;
+            border: 2px solid var(--main-color);
+            cursor: pointer;
+            transition: all 0.5s ease;
+            font-size: 20px;
+           }
+
+           .header-text button:hover{
+            background-color: var(--main-color);
+           }
+
+           
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    {{-- @foreach (config('app.available_locales') as $locale)
-                <div class="nav-item">
-                    <a 
+       <header>
+         @if (Route::has('login'))
+          {{-- @foreach (config('app.available_locales') as $locale)
+           <a 
                        href="{{route(Route::currentRouteName(), $locale)}}"
                         @if (app()->getLocale() == $locale) style="font-weight: bold; text-decoration: underline" @endif>{{ strtoupper($locale) }}</a>
-                </div>
-            @endforeach --}}
-                    <a  href="{{ route('language', 'vn')}}">VN</a>
-                    <a  href="{{ route('language', 'en')}}">EN</a>
+                         @endforeach --}}
+           <div class="top">
+               <div class="container">
+                   <div class="header-top row">
+                       <p>FnGO Website Du Lịch</p>
+                       <ul>
+                           <li><a  href="{{ route('language', 'vn')}}">VN</a></li>
+                           <li><a  href="{{ route('language', 'en')}}">EN</a></li>
                     @auth
-                        <a href="{{ route('home') }}">{{__('common.Home')}}</a>
+                        <li><a href="{{ route('home') }}">{{__('common.Home')}}</a></li>
                     @else
-                        <a href="{{ route('login' ) }}">{{__('welcome.Login')}}</a>
+                        <li><a href="{{ route('login' ) }}">{{__('welcome.Login')}}</a></li>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">{{__('welcome.Register')}}</a>
+                            <li><a href="{{ route('register') }}">{{__('welcome.Register')}}
+                            </a></li>
                         @endif
                     @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    FnGO
-                </div>
-
-                <div class="links">
-                    <a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
-                    <a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a>
-                    <a href='{{route('article.index')}}'>{{__('welcome.Articles')}}</a>
-                    
-                </div> 
-            </div>
-        </div>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+           <div class="bg-image">
+               
+           </div>
+           <div class="header-text">
+               <h1>Web Dịch Vụ Du Lịch Uy Tín - Chất Lượng</h1>
+               <p>Tham gia ngay</p>
+               <button><a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
+               </button>
+               <button><a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a></button>
+               <button><a href='{{route('article.index')}}'>{{__('welcome.Articles')}}</a>
+               </button>
+           </div>
+           @endif
+       </header>
     </body>
 </html>
