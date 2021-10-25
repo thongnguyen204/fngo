@@ -166,6 +166,7 @@
             }
         }).done(function(respone){
             // console.log(respone);
+            location.href = '/receipt';
         });
     });
 </script>
