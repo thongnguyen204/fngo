@@ -85,13 +85,13 @@
     <div class="column">
         {{-- <a class="btn btn-outline-secondary" href=""><i class="icon-arrow-left"></i>&nbsp;Back to Shopping</a> --}}
         <div class="form-check">
-            <input class="form-check-input" value="offline" type="radio" name="payment" id="flexRadioDefault1" checked>
+            <input class="form-check-input" value="1" type="radio" name="payment" id="flexRadioDefault1" checked>
             <label class="form-check-label" for="flexRadioDefault1">
               {{__('cart.Cash')}}
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" value="banking" type="radio" name="payment" id="flexRadioDefault2">
+            <input class="form-check-input" value="2" type="radio" name="payment" id="flexRadioDefault2">
             <label class="form-check-label" for="flexRadioDefault2">
                 {{__('cart.Banking')}}
             </label>
