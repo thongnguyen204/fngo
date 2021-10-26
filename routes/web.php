@@ -248,6 +248,11 @@ Route::get('/', function () {
     Route::get('/payment',function(){
         return view('payment.index');
     });
+    Route::get('/introduction',function(){
+        return view('introduction.index');
+    });
+    Route::get('/search','HomeController@search')
+    ->name('home.search');
 
     Route::get('/home', 'HomeController@index')->name('home');    
     Route::get('tour','TourController@index')

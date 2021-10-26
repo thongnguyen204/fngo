@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HomeSearchRequest;
 use App\Services\ArticleServiceInterface;
 use App\Services\HotelServiceInterface;
 use App\Services\RoomServiceInterface;
 use App\Services\TourServiceInterface;
-
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -51,5 +52,9 @@ class HomeController extends Controller
         ->with('topRoom',   $top4room)
         ->with('topHotel',  $top4hotel)
         ->with('topArticle',$top4article);
+    }
+    public function search(HomeSearchRequest $request)
+    {
+        return $request;
     }
 }

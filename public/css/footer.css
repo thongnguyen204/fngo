@@ -1,0 +1,25 @@
+footer{
+    background-color: #2d2d2d ;
+    color: white;
+}
+
+a.logo{
+    color:white;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 600;
+}
+hr{
+    
+    width: 50px;
+    height:2px;
+    border-width:0;
+    color:gray;
+    background-color:gray;
+    margin-left: 0px;
+    
+}
+a.phone{
+    color: white;
+    text-decoration: none;
+}

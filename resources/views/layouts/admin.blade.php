@@ -129,7 +129,7 @@
         </div>
     </nav>
     
-    <main style="min-height: 1000px">
+    <main style="min-height: 800px">
         @yield('content')
     </main>
     @include('layouts.footer')

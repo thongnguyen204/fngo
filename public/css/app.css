@@ -4869,21 +4869,21 @@ input[type=button].btn-block {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: white;
 }
 
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: #ecd45a;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
+  color: #ecd45a;
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
@@ -4911,7 +4911,7 @@ input[type=button].btn-block {
 }
 
 .navbar-light .navbar-text a {
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(97, 55, 55, 0.9);
 }
 
 .navbar-light .navbar-text a:hover,
@@ -10943,7 +10943,11 @@ a.text-dark:focus {
 }
 
 .navbar-laravel {
-  background-color: #fff;
+
+  /* default */
+  /* background-color: #fff;  */
+
+  background-color: #0542bd ;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
