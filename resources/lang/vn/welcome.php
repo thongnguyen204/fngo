@@ -6,6 +6,7 @@ return [
     'Register'  => 'Đăng ký',
     'Login'     => 'Đăng nhập',
     'Articles'  => 'BÀI VIẾT',
+    'Home'      => 'TRANG CHỦ',
 ]
 
 ?>

@@ -174,6 +174,9 @@
            <div class="header-text">
                <h1>Web Dịch Vụ Du Lịch Uy Tín - Chất Lượng</h1>
                <p>Tham gia ngay</p>
+               <button>
+                   <a href='{{route('home')}}'>{{__('welcome.Home')}}</a>
+               </button>
                <button><a href='{{route('hotel.index')}}'>{{__('welcome.Hotels')}}</a>
                </button>
                <button><a href='{{route('tour.index')}}'>{{__('welcome.Tours')}}</a></button>
