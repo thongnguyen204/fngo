@@ -24,3 +24,7 @@ a.footer-link{
     color: white;
     text-decoration: none;
 }
+.footer-title{
+    font-size: 23px;
+    font-weight: bolder;
+}
