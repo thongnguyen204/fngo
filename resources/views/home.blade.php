@@ -36,7 +36,10 @@
             </a>
           </div>
     </div>
-    <div class="container">
+    <div>
+      @include('layouts.onlySearchBar')
+    </div>
+    <div style="max-width: 1300px" class="container">
         <div class="title-top rounded">
           <i class="bi bi-camera-fill"></i>
           {{__('home.top tour')}}
@@ -80,7 +83,7 @@
         </a>
       </div>
     </div>
-    <div class="container">
+    <div style="max-width: 1300px"  class="container">
 
       <div class="title-top rounded">
         <i class="bi bi-house-door-fill"></i> 
@@ -121,7 +124,7 @@
 
     </div>
 
-    <div class="container">
+    <div style="max-width: 1300px"  class="container">
       <div class="title-top rounded">
         <i class="bi bi-newspaper"></i>
         {{__('home.top article')}}
