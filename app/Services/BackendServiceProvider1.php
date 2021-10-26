@@ -52,6 +52,10 @@ class BackendServiceProvider1 extends ServiceProvider
             'App\Services\ArticleCommentServiceInterface',
             'App\Services\ArticleCommentService',
         );
+        $this->app->bind(
+            'App\Services\HomeServiceInterface',
+            'App\Services\HomeService',
+        );
         
     }
 }

@@ -1,6 +1,7 @@
 footer{
     background-color: #2d2d2d ;
     color: white;
+    padding-top: 30px;
 }
 
 a.logo{
@@ -19,7 +20,7 @@ hr{
     margin-left: 0px;
     
 }
-a.phone{
+a.footer-link{
     color: white;
     text-decoration: none;
 }

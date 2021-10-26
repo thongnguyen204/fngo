@@ -46,7 +46,7 @@ class HotelController extends Controller
         
         return view($view)
         ->with('hotels',$hotels);
-        // dd($hotels);
+        
 
         
     }

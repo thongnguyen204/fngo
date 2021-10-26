@@ -1,5 +1,5 @@
 body{
-    background-color: #e6eaed;
+    background-color:white;
 }
 .wrapper{
     margin: 20px 0px 20px 0px;
@@ -8,4 +8,7 @@ body{
     margin-top: 30px;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+.content{
+    margin-left: 33px;
 }

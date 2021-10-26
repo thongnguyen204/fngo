@@ -247,10 +247,12 @@ Route::get('/', function () {
 
     Route::get('/payment',function(){
         return view('payment.index');
-    });
+    })
+    ->name('payment.index');
     Route::get('/introduction',function(){
         return view('introduction.index');
-    });
+    })
+    ->name('introduction.index');
     Route::get('/search','HomeController@search')
     ->name('home.search');
 

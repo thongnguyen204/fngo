@@ -14,8 +14,6 @@
                 <div class="row">
                     <div class="col">
                         {{__('footer.Try')}}
-                        
-                        
                     </div>
                 </div>
             </div>
@@ -27,25 +25,25 @@
                         <hr>
                     </div>
 
-                    <div>
+                    <p>
                         <i class="bi bi-geo-alt"></i>
                         97 Võ Văn Tần, Phường 6, Quận 3, Thành phố Hồ Chí Minh
-                    </div>
+                    </p>
 
-                    <div>
+                    <p>
                         <i class="bi bi-telephone"></i>
                         Hotline: 0905200419
-                    </div>
+                    </p>
 
-                    <div>
+                    <p>
                         <i class="bi bi-envelope"></i>
                         1851010131Thong@ou.edu.vn
-                    </div>
+                    </p>
 
-                    <div>
+                    <p>
                         <i class="bi bi-envelope"></i>
                         1851010144Trung@ou.edu.vn
-                    </div>
+                    </p>
                 </div>
             </div>
             <div class="col-12 col-md-4">
@@ -54,10 +52,33 @@
                     <div>
                         <hr>
                     </div>
-                    <a class="phone" href="tel:0905200419">
-                        <i class="bi bi-telephone"></i>
-                        0905200419
-                    </a>
+
+                    <p>
+                        <a class="footer-link" href="tel:0905200419">
+                            <i class="bi bi-telephone"></i>
+                            0905200419
+                        </a>
+                    </p>
+
+                    <p>
+                        <a class="footer-link" href="{{route('payment.index')}}">
+                            <i class="bi bi-cash-coin"></i>
+                            {{__('footer.Payment')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="footer-link" href="{{route('introduction.index')}}">
+                            <i class="bi bi-people-fill"></i>
+                            {{__('footer.Intro')}}
+                        </a>
+                    </p>
+
+                    <p>
+                        <a class="footer-link" href="">
+                            <i class="bi bi-person-square"></i>
+                            {{__('footer.About us')}}
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

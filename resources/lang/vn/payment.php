@@ -2,10 +2,10 @@
 
 return [
     
-    'Payment'           => 'CHI TIẾT THANH TOÁN',
+    'Payment'           => 'PHƯƠNG THỨC THANH TOÁN',
     'Offline'           => 'Dùng tiền mặt',
     'Banking'           => 'Chuyển khoản qua ngân hàng',
-    'Offline-content'   => 'Quý khách có thể đến trực tiếp văn phòng của chúng tôi để thực hiện thanh toán.',
+    'Offline-content'   => 'Quý khách có thể đến trực tiếp văn phòng của chúng tôi để thực hiện thanh toán và nhận vé.',
     'Address'           => 'Địa chỉ của chúng tôi: ',
     
     'Bank'  => 'Ngân hàng Nam a bank (NAB):',
@@ -14,6 +14,8 @@ return [
     'Banking-content'   => 'Nội dung chuyển khoản: ',
     'Price' => 'Giá đơn hàng',
     'Receipt ID'    => 'Mã hóa đơn',
+    'Paypal'    => 'Thanh toán qua PayPal',
+    'Paypal content'    => 'Bạn cũng có thể thanh toán bất kì đơn đặt tour, khách sạn nào ở website chúng tôi qua PayPal.'
 ]
 
 ?>

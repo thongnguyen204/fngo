@@ -258,7 +258,6 @@ class ReceiptController extends Controller
         //
         $this->receipt->delete($receipt->id);
 
-        //lay route tuong ung voi trang thai hoa don
         
         return redirect()->route('receipt.indexAccepted');
         

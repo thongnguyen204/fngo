@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HomeSearchRequest;
 use App\Services\ArticleServiceInterface;
+use App\Services\HomeServiceInterface;
 use App\Services\HotelServiceInterface;
 use App\Services\RoomServiceInterface;
 use App\Services\TourServiceInterface;
@@ -15,12 +16,14 @@ class HomeController extends Controller
     private $room;
     private $hotel;
     private $article;
+    private $home;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct(
+        HomeServiceInterface    $home,
         ArticleServiceInterface $article,
         RoomServiceInterface    $room,
         TourServiceInterface    $tour,
@@ -32,6 +35,7 @@ class HomeController extends Controller
         $this->tour     = $tour;
         $this->room     = $room;
         $this->hotel    = $hotel;
+        $this->home     = $home;
     }
 
     /**
@@ -55,6 +59,7 @@ class HomeController extends Controller
     }
     public function search(HomeSearchRequest $request)
     {
-        return $request;
+        return $this->home->search($request);
+        
     }
 }

@@ -51,7 +51,7 @@
                       </a>
                   </div>
                   <div class="card-body tour-info">
-                      <div class="row">
+                      <div class="row row-name">
                           <a class="link" href="{{route('tour.show',$trip)}}">
                               <div  class="col-md-12 tour-name">{{$trip->name}}</div>
                           </a>
@@ -98,7 +98,7 @@
                   </a>
               </div>
               <div class="card-body hotel-info">
-                  <div class="row">
+                  <div class="row row-name">
                       <a class="link" href="{{route('hotel.show',$hotel)}}">
                           <div class="col-md-12 tour-name hotel-name-index">{{$hotel->name}}</div>
                       </a>
