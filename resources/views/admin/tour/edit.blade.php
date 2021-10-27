@@ -161,7 +161,7 @@
             <button style="margin-right: 20px" class="btn btn-primary" type="button" id="addDayEdit">{{__('tour.Add')}}</button>
             <button style="margin-right: 20px" class="btn btn-secondary" type="button" id="removeDayEdit">{{__('tour.Remove')}}</button>
             <button style="margin-right: 20px" class="btn btn-success" type="submit">{{__('tour.Update')}}</button>
-            <button style="margin-right: 0px" class="btn btn-success" type="submit">{{__('tour.Update')}}</button>
+            <a href="{{route('tour.show',$tour)}}" style="margin-right: 0px" class="btn btn-success" type="submit">{{__('tour.Back')}}</a>
         </div>
     </form>
 </div>

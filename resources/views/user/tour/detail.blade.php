@@ -85,6 +85,17 @@
                                     {{$tour->day()}}
                                 </li>
                                 <li class="list-group-item border-0">
+                                    <i class="bi bi-clock"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Time')}}:</strong>
+                                    {{-- ham duoc viet trong model Tour --}}
+                                    @if ($tour->day_number >= 2)
+                                        {{$tour->day_number}} {{__('tour.day')}} {{$tour->day_number - 1 }} {{__('tour.night')}}
+                                    @else
+                                        {{$tour->day_number}} {{__('tour.day')}}
+                                    @endif
+                                    
+                                </li>
+                                <li class="list-group-item border-0">
                                     <i class="bi bi-alarm"></i>&nbsp&nbsp
                                     <strong>{{__('tour.Departure time')}}:</strong>
                                     {{$tour->departure_time}}

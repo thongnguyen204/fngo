@@ -23,6 +23,10 @@ return [
     'Contact' => 'GỌI NGAY ĐỂ ĐƯỢC TƯ VẤN',
     'Login to buy' => 'ĐĂNG NHẬP ĐỂ MUA',
     'tour'  => 'CHUYẾN DU LỊCH',
+    'Time'          => 'Thời gian',
+    'day'           => 'ngày',
+    'night'           => 'đêm',
+    'Back'  => 'Quay về',
     
 
 ]

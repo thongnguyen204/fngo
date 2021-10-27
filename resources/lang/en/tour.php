@@ -24,6 +24,8 @@ return [
     'Contact' => 'CONTACT FOR MORE INFORMATION',
     'Login to buy' => 'LOGIN TO BUY',
     'tour'  => 'TOURS',
+    'Time'          => 'Time',
+    'Back'  => 'Back',
 ]
 
 ?>
