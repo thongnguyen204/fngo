@@ -10,7 +10,7 @@ interface HotelServiceInterface
 
     public function store(Request $request);
 
-    public function delete($id);
+    public function delete(Hotel $hotel);
 
     public function show($id);
 

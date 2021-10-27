@@ -18,4 +18,8 @@ class ProductRepository implements ProductRepositoryInterface{
     {
         $products->save();
     }
+    public function destroy($id)
+    {
+        Products::destroy($id);
+    }
 }

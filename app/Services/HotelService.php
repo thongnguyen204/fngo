@@ -51,6 +51,7 @@ class HotelService implements HotelServiceInterface
         $product1 = new Products;
         $product1->avatar = $hotel->avatar;
         $product1->product_code = "hotel_" .$hotel->id;
+        $product1->category_id = 1;
         $product1->name = $hotel->name;
         $this->product->save($product1);
 
@@ -59,8 +60,11 @@ class HotelService implements HotelServiceInterface
         $this->hotel->store($hotel); 
     }
     
-    public function delete($id){
-        $this->hotel->delete($id);
+    public function delete(Hotel $hotel)
+    {
+        $product_id = $this->product->getProductByCode($hotel->product_code)->id;
+        $this->product->destroy($product_id);
+        // $this->hotel->delete($id);
     }
     public function show($id)
     {

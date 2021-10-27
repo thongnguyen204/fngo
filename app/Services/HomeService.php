@@ -33,8 +33,9 @@ class HomeService implements HomeServiceInterface{
             $hotels = $this->hotel->search($request->search);
 
             $view = $role . ".hotel.index";
-        
+            $CityProvinces = $this->hotel->getAllCityProvince();
             return view($view)
+            ->with('CityProvinces',$CityProvinces)
             ->with('hotels',$hotels);
         }
 
@@ -43,8 +44,9 @@ class HomeService implements HomeServiceInterface{
             $tours = $this->tour->search($request->search);
 
             $view = $role . ".tour.index";
-        
+            $CityProvinces = $this->tour->getAllCityProvince();
             return view($view)
+            ->with('CityProvinces',$CityProvinces)
             ->with('trips',$tours);
         }
 

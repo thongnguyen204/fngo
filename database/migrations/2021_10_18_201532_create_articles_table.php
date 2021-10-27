@@ -20,9 +20,12 @@ class CreateArticlesTable extends Migration
             $table->string('abstract');
             $table->string('thumbnail');
             $table->longText('content');
+            //3 is article
+            $table->integer('category_id')->unsigned()->default(3);
             $table->integer('comment_number')->unsigned()->default(0);
             $table->timestamps();
 
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -35,7 +38,7 @@ class CreateArticlesTable extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
-            
+            $table->dropForeign('articles_category_id_foreign');
             $table->dropForeign('articles_user_id_foreign');
         });
         Schema::dropIfExists('articles');

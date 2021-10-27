@@ -24,7 +24,7 @@ class HotelController extends Controller
     }
     public function userOrAdmin()
     {
-        if(Auth::user()->role->name == 'user')
+        if(!Auth::check() || Auth::user()->role->name == 'user')
            return 'user';
         else{
            return 'admin';
@@ -158,7 +158,7 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         //
-        $this->hotel->delete($hotel->id);
+        $this->hotel->delete($hotel);
         
         return redirect()->route('hotel.index');
     }

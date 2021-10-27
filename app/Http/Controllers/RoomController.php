@@ -116,7 +116,8 @@ class RoomController extends Controller
     {
         //
         
-        $temp = $this->room->destroy($room);
+        $temp = $room->hotel;
+        $this->room->destroy($room);
         return redirect()->route('hotel.show',$temp);
         
     }

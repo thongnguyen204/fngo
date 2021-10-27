@@ -12,8 +12,13 @@ class Tour extends Model
         'title','content','tour_code',
         'price','day_start','place_start',
         'space_available','time_start',
-        'day_number','purchases_number'
+        'day_number','purchases_number',
+        'category_id'
     ];
+    public function product()
+    {
+        return $this->belongsTo(Products::class);
+    }
     public function subTour()
     {
         return $this->hasMany(SubTour::class);

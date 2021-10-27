@@ -17,7 +17,10 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('product_code')->unique()->default("default");
             $table->string('name');
+            $table->integer('category_id')->unsigned()->nullable();
             $table->string('avatar');
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -28,6 +31,9 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign('products_category_id_foreign');
+        });
         Schema::dropIfExists('products');
     }
 }

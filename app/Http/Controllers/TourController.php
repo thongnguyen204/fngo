@@ -25,7 +25,7 @@ class TourController extends Controller
     }
     public function userOrAdmin()
     {
-        if(Auth::user()->role->name == 'user')
+        if(!Auth::check() || Auth::user()->role->name == 'user')
            return 'user';
         else{
            return 'admin';
@@ -155,7 +155,7 @@ class TourController extends Controller
     public function destroy(Tour $tour)
     {
         //
-        $this->tour->delete($tour->id);
+        $this->tour->delete($tour);
         return redirect()->route('tour.index');
     }
 }

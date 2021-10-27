@@ -9,7 +9,7 @@ class Hotel extends Model
 {
     //
     protected $fillable = [
-        'name','category','price_avg'
+        'name','category','price_avg','category_id'
     ];
 
     public $timestamps = false;

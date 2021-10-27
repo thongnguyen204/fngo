@@ -27,7 +27,7 @@ class ProductController extends Controller
     }
     public function userOrAdmin()
     {
-        if(Auth::user()->role->name == 'user')
+        if(!Auth::check() || Auth::user()->role->name == 'user')
            return 'user';
         else{
            return 'admin';

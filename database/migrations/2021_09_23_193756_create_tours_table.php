@@ -29,9 +29,13 @@ class CreateToursTable extends Migration
             $table->integer('purchases_number')->default(0);
             $table->integer('tourGuide_id')->nullable();
             $table->integer('city_province_id')->unsigned();
-
+            //2 is tour
+            $table->integer('category_id')->unsigned()->default(2);
             $table->string('content')->nullable();
             $table->timestamps();
+
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -42,6 +46,9 @@ class CreateToursTable extends Migration
      */
     public function down()
     {
+        Schema::table('tours', function (Blueprint $table) {
+            $table->dropForeign('tours_category_id_foreign');
+        });
         Schema::dropIfExists('tours');
     }
 }

@@ -15,7 +15,28 @@ class CategorySeeder extends Seeder
     {
         //
         $category = new Category([
-            'name' => 'nơi ở',
+            'name' => 'Hotel',
+            'description' => Str::random(20),
+        ]);
+
+        $category->save();
+
+        $category = new Category([
+            'name' => 'Tour',
+            'description' => Str::random(20),
+        ]);
+
+        $category->save();
+
+        $category = new Category([
+            'name' => 'Article',
+            'description' => Str::random(20),
+        ]);
+
+        $category->save();
+
+        $category = new Category([
+            'name' => 'RoomType',
             'description' => Str::random(20),
         ]);
 

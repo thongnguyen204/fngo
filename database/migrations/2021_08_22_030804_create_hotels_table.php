@@ -17,7 +17,8 @@ class CreateHotelsTable extends Migration
             $table->increments('id');
             $table->string('product_code')->default('hotel_');
             $table->string('name');
-            $table->string('category')->default('nơi ở');
+            //1 is hotel
+            $table->integer('category_id')->unsigned()->default(1);
             $table->string('avatar');
             $table->string('address');
             $table->integer('purchases_number')->default(0);
@@ -25,7 +26,7 @@ class CreateHotelsTable extends Migration
             
             $table->integer('price')->unsigned();
             
-            $table->foreign('category')->references('name')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
@@ -37,7 +38,7 @@ class CreateHotelsTable extends Migration
     public function down()
     {
         Schema::table('hotels', function (Blueprint $table) {
-            $table->dropForeign('hotels_category_foreign');
+            $table->dropForeign('hotels_category_id_foreign');
         });
         Schema::dropIfExists('hotels');
     }

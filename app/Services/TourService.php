@@ -21,9 +21,11 @@ class TourService implements TourServiceInterface
         $this->product = $product;
         $this->tour = $tour;
     }
-    public function delete($id)
+    public function delete(Tour $tour)
     {
-        $this->tour->delete($id);
+        $this->tour->delete($tour->id);
+        $product_id = $this->product->getProductByCode($tour->product_code)->id;
+        $this->product->destroy($product_id);
     }
 
     public function store(TourRequest $request){
@@ -81,8 +83,9 @@ class TourService implements TourServiceInterface
         // create a new product 
         $product1 = new Products;
         $product1->avatar = $tour->avatar;
-        $product1->product_code = "tour" .$tour->id;
+        $product1->product_code = "tour_" .$tour->id;
         $product1->name = $tour->name;
+        $product1->category_id = 2;
         $this->product->save($product1);
 
         // asign tour to new product

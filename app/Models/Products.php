@@ -8,7 +8,7 @@ class Products extends Model
 {
     //
     protected $fillable = [
-        'product_code','name','avatar'
+        'product_code','name','avatar','category_id'
     ];
     public $timestamps = false;
 

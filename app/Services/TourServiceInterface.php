@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 interface TourServiceInterface
 {
-    public function delete($id);
+    public function delete(Tour $tour);
 
     public function store(TourRequest $request);
 

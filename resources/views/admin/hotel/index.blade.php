@@ -28,7 +28,7 @@
         <div class="col"></div>
         <div class="col d-flex justify-content-end">
             <div class="btn-group">
-                <a class="btn btn-link" href="{{route('tour.create')}}"  >{{__('tour.Add')}}</a>
+                <a class="btn btn-link" href="{{route('hotel.create')}}"  >{{__('tour.Add')}}</a>
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

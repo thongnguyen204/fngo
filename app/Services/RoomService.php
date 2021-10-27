@@ -57,6 +57,7 @@ class RoomService implements RoomServiceInterface{
         $product1->avatar = $room->avatar;
         $product1->product_code = "hotel_" .$room->hotel->id ."_room_".$room->id;
         $product1->name = $room->name;
+        $product1->category_id = 4;
         $this->product->save($product1);
 
         // asign room to new product
@@ -96,7 +97,9 @@ class RoomService implements RoomServiceInterface{
 
     }
     public function destroy(RoomType $room){
-        return $this->room->destroy($room);
+        $product_id = $this->product->getProductByCode($room->product_code)->id;
+        $this->product->destroy($product_id);
+        // $this->room->destroy($room);
     }
     public function getRoomByCode($code){
         return $this->room->getRoomByCode($code);
