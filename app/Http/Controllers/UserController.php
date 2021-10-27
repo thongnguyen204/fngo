@@ -17,6 +17,14 @@ class UserController extends Controller
     {
         $this->user = $user;
     }
+    public function userOrAdmin()
+    {
+        if(Auth::user()->role->name == 'admin')
+           return 'admin';
+        else{
+           return 'user';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -84,7 +92,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-        $role = Auth::user()->role->name;
+        $role = $this->userOrAdmin();
 
         $view = $role . '.user.edit';
 
@@ -102,7 +110,7 @@ class UserController extends Controller
     {
         //
 
-        $role = Auth::user()->role->name;
+        $role = $this->userOrAdmin();
 
         $view = $role . '.user.edit';
 
@@ -136,7 +144,8 @@ class UserController extends Controller
     {
         //
         $this->user->update($request,$user);
-        return redirect()->route('users.show',[$user]);
+        return redirect()->route('users.show',[$user])
+        ->with('message',__('user.Update profile'));
     }
 
     /**
@@ -149,6 +158,7 @@ class UserController extends Controller
     {
         //
         $this->user->delete($user->id);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')
+        ;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CommentRequest;
+use App\Models\Comment;
 use App\Services\CommentServiceInterface;
 
 class CommentController extends Controller
@@ -45,5 +46,10 @@ class CommentController extends Controller
         ->with('product_code',  $product_code)
         ->with('comments',      $comments)
         ->with('have_comment',  $have_comment);
+    }
+
+    public function delete(Comment $comment)
+    {
+        return $comment;
     }
 }

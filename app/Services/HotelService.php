@@ -87,4 +87,11 @@ class HotelService implements HotelServiceInterface
     {
         return $this->hotel->getTopPurchases($number);
     }
+    public function searchAndSort($keyword,$sort_type){
+        return $this->hotel->searchAndSort($keyword,$sort_type);
+    }
+    public function searchPlace($place_id)
+    {
+        return $this->hotel->searchPlace($place_id);
+    }
 }

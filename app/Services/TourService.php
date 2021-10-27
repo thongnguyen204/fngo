@@ -160,4 +160,12 @@ class TourService implements TourServiceInterface
     public function getTopPurchases($number){
         return $this->tour->getTopPurchases($number);
     }
+    public function searchAndSort($keyword,$sort_type)
+    {
+        return $this->tour->searchAndSort($keyword,$sort_type);
+    }
+    public function searchPlace($place_id)
+    {
+        return $this->tour->searchPlace($place_id);
+    }
 }

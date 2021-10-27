@@ -23,6 +23,14 @@ class TourController extends Controller
         $this->comment  = $comment;
         $this->tour     = $tour;
     }
+    public function userOrAdmin()
+    {
+        if(Auth::user()->role->name == 'user')
+           return 'user';
+        else{
+           return 'admin';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,16 +44,13 @@ class TourController extends Controller
         else
             $trips = $this->tour->all();
 
-        if(Auth::user() == null)
-            $role = 'user';
-        else{
-            $role = Auth::user()->role->name;
-        }
-
+        $role = $this->userOrAdmin();
+        $CityProvinces = $this->tour->getAllCityProvince();
         $view = $role . ".tour.index";
 
         return view($view)
-        ->with('trips',$trips);
+        ->with('trips',$trips)
+        ->with('CityProvinces',$CityProvinces);
         
     }
     
@@ -87,11 +92,7 @@ class TourController extends Controller
     public function show(Tour $trip)
     {
         //
-        if(Auth::user() == null)
-            $role = 'user';
-        else{
-            $role = Auth::user()->role->name;
-        }
+        $role = $this->userOrAdmin();
 
         $comments = $this->comment->getAllCommentsOfProduct($trip->product_code);
         

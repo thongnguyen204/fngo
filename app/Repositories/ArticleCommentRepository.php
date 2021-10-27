@@ -17,4 +17,8 @@ class ArticleCommentRepository implements ArticleCommentRepositoryInterface{
         $comment->content = $content;
         $comment->save();
     }
+    public function destroy($commentID)
+    {
+        ArticleComment::destroy($commentID);
+    }
 }

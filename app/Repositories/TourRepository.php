@@ -47,5 +47,14 @@ class TourRepository implements TourRepositoryInterface
         ->take($number)
         ->get();
     }
-    
+    public function searchAndSort($keyword,$sort_type)
+    {
+        return Tour::where('name','like','%'.$keyword.'%')
+            ->orderBy('price',$sort_type)
+            ->paginate(12);
+    }
+    public function searchPlace($place_id){
+        return Tour::where('city_province_id',$place_id)
+        ->paginate(12);
+    }
 }

@@ -22,6 +22,14 @@ class HotelController extends Controller
         $this->comment = $comment;
         $this->hotel = $hotel;
     }
+    public function userOrAdmin()
+    {
+        if(Auth::user()->role->name == 'user')
+           return 'user';
+        else{
+           return 'admin';
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,18 +44,13 @@ class HotelController extends Controller
         else
             $hotels = $this->hotel->all();
 
-        if(Auth::user() == null)
-            $role = 'user';
-        else{
-            $role = Auth::user()->role->name;
-        }
-        
+        $role = $this->userOrAdmin();
+        $CityProvinces = $this->hotel->getAllCityProvince();
         $view = $role . ".hotel.index";
         
         return view($view)
-        ->with('hotels',$hotels);
-        
-
+        ->with('hotels',$hotels)
+        ->with('CityProvinces',$CityProvinces);
         
     }
 
@@ -92,11 +95,8 @@ class HotelController extends Controller
         //
         $hotel1 = $this->hotel->show($hotel);
 
-        if(Auth::user() == null)
-            $role = 'user';
-        else{
-            $role = Auth::user()->role->name;
-        }
+        $role = $this->userOrAdmin();
+
         $comments = $this->comment->getAllCommentsOfProduct($hotel1->product_code);
         
         // convert comments json to plain old PHP array

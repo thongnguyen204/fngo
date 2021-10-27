@@ -152,4 +152,4 @@ class HotelBookingController extends Controller
         //
         
     }
-}
+} 

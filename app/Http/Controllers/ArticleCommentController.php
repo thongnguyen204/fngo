@@ -58,6 +58,7 @@ class ArticleCommentController extends Controller
         return view('comment.article')
         ->with('article_id',    $article_id)
         ->with('comments',      $comments)
+        ->with('is_article',true) //for comment delete
         ->with('have_comment',  $have_comment);
     }
 
@@ -104,5 +105,23 @@ class ArticleCommentController extends Controller
     public function destroy(ArticleComment $articleComment)
     {
         //
+        $articleID = $articleComment->article_id;
+        $this->comment->destroy($articleComment);
+
+        $comments = $this->comment->getAllCommentsOfArticle($articleID);
+        $array = json_decode($comments,true);
+        
+        // check array have comment or not
+        $have_comment = true;
+        if(!$array)
+            $have_comment = false;
+        
+        return view('comment.article')
+        ->with('article_id',    $articleID)
+        ->with('comments',      $comments)
+        ->with('is_article',true) //for comment delete
+        ->with('have_comment',  $have_comment);
+
+        // return $articleComment;
     }
 }

@@ -7,7 +7,7 @@
 
 <link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
 
-<form style="max-width: 1300px" class="container" action="{{route('hotel.index')}}" method="GET">
+{{-- <form style="max-width: 1300px" class="container" action="{{route('hotel.index')}}" method="GET">
     <div class="input-group mb-3 searchBar">
         <input placeholder="{{__('hotel.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
             placeholder="">
@@ -16,8 +16,42 @@
                     class="bi bi-search"></i></button>
         </div>
     </div>
-</form>
+</form> --}}
 
+<div>
+    @include('layouts.onlySearchBar')
+</div>
+
+<div style="max-width: 1300px;" class="container sort">
+
+    <div class="row">
+        <div class="col"></div>
+        <div class="col d-flex justify-content-end">
+            <div class="btn-group">
+                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{__('common.place')}}
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button onclick="place(0)" class="dropdown-item" type="button">{{__('common.All')}}</button>
+                    @foreach ($CityProvinces as $CityProvince)
+                    <button onclick="place({{$CityProvince->id}})" class="dropdown-item" type="button">{{$CityProvince->name}}</button>
+                    @endforeach
+                    
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{__('common.Sort')}}
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button onclick="sort('asc')"   class="dropdown-item" type="button">{{__('common.price-low-high')}}</button>
+                    <button onclick="sort('desc')"  class="dropdown-item" type="button">{{__('common.price-high-low')}}</button>
+                    {{-- <button class="dropdown-item" type="button">Something else here</button> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="title-top-hotel">
     <div style="max-width: 1300px" class="container">
         <i class="bi bi-house-door-fill"></i>
@@ -26,8 +60,7 @@
 </div>
 
 <div style="max-width: 1300px;" class="container">
-    
-    <div class="card-group">
+    <div id="change">
         <div class="row">
             @foreach ($hotels  as $hotel)
             <div class="card col-md-4">
@@ -68,5 +101,49 @@
     </div>
     {{ $hotels->links() }}
 </div>
+<script>
+    function sort(type){
+        
+        keyword = $("input[name=search]").val();
+        // product_type = $('input[name="searchOptions"]:checked').val();
+        product_type = 'hotel';
+        console.log(product_type);
+        
+        $.ajax({
+            url: "sort",
+            type:'POST',
+            data:{
+                "_token": "{{ csrf_token() }}",
+                "keyword": keyword,
+                "product_type": product_type,
+                "sort_type":type,
+            }
+        }).done(function(respone){
+            // console.log(respone);
+            
+            $("#change").empty();
+            $("#change").html(respone);
+        });
+    }
 
+    function place(place_id){
+        
+        
+        // keyword = $("input[name=search]").val();
+        
+        product_type = 'hotel';
+        // console.log(place_id);
+        
+        $.ajax({
+            url: "place/"+place_id+"/"+product_type,
+            type:'GET',
+            
+        }).done(function(respone){
+            // console.log(respone);
+            
+            $("#change").empty();
+            $("#change").html(respone);
+        });
+    }
+</script>
 @endsection

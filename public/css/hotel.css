@@ -90,7 +90,7 @@ body{
 }
 .title-top-hotel{
     color: black;
-    margin: 20px 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
     padding: 5px 20px 0px 20px;
     background-color: red;
     font-size: 30px;
@@ -100,4 +100,7 @@ body{
 .card{
     padding-left: 0px;
     padding-right: 0px;
+}
+.btn-link:hover{
+    text-decoration: none;
 }

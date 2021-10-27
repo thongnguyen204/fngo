@@ -52,7 +52,7 @@ class HomeService implements HomeServiceInterface{
         {
             $articles = $this->article->search($request->search);
 
-            $view = $role . ".article.index";
+            $view = "article.index";
         
             return view($view)
             ->with('articles',$articles);

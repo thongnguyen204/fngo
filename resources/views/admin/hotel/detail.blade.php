@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&display=swap" rel="stylesheet">
@@ -7,9 +8,8 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 <link href="{{ asset('css/hotel.css') }}" rel="stylesheet">
-<style>
-    
-</style>
+<link href="{{ asset('css/comment.css') }}" rel="stylesheet">
+
 <div style="max-width: 1300px" class="container">
     <form action="{{route('hotel.index')}}" method="GET">
         <div class="input-group mb-3 searchBar">
@@ -148,7 +148,24 @@
     </div>
 </div>
 @endforeach
+<div id="change">
+    <div style="max-width: 1300px;margin-top: 20px;padding: 20px;" class="container rounded bg-white">
+        <div class="d-flex justify-content-center row">
+            <div style="width: 100%" class="coment-bottom bg-white">
+                @auth
+                <div class="input-comment d-flex flex-row add-comment-section mt-4 mb-4">
+                    <img class="img-fluid img-responsive rounded-circle mr-2" src="{{Auth::user()->avatar}}" width="38">
+                    <input id="comment" data-product="{{$hotel->product_code}}" type="text" class="form-control mr-3" placeholder="Add comment">
+                    <button onclick="addComment('{{$hotel->product_code}}')" class="btn btn-primary" type="button">Comment</button>
+                </div>
+                @endauth
 
+                @include('comment.layout.index') 
+                
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function addCart(id) {
 
@@ -166,6 +183,22 @@
             type: 'GET',c
         }).done(function (respone) {
             $('#CartCount').text(respone);
+        });
+    }
+    function addComment(product_code){
+        var comment = {product: $('#comment').data('product'), comment: $('#comment').val()};
+        
+        $.ajax({
+            // will 405 error if url:comment instead /comment !!!!
+            url: "/comment",
+            type:'POST',
+            data:{
+                "_token": "{{ csrf_token() }}",
+                "data": comment,
+            }
+        }).done(function(respone){
+            $("#change").empty();
+            $("#change").html(respone);
         });
     }
 </script>

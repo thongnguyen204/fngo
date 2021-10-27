@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\ArticleComment;
 use App\Repositories\ArticleCommentRepositoryInterface;
 use App\Repositories\ArticleRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
@@ -30,5 +31,8 @@ class ArticleCommentService implements ArticleCommentServiceInterface{
         $this->articleRepository->store($article);
         $this->comment->store($article_id,$user_id,$content);
     }
-
+    public function destroy(ArticleComment $comment)
+    {
+        $this->comment->destroy($comment->id);
+    }
 }

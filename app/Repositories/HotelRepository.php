@@ -42,4 +42,15 @@ class HotelRepository implements HotelRepositoryInterface
         ->take($number)
         ->get();
     }
+    public function searchAndSort($keyword,$sort_type)
+    {
+        return Hotel::where('name','like','%'.$keyword.'%')
+        ->orderBy('price',$sort_type)
+        ->paginate(12);
+    }
+    public function searchPlace($place_id)
+    {
+        return Hotel::where('city_province_id',$place_id)
+        ->paginate(12);
+    }
 }

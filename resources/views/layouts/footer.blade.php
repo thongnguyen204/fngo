@@ -22,7 +22,7 @@
                     {{__('footer.Contacts')}}
                     
                     <div class="d-flex justify-content-start">
-                        <hr>
+                        <hr class="hr-footer">
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@
                 <div class="footer-title">
                     {{__('footer.Links')}}
                     <div>
-                        <hr>
+                        <hr class="hr-footer">
                     </div>
 
                 </div>

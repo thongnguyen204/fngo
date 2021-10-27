@@ -84,8 +84,9 @@ class ArticleController extends Controller
         if(!$array)
             $have_comment = false;
         
-        return view('admin.article.detail')
+        return view('article.detail')
         ->with('article',       $article)
+        ->with('is_article',true) //for comment delete
         ->with('comments',      $comments)      // json
         ->with('have_comment',  $have_comment); // boolean
     }

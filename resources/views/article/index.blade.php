@@ -5,22 +5,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 <link href="{{ asset('css/article.css') }}" rel="stylesheet">
+
+<div>
+    @include('layouts.onlySearchBar')
+</div>
 <div class="container">
-<form action="{{route('article.index')}}" method="GET">
-            <div class="input-group mb-3 searchBar">
-                <input placeholder="{{__('article.Search')}}" type="text" name="search" value="{{ request()->get('search') }}" class="form-control"
-                    placeholder="">
-                <div class="input-group-append">
-                    <button style="width: 100px" class="btn btn-search btn-outline-secondary" type="submit"><i
-                            class="bi bi-search"></i></button>
-                </div>
-            </div>
-        </form>
+
+
 </div>
 <div class="container rounded bg-white wrapper">
     @auth
         @if (Auth::user()->role->name != 'user')
-            <a class="btn btn-success col admin-button" href="{{route('article.create')}}"><i class="bi bi-plus-lg"></i></a>
+            <a  class="btn btn-success col " href="{{route('article.create')}}"><i class="bi bi-plus-lg"></i></a>
         @endif
     @endauth
     

@@ -6,7 +6,7 @@ use App\Models\Receipt;
 use App\Services\ProductServiceInterface;
 use App\Services\ReceiptServiceInterface;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ReceiptController extends Controller
 {
@@ -30,11 +30,20 @@ class ReceiptController extends Controller
     private $receiptStatusAcceptedID = 1;
     private $receiptStatusWaitingID = 3;
 
+    public function userOrAdmin()
+    {
+        if(Auth::user()->role->name == 'user')
+           return 'user';
+        else{
+           return 'admin';
+        }
+    }
     public function index()
     {
         //
+        $role = $this->userOrAdmin();
         $receipts = $this->receipt->all();
-        $view = $this->receipt->getRoleName() . ".receipt.index";
+        $view = $role . ".receipt.index";
         
         return view($view)
         ->with('receipts',$receipts);
@@ -45,8 +54,8 @@ class ReceiptController extends Controller
     }
     public function waitingIndex(){
         $receipts = $this->receipt->getWaitingReceipt();
-        
-        $view = $this->receipt->getRoleName() . ".receipt.waiting";
+        $role = $this->userOrAdmin();
+        $view = $role . ".receipt.waiting";
         return view($view)->with('receipts',$receipts);
     }
     public function searchWaiting(Request $request){
@@ -55,7 +64,7 @@ class ReceiptController extends Controller
         
         $receipts = $this->receipt->searchWaiting($keyword,$option);
         
-        $role = $this->receipt->getRoleName();
+        $role = $this->userOrAdmin();
         
         if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {
@@ -82,7 +91,7 @@ class ReceiptController extends Controller
     public function acceptedIndex()
     {
         $receipts = $this->receipt->acceptedIndex();
-        $role = $this->receipt->getRoleName();
+        $role = $this->userOrAdmin();
         $view = $role . ".receiptAccepted.index";
         
         return view($view)
@@ -95,7 +104,7 @@ class ReceiptController extends Controller
         
         $receipts = $this->receipt->search($keyword,$option);
         
-        $role = $this->receipt->getRoleName();
+        $role = $this->userOrAdmin();
         
         if($receipts instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {
@@ -209,7 +218,11 @@ class ReceiptController extends Controller
     public function show(Receipt $receipt)
     {
         //
-        $role = $this->receipt->getRoleName();
+        if(Auth::user() == null)
+            $role = 'user';
+        else{
+            $role = 'admin';
+        }
         $view = $role . ".receiptDetail.index";
         $receiptDetails = $this->receipt->show($receipt);
 

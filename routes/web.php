@@ -142,6 +142,10 @@ Route::get('/', function () {
             'index','show'
         ]);
 
+        // --------article comment---------
+        Route::delete('articleComment/{articleComment}','ArticleCommentController@destroy')
+        ->name('articleComment.destroy');
+
     });
     
     Route::middleware(['auth', 'roles:user,employee'])->group(function () {
@@ -240,7 +244,8 @@ Route::get('/', function () {
         Route::post('comment','CommentController@addComment')
         ->name('comment.add');
         
-        Route::resource('articleComment','ArticleCommentController');
+        Route::resource('articleComment','ArticleCommentController')
+        ->except(['destroy']);
     });
 
     // guest
@@ -282,7 +287,11 @@ Route::get('/', function () {
     Route::get('article/{article}','ArticleController@show')
     ->name('article.show');
     
-    
+    // -----sort-----
+    Route::post('sort','ProductController@sort')
+    ->name('sort');
+    Route::get('place/{place_id}/{product_type}','ProductController@place')
+    ->name('place');
     
     
     
