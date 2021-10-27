@@ -15,13 +15,16 @@
             </div>
             <div class="col d-flex justify-content-end">
             {{--  1 is admin --}}
-            @if (Auth::user()->role_id== 1)
-                @if(isset($is_article))
-                <button onclick="deleteComment()" type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                @else
-                    
+            @auth
+                @if (Auth::user()->role_id== 1)
+                    @if(isset($is_article))
+                    <button onclick="deleteComment()" type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
+                    @else
+                        
+                    @endif
                 @endif
-            @endif
+            @endauth
+            
             </div>
         </div>
         <div class="row avatar-name">
