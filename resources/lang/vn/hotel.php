@@ -28,7 +28,9 @@ return [
     'Average price'     => 'Giá',
     'Province/City'     => 'Tỉnh/Thành Phố',
     'Update'            => 'Cập nhật',
-    'Hotel' => 'KHÁCH SẠN',
+    'Hotel'             => 'KHÁCH SẠN',
+    'CreateRoom'        => 'Thêm phòng',
+    'RoomName'          => 'Tên phòng',
 ]
 
 ?>

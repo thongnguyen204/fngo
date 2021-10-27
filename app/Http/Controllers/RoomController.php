@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoomTypeRequest;
 use Illuminate\Http\Request;
 use \App\Models\Hotel;
 use App\Models\RoomType;
@@ -47,7 +48,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoomTypeRequest $request)
     {
         //
         $room = $this->room->store($request);

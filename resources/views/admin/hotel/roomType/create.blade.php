@@ -10,14 +10,14 @@
 <div class="container create-form-container rounded bg-white">
     <div class="green-bar rounded-top"></div>
     <h1 class="d-flex justify-content-center">
-        <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Edit')}}</span>
+        <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.CreateRoom')}}</span>
     </h1>
     <form style="padding: 20px" action="{{route('room.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="hotel_id" value="{{$hotel->id}}">
         <div class="form-group row">
             <div class="col">
-                <label for="name">{{__('room.Name')}}</label>
+                <label for="name">{{__('hotel.RoomName')}}</label>
                 <input class="form-control" type="text" name="name" value="{{ old('name') }}" />
                 @if ($errors->has('name'))
                     @foreach ($errors->get('name') as $error)
