@@ -45,5 +45,11 @@ class UserRepository implements UserRepositoryInterface{
     }
     public function searchEmail($keyword){
         return User::where('email','like','%'.$keyword.'%')
-        ->get();    }
+        ->get();
+    }
+
+    public function onlyRole($role_id){
+        return User::where('role_id',$role_id)
+        ->paginate(12);
+    }
 }

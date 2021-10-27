@@ -35,4 +35,14 @@ class UserService implements UserServiceInterface{
             return $this->user->searchPhone($keyword);
         return $this->user->all();
     }
+    public function onlyRole($role)
+    {
+        // admin: 1   user:2   employee:3
+        if($role == 'admin')
+            return $this->user->onlyRole(1);
+        if($role == 'user')
+            return $this->user->onlyRole(2);
+        if($role == 'employee')
+            return $this->user->onlyRole(3);
+    }
 }

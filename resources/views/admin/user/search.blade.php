@@ -22,7 +22,7 @@
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio2" value="name">
-            <label class="form-check-label" for="inlineRadio2">Name</label>
+            <label class="form-check-label" for="inlineRadio2">{{__('user.Name')}}</label>
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio3" value="email">
@@ -30,9 +30,29 @@
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="searchOptions" id="inlineRadio4" value="phone">
-            <label class="form-check-label" for="inlineRadio4">Phone</label>
+            <label class="form-check-label" for="inlineRadio4">{{__('user.Phone')}}</label>
         </div>
     </form>
+    <div class="btn-toolbar my-2" role="toolbar" aria-label="Toolbar with button groups">
+        @if (!Auth::guest() && Auth::user()->role->name == 'admin')
+            
+        @endif
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <a href="{{route('user.roleSort','all')}}" class="btn btn-outline-primary">Show all</a>
+        </div>
+        
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+            <a href="{{route('user.roleSort','user')}}" class="btn btn-outline-secondary">Only user</a>
+        </div>
+        
+        <div class="btn-group mr-2" role="group" aria-label="Third group">
+            <a href="{{route('user.roleSort','employee')}}" class="btn btn-outline-success">Only Employee</a>
+        </div>
+        
+        <div class="btn-group" role="group" aria-label="Fourth group">
+            <a href="{{route('user.roleSort','admin')}}" class="btn btn-outline-danger">Only Admin</a>
+        </div>
+    </div>
     @if (!$users)
         {{__('user.Empty')}}
     @else
@@ -74,5 +94,8 @@
 
 </div>
 
-{{-- {{ $users->links() }} --}}
+
+<script>
+    
+</script>
 @endsection

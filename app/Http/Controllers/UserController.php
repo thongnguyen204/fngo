@@ -37,6 +37,14 @@ class UserController extends Controller
         return view('admin.user.index')
         ->with('users',$users);
     }
+    public function onlyRole($role)
+    {
+        //
+        $users = $this->user->onlyRole($role);
+        return view('admin.user.index')
+        ->with('users',$users);
+    }
+    
     public function search(Request $request)
     {   $keyword = $request->search;
         $option = $request->searchOptions;
@@ -160,5 +168,16 @@ class UserController extends Controller
         $this->user->delete($user->id);
         return redirect()->route('users.index')
         ;
+    }
+    public function roleSort($role)
+    {
+        if($role == 'all')
+        {
+            return redirect()->route('users.index');
+        }
+        else
+        {
+            return $this->onlyRole($role);
+        }
     }
 }

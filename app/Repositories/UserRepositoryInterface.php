@@ -13,4 +13,6 @@ interface UserRepositoryInterface{
     public function searchName($keyword);
     public function searchPhone($keyword);
     public function searchEmail($keyword);
+
+    public function onlyRole($role_id);
 }

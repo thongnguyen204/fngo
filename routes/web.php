@@ -40,7 +40,8 @@ Route::get('/', function () {
         ]);
         Route::get('/user-search','UserController@search')
         ->name('user.search');
-
+        Route::get('/users/sort/{role}','UserController@roleSort')
+        ->name('user.roleSort');
         
         
     });

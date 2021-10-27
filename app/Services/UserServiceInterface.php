@@ -10,4 +10,6 @@ interface UserServiceInterface{
     public function delete($id);
     public function update(Request $request, User $user);
     public function search($keyword,$option);
+
+    public function onlyRole($role);
 }
