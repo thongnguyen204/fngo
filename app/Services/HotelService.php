@@ -33,6 +33,7 @@ class HotelService implements HotelServiceInterface
         $hotel->name = $request->name;
         $hotel->price = $request->price;
         $hotel->address = $request->address;
+        $hotel->category_id = 1;
         $hotel->city_province_id = $request->cityProvince;
 
         if(!empty($request->file('avatar')))

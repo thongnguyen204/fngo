@@ -28,12 +28,12 @@ class RoomTypeRequest extends FormRequest
     {
         return [
             //
-            'name'  => 'required|string',
-            'bed_num'   => 'required',
-            'bed_type'   => 'required',
-            'area'   => 'required',
-            'price'   => 'required',
-            'avatar'   => 'required',
+            'name'          => 'required|string',
+            'bed_num'       => 'required',
+            'bed_type'      => 'required',
+            'area'          => 'required',
+            'price'         => 'required',
+            'avatar'        => 'required',
         ];
     }
 }
