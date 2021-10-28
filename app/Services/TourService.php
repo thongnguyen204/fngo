@@ -37,6 +37,7 @@ class TourService implements TourServiceInterface
         // $tour->tour_code = $departure_date->format('d');
         $tour->name = $request->name;
         $tour->price = $request->price;
+        $tour->category_id = 2;
         $tour->passenger_num = $request->passenger_num;
         $tour->day_number = $request->day_number;
         $tour->departure_date = $departure_date;

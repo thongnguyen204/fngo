@@ -30,6 +30,7 @@ class RoomService implements RoomServiceInterface{
         $room->bed = $request->bed_num ."-".$request->bed_type;
         $room->price = $request->price;
         $room->area = $request->area;
+        $room->category_id = 4;
         $room->max_person = $request->bed_num  * $request->bed_type;
         if(is_null($request->refund))
             $room->refund = false;

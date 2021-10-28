@@ -25,7 +25,9 @@ class ArticleService implements ArticleServiceInterface{
         $newArticle->title = $request->title;
         $newArticle->abstract = $request->abstract;
         $newArticle->content = $request->content;
+        $newArticle->category_id = 3;
         $newArticle->user_id = Auth::user()->id;
+        
         if(!empty($request->file('thumbnail')))
         {
             $uploadedFileUrl = Cloudinary::upload($request->file('thumbnail')->getRealPath(),[

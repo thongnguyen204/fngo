@@ -75,6 +75,7 @@ class HotelService implements HotelServiceInterface
         $hotel->name =  $request->name;
         $hotel->price =  $request->price;
         $hotel->address = $request->address;
+        
         if(!empty($request->file('avatar')))
         {
             $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[

@@ -8,7 +8,7 @@
     <h1 class="d-flex justify-content-center">
         <span style="padding-left: 20px;padding-right: 20px;" class="sub-title-warpper">{{__('hotel.Edit')}}</span>
     </h1>
-<form style="padding: 20px" action="{{route('hotel.update',$hotel)}}" method="POST">
+<form style="padding: 20px" action="{{route('hotel.update',$hotel)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="form-group">
@@ -40,7 +40,7 @@
 
     <div class="form-group ">
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="avatar" value="" >
+            <input type="file" class="custom-file-input" id="customFile" name="avatar" >
             <label class="custom-file-label" for="customFile">{{__('common.Choose avatar')}}</label>
             @if ($errors->has('avatar'))
                 @foreach ($errors->get('avatar') as $error)

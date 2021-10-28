@@ -144,6 +144,7 @@ class HotelController extends Controller
     public function update(Request $request,Hotel $hotel)
     {
         //
+        // return $request;
         $this->hotel->update($request,$hotel);
         
         return redirect()->route('hotel.index');
