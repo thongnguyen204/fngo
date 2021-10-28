@@ -2,12 +2,16 @@
 namespace App\Repositories;
 
 use App\User;
+use Carbon\Carbon;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 
 class UserRepository implements UserRepositoryInterface{
     public function all(){
         return User::paginate(20);
+    }
+    public function allWithoutPaginate(){
+        return User::all();
     }
 
     public function delete($id){
@@ -51,5 +55,11 @@ class UserRepository implements UserRepositoryInterface{
     public function onlyRole($role_id){
         return User::where('role_id',$role_id)
         ->paginate(12);
+    }
+    //2 is role user
+    public function countNewUser(){
+        return User::where('role_id',2)
+        ->whereDate('created_at',Carbon::today())
+        ->get();
     }
 }

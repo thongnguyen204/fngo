@@ -45,4 +45,20 @@ class UserService implements UserServiceInterface{
         if($role == 'employee')
             return $this->user->onlyRole(3);
     }
+    public function countUser($role){
+        if($role == 'all')
+            return $this->user->allWithoutPaginate()->count();
+        if($role == 'user')
+            return $this->user->onlyRole(2)->count();
+        if($role == 'admin')
+            return $this->user->onlyRole(1)->count();
+        if($role == 'employee')
+            return $this->user->onlyRole(3)->count();
+    }
+    public function countNewUser(){
+        return $this->user->countNewUser()->count();
+    }
+    public function allWithoutPaginate(){
+        return $this->user->allWithoutPaginate();
+    }
 }

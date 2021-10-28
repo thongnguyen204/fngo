@@ -11,6 +11,8 @@ interface ReceiptServiceInterface{
     
     public function getWaitingReceipt();
 
+    public function getNewReceiptWithoutPaginate();
+
     public function searchWaiting($keyword,$option);
 
     public function acceptedIndex();
@@ -20,6 +22,8 @@ interface ReceiptServiceInterface{
     public function canceledIndex();
 
     public function paidIndex();
+
+    public function getPaidReceiptWithoutPaginateToday();
 
     public function receiptAccept(Receipt $receipt);
 
@@ -42,4 +46,5 @@ interface ReceiptServiceInterface{
     public function whereMonth($month,$year);
     public function whereDay($day,$month,$year);
     public function whereYear($year);
+    public function paidToday();
 }

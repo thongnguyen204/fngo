@@ -19,7 +19,7 @@ class CreateRoomTypesTable extends Migration
             $table->string('product_code')->unique()->default("default");
             $table->string('name');
             //4 is roomtype
-            $table->integer('category_id')->unsigned()->default(4);
+            
             $table->string('avatar')->default("https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg");
             $table->string('bed');
             $table->integer('purchases_number')->default(0);
@@ -31,7 +31,7 @@ class CreateRoomTypesTable extends Migration
 
             
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories');
+            
             
         });
     }
@@ -44,7 +44,7 @@ class CreateRoomTypesTable extends Migration
     public function down()
     {
         Schema::table('room_types', function (Blueprint $table) {
-            $table->dropForeign('room_types_category_id_foreign');
+            
         });
         Schema::dropIfExists('room_types');
     }

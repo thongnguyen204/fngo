@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Models\Receipt;
 use App\Models\Receipt_Detail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,11 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     public function getWaitingReceipt(){
         return Receipt::where('status_id',$this->receiptStatusWaitingID)
         ->paginate(10);
+    }
+    public function getNewReceiptWithoutPaginate()
+    {
+        return Receipt::whereDate('created_at',Carbon::today())
+        ->get();
     }
     public function getWaitingReceiptByID($keyword)
     {
@@ -60,6 +66,12 @@ class ReceiptRepository implements ReceiptRepositoryInterface
         return Receipt::where('status_id',$this->receiptStatusPaidID)
         ->paginate(20);
     }
+    public function getPaidReceiptWithoutPaginateToday()
+    {
+        return Receipt::where('status_id',$this->receiptStatusPaidID)
+        ->whereDate('updated_at',Carbon::today())
+        ->get();
+    }
     public function getCanceledIndex(){
         return Receipt::where('status_id',$this->receiptStatusCancledID)
         ->paginate(20);
@@ -84,6 +96,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
 
     public function pay(Receipt $receipt){
         $receipt->status_id = $this->receiptStatusPaidID;
+        $receipt->paid_at = Carbon::today();
         $receipt->save();
         return $receipt;
     }
@@ -130,6 +143,12 @@ class ReceiptRepository implements ReceiptRepositoryInterface
     public function whereYear($year){
         return Receipt::where('status_id',$this->receiptStatusPaidID)
         ->whereYear ('created_at', $year)
+        ->get();
+    }
+    public function paidToday()
+    {
+        return Receipt::where('status_id',$this->receiptStatusPaidID)
+        ->whereDate('paid_at', Carbon::today())
         ->get();
     }
 }

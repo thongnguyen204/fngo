@@ -24,6 +24,7 @@ class CreateReceiptsTable extends Migration
             $table->integer('cancel_by')->unsigned()->nullable();
             $table->integer('finish_by')->unsigned()->nullable();
             $table->string('description')->nullable();
+            $table->dateTime('paid_at')->nullable();
             $table->timestamps();
 
             // $table->foreign('user_id')  ->references('id')->on('users')->onDelete('cascade');

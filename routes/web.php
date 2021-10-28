@@ -44,13 +44,14 @@ Route::get('/', function () {
         Route::get('/users/sort/{role}','UserController@roleSort')
         ->name('user.roleSort');
         
+        Route::get('/dashboard', 'DashboardController@index')
+        ->name('dashboard.index');
+
         
     });
     Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard.content');
-        })->name('dashboard');
-
+        
+        
 
         // ----- receipt ------
         Route::get('/receiptAccepted','ReceiptController@acceptedIndex')

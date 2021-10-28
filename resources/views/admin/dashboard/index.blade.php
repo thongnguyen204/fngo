@@ -6,7 +6,7 @@
 
 <!-- The sidebar -->
 <div class="sidebar">
-  {{-- <a class="active" href="#home">Home</a> --}}
+  <a class="nav-link" href="{{route('dashboard.index')}}">Dasboard</a>
   <a class="nav-link" href='{{route('users.index')}}'>
     <i class="bi bi-people-fill"></i>
     {{__('common.Users manage')}}

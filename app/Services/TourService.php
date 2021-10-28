@@ -69,6 +69,7 @@ class TourService implements TourServiceInterface
         }
 
         // asgin this tour to a temp product already seeded in db
+        // because i need product_code auto gen in tour table
         $tour->product_code = "temp";
         $this->tour->store($tour); 
 

@@ -30,6 +30,20 @@ class AdminSeeder extends Seeder
             'password' => Hash::make('123456'),
         ]);
         User::create([
+            'name' => 'dialga',
+            'email' => 'spxdialga@gmail.com',
+            'phone' => '0907310419',
+            'gender' => 'male',
+            'password' => Hash::make('123456'),
+        ]);
+        User::create([
+            'name' => 'test',
+            'email' => 'test@gmail.com',
+            'phone' => '0907310418',
+            'gender' => 'male',
+            'password' => Hash::make('123456'),
+        ]);
+        User::create([
             'name' => 'employee',
             'role_id' => 3,
             'email' => 'employee@gmail.com',

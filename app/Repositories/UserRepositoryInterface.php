@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 interface UserRepositoryInterface{
     public function all();
-
+    public function allWithoutPaginate();
     public function delete($id);
     public function update(Request $request, User $user);
     public function searchID($keyword);
@@ -15,4 +15,5 @@ interface UserRepositoryInterface{
     public function searchEmail($keyword);
 
     public function onlyRole($role_id);
+    public function countNewUser();
 }

@@ -30,6 +30,10 @@ class ReceiptService implements ReceiptServiceInterface
     public function getWaitingReceipt(){
         return $this->receipt->getWaitingReceipt();
     }
+    public function getNewReceiptWithoutPaginate()
+    {
+        return $this->receipt->getNewReceiptWithoutPaginate();
+    }
     public function searchWaiting($keyword,$option)
     {
         if($keyword == null)
@@ -67,6 +71,13 @@ class ReceiptService implements ReceiptServiceInterface
     public function paidIndex(){
         return $this->receipt->getPaidIndex();
     }
+
+    public function getPaidReceiptWithoutPaginateToday()
+    {
+        return $this->receipt->getPaidReceiptWithoutPaginateToday();
+    }
+
+
     public function receiptAccept(Receipt $receipt){
         $receipt->status_id = $this->receiptStatusAcceptedID;
         $receipt->accept_by = Auth::user()->id;
@@ -123,5 +134,8 @@ class ReceiptService implements ReceiptServiceInterface
     }
     public function whereYear($year){
         return $this->receipt->whereYear($year);
+    }
+    public function paidToday(){
+        return $this->receipt->paidToday();
     }
 }
