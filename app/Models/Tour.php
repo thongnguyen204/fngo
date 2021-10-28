@@ -15,10 +15,7 @@ class Tour extends Model
         'day_number','purchases_number',
         'category_id'
     ];
-    public function product()
-    {
-        return $this->belongsTo(Products::class);
-    }
+    
     public function subTour()
     {
         return $this->hasMany(SubTour::class);

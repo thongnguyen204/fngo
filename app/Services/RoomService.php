@@ -30,7 +30,6 @@ class RoomService implements RoomServiceInterface{
         $room->bed = $request->bed_num ."-".$request->bed_type;
         $room->price = $request->price;
         $room->area = $request->area;
-        $room->category_id = 4;
         $room->max_person = $request->bed_num  * $request->bed_type;
         if(is_null($request->refund))
             $room->refund = false;
@@ -49,8 +48,7 @@ class RoomService implements RoomServiceInterface{
             ])->getSecurePath();
             $room->avatar =  $uploadedFileUrl;
         }
-        // asgin this room to a temp product already seeded in db
-        $room->product_code = "temp";
+        // save fist to get id
         $this->room->store($room);
 
         // create a new product 
@@ -61,7 +59,7 @@ class RoomService implements RoomServiceInterface{
         $product1->category_id = 4;
         $this->product->save($product1);
 
-        // asign room to new product
+        // update the product_code
         $room->product_code = $product1->product_code;
         $this->room->store($room); 
 

@@ -33,7 +33,6 @@ class HotelService implements HotelServiceInterface
         $hotel->name = $request->name;
         $hotel->price = $request->price;
         $hotel->address = $request->address;
-        $hotel->category_id = 1;
         $hotel->city_province_id = $request->cityProvince;
 
         if(!empty($request->file('avatar')))
@@ -44,8 +43,8 @@ class HotelService implements HotelServiceInterface
             $hotel->avatar =  $uploadedFileUrl;
         }
         
-        // asgin this hotel to a temp product already seeded in db
-        $hotel->product_code = "temp";
+        // save fist to get id
+        // default product_code is hotel_
         $this->hotel->store($hotel); 
         
         // create a new product 
@@ -56,7 +55,7 @@ class HotelService implements HotelServiceInterface
         $product1->name = $hotel->name;
         $this->product->save($product1);
 
-        // asign hotel to new product
+        // update the product_code
         $hotel->product_code = $product1->product_code;
         $this->hotel->store($hotel); 
     }

@@ -14,11 +14,7 @@ class ProductCodeSeeder extends Seeder
     {
         //
         // a temporary product
-        Products::create([
-            'product_code' => 'temp',
-            'name' => 'name',
-            'avatar' => 'avatar',
-        ]);
+        
 
 
         Products::create([

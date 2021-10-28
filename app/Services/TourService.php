@@ -34,10 +34,11 @@ class TourService implements TourServiceInterface
             $request->departure_date);
             
         $tour = new Tour;
-        // $tour->tour_code = $departure_date->format('d');
+        
         $tour->name = $request->name;
         $tour->price = $request->price;
-        $tour->category_id = 2;
+        
+        
         $tour->passenger_num = $request->passenger_num;
         $tour->day_number = $request->day_number;
         $tour->departure_date = $departure_date;
@@ -68,9 +69,8 @@ class TourService implements TourServiceInterface
             $tour->avatar =  $uploadedFileUrl;
         }
 
-        // asgin this tour to a temp product already seeded in db
-        // because i need product_code auto gen in tour table
-        $tour->product_code = "temp";
+        // save fist to get id
+        // default product_code is tour
         $this->tour->store($tour); 
 
         for ($i=1; isset($request->subTripTitle[$i]); $i++) { 
@@ -90,7 +90,7 @@ class TourService implements TourServiceInterface
         $product1->category_id = 2;
         $this->product->save($product1);
 
-        // asign tour to new product
+        // update the product_code
         $tour->product_code = $product1->product_code;
         $this->tour->store($tour); 
     }
