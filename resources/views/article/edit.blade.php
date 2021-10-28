@@ -51,6 +51,19 @@
         </div>
         <div class="form-group row">
             <div class="col">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="background" name="background" >
+                    <label class="custom-file-label" for="background">{{__('article.Choose background')}}</label>
+                    @if ($errors->has('background'))
+                        @foreach ($errors->get('background') as $error)
+                            <div class="col-md-12">{{ $error }}</div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col">
                 <label for="content">{{__('article.Content')}}</label>
                 <textarea name="content" id="ckeditor">{{$article->content}}</textarea>
                 @if ($errors->has('price'))

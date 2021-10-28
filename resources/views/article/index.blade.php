@@ -16,19 +16,25 @@
 <div class="container rounded bg-white wrapper">
     @auth
         @if (Auth::user()->role->name != 'user')
-            <a  class="btn btn-success col " href="{{route('article.create')}}"><i class="bi bi-plus-lg"></i></a>
+            <a class="btn btn-success col mb-3" href="{{route('article.create')}}"><i class="bi bi-plus-lg"></i></a>
         @endif
     @endauth
     
     @foreach ($articles as $article)
     <div class="article-wrapper">
-        <div class="row">
-            <div class="col-12 col-md-3 d-flex align-items-center">
-                <a href="{{route('article.show',$article)}}">
-                <img class="img_fliud thumbnail rounded" src="{{$article->thumbnail}}">
+        <div class="row d-flex align-items-center">
+            <div class="col-12 col-sm-2 d-flex align-items-center justify-content-center">
+
+                <a class="d-block d-sm-none" style="max-height: 200px;width: 100%;" href="{{route('article.show',$article)}}">
+                    <img style="max-height: 200px" class="img_fliud thumbnail rounded" src="{{$article->thumbnail}}">
                 </a>
+
+                <a class=" d-none d-sm-block" style="max-height: 200px;" href="{{route('article.show',$article)}}">
+                    <img style="max-height: 150px" class="img_fliud thumbnail rounded-circle" src="{{$article->thumbnail}}">
+                </a>
+
             </div>
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-sm-10">
                 <div class="row">
                     <div class="title col">
                         <a href="{{route('article.show',$article)}}">
@@ -50,7 +56,7 @@
                         {{$article->abstract}}
                     </div>
                 </div>
-                <div class="row d-none d-md-block">
+                <div class="row d-none d-sm-block">
                     <div class="col">
                         <div class="">
                             <a href="{{route('article.show',$article)}}" type="button" class="btn btn-readmore">
