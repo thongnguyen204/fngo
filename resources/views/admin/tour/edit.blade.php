@@ -129,7 +129,7 @@
             </div>
         
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="mainImg" value="" >
+            <input type="file" class="custom-file-input" id="customFile" name="avatar" value="" >
             <label class="custom-file-label" for="customFile">{{__('common.Choose avatar')}}</label>
             @if ($errors->has('mainImg'))
                 @foreach ($errors->get('mainImg') as $error)

@@ -40,6 +40,7 @@ Route::get('/', function () {
         ]);
         Route::get('/user-search','UserController@search')
         ->name('user.search');
+        
         Route::get('/users/sort/{role}','UserController@roleSort')
         ->name('user.roleSort');
         
@@ -47,7 +48,7 @@ Route::get('/', function () {
     });
     Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
         Route::get('/dashboard', function () {
-            return view('admin.dashboard.index');
+            return view('admin.dashboard.content');
         })->name('dashboard');
 
 
