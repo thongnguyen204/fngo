@@ -136,7 +136,7 @@
               <div style="padding: 10px" class="card-img-top">
                 <a href="{{route('article.show',$article)}}">
                     <img loading="lazy" alt="article Image" class="img_fluid rounded pictrure"
-                        src="https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg">
+                        src="{{$article->thumbnail}}">
                 </a>
               </div>
               <div class="card-body">

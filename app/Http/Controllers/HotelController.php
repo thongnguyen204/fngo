@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HotelRequest;
 use App\Models\Hotel;
 use App\Services\CommentServiceInterface;
 use App\Services\HotelServiceInterface;
@@ -74,7 +75,7 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
         //
         $this->hotel->store($request);
@@ -141,7 +142,7 @@ class HotelController extends Controller
      * @param \App\Models\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Hotel $hotel)
+    public function update(HotelRequest $request,Hotel $hotel)
     {
         //
         // return $request;

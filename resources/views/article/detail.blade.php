@@ -42,7 +42,7 @@
             <div class="col">
                 <div style="margin-bottom: 50px" class="main-image">
                     <img style="width: 100%;" loading="lazy" alt="article image" class="img_fluid rounded"
-                        src="{{$article->thumbnail}}">
+                        src="{{$article->background}}">
                 </div>
             </div>
         </div>

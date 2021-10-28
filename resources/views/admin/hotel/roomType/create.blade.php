@@ -14,6 +14,7 @@
     </h1>
     <form style="padding: 20px" action="{{route('room.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" id="formType" name="formType" value="create">
         <input type="hidden" name="hotel_id" value="{{$hotel->id}}">
         <div class="form-group row">
             <div class="col">

@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('abstract');
             $table->string('thumbnail');
+            $table->string('background');
             $table->longText('content');
             //3 is article
             

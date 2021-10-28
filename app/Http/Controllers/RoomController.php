@@ -98,7 +98,7 @@ class RoomController extends Controller
      * @param \App\Models\Room $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoomType $room)
+    public function update(RoomTypeRequest $request, RoomType $room)
     {
         //
         $this->room->update($request,$room);

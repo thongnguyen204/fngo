@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class RoomTypeRequest extends FormRequest
+class HotelRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,9 +29,8 @@ class RoomTypeRequest extends FormRequest
         return [
             //
             'name'          => 'required|string|min:5|max:50',
-            'bed_num'       => 'required',
-            'bed_type'      => 'required',
-            'area'          => 'required|numeric',
+            'address'       => 'required|string|max:50',
+            'cityProvince'  => 'required',
             'price'         => 'required|numeric',
             'avatar'        => 'required_if:formType,create|mimes:jpeg,jpg,png,gif|max:10000',
         ];

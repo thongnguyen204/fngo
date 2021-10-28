@@ -9,7 +9,12 @@ class Article extends Model
 {
     //
     protected $fillable = [
-        'title','content','user_id','thumbnail','abstract'
+        'title',
+        'content',
+        'user_id',
+        'thumbnail',
+        'abstract',
+        'background'
     ];
 
 

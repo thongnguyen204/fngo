@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-12 col-md-3 d-flex align-items-center">
                 <a href="{{route('article.show',$article)}}">
-                <img class="img_fliud thumbnail rounded" src="https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg">
+                <img class="img_fliud thumbnail rounded" src="{{$article->thumbnail}}">
                 </a>
             </div>
             <div class="col-12 col-md-9">
