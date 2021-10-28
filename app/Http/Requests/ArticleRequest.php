@@ -28,6 +28,11 @@ class ArticleRequest extends FormRequest
     {
         return [
             //
+            'title'     => 'required|string|min:5|max:100',
+            'abstract'  => 'required|string|min:10|max:100',
+            'thumbnail' => 'required_if:formType,create|mimes:jpeg,jpg,png,gif|max:10000',
+            'background'=> 'required_if:formType,create|mimes:jpeg,jpg,png,gif|max:10000',
+            'content'   => 'required|string',
         ];
     }
 }
