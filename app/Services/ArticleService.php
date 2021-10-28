@@ -35,6 +35,13 @@ class ArticleService implements ArticleServiceInterface{
             ])->getSecurePath();
             $newArticle->thumbnail =  $uploadedFileUrl;
         }
+        if(!empty($request->file('background')))
+        {
+            $uploadedFileUrl = Cloudinary::upload($request->file('background')->getRealPath(),[
+                'folder' => 'FnGO/article/background',
+            ])->getSecurePath();
+            $newArticle->background =  $uploadedFileUrl;
+        }
         $this->articleRepository->store($newArticle);
         return $newArticle;
 
