@@ -108,6 +108,9 @@ class TourService implements TourServiceInterface
     public function getTourByCode($product_code){
         return $this->tour->searchCode($product_code);
     }
+    public function getTourByID($tour_id){
+        return $this->tour->searchID($tour_id);
+    }
 
     public function update(TourRequest $request, Tour $tour){
         $count = 0;

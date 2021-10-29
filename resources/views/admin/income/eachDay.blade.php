@@ -28,7 +28,6 @@
               <tr>
                 <th scope="col">{{__('common.Day')}}</th>
                 <th scope="col">{{__('common.Income1')}}</th>
-                
               </tr>
             </thead>
             <tbody>
@@ -37,9 +36,7 @@
                     <th scope="row">{{$day['day']}}/{{$month}}/{{$year}}</th>
                     <td data-day="{{$day['day']}}" data-value="{{$day['income']}}">{{$receipt->money($day['income'])}}</td> 
                 </tr>
-                  
               @endforeach
-              
             </tbody>
           </table>
       </div>

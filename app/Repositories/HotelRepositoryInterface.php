@@ -16,6 +16,8 @@ interface HotelRepositoryInterface
 
     public function search($keyword);
 
+    public function searchID($id);
+
     public function getAllCityProvince();
 
     public function getTopPurchases($number);

@@ -36,6 +36,9 @@ class TourRepository implements TourRepositoryInterface
     public function searchCode($product_code){
         return Tour::where('product_code',$product_code)->first();
     }
+    public function searchID($tour_id){
+        return Tour::find($tour_id);
+    }
 
     public function getAllCityProvince()
     {

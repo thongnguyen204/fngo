@@ -142,17 +142,21 @@
             type: 'GET',
 
         }).done(function (respone) {
+            $.ajax({
+            url: "/cartQuantity",
+            type: 'GET',
+            }).done(function (respone) {
+                $('#CartCount').text(respone);
+            });
             var icon = '<span class="bi bi-bag-check test"></span>';
             alertify.notify(icon + " " + respone, 'custom');
             // console.log(respone);
+        }).fail(function(){
+            var icon = '<span class="bi bi-bag-x test"></span>';
+            alertify.notify(icon + "  error",'error');
         });
 
-        $.ajax({
-            url: "/cartQuantity",
-            type: 'GET',
-        }).done(function (respone) {
-            $('#CartCount').text(respone);
-        });
+        
     }
 </script>
 @endsection

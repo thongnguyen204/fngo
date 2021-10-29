@@ -6,6 +6,7 @@ use App\Http\Requests\HotelRequest;
 use App\Models\Hotel;
 use App\Services\CommentServiceInterface;
 use App\Services\HotelServiceInterface;
+use App\Services\ProductServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,14 +15,17 @@ class HotelController extends Controller
 
     private $hotel;
     private $comment;
+    private $productService;
 
     public function __construct(
         CommentServiceInterface $comment,
-        HotelServiceInterface $hotel
+        HotelServiceInterface $hotel,
+        ProductServiceInterface $productService
         )
     {
         $this->comment = $comment;
         $this->hotel = $hotel;
+        $this->productService = $productService;
     }
     public function userOrAdmin()
     {
@@ -169,5 +173,34 @@ class HotelController extends Controller
         $quantity = Hotel::count();
         
         return $quantity;
+    }
+    public function indexManage()
+    {
+        $hotels = $this->hotel->all();
+        $CityProvinces = $this->hotel->getAllCityProvince();
+
+        return view('admin.manage hotel.index')
+        ->with('hotels',$hotels)
+        ->with('CityProvinces',$CityProvinces);
+    }
+
+    public function deleteManage($id)
+    {
+        $deleteHotel = $this->hotel->getHotelByID($id);
+        $ProductRoomTypes = $deleteHotel->roomtype;
+
+        foreach($ProductRoomTypes as $roomType){
+            $product= $this->productService->getProductByCode($roomType->product_code);
+            $this->productService->delete($product);
+        }
+        
+        $this->hotel->delete($deleteHotel);
+
+        $hotels = $this->hotel->all();
+        return view('admin.manage hotel.change')
+        ->with('hotels',$hotels);
+
+        return $deleteHotel;
+
     }
 }

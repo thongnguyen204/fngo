@@ -28,6 +28,10 @@ class HotelService implements HotelServiceInterface
         return $this->hotel->search($keyword);
     }
 
+    public function getHotelByID($id){
+        return $this->hotel->searchID($id);
+    }
+
     public function store(Request $request){
         $hotel = new Hotel;
         $hotel->name = $request->name;
@@ -62,9 +66,10 @@ class HotelService implements HotelServiceInterface
     
     public function delete(Hotel $hotel)
     {
+        $this->hotel->delete($hotel->id);
         $product_id = $this->product->getProductByCode($hotel->product_code)->id;
         $this->product->destroy($product_id);
-        // $this->hotel->delete($id);
+        
     }
     public function show($id)
     {

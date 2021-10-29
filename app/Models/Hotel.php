@@ -12,7 +12,7 @@ class Hotel extends Model
         'name','category','price_avg','category_id'
     ];
 
-    public $timestamps = false;
+
 
     
     public function category(){

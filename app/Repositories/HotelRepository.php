@@ -17,6 +17,9 @@ class HotelRepository implements HotelRepositoryInterface
         return Hotel::where('name','like','%'.$keyword.'%')
         ->paginate(12);
     }
+    public function searchID($id){
+        return Hotel::find($id);
+    }
     public function store(Hotel $hotel)
     {
         $hotel->save();  

@@ -16,6 +16,8 @@ interface HotelServiceInterface
 
     public function search($keyword);
 
+    public function getHotelByID($id);
+
     public function getAllCityProvince();
 
     public function update(Request $request, Hotel $hotel);

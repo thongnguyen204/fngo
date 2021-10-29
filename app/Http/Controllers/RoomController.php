@@ -116,7 +116,7 @@ class RoomController extends Controller
     public function destroy(RoomType $room)
     {
         //
-        
+        // return $room;
         $temp = $room->hotel;
         $this->room->destroy($room);
         return redirect()->route('hotel.show',$temp);

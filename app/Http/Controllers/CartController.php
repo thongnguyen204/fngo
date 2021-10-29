@@ -76,8 +76,12 @@ class CartController extends Controller
         // return $request->date;
     }
     public function RoomAddCart(Request $request,$product_code){
-        if(isset($request->date))
+        if(isset($request->date)){
+            $validatedData = $request->validate([
+                'date' => 'after:yesterday',
+            ]);
             return $this->TourAddCart($request,$product_code);
+        }
         else
             return __('hotel.Empty date');
     }

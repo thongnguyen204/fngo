@@ -158,4 +158,27 @@ class TourController extends Controller
         $this->tour->delete($tour);
         return redirect()->route('tour.index');
     }
+
+    // manage
+
+    public function indexManage()
+    {
+        $tours = $this->tour->all();
+        $CityProvinces = $this->tour->getAllCityProvince();
+
+        return view('admin.manage tour.index')
+        ->with('tours',$tours)
+        ->with('CityProvinces',$CityProvinces);
+    }
+
+    public function deleteManage($id)
+    {
+        $deleteTour = $this->tour->getTourByID($id);
+        $this->tour->delete($deleteTour);
+
+        $tours = $this->tour->all();
+        return view('admin.manage tour.change')
+        ->with('tours',$tours);
+
+    }
 }

@@ -26,7 +26,7 @@ class CreateHotelsTable extends Migration
             
             $table->integer('price')->unsigned();
             
-            
+            $table->timestamps();
         });
     }
 

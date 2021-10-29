@@ -47,6 +47,23 @@ Route::get('/', function () {
         Route::get('/dashboard', 'DashboardController@index')
         ->name('dashboard.index');
 
+        // --- manage ---
+        Route::prefix('manage')->group(function(){
+            // --tour--
+            Route::get('tour','TourController@indexManage')
+            ->name('manage.tourIndex');
+
+            Route::delete('deleteTour/{id}','TourController@deleteManage')
+            ->name('manage.deleteTour');
+
+            // --hotel--
+            Route::get('hotel','HotelController@indexManage')
+            ->name('manage.hotelIndex');
+
+            Route::delete('deleteHotel/{id}','HotelController@deleteManage')
+            ->name('manage.deleteHotel');
+        });
+
         
     });
     Route::middleware(['auth', 'roles:admin,employee'])->group(function () {

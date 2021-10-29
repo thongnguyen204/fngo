@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\Products;
 use App\Models\Receipt;
 use App\Models\Receipt_Detail;
 use App\Repositories\ProductRepositoryInterface;
@@ -34,6 +35,9 @@ class ProductService implements ProductServiceInterface{
             $hotel= $this->room->getRoomByCode($code)->hotel;
             return redirect()->route('hotel.show',$hotel);
         }
+    }
+    public function delete(Products $products){
+        $this->product->destroy($products->id);
     }
     
     

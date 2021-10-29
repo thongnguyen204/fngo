@@ -96,9 +96,10 @@ class RoomService implements RoomServiceInterface{
 
     }
     public function destroy(RoomType $room){
+        
         $product_id = $this->product->getProductByCode($room->product_code)->id;
+        $this->room->destroy($room);
         $this->product->destroy($product_id);
-        // $this->room->destroy($room);
     }
     public function getRoomByCode($code){
         return $this->room->getRoomByCode($code);

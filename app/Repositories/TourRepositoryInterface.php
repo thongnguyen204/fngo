@@ -18,6 +18,8 @@ interface TourRepositoryInterface
 
     public function searchCode($product_code);
 
+    public function searchID($tour_id);
+
     public function getAllCityProvince();
 
     public function getTopPurchases($number);

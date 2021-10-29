@@ -97,17 +97,61 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">
-                        <i class="bi bi-pie-chart-fill"></i>
-                        Accounts: {{$countAllUser}}
+                        <i class="bi bi-bar-chart-steps"></i>
+                        Top Hotels
                     </h4>
                 </div>
                 <div class="card-body">
                     <div class="tab-content p-0">
-                        <div style="min-height: 300px">
-                            <canvas id="incomeChart" style=""></canvas>
-                            
+                        <div class="d-flex align-items-center barChart" style="min-height: 300px">
+                            <canvas id="hotelChart" style=""></canvas>
                         </div>
                     </div>
+                    @foreach ($topshotel as $hotel)
+                        <input class="hotel" type="hidden" data-name="{{$hotel->name}}" value="{{$hotel->purchases_number}}">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        <i class="bi bi-bar-chart-steps"></i>
+                        Top tours: 
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content p-0">
+                        <div class="d-flex align-items-center barChart" style="min-height: 300px">
+                            <canvas id="tourChart" style=""></canvas>
+                        </div>
+                    </div>
+                    @foreach ($topstour as $tour)
+                        <input class="tour" type="hidden" data-name="{{$tour->product_code}}" value="{{$tour->purchases_number}}">
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        <i class="bi bi-bar-chart-steps"></i>
+                        Top Articles
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content p-0">
+                        <div class="d-flex align-items-center barChart" style="min-height: 300px">
+                            <canvas id="articleChart" style=""></canvas>
+                        </div>
+                    </div>
+                    @foreach ($topArticle as $article)
+                        <input class="article" type="hidden" data-name="{{$article->title}}" value="{{$article->comment_number}}">
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -119,79 +163,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const user = $( "#countUser" ).val();
-const employee = $( "#countEmployee" ).val();
-const admin = $( "#countAdmin" ).val();
-
- data = {
-  labels: ['User', 'Employee', 'Admin'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [user,employee,admin],
-      backgroundColor: ['#1B98F5', '#E8BD0D','Red'],
-    }
-  ]
-};
-
- config = {
-  type: 'doughnut',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: false,
-        text: 'Chart.js Doughnut Chart'
-      }
-    }
-  },
-};
-
- myChart = new Chart(
-    document.getElementById('userChart'),
-    config
-  );
-
-
-
-</script>
-
-<script>
-     labels = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-];
- data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
-  }]
-};
- config = {
-  type: 'line',
-  data: data,
-  options: {}
-};
-  // === include 'setup' then 'config' above ===
-
-   myChart = new Chart(
-    document.getElementById('incomeChart'),
-    config
-  );
-</script>
-
+<script src="{{ asset('js/dashboard-chart.js') }}" defer></script>
 
 
 @endsection
