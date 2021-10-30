@@ -45,9 +45,9 @@
                     <div class="quantity">
                         <span class="pro-qty">
                             @if ($product['productInfo']->product_code[0] == 't')
-                            <input data-price="{{$product['price']}}" data-day="1" data-date="" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
+                            <input disabled data-price="{{$product['price']}}" data-day="1" data-date="" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
                             @else
-                            <input data-price="{{$product['price']}}" data-day="{{$product['productInfo']->day}}" data-date="{{$product['productInfo']->checkin_date}}" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
+                            <input disabled data-price="{{$product['price']}}" data-day="{{$product['productInfo']->day}}" data-date="{{$product['productInfo']->checkin_date}}" data-id="{{$product['productInfo']->product_code}}" id="product-{{$product['productInfo']->product_code}}" type="text" value="{{$product['quantity']}}">
                             @endif
                         </span>
                     </div>
@@ -75,7 +75,10 @@
             <button class="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
         </form> --}}
     </div>
-    <div class="column text-lg">{{__('cart.Total')}}: <span class="text-medium">{{Session::get('Cart')->money(Session::get('Cart')->totalPrice)}}</span>
+    <div class="column text-lg">{{__('cart.Total')}}: <span class="text-medium">
+        {{Session::get('Cart')->money(Session::get('Cart')->totalPrice)}}
+    </span>
+    <input id="totalUSD" type="hidden" value="{{Session::get('Cart')->VNDtoUSD(Session::get('Cart')->totalPrice)}}">
     </div>
 </div>
 
@@ -96,6 +99,12 @@
                 {{__('cart.Banking')}}
             </label>
         </div>
+        <div class="form-check">
+            <input class="form-check-input" value="3" type="radio" name="payment" id="flexRadioDefault3">
+            <label class="form-check-label" for="flexRadioDefault3">
+                {{__('cart.Momo')}}
+            </label>
+        </div>
         
     </div>
     <div class="column">
@@ -113,7 +122,7 @@
         {{__('cart.paypal')}}
     </div>
     <div class="column">
-        <div id="paypal-button"></div>
+        {{-- <div id="paypal-button"></div> --}}
     </div>
 </div>
 
@@ -122,39 +131,11 @@
 <script>
     
     $(".update").on("click",function(){
-        var payment =$('input[name="payment"]:checked').val();
-        var list= [];
-        $("table tbody tr td").each(function(){
-            $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"),value: $(this).val()};
-                list.push(element);
-            });
-        });
-        // var list1 = [1,2,3]
-        $.ajax({
-            url: "updateCart",
-            type:'POST',
-            data:{
-                "_token": "{{ csrf_token() }}",
-                "data": list,
-                
-            }
-        }).done(function(respone){
-            var icon = '<span class="bi bi-bag-dash"></span>';
-            $("#change").empty();
-            $("#change").html(respone);
-            var noti = $( "#noti" ).val();
-            alertify.notify(icon+ " " + noti, 'custom');
-        });
-        $.ajax({
-            url: "cartQuantity" ,
-            type:'GET',   
-        }).done(function(respone){
-            $('#CartCount').text(respone);
-            
-        });
+        // var payment =$('input[name="payment"]:checked').val();
+        updateCart();
     });
     function checkout(payment){
+        updateCart();
         var list= [];
         
         $("table tbody tr td").each(function(){
@@ -184,7 +165,7 @@
         checkout(payment);
     });
 </script>
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+{{-- <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
     var usd = $( "#totalUSD" ).val();
   paypal.Button.render({
@@ -228,7 +209,7 @@
     }
   }, '#paypal-button');
 
-</script>
+</script> --}}
 @else
 <div class="container">
     <div class="row">

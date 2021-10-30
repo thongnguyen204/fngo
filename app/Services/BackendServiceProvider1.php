@@ -56,6 +56,10 @@ class BackendServiceProvider1 extends ServiceProvider
             'App\Services\HomeServiceInterface',
             'App\Services\HomeService',
         );
+        $this->app->bind(
+            'App\Services\MomoServiceInterface',
+            'App\Services\MomoService',
+        );
         
     }
 }

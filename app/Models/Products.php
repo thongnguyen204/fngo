@@ -22,4 +22,8 @@ class Products extends Model
     public function money($money){
         return currency_format($money);
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -20,6 +20,11 @@ class HotelRepository implements HotelRepositoryInterface
     public function searchID($id){
         return Hotel::find($id);
     }
+    public function searchCode($product_code)
+    {
+        return Hotel::where('product_code',$product_code)
+        ->first();
+    }
     public function store(Hotel $hotel)
     {
         $hotel->save();  

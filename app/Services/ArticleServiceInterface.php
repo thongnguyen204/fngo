@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 interface ArticleServiceInterface {
     public function getAllArticles();
+
+    public function getArticleByID($id);
     
     public function store(Request $request);
     

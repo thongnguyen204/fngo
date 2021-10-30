@@ -53,15 +53,25 @@ Route::get('/', function () {
             Route::get('tour','TourController@indexManage')
             ->name('manage.tourIndex');
 
-            Route::delete('deleteTour/{id}','TourController@deleteManage')
+            Route::delete('deleteTourAjax/{id}','TourController@deleteManageAjax')
+            ->name('manage.deleteTourAjax');
+
+            Route::delete('deleteTour/{tour}','TourController@deleteManage')
             ->name('manage.deleteTour');
 
             // --hotel--
             Route::get('hotel','HotelController@indexManage')
             ->name('manage.hotelIndex');
 
-            Route::delete('deleteHotel/{id}','HotelController@deleteManage')
-            ->name('manage.deleteHotel');
+            Route::delete('deleteHotelAjax/{id}','HotelController@deleteManageAjax')
+            ->name('manage.deleteHotelAjax');
+
+            // --article--
+            Route::get('article','ArticleController@indexManage')
+            ->name('manage.articleIndex');
+
+            Route::delete('deleteArticleAjax/{id}','ArticleController@deleteManageAjax')
+            ->name('manage.articleHotelAjax');
         });
 
         
@@ -179,6 +189,8 @@ Route::get('/', function () {
         //booking
         Route::get('create/{room}','HotelBookingController@create')
         ->name('hotelbooking.create');
+
+        
         Route::resource('booking','BookingController');
 
 

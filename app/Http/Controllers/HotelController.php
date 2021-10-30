@@ -184,7 +184,7 @@ class HotelController extends Controller
         ->with('CityProvinces',$CityProvinces);
     }
 
-    public function deleteManage($id)
+    public function deleteManageAjax($id)
     {
         $deleteHotel = $this->hotel->getHotelByID($id);
         $ProductRoomTypes = $deleteHotel->roomtype;

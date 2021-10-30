@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Services\BookingServiceInterface;
+use App\Services\MomoServiceInterface;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
     private $booking;
-    public function __construct(BookingServiceInterface $booking)
+    private $momo;
+    public function __construct
+    (
+        BookingServiceInterface $booking,
+        MomoServiceInterface $momo
+    )
     {
         $this->booking = $booking;
+        $this->momo = $momo;
     }
     /**
      * Display a listing of the resource.
@@ -41,8 +48,11 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         //
-        
-        $this->booking->store($request);
+        if($request->payment != 3)
+            $this->booking->store($request);
+        else
+            return $this->momo->checkout($request);
+            
         
          
     }

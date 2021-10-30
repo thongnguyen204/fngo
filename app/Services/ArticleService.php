@@ -18,6 +18,10 @@ class ArticleService implements ArticleServiceInterface{
     public function getAllArticles(){
         return $this->articleRepository->getAllArticles();
     }
+    public function getArticleByID($id)
+    {
+        return $this->articleRepository->findArticle($id);
+    }
 
     public function store(Request $request)
     {

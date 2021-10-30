@@ -18,6 +18,8 @@ interface HotelRepositoryInterface
 
     public function searchID($id);
 
+    public function searchCode($product_code);
+
     public function getAllCityProvince();
 
     public function getTopPurchases($number);

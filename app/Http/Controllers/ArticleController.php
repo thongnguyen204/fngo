@@ -134,4 +134,24 @@ class ArticleController extends Controller
         
         return redirect()->route('article.index');
     }
+    public function indexManage()
+    {
+        $articles = $this->articleService->getAllArticles();
+        
+        return view('admin.manage article.index')
+        ->with('articles',$articles);
+    }
+
+    public function deleteManageAjax($id)
+    {
+        $deleteArticle = $this->articleService->getArticleByID($id);
+
+        $this->articleService->destroy($deleteArticle);
+
+        $articles = $this->articleService->getAllArticles();
+
+        return view('admin.manage article.change')
+        ->with('articles',$articles);
+
+    }
 }

@@ -21,7 +21,7 @@ class HomeService implements HomeServiceInterface{
     }
     public function search($request)
     {
-        if(Auth::user() == null)
+        if(Auth::user() == null || Auth::user()->role->name == 'user')
             $role = 'user';
         else{
             $role = 'admin';

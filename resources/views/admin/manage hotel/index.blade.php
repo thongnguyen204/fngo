@@ -45,7 +45,7 @@
         var result = confirm("Want to delete?");
         if (result) {
             $.ajax({
-            url: "deleteHotel/"+id,
+            url: "deleteHotelAjax/"+id,
             type:'delete',
             data:{
                 "_token": "{{ csrf_token() }}",  

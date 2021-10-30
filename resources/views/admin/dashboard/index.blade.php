@@ -6,16 +6,19 @@
 
 <!-- The sidebar -->
 <div class="sidebar">
+  @if (Auth::user()->role->name == 'admin')
   <a class="nav-link" href="{{route('dashboard.index')}}">
     <i class="bi bi-cpu-fill"></i> 
-    Dasboard
+    Dashboard
   </a>
   <a class="nav-link" href='{{route('users.index')}}'>
     <i class="bi bi-people-fill"></i>
     {{__('common.Users manage')}}
   </a>
+  @endif
+  
 
-  <a class="nav-link" href='{{route('manage.tourIndex')}}'>
+  {{-- <a class="nav-link" href='{{route('manage.tourIndex')}}'>
     <i class="bi bi-camera-fill"></i>
     {{__('common.Tours manage')}}
   </a>
@@ -25,10 +28,10 @@
     {{__('common.Hotels manage')}}
   </a>
 
-  <a class="nav-link" href='{{route('manage.hotelIndex')}}'>
+  <a class="nav-link" href='{{route('manage.articleIndex')}}'>
     <i class="bi bi-file-earmark-richtext-fill"></i>
     {{__('common.Articles manage')}}
-  </a>
+  </a> --}}
 
   <a class="nav-link" href='{{route('receipt.waiting')}}'>
     <i class="bi bi-check2-circle"></i>

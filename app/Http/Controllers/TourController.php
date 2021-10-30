@@ -171,7 +171,7 @@ class TourController extends Controller
         ->with('CityProvinces',$CityProvinces);
     }
 
-    public function deleteManage($id)
+    public function deleteManageAjax($id)
     {
         $deleteTour = $this->tour->getTourByID($id);
         $this->tour->delete($deleteTour);
@@ -179,6 +179,15 @@ class TourController extends Controller
         $tours = $this->tour->all();
         return view('admin.manage tour.change')
         ->with('tours',$tours);
+
+    }
+    public function deleteManage(Tour $tour)
+    {
+        // $deleteTour = $this->tour->getTourByID($id);
+        $this->tour->delete($tour);
+        // return $tour;
+        return redirect()->route('manage.tourIndex')
+        ->with('message','Delete success!');
 
     }
 }

@@ -71,7 +71,11 @@ class BookingService implements BookingServiceInterface{
             $receipt1_detail->product_id = $product_id;
             $receipt1_detail->product_code = $product['key'];
             $receipt1_detail->quantity = $product['value'];
-            $receipt1_detail->price = $product['price'];
+            if($product1->category_id == 2) //2 is tour 1 is hotel
+                $price_per_unit = $this->tourRepository->searchCode($receipt1_detail->product_code)->price;
+            else
+                $price_per_unit = $this->hotelRepository->searchCode($receipt1_detail->product_code)->price;
+            $receipt1_detail->price = $price_per_unit * $receipt1_detail->quantity;
             $receipt1->price_sum += $receipt1_detail->price;
             if(!is_null($product['date'])){
                 $receipt1_detail->description = "checkin: ".$product['date'].'  '.$product['day'].' day(s)';
@@ -94,6 +98,7 @@ class BookingService implements BookingServiceInterface{
         foreach ($request->data as $product) {
             $request->session()->forget('Cart');
         }
-        // dd ($request->payment);
+        // $product1 = $this->product->getProductByCode('tour_6');
+        // dd ($product1->category_id);
     }
 }

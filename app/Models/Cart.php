@@ -66,6 +66,7 @@ class Cart extends Model
         return currency_format($money);
     }
     public function VNDtoUSD($money){
-        return $money * 0.000044;
+        return number_format($money * 0.000044, 2, '.', ',');
+        
     }
 }

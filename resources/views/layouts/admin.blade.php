@@ -82,9 +82,15 @@
                                 <i style="font-size: 25px" class="bi bi-person-circle"></i> <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                                @if (Auth::user()->role->name != 'user')
+                                @if (Auth::user()->role->name == 'admin')
                                     <a class="dropdown-item" href="{{url('/dashboard')}}">
                                         {{ __('common.Admin dashboard') }}
+                                    </a>
+                                @endif
+
+                                @if (Auth::user()->role->name == 'employee')
+                                    <a class="dropdown-item" href="{{url('/receiptWaiting')}}">
+                                        {{ __('common.Manage') }}
                                     </a>
                                 @endif
                                 
