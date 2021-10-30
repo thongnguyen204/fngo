@@ -128,7 +128,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" value="3" type="radio" name="payment" id="flexRadioDefault3">
+                    <input class="form-check-input" value="4" type="radio" name="payment" id="flexRadioDefault3">
                     <label class="form-check-label" for="flexRadioDefault3">
                         {{__('cart.Momo')}}
                     </label>
@@ -251,8 +251,17 @@
                 "payment": payment,
             }
         }).done(function(respone){
-            console.log(respone);
-            // location.href = '/receipt';
+            // console.log(respone);
+            if(payment == 4)
+            {
+                if(respone == 'error')
+                    alertify.error('Error');
+                else
+                console.log(respone);
+                    // location.href = respone;
+            }
+            else
+                {location.href = '/receipt';}
         });
     }
 

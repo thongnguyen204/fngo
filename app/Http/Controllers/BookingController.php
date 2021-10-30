@@ -48,13 +48,10 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         //
-        if($request->payment != 3)
-            $this->booking->store($request);
-        else
-            return $this->momo->checkout($request);
-            
-        
-         
+        if($request->payment == 4)
+            return $this->momo->checkout($request); 
+        $this->booking->store($request);
+          
     }
 
     /**

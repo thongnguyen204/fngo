@@ -100,7 +100,7 @@
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" value="3" type="radio" name="payment" id="flexRadioDefault3">
+            <input class="form-check-input" value="4" type="radio" name="payment" id="flexRadioDefault3">
             <label class="form-check-label" for="flexRadioDefault3">
                 {{__('cart.Momo')}}
             </label>
@@ -134,31 +134,7 @@
         // var payment =$('input[name="payment"]:checked').val();
         updateCart();
     });
-    function checkout(payment){
-        updateCart();
-        var list= [];
-        
-        $("table tbody tr td").each(function(){
-            $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"),value: $(this).val(),day: $(this).data("day"),price: $(this).data("price"),date: $(this).data("date")};
-                list.push(element);
-            });
-        });
-        // var list1 = [1,2,3];
-        // console.log(list);
-        $.ajax({
-            url: "booking",
-            type:'POST',
-            data:{
-                "_token": "{{ csrf_token() }}",
-                "data": list,
-                "payment": payment,
-            }
-        }).done(function(respone){
-            // console.log(respone);
-            location.href = '/receipt';
-        });
-    }
+    
     $(".checkout").on("click",function(){
         var payment =$('input[name="payment"]:checked').val();
 

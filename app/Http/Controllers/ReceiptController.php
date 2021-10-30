@@ -272,7 +272,7 @@ class ReceiptController extends Controller
         $this->receipt->delete($receipt->id);
 
         
-        return redirect()->route('receipt.indexAccepted');
+        return redirect()->back();
         
     }
 }

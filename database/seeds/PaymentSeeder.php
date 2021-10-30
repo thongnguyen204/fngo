@@ -25,5 +25,9 @@ class PaymentSeeder extends Seeder
             'type' => 'paypal',
             'description' => '',
         ]);
+        Payment::create([
+            'type' => 'momo',
+            'description' => '',
+        ]);
     }
 }

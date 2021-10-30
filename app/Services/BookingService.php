@@ -74,7 +74,7 @@ class BookingService implements BookingServiceInterface{
             if($product1->category_id == 2) //2 is tour 1 is hotel
                 $price_per_unit = $this->tourRepository->searchCode($receipt1_detail->product_code)->price;
             else
-                $price_per_unit = $this->hotelRepository->searchCode($receipt1_detail->product_code)->price;
+                $price_per_unit = $this->roomRepository->getRoomByCode($receipt1_detail->product_code)->price;
             $receipt1_detail->price = $price_per_unit * $receipt1_detail->quantity;
             $receipt1->price_sum += $receipt1_detail->price;
             if(!is_null($product['date'])){
