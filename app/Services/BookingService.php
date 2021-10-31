@@ -20,9 +20,11 @@ class BookingService implements BookingServiceInterface{
     private $roomRepository;
     private $hotelRepository;
 
-    private $receiptStatusAcceptedID = 1;
-    private $receiptStatusWaitingID = 3;
-    private $receiptStatusReceivedID = 4;
+    private $receiptStatusAcceptedID    = 1;
+    private $receiptStatusWaitingID     = 3;
+    private $receiptStatusReceivedID    = 4;
+    private $receiptStatusMomoWaiting   = 5;
+
     public function __construct(HotelRepositoryInterface $hotelRepository,RoomRepositoryInterface $roomRepository,TourRepositoryInterface $tourRepository,ProductServiceInterface $product ,BookingRepositoryInterface $booking,ReceiptServiceInterface $receipt,ReceiptDetailRepositoryInterface $receipt_detail)
     {
         $this->hotelRepository = $hotelRepository;
@@ -52,13 +54,16 @@ class BookingService implements BookingServiceInterface{
     public function createReceipt($payment)
     {
         $receipt1 = new Receipt;
+        $receipt1->id = time();
         $receipt1->user_id = Auth::user()->id;
         $receipt1->price_sum = 0;
         $receipt1->payment_id = $payment;
         $receipt1->description = "";
         if($payment == 3)
             $receipt1->status_id = $this->receiptStatusReceivedID;
-        $receipt1 = $this->receipt->store($receipt1);
+        if($payment == 4) //momo
+            $receipt1->status_id = $this->receiptStatusMomoWaiting;
+        $this->receipt->store($receipt1);
         return $receipt1;
     }
     public function createReceiptDetail($data,$payment){
@@ -88,17 +93,18 @@ class BookingService implements BookingServiceInterface{
             $this->receipt_detail->store($receipt1_detail);
             // dd($product['key']);
         }
-        $run = $this->receipt->store($receipt1);
+        $this->receipt->store($receipt1);
+        return $receipt1;
         // dd($data);
         
     }
     public function store(Request $request){
-        // $this->booking->store($request->data,$request->payment);
-        $this->createReceiptDetail($request->data,$request->payment);
+        $receipt1 = $this->createReceiptDetail($request->data,$request->payment);
         foreach ($request->data as $product) {
             $request->session()->forget('Cart');
         }
-        // $product1 = $this->product->getProductByCode('tour_6');
-        // dd ($product1->category_id);
+        // $receipt1 = $this->createReceipt($request->payment);
+        
+        return $receipt1;
     }
 }

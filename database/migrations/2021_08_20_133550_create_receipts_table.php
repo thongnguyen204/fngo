@@ -14,7 +14,7 @@ class CreateReceiptsTable extends Migration
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id')->unsigned()->unique();
             $table->integer('user_id')->unsigned();
             $table->integer('price_sum')->unsigned();
             $table->integer('payment_id')->unsigned()->nullable();
@@ -27,6 +27,7 @@ class CreateReceiptsTable extends Migration
             $table->dateTime('paid_at')->nullable();
             $table->timestamps();
 
+            $table->primary('id');
             // $table->foreign('user_id')  ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('accept_by')->references('id')->on('users');
             $table->foreign('cancel_by')->references('id')->on('users');

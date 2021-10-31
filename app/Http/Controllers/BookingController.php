@@ -50,7 +50,7 @@ class BookingController extends Controller
         //
         if($request->payment == 4)
             return $this->momo->checkout($request); 
-        $this->booking->store($request);
+        return $this->booking->store($request);
           
     }
 

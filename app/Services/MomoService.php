@@ -11,19 +11,22 @@ class MomoService implements MomoServiceInterface{
     private $product;
     private $tour;
     private $room;
+    private $booking;
 
     public function __construct
     (
         ReceiptServiceInterface $receipt,
         ProductServiceInterface $product,
-        TourServiceInterface $tour,
-        RoomServiceInterface $room
+        TourServiceInterface    $tour,
+        RoomServiceInterface    $room,
+        BookingServiceInterface $booking
     )
     {
-        $this->receipt = $receipt;
-        $this->product = $product;
-        $this->tour = $tour;
-        $this->room = $room;
+        $this->receipt  = $receipt;
+        $this->product  = $product;
+        $this->tour     = $tour;
+        $this->room     = $room;
+        $this->booking  = $booking;
     }
     function execPostRequest($url, $data)
     {
@@ -71,19 +74,27 @@ class MomoService implements MomoServiceInterface{
 
     public function checkout(Request $request)
     {
-        $totalPrice = $this->getTotalPrice($request->data);
-        $receiptID = $this->getReceiptID($request->data);
+        // $totalPrice = $this->getTotalPrice($request->data);
+        // $receiptID = $this->getReceiptID($request->data);
+
+        $receipt1 = $this->booking->store($request);
+        $totalPrice = $receipt1->price_sum;
+        $receiptID  = $receipt1->id;
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         
-        $partnerCode = 'MOMOUR5V20211030';
-        $accessKey = '7qS9EiT0H88F9VJ0';
-        $serectkey = 'CNHk35tDgIlkcj0GqRyi3zo0QSlSa4DN';
+        $partnerCode = \Config::get('values.partner_code');
+        $accessKey = \Config::get('values.access_key');
+        $serectkey = \Config::get('values.secret_key');
+
+        // $partnerCode = 'MOMOUR5V20211030';
+        // $accessKey = '7qS9EiT0H88F9VJ0';
+        // $serectkey = 'CNHk35tDgIlkcj0GqRyi3zo0QSlSa4DN';
 
         $orderInfo = "Thanh toán qua MoMo";
         $amount = $totalPrice;
         $orderId = $receiptID;
-        $redirectUrl = route('home');
-        $ipnUrl = route('home');
+        $redirectUrl = route('momo.getRes');
+        $ipnUrl = "https://webhook.site/bf6ac7e0-794e-437f-b8e1-218c13b124cb";
         $extraData = "";
 
         $requestId = time() . "";
@@ -107,10 +118,13 @@ class MomoService implements MomoServiceInterface{
         $result = $this->execPostRequest($endpoint, json_encode($data));
         // return $data;  // decode json
         $jsonResult = json_decode($result, true);  // decode json
-        // if($jsonResult['resultCode'] == 0)
-            // return ($jsonResult['payUrl']);
-            return $jsonResult;
-        // else
-            // return 'error';
+        
+        //uncmt to test
+        // return $jsonResult; 
+        
+        if($jsonResult['resultCode'] == 0)
+            return ($jsonResult['payUrl']);
+        else
+            return 'error';
     }
 }

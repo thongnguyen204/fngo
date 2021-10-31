@@ -11,11 +11,11 @@ class Receipt extends Model
     private int $price_sum;
     private String $description;
 
-    
+    public $incrementing = false;
 
     //
     protected $fillable = [
-        'user_id','price_sum','description','payment_id'
+        'id','user_id','price_sum','description','payment_id'
     ];
     public function receipt_detail()
     {

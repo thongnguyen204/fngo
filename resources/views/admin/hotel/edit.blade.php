@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-4">
             <label for="cityProvince">{{__('hotel.Province/City')}}</label>
-            <select class="form-control" id="cityProvince">
+            <select class="form-control" id="cityProvince" name="cityProvince">
                 @foreach ($cty_province as $cityProvince)
                     <option value="{{$cityProvince->id}}" @if ($hotel->city_province_id == $cityProvince->id)
                         selected

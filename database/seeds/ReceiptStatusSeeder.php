@@ -25,5 +25,11 @@ class ReceiptStatusSeeder extends Seeder
         ReceiptStatus::create([
             'name' => 'Payment received'
         ]);
+        ReceiptStatus::create([
+            'name' => 'Momo waiting'
+        ]);
+        ReceiptStatus::create([
+            'name' => 'Momo canceled'
+        ]);
     }
 }

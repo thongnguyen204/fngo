@@ -14,7 +14,6 @@ class HotelRequest extends FormRequest
      */
     public function authorize()
     {
-        
         return true;
     }
 
@@ -28,9 +27,9 @@ class HotelRequest extends FormRequest
         return [
             //
             'name'          => 'required|string|min:5|max:50',
-            'address'       => 'required|string|max:50',
+            'address'       => 'required|string|max:255',
             'cityProvince'  => 'required',
-            'price'         => 'required|numeric',
+            'price'         => 'required',
             'avatar'        => 'required_if:formType,create|mimes:jpeg,jpg,png,gif|max:10000',
         ];
     }

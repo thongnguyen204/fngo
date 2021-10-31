@@ -255,13 +255,19 @@
             if(payment == 4)
             {
                 if(respone == 'error')
-                    alertify.error('Error');
+                    {
+                        
+                        alertify.error('Error');
+                    }
                 else
-                console.log(respone);
-                    // location.href = respone;
+                    
+                    location.href = respone;
+                    // console.log(respone);
             }
             else
-                {location.href = '/receipt';}
+                {
+                    location.href = '/receipt';
+                }
         });
     }
 

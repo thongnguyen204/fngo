@@ -123,7 +123,7 @@ class ReceiptService implements ReceiptServiceInterface
     }
 
     public function store(Receipt $receipt){
-        return $this->receipt->store($receipt);
+        $this->receipt->saveReceipt($receipt);
     }
     public function whereMonth($month,$year){
         return $this->receipt->whereMonth($month,$year);
