@@ -14,9 +14,8 @@ class HotelRequest extends FormRequest
      */
     public function authorize()
     {
-        if(Auth::user()->role->name == 'admin')
-            return true;
-        return false;
+        
+        return true;
     }
 
     /**
