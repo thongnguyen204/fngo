@@ -17,6 +17,7 @@ class ArticleSeeder extends Seeder
             if($i>=6)
                 Article::create([
                     'title' => 'Day la title '.$i,
+                    'category_id' => 3,
                     'thumbnail' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1635424473/FnGO/article/thumbnail/articleThumb_qpziai.png',
                     'background'    => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
                     'user_id' => 1,
@@ -27,6 +28,7 @@ class ArticleSeeder extends Seeder
             else
                 Article::create([
                     'title' => 'Day la title '.$i,
+                    'category_id' => 3,
                     'thumbnail' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1635424473/FnGO/article/thumbnail/articleThumb_qpziai.png',
                     'background'    => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
                     'user_id' => 1,
