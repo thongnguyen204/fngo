@@ -48,6 +48,17 @@
             {{__('payment.Paypal content')}}
         </div>
     </div>
+
+    <div class="wrapper">
+        <h3>
+            <img style="width: 30px;height: 30px;" src="https://avatars.githubusercontent.com/u/36770798?s=280&v=4">
+            {{__('payment.Momo')}}
+        </h3>
+
+        <div class="content">
+            {{__('payment.Momo content')}}
+        </div>
+    </div>
 </div>
 
 @endsection

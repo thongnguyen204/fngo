@@ -8,7 +8,9 @@
                 <th class="text-center">{{__('cart.Quantity')}}</th>
                 <th class="text-center">{{__('cart.Price')}}</th>
 
-                <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">{{__('cart.Clear Cart')}}</a></th>
+                <th class="text-center">
+                    <a class="btn btn-sm btn-outline-danger" href="{{route('clearCart')}}">{{__('cart.Clear Cart')}}</a>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -119,7 +121,7 @@
 
 <div class="shopping-cart-footer">
     <div class="column">
-        {{__('cart.paypal')}}
+        {{-- {{__('cart.paypal')}} --}}
     </div>
     <div class="column">
         {{-- <div id="paypal-button"></div> --}}

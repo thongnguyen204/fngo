@@ -18,6 +18,7 @@ return [
     'Banking'       => 'Bank Transfer',
     'paypal'        => 'Or checkout with PayPal',
     'Clear Cart'    => 'Clear Cart',
+    'Momo'          => 'Momo e-wallet',
 ]
 
 ?>

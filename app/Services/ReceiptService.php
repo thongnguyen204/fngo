@@ -27,6 +27,9 @@ class ReceiptService implements ReceiptServiceInterface
         $user_id = Auth::user()->id;
         return $this->receipt->getReceiptOfUser($user_id);
     }
+    public function getReceiptById($id){
+        return Receipt::find($id);
+    }
     public function getWaitingReceipt(){
         return $this->receipt->getWaitingReceipt();
     }

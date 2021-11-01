@@ -18,6 +18,8 @@ return [
     'Banking'       => 'Chuyển khoản ngân hàng',
     'paypal'        => 'Hoặc thanh toán qua PayPal',
     'Clear Cart'    => 'Xóa giỏ hàng',
+    'Momo'          => 'Ví điện tử Momo',
+
 ]
 
 ?>

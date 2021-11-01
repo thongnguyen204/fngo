@@ -106,6 +106,12 @@ class CartController extends Controller
         return view('cart.body')->with('noti',__('cart.Deleted'));
     }
 
+    public function clearCart(Request $request){
+        $request->session()->forget('Cart');
+
+        return redirect()->route('cart.index');
+    }
+
     public function updateCart(Request $request)
     {
         // dd($request->data);

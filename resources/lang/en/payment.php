@@ -15,8 +15,9 @@ return [
     'Price' => "Receipt's price",
     'Receipt ID'    => "Receipt's ID",
     'Paypal'    => 'Using Paypal',
-    'Paypal content'    => 'You also can you PayPal to pay any of your receipt.'
-    
+    'Paypal content'    => 'You can use PayPal to pay any of your receipt.',
+    'Momo'  => 'Using Momo e-wallet',
+    'Momo content'    => 'Our website also support payment with Momo e-wallet.',
 ]
 
 ?>

@@ -40,7 +40,15 @@
                             @if ($receipt->status_id == 3)
                                 {{__('receipt.Waiting')}}
                             @else
-                                {{__('receipt.Received')}}
+                                @if ($receipt->status_id == 5)
+                                    {{__('receipt.Momo Waiting')}}
+                                @else
+                                    @if ($receipt->status_id == 4)
+                                        {{__('receipt.Received')}}
+                                    @else
+                                        {{__('receipt.Else')}}
+                                    @endif
+                                @endif
                             @endif
                         @endif
                     @endif
@@ -60,7 +68,15 @@
                         @if ($receipt->payment_id == 2)
                             {{__('receipt.Banking')}}
                         @else
-                            {{__('receipt.Paypal')}}
+                            @if ($receipt->payment_id == 3)
+                                {{__('receipt.PayPal')}}
+                            @else
+                                @if ($receipt->payment_id == 4)
+                                    {{__('receipt.Momo')}}
+                                @else
+                                    {{__('receipt.Else')}}
+                                @endif
+                            @endif
                         @endif
                     @endif
                 </td>

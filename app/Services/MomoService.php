@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Receipt;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,7 @@ class MomoService implements MomoServiceInterface{
         TourServiceInterface    $tour,
         RoomServiceInterface    $room,
         BookingServiceInterface $booking
+
     )
     {
         $this->receipt  = $receipt;
@@ -126,5 +128,32 @@ class MomoService implements MomoServiceInterface{
             return ($jsonResult['payUrl']);
         else
             return 'error';
+    }
+
+    public function success($orderId)
+    {
+        $paidReceipt = $this->receipt->getReceiptById($orderId);
+        if($paidReceipt)
+        {
+            $date = new DateTime();
+
+        $paidReceipt->status_id = 4;
+        $paidReceipt->paid_at = $date;
+
+        $this->receipt->store($paidReceipt);
+        }
+    }
+    public function fail($orderId)
+    {
+        $paidReceipt = $this->receipt->getReceiptById($orderId);
+        if($paidReceipt)
+        {
+            $date = new DateTime();
+
+            // 6 la momo canceled
+            $paidReceipt->status_id = 6;
+
+            $this->receipt->store($paidReceipt);
+        }
     }
 }

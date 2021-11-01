@@ -15,7 +15,10 @@ return [
     'Price' => 'Giá đơn hàng',
     'Receipt ID'    => 'Mã hóa đơn',
     'Paypal'    => 'Thanh toán qua PayPal',
-    'Paypal content'    => 'Bạn cũng có thể thanh toán bất kì đơn đặt tour, khách sạn nào ở website chúng tôi qua PayPal.'
-]
+    'Paypal content'    => 'Bạn có thể thanh toán bất kì đơn đặt tour, khách sạn nào ở website chúng tôi qua PayPal.',
+    'Momo'  => 'Thanh toán qua ví điện tử Momo',
+    'Momo content'    => 'Website của chúng tôi cũng hỗ trợ phương thức thanh toán qua ví điện tử Momo.',
+
+    ]
 
 ?>

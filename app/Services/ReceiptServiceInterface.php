@@ -19,6 +19,8 @@ interface ReceiptServiceInterface{
 
     public function search($keyword,$option);
 
+    public function getReceiptById($id);
+
     public function canceledIndex();
 
     public function paidIndex();

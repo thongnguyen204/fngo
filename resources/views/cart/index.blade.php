@@ -18,9 +18,15 @@
 
 <div class="container bg-white rounded padding-bottom-3x mb-1">
     <!-- Alert-->
-    {{-- <div class="alert alert-info alert-dismissible fade show text-center" style="margin-bottom: 30px;"><span
-            class="alert-close" data-dismiss="alert"></span>&nbsp;&nbsp;With this purchase you will earn
-        <strong>290</strong> Reward Points.</div> --}}
+    @if(session()->has('error'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{__('payment.Fail')}}</strong>{{__('payment.CheckMomo')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    
     <!-- Shopping Cart-->
     <div id="change">
         <div class="table-responsive shopping-cart">
@@ -32,7 +38,9 @@
                         <th class="text-center">{{__('cart.Quantity')}}</th>
                         <th class="text-center">{{__('cart.Price')}}</th>
 
-                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">{{__('cart.Clear Cart')}}</a></th>
+                        <th class="text-center">
+                            <a class="btn btn-sm btn-outline-danger" href="{{route('clearCart')}}">{{__('cart.Clear Cart')}}</a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -149,11 +157,10 @@
         </div>
         <div class="shopping-cart-footer">
             <div class="column">
-                {{__('cart.paypal')}}
+                {{-- {{__('cart.paypal')}} --}}
             </div>
             <div class="column">
                 {{-- <div id="paypal-button"></div> --}}
-                {{-- <div id="paypal-button-container"></div> --}}
 
             </div>
         </div>

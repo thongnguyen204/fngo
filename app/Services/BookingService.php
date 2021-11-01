@@ -100,11 +100,10 @@ class BookingService implements BookingServiceInterface{
     }
     public function store(Request $request){
         $receipt1 = $this->createReceiptDetail($request->data,$request->payment);
-        foreach ($request->data as $product) {
-            $request->session()->forget('Cart');
-        }
-        // $receipt1 = $this->createReceipt($request->payment);
         
+        if($request->payment != 4) //except momo
+            $request->session()->forget('Cart');
+  
         return $receipt1;
     }
 }

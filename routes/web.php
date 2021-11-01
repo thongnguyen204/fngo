@@ -222,6 +222,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/deleteCart/{product}','CartController@deleteCart')
     ->name('deleteCart');
 
+    Route::get('/clearCart','CartController@clearCart')
+    ->name('clearCart');
+
     Route::post('/updateCart','CartController@updateCart')
     ->name('updateCart');
     
