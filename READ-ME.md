@@ -13,7 +13,7 @@ admin: admin@gmail.com
 pwd: 123456
 
 
-admin: employee@gmail.com
+employee: employee@gmail.com
 pwd: 123456
 
 user: user@gmail.com
