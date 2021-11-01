@@ -15,7 +15,7 @@
             <div class="small-box bg-user">
                 <div class="inner">
                     <h3>{{$countUser}}</h3>
-                    <p>Users</p>
+                    <p>{{__('dashboard.Users')}}</p>
                 </div>
                 <div class="icon">
                     <i class="bi bi-people-fill"></i>
@@ -30,7 +30,7 @@
             <div class="small-box bg-newUser">
                 <div class="inner">
                     <h3>{{$countNewUser}}</h3>
-                    <p>User Registrations</p>
+                    <p>{{__('dashboard.User Registrations')}}</p>
                 </div>
                 <div class="icon">
                     <i class="bi bi-person-plus-fill"></i>
@@ -45,7 +45,7 @@
             <div class="small-box bg-order">
                 <div class="inner">
                     <h3>{{$countWaitingOrders}}</h3>
-                    <p>New Orders</p>
+                    <p>{{__('dashboard.New Orders')}}</p>
                 </div>
                 <div class="icon">
                     <i class="bi bi-bar-chart-fill"></i>
@@ -60,7 +60,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>{{$countPaidOrdersToday}}</h3>
-                    <p>Success orders</p>
+                    <p>{{__('dashboard.Success orders')}}</p>
                 </div>
                 <div class="icon">
                     <i class="bi bi-cash-coin"></i>
@@ -78,7 +78,7 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <i class="bi bi-pie-chart-fill"></i>
-                        Accounts: {{$countAllUser}}
+                        {{__('dashboard.Accounts')}}: {{$countAllUser}}
                     </h4>
                 </div>
                 <div class="card-body">
@@ -98,7 +98,7 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <i class="bi bi-bar-chart-steps"></i>
-                        Top Hotels
+                        {{__('dashboard.Top Hotels')}}
                     </h4>
                 </div>
                 <div class="card-body">
@@ -120,7 +120,7 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <i class="bi bi-bar-chart-steps"></i>
-                        Top tours: 
+                        {{__('dashboard.Top tours')}}
                     </h4>
                 </div>
                 <div class="card-body">
@@ -140,7 +140,7 @@
                 <div class="card-header">
                     <h4 class="card-title">
                         <i class="bi bi-bar-chart-steps"></i>
-                        Top Articles
+                        {{__('dashboard.Top Articles')}}
                     </h4>
                 </div>
                 <div class="card-body">

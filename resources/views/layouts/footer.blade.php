@@ -4,7 +4,7 @@
 
     <div style="max-width: 1300px" class="container">
         <div class="row">
-            <div style="margin-top: 50px" class="col-12 col-md-4">
+            <div style="margin-top: 50px" class="col-12 col-md-3">
                 <div class="logo">
                     <a class="logo" href="{{ route('home') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
                 <div class="footer-title">
                     {{__('footer.Contacts')}}
                     
@@ -46,7 +46,7 @@
                     1851010144Trung@ou.edu.vn
                 </p>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-3">
                 <div class="footer-title">
                     {{__('footer.Links')}}
                     <div>
@@ -80,6 +80,12 @@
                         {{__('footer.About us')}}
                     </a>
                 </p>
+            </div>
+            <div class="col-12 col-md-3">
+                <div id="map" style="width:30;height:30;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d823.9639360685248!2d106.69040338151909!3d10.776413602300883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3afa713ca7%3A0xbfe2296e25218665!2zOTcgVsO1IFbEg24gVOG6p24sIFBoxrDhu51uZyA2LCBRdeG6rW4gMywgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1635764523173!5m2!1svi!2s" 
+                    width="500" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </div>

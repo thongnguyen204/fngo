@@ -22,7 +22,10 @@ return [
     "Search"            => "Search",
     'ID input'          => "Enter receipt's ID",
     "Finish"            => "Finish",
-    "Paypal"    => 'Paypal',
+    "Not Finish"        => "Not finish",
+    "Paypal"            => 'Paypal',
+    "Momo"              => 'Momo',
+
 
     
 ]

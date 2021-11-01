@@ -31,27 +31,28 @@
                 
                 {{-- 1-accept  2-cancel  3-wait  4-receive --}}
                 <td>
-                    @if ($receipt->status_id == 1)
-                        {{__('receipt.Accepted')}}
-                    @else
-                        @if ($receipt->status_id == 2)
+                    @switch($receipt->payment_id )
+                        @case(1)
+                            {{__('receipt.Accepted')}}
+                            @break
+                        @case(2)
                             {{__('receipt.Canceled')}}
-                        @else
-                            @if ($receipt->status_id == 3)
-                                {{__('receipt.Waiting')}}
-                            @else
-                                @if ($receipt->status_id == 5)
-                                    {{__('receipt.Momo Waiting')}}
-                                @else
-                                    @if ($receipt->status_id == 4)
-                                        {{__('receipt.Received')}}
-                                    @else
-                                        {{__('receipt.Else')}}
-                                    @endif
-                                @endif
-                            @endif
-                        @endif
-                    @endif
+                            @break
+                        @case(3)
+                            {{__('receipt.Waiting')}}
+                            @break
+                        @case(4)
+                            {{__('receipt.Paid')}}
+                            @break
+                        @case(5)
+                            {{__('receipt.Momo waiting')}}
+                            @break
+                        @case(6)
+                            {{__('receipt.Momo Canceled')}}
+                            @break
+                        @default
+                        {{__('receipt.Else')}}
+                    @endswitch
                 </td>
                 <td>
                     @if ($receipt->is_finish)
@@ -79,6 +80,8 @@
                             @endif
                         @endif
                     @endif
+                    
+
                 </td>
                 <td>{{$receipt->created_at}}</td>
                 <td class="row">
@@ -94,7 +97,7 @@
                 <td>
                     @if ($receipt->is_finish)
                         <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.un-finish',$receipt)}}">
-                            {{__('receipt.UnFinish')}}
+                            {{__('receipt.Not finish')}}
                         </a>
                     @else
                         <a style="margin: 10px" class="btn btn-success col" href="{{route('receipt.finish',$receipt)}}">
