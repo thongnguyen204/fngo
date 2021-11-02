@@ -121,10 +121,10 @@
 
 <div class="shopping-cart-footer">
     <div class="column">
-        {{-- {{__('cart.paypal')}} --}}
+        {{__('cart.paypal')}}
     </div>
     <div class="column">
-        {{-- <div id="paypal-button"></div> --}}
+        <div id="paypal-button"></div>
     </div>
 </div>
 
@@ -143,7 +143,7 @@
         checkout(payment);
     });
 </script>
-{{-- <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
     var usd = $( "#totalUSD" ).val();
   paypal.Button.render({
@@ -187,7 +187,7 @@
     }
   }, '#paypal-button');
 
-</script> --}}
+</script>
 @else
 <div class="container">
     <div class="row">

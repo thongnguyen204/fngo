@@ -157,10 +157,10 @@
         </div>
         <div class="shopping-cart-footer">
             <div class="column">
-                {{-- {{__('cart.paypal')}} --}}
+                {{__('cart.paypal')}}
             </div>
             <div class="column">
-                {{-- <div id="paypal-button"></div> --}}
+                <div id="paypal-button"></div>
 
             </div>
         </div>
@@ -289,7 +289,7 @@
 
 </script>
 
-{{-- <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
 
     var usd = $( "#totalUSD" ).val();
@@ -336,7 +336,7 @@
     }
   }, '#paypal-button');
 
-</script> --}}
+</script>
 
 {{-- <script
     src="https://www.paypal.com/sdk/js?client-id=ARXQy4nMUiXnq6zEB8oVvv5a2THNl-4W9lJp4HNgIqmOcv1HxC9XUpdlnqstsUuPiSgES9hbJcGnLONt"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
