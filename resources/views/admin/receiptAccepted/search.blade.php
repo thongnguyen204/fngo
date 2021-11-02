@@ -4,7 +4,7 @@
 
 <link href="{{ asset('css/receipt.css') }}" rel="stylesheet">
 
-<div class="container bg-white rounded wrapper">
+<div class=" mt-3 pt-3 container bg-white rounded wrapper">
     @include('admin.receiptAccepted.searchBar')
     @if (!$receipts)
         {{__('receipt.Empty')}}
