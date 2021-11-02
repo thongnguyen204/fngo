@@ -330,8 +330,8 @@
         // Show a confirmation message to the buyer
         // 3 is paypal
         console.log(data);
-        // var payment = 3;
-        // checkout(payment);
+        var payment = 3;
+        checkout(payment);
       });
     }
   }, '#paypal-button');
