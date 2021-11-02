@@ -18,12 +18,21 @@ class CommentService implements CommentServiceInterface{
         return $this->comment->getAllCommentsOfProduct($product1->id);
         // return $product1->id;
     }
+    public function getAllCommentsOfProductWithID($id)
+    {
+        return $this->comment->getAllCommentsOfProduct($id);
+    }
+
     public function store($data)
     {
         $user_id = Auth::user()->id;
         $product_id = $this->product->getProductByCode($data['product'])->id;
         $content = $data['comment'];
         $this->comment->store($product_id,$user_id,$content);
+    }
+    public function destroy($comment_id)
+    {
+        $this->comment->destroy($comment_id);
     }
     
 }

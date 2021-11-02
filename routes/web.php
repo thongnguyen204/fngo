@@ -176,6 +176,9 @@ Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
     Route::delete('articleComment/{articleComment}','ArticleCommentController@destroy')
     ->name('articleComment.destroy');
 
+    Route::delete('comment/{comment}','CommentController@destroy')
+    ->name('comment.destroy');
+
 });
     
 Route::middleware(['auth', 'roles:user,employee'])->group(function () {
@@ -278,6 +281,8 @@ Route::middleware(['auth'])->group(function () {
     //comment
     Route::post('comment','CommentController@addComment')
     ->name('comment.add');
+    
+
     
     Route::resource('articleComment','ArticleCommentController')
     ->except(['destroy']);

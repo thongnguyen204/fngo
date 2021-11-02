@@ -16,7 +16,7 @@
     }
 </style>
 
-<div class="container bg-white rounded padding-bottom-3x mb-1">
+<div class="mt-4 container bg-white rounded padding-bottom-3x mb-1">
     <!-- Alert-->
     @if(session()->has('error'))
     <div class="alert alert-warning alert-dismissible fade show" role="alert">

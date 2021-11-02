@@ -4,7 +4,7 @@
 
 <link href="{{ asset('css/receipt.css') }}" rel="stylesheet">
 
-<div class="container bg-white rounded wrapper">
+<div class="mt-3 pt-3 container bg-white rounded wrapper">
     @include('admin.user.searchBar')
     <div class="btn-toolbar my-2" role="toolbar" aria-label="Toolbar with button groups">
         @if (!Auth::guest() && Auth::user()->role->name == 'admin')

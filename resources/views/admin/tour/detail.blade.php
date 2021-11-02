@@ -181,6 +181,23 @@
             $("#change").html(respone);
         });
     }
+    function deleteComment(){
+        var comment = $('#commentID').val();
+        // console.log(comment);
+        $.ajax({
+            // will 405 error if url:comment instead /comment !!!!
+            url: "/comment/"+comment,
+            type:'DELETE',
+            data:{
+                "_token": "{{ csrf_token() }}",
+                // "data": comment,
+            }
+        }).done(function(respone){
+            $("#change").empty();
+            $("#change").html(respone);
+            // console.log(respone);
+        });
+    }
 
 </script>
 @endsection

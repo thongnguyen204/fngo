@@ -19,4 +19,8 @@ class CommentRepository implements CommentRepositoryInterface{
         $comment->content = $content;
         $comment->save();
     }
+    public function destroy($comment_id)
+    {
+        Comment::destroy($comment_id);
+    }
 }
