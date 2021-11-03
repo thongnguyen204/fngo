@@ -44,7 +44,7 @@
           <i class="bi bi-camera-fill"></i>
           {{__('home.top tour')}}
         </div>
-        <div class="card-group">
+        <div class="">
           <div class="row ">
             @foreach ($topTour as $trip)
               <div class="card col-6 col-sm-4 col-md-3">
@@ -90,7 +90,7 @@
         {{__('home.top hotel')}}
       </div>
 
-      <div class="card-group">
+      <div class="">
         <div class="row">
           @foreach ($topHotel  as $hotel)
           <div class="card col-6 col-sm-4 col-md-3">
@@ -129,7 +129,7 @@
         <i class="bi bi-newspaper"></i>
         {{__('home.top article')}}
       </div>
-      <div class="card-group">
+      <div class="">
         <div class="row">
           @foreach ($topArticle as $article)
             <div class="card col-6 col-sm-4 col-md-3">

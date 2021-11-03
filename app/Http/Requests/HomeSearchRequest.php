@@ -25,7 +25,7 @@ class HomeSearchRequest extends FormRequest
     {
         return [
             //
-            'search'    => 'required|string',
+            // 'search'    => 'string',
             'searchOptions' =>'required|string',
         ];
     }

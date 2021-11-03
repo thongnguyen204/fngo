@@ -32,31 +32,31 @@ class ProductCodeSeeder extends Seeder
         Products::create([
             'product_code' => 'tour_3',
             'name' => 'ĐÀ LẠT – 3N2Đ – THÀNH PHỐ NGÀN HOA',
-            'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R071dbf03938225c42bb0377bfc5cbfd0.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955501/samples/landscapes/beach-boat.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_4',
             'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
-            'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955504/samples/landscapes/nature-mountains.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_5',
             'name' => 'PHÚ YÊN – 3N2Đ – NƠI ĐẤT PHÚ TRỜI YÊN',
-            'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955497/samples/landscapes/girl-urban-view.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_6',
             'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
-            'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9460745190600cb82108c9ff0e39cad3-1024x682.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955500/samples/landscapes/architecture-signs.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_7',
             'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
-            'avatar' => 'https://hoasenviettourist.vn/wp-content/uploads/2021/04/R9f433e3b20553a746cec466dec8de8f1.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955495/samples/animals/reindeer.jpg',
             'category_id' => 2,
         ]);
 
@@ -65,25 +65,25 @@ class ProductCodeSeeder extends Seeder
         Products::create([
             'product_code' => 'hotel_1',
             'name' => 'Hotel 1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955495/samples/people/kitchen-bar.jpg',
             'category_id' => 1,
         ]);
         Products::create([
             'product_code' => 'hotel_2',
             'name' => 'Hotel 2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955498/samples/people/boy-snow-hoodie.jpg',
             'category_id' => 1,
         ]);
         Products::create([
             'product_code' => 'hotel_3',
             'name' => 'Hotel 3',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955499/samples/animals/three-dogs.jpg',
             'category_id' => 1,
         ]);
         Products::create([
             'product_code' => 'hotel_4',
             'name' => 'Hotel 4',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955505/samples/animals/kitten-playing.gif',
             'category_id' => 1,
         ]);
 

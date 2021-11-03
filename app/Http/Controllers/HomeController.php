@@ -60,6 +60,8 @@ class HomeController extends Controller
     public function search(HomeSearchRequest $request)
     {
         return $this->home->search($request);
+
+        // return $request;
         
     }
 }

@@ -28,7 +28,7 @@ class HotelSeeder extends Seeder
         Hotel::create([
             'name' => 'Khach san 1',
             'product_code' => 'hotel_1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955495/samples/people/kitchen-bar.jpg',
             'price' => $random,
             'address' => '36 - 38 Lâm Hoành, Phước Mỹ, Sơn Trà, Đà Nẵng, Việt Nam, 550000',
             'city_province_id' => 1,
@@ -38,7 +38,7 @@ class HotelSeeder extends Seeder
         Hotel::create([
             'name' => 'Khach san 2',
             'product_code' => 'hotel_2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955498/samples/people/boy-snow-hoodie.jpg',
             'price' => $random,
             'address' => '36 - 38 Lâm Hoành, Phước Mỹ, Sơn Trà, Đà Nẵng, Việt Nam, 550000',
             'city_province_id' => 2,
@@ -48,7 +48,7 @@ class HotelSeeder extends Seeder
         Hotel::create([
             'name' => 'Khach san 3',
             'product_code' => 'hotel_3',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955499/samples/animals/three-dogs.jpg',
             'price' => rand(1000000,2000000),
             'address' => '36 - 38 Lâm Hoành, Phước Mỹ, Sơn Trà, Đà Nẵng, Việt Nam, 550000',
             'city_province_id' => 3,
@@ -58,7 +58,7 @@ class HotelSeeder extends Seeder
         Hotel::create([
             'name' => 'Khach san 4',
             'product_code' => 'hotel_4',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633248212/FnGO/hotelImage/hotelAvatar_wudbhl.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955505/samples/animals/kitten-playing.gif',
             'price' => rand(1000000,2000000),
             'address' => '36 - 38 Lâm Hoành, Phước Mỹ, Sơn Trà, Đà Nẵng, Việt Nam, 550000',
             'city_province_id' => 4,
