@@ -21,4 +21,9 @@ class ArticleCommentRepository implements ArticleCommentRepositoryInterface{
     {
         ArticleComment::destroy($commentID);
     }
+    public function getAllCommentWithPaginate()
+    {
+        return ArticleComment::orderBy('id','desc')
+        ->paginate(25);
+    }
 }

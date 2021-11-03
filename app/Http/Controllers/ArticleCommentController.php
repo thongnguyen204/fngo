@@ -23,6 +23,10 @@ class ArticleCommentController extends Controller
     public function index()
     {
         //
+        $comments = $this->comment->getAllCommentWithPaginate();
+    
+        return view('admin.manage comment article.index')
+        ->with('comments',$comments);
     }
 
     /**
@@ -124,4 +128,14 @@ class ArticleCommentController extends Controller
 
         // return $articleComment;
     }
+
+    public function delete(ArticleComment $comment)
+    {
+        // return $comment;
+        $this->comment->destroy($comment);
+
+        return redirect()->route('articleComment.index');
+
+    }
+
 }

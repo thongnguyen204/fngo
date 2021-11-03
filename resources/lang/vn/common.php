@@ -8,6 +8,8 @@ return [
     'Tours manage'      => 'Quản lí tour',
     'Hotels manage'     => 'Quản lí khách sạn',
     'Articles manage'   => 'Quản lí bài viết',
+    'Comment manage p'  => 'Quản lí bình luận (sản phẩm)',
+    'Comment manage a'  => 'Quản lí bình luận (bài viết)',
     'Receipts queue'    => 'Duyệt đơn',
     'Receipts manage'   => 'Quản lí hóa đơn',
     'Account settings'  => 'Tài khoản',

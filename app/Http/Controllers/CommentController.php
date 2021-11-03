@@ -78,6 +78,20 @@ class CommentController extends Controller
         ->with('comments',      $comments)
         ->with('have_comment',  $have_comment);
 
+    }
 
+    public function delete(Comment $comment)
+    {
+        // return $comment;
+        $this->comment->destroy($comment->id);
+
+        return redirect()->route('manage.comment');
+
+    }
+    public function index(){
+        $comments = $this->comment->getAllCommentWithPaginate();
+    
+        return view('admin.manage comment.index')
+        ->with('comments',$comments);
     }
 }

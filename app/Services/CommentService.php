@@ -34,5 +34,13 @@ class CommentService implements CommentServiceInterface{
     {
         $this->comment->destroy($comment_id);
     }
+    public function getAllComment()
+    {
+        // return $this->comment->getAllComment();
+    }
+    public function getAllCommentWithPaginate()
+    {
+        return $this->comment->getAllCommentWithPaginate();
+    }
     
 }

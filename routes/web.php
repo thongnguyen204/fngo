@@ -72,6 +72,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::delete('deleteArticleAjax/{id}','ArticleController@deleteManageAjax')
         ->name('manage.articleHotelAjax');
+
+        // ---comment----
+        Route::get('comment','CommentController@index')
+        ->name('manage.comment');
+        Route::delete('comment/{comment}','CommentController@delete')
+        ->name('manage.commentDelete');
+
+        Route::delete('articleComment/{comment}','ArticleCommentController@delete')
+        ->name('manage.ArticleCommentDelete');
     });
 
     

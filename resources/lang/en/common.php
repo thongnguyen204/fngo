@@ -10,6 +10,7 @@ return [
     'Tours manage'      => 'Tours manage' ,
     'Hotels manage'     => 'Hotels manage' ,
     'Articles manage'   => 'Articles manage',
+    'Comment manage p'  => 'Comments manage (product)',
     'Account settings'  => 'Account settings',
     'Logout'            => 'Logout',
     'Delete'            => 'Delete',

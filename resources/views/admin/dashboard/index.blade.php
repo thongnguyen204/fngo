@@ -15,6 +15,14 @@
     <i class="bi bi-people-fill"></i>
     {{__('common.Users manage')}}
   </a>
+  <a class="nav-link" href='{{route('manage.comment')}}'>
+    <i class="bi bi-camera-fill"></i>
+    {{__('common.Comment manage p')}}
+  </a>
+  <a class="nav-link" href='{{route('articleComment.index')}}'>
+    <i class="bi bi-camera-fill"></i>
+    {{__('common.Comment manage a')}}
+  </a>
   @endif
   
 

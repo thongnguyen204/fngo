@@ -35,4 +35,8 @@ class ArticleCommentService implements ArticleCommentServiceInterface{
     {
         $this->comment->destroy($comment->id);
     }
+    public function getAllCommentWithPaginate()
+    {
+        return $this->comment->getAllCommentWithPaginate();
+    }
 }

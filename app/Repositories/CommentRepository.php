@@ -23,4 +23,14 @@ class CommentRepository implements CommentRepositoryInterface{
     {
         Comment::destroy($comment_id);
     }
+    public function getAllComment()
+    {
+
+    }
+
+    public function getAllCommentWithPaginate()
+    {
+        return Comment::orderBy('id','DESC')->paginate(25)
+        ;
+    }
 }

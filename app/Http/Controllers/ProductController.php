@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use App\Services\HotelServiceInterface;
 use App\Services\ProductServiceInterface;
 use App\Services\TourServiceInterface;
@@ -112,4 +113,8 @@ class ProductController extends Controller
             ->with('trips',$tours);
         }
     }
+
+    // public function showProduct(Products $product){
+
+    // }
 }

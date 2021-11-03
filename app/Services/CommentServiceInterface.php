@@ -6,4 +6,8 @@ interface CommentServiceInterface{
     public function getAllCommentsOfProductWithID($id);
     public function store($data);
     public function destroy($comment_id);
+
+    public function getAllComment();
+    
+    public function getAllCommentWithPaginate();
 }
