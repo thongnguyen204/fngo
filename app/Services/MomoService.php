@@ -96,7 +96,7 @@ class MomoService implements MomoServiceInterface{
         $amount = $totalPrice;
         $orderId = $receiptID;
         $redirectUrl = route('momo.getRes');
-        $ipnUrl = "https://webhook.site/bf6ac7e0-794e-437f-b8e1-218c13b124cb";
+        $ipnUrl = route('momoAPI.momoIPN');
         $extraData = "";
 
         $requestId = time() . "";

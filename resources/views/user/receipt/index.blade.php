@@ -33,6 +33,16 @@
                     {{__('receipt.Received')}}
                 </div>
                 @endif
+                @if($receipt->status_id == 5)
+                <div style="float: right" class="btn btn-warning">
+                    {{__('receipt.Momo waiting')}}
+                </div>
+                @endif
+                @if($receipt->status_id == 6)
+                <div style="float: right" class="btn btn-secondary">
+                    {{__('receipt.Momo canceled')}}
+                </div>
+                @endif
             </div>
         </div>
         <div class="row">

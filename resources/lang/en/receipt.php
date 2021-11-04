@@ -25,6 +25,8 @@ return [
     "Not Finish"        => "Not finish",
     "Paypal"            => 'Paypal',
     "Momo"              => 'Momo',
+    'Momo waiting'      => 'Momo waiting',
+    'Momo canceled'     => 'Momo canceled',
 
 
     

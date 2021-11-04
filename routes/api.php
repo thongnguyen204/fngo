@@ -16,6 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('responeFromMomo','TestController@test')
+Route::post('responeFromMomo','MomoController@momoIPN')
 ->middleware('api')
-->name('momoAPI.getRes');
+->name('momoAPI.momoIPN');

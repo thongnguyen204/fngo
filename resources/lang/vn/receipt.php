@@ -24,7 +24,9 @@ return [
     'ID input'          => "Nhập mã hóa đơn",
     "Finish"            => "Hoàn thành",
     "Not finish"        => "Chưa hoàn thành",
-    "Paypal"    => 'Paypal',
+    "Paypal"            => 'Paypal',
+    'Momo waiting'      => 'Chờ Momo xác nhận',
+    'Momo canceled'     => 'Momo hủy',
 
     
 ]

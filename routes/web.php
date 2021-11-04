@@ -17,9 +17,9 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return redirect(app()->getLocale());
-});
+// Route::get('/', function () {
+//     return redirect(app()->getLocale());
+// });
 
 Auth::routes();
 
