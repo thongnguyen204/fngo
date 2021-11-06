@@ -1,10 +1,13 @@
+CHẠY NHỮNG CÂU LỆNH NÀY TRƯỚC KHI START WEB
+
 1. clone git
-2. composer install
-3. create .env using .env.example file with your mysql information
-4. php artisan config:cache
-5 .php artisan migrate
-6 .php artisan db:seed
-7. php artisan serve
+2. composer install - tạo ra tập tin vendor chứa các thư viện
+3. create .env file using .env.example and config with your mysql information  - tập tin cấu hình môi trường (database, mailm ..)
+4. php artisan migrate - tạo bảng
+5. php artisan db:seed - tạo dữ liệu mẫu
+6. php artisan serve - start server
+
+
 
 
 
