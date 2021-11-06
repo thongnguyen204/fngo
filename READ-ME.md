@@ -1,10 +1,12 @@
-1. clone git
-2. composer install
-3. create .env using .env.example file with your mysql information
-4. php artisan config:cache
-5. php artisan migrate
-6. php artisan db:seed
-7. php artisan serve
+CHẠY NHỮNG CÂU LỆNH NÀY TRƯỚC KHI START WEB
+
+clone git
+composer install - tạo ra tập tin vendor chứa các thư viện
+(tạo file env dựa theo file env.example có sẵn và cấu hình thông tin database theo máy) - tập tin cấu hình môi trường (database, mail ..)
+php artisan config:cache - cập nhật thông tin env mới
+php artisan migrate - tạo bảng
+php artisan db:seed - tạo dữ liệu mẫu
+php artisan serve - start server
 
 
 test account:
