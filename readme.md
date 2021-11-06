@@ -1,3 +1,20 @@
+1. clone git
+
+2. composer install
+
+3. create .env using .env.example file with your mysql information
+
+4. php artisan config:cache
+
+5 .php artisan migrate
+
+6 .php artisan db:seed
+
+7. php artisan serve
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
