@@ -69,9 +69,13 @@
                           </div>
                       </div> --}}
                   </div>
+
                   <div class="card-footer">
-                    <div id="money" class="float-right" style="width: 130px">{{$trip->money($trip->price)}}</div>
+                    <div id="money" class="money-small-screen d-flex justify-content-end" style="width: 100%">
+                      <span>{{$trip->money($trip->price)}}</span>
+                    </div>
                   </div>
+                  
               </div>
             @endforeach
         </div>
@@ -107,9 +111,13 @@
                       </a>
                   </div>
               </div>
+
               <div class="card-footer">
-                <div id="money" class="float-right" style="width: 130px">{{$hotel->money($hotel->price)}}</div>
+                <div id="money" class="money-small-screen d-flex justify-content-end" style="width: 100%">
+                  <span>{{$hotel->money($hotel->price)}}</span>
+                </div>
               </div>
+
           </div>
           @endforeach
         </div>

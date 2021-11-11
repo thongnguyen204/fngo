@@ -52,16 +52,16 @@ html, body {
 }
 .tour-name{
     font-family: 'Open Sans', sans-serif;
-    padding: 0px;
+    padding: 0;
 
 }
 .card{
-    padding: 0px;
+    padding: 0;
 }
 .title-top{
     color: black;
-    margin: 20px 0px 20px 0px;
-    padding: 5px 20px 0px 20px;
+    margin: 20px 0 20px 0;
+    padding: 5px 20px 0 20px;
     background-color: #ecd45a;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
@@ -74,12 +74,12 @@ a:hover.link{
     text-decoration: none;
 }
 .row-name{
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
 }
 .more-btn-wrapper{
     width: 100%;
-    margin: 20px 0px 10px 0px;
+    margin: 20px 0 10px 0;
 }
 .more-btn-wrapper > a.btn{
    border: 1px solid black;
@@ -93,3 +93,11 @@ a:hover.link{
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
 }
+@media screen and (max-width: 767.98px){
+.money-small-screen span, .name-small-screen span{
+    font-size: 17px;
+    
+}
+}
+
+

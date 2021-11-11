@@ -11,12 +11,12 @@ class RoomRepository implements RoomRepositoryInterface{
     {
         return RoomType::where('hotel_id',$room->hotel_id)->get();
     }
-    
+
     public function store(RoomType $room)
     {
         $room->save();
     }
-    
+
     public function getAllHotel()
     {
         return Hotel::all();
@@ -27,6 +27,7 @@ class RoomRepository implements RoomRepositoryInterface{
         $room->delete();
         return $temp;
     }
+    
     public function getRoomByCode($product_code){
         return RoomType::where('product_code',$product_code)->first();
     }

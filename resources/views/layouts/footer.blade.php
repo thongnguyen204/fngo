@@ -74,12 +74,12 @@
                     </a>
                 </p>
 
-                <p>
+                <!-- <p>
                     <a class="footer-link" href="">
                         <i class="bi bi-person-square"></i>
                         {{__('footer.About us')}}
                     </a>
-                </p>
+                </p> -->
             </div>
             <div class="col-12 col-md-4">
                 <div id="map" class="map">
