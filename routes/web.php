@@ -221,7 +221,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // cart
-    Route::get('/addCart/{product}','CartController@TourAddCart')
+    Route::get('/addCart/{product}','CartController@AddCart')
     ->name('TourAddCart');
     Route::get('/addCartRoom/{product}','CartController@RoomAddCart')
     ->name('RoomAddCart');

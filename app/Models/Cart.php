@@ -31,6 +31,7 @@ class Cart extends Model
         $this->products[$id] = $newProduct;
         $this->totalPrice += $product->price;
         $this->quantity++;
+
     }
     public function deleteCart($product_code)
     {   

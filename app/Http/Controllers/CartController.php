@@ -23,7 +23,7 @@ class CartController extends Controller
                 $newCart->addCart($product,$product->product_code);
                 
                 $request->session()->put('Cart',$newCart);
-
+                
                 return __('cart.Success');
             }
             else{
@@ -58,7 +58,7 @@ class CartController extends Controller
      *
      * @param String $product_code
      */
-    public function TourAddCart(Request $request, $product_code){
+    public function AddCart(Request $request, $product_code){
         if($product_code != null){
             if(strpos($product_code,'tour')!==false)
             {
@@ -80,7 +80,7 @@ class CartController extends Controller
             $validatedData = $request->validate([
                 'date' => 'after:yesterday',
             ]);
-            return $this->TourAddCart($request,$product_code);
+            return $this->AddCart($request,$product_code);
         }
         else
             return __('hotel.Empty date');

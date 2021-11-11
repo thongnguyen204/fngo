@@ -88,9 +88,7 @@ class MomoService implements MomoServiceInterface{
         $accessKey = \Config::get('values.access_key');
         $serectkey = \Config::get('values.secret_key');
 
-        // $partnerCode = 'MOMOUR5V20211030';
-        // $accessKey = '7qS9EiT0H88F9VJ0';
-        // $serectkey = 'CNHk35tDgIlkcj0GqRyi3zo0QSlSa4DN';
+        
 
         $orderInfo = "Thanh toán qua MoMo";
         $amount = $totalPrice;
