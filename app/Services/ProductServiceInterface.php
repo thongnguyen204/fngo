@@ -4,13 +4,14 @@ namespace App\Services;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
-interface ProductServiceInterface{
-    public function getProductByID($id);
+interface ProductServiceInterface {
 
-    public function getProductByCode($product_code);
+    public function getProductByID ($id);
 
-    public function showProductDetail($code);
+    public function getProductByCode ($product_code);
 
-    public function delete(Products $products);
+    public function showProductDetail ($code);
+
+    public function delete (Products $products);
     
 }

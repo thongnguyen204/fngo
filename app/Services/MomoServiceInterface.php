@@ -3,11 +3,12 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 
-interface MomoServiceInterface{
-    public function checkout(Request $request);
+interface MomoServiceInterface {
 
-    public function success($orderId);
+    public function checkout (Request $request);
 
-    public function fail($orderId);
+    public function success ($orderId);
+
+    public function fail ($orderId);
     
 }

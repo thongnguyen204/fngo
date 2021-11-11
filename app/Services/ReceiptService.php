@@ -20,31 +20,39 @@ class ReceiptService implements ReceiptServiceInterface
     }
 
     //get user's role name
-    public function getRoleName(){
+    public function getRoleName() {
         return $this->receipt->getRoleName();
     }
+
     public function all(){
         $user_id = Auth::user()->id;
         return $this->receipt->getReceiptOfUser($user_id);
     }
+    
     public function getReceiptById($id){
         return Receipt::find($id);
     }
+
     public function getWaitingReceipt(){
         return $this->receipt->getWaitingReceipt();
     }
+
     public function getNewReceiptWithoutPaginate()
     {
         return $this->receipt->getNewReceiptWithoutPaginate();
     }
+
     public function searchWaiting($keyword,$option)
     {
         if($keyword == null)
             return $this->receipt->getWaitingReceipt();
+
         if($option == 'id')
             return $this->receipt->getWaitingReceiptByID($keyword);
+
         if($option == 'userid')
             return $this->receipt->getWaitingReceiptByUserID($keyword);
+
         return $this->receipt->getWaitingReceipt();
     }
     
@@ -81,19 +89,28 @@ class ReceiptService implements ReceiptServiceInterface
     }
 
 
-    public function receiptAccept(Receipt $receipt){
-        $receipt->status_id = $this->receiptStatusAcceptedID;
-        $receipt->accept_by = Auth::user()->id;
+    public function receiptAccept (Receipt $receipt) {
+
+        $receipt->status_id     = $this->receiptStatusAcceptedID;
+
+        $receipt->accept_by     = Auth::user()->id;
+
         $this->receipt->saveReceipt($receipt);
     }
+
     public function show(Receipt $receipt){
         return  $this->receipt->show($receipt);
     }
-    public function update(Request $request, Receipt $receipt){
+
+    public function update(Request $request, Receipt $receipt) {
+
         $receipt->price_sum =  $request->price_sum;
+
         $receipt->description =  $request->description;
+
         $this->receipt->saveReceipt($receipt);
     }
+
     public function delete($id){
         $this->receipt->delete($id);
     }
@@ -112,16 +129,22 @@ class ReceiptService implements ReceiptServiceInterface
 
     //thanh toan, huy, hoan thanh hoa don
     public function receiptProcess(Receipt $receipt, $action){
-        if($action == 'pay')
+
+        if ($action == 'pay')
             return $this->receipt->pay($receipt);
+
         if ($action == 'unpay')
             return $this->receipt->unpay($receipt);
+
         if ($action == 'cancel')
             return $this->receipt->cancel($receipt);
+
         if ($action == 'finish')
             return $this->receipt->finish($receipt);
+
         if ($action == 'unfinish')
             return $this->receipt->unfinish($receipt);
+
         return 'Undefine action';
     }
 

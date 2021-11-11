@@ -15,11 +15,15 @@ interface TourServiceInterface
     public function all();
 
     public function search($keyword);
+
     public function getTourByCode($product_code);
+
     public function getTourByID($tour_id);
 
     public function update(TourRequest $request, Tour $tour);
+    
     public function getAllCityProvince();
+    
     public function getTopPurchases($number);
 
     public function searchAndSort($keyword,$sort_type);

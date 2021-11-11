@@ -4,7 +4,8 @@ namespace App\Services;
 use App\Models\Receipt;
 use Illuminate\Http\Request;
 
-interface ReceiptServiceInterface{
+interface ReceiptServiceInterface {
+
     public function getRoleName();
 
     public function all();
@@ -45,8 +46,12 @@ interface ReceiptServiceInterface{
 
     
     public function store(Receipt $receipt);
+
     public function whereMonth($month,$year);
+
     public function whereDay($day,$month,$year);
+
     public function whereYear($year);
+    
     public function paidToday();
 }
