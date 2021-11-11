@@ -87,21 +87,19 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
     
-    
-
     // ----- receipt ------
     Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
     ->name('receipt.indexAccepted');
 
     Route::get('/receipt-search','ReceiptController@search')
     ->name('receipt.search');
+
     Route::get('/receipt-waiting-search','ReceiptController@searchWaiting')
     ->name('receiptWaiting.search');
 
-    
-
     Route::get('/receiptPaid','ReceiptController@paidIndex')
     ->name('receipt.indexPaid');
+
     Route::get('/receiptCanceled','ReceiptController@canceledIndex')
     ->name('receipt.indexCanceled');
 
@@ -122,6 +120,7 @@ Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
 
     Route::get('pay/{receipt}','ReceiptController@receiptPay')
     ->name('receipt.pay');
+
     Route::get('unpay/{receipt}','ReceiptController@receiptUnPay')
     ->name('receipt.unpay');
 
@@ -133,8 +132,6 @@ Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
 
     Route::get('un-finish/{receipt}','ReceiptController@receiptUnFinish')
     ->name('receipt.un-finish');
-
-    
 
     Route::resource('/hotel','HotelController')
     ->except([
@@ -158,19 +155,25 @@ Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
     // ------------ income -------------
     Route::get('income','IncomeController@index')
     ->name('income.index');
+
     Route::get('income/{year}/{month}/{day}','IncomeController@day')
     ->middleware('day','year')
     ->name('income.day');
+
     Route::get('income/{year}/{month}','IncomeController@month')
     ->middleware('year','month')
     ->name('income.month');
+
     Route::get('income/{year}','IncomeController@year')
     ->middleware('year')
     ->name('income.year');
+
     Route::get('income-current-day','IncomeController@incomeCurrentDay')
     ->name('income.currentDay');
+
     Route::get('income-current-month','IncomeController@incomeCurrentMonth')
     ->name('income.currentMonth');
+
     Route::get('income-current-year','IncomeController@incomeCurrentYear')
     ->name('income.currentYear');
 
@@ -205,32 +208,25 @@ Route::middleware(['auth'])->group(function () {
     
     Route::resource('booking','BookingController');
 
-
-
-
     Route::get('product/{code}','ProductController@showProduct')
     ->name('product.show');
     
-
     Route::get('receipt','ReceiptController@index')
     ->name('receipt.index');
 
     Route::get('receipt/{receipt}','ReceiptController@show')
     ->name('receipt.show');
 
-
-
     // cart
     Route::get('/addCart/{product}','CartController@AddCart')
     ->name('TourAddCart');
+
     Route::get('/addCartRoom/{product}','CartController@RoomAddCart')
     ->name('RoomAddCart');
     
-
     Route::get('/cartQuantity','CartController@getCurrentCartQuantity')
     ->name('cartQuantity');
     
-
     Route::get('/deleteCart/{product}','CartController@deleteCart')
     ->name('deleteCart');
 
@@ -246,13 +242,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart','CartController@index')
     ->name('cart.index');
 
-
-
-
     Route::get('users/{user}/edit','UserController@edit')
     ->middleware('userInfo')
     ->name('users.edit');
-    
     
     ///
     Route::get('/user', function () {
@@ -272,10 +264,6 @@ Route::middleware(['auth'])->group(function () {
         'index','show','edit','update','destroy'
     ]);
     
-
-
-    
-
     Route::get('users/{user}','UserController@show')
     ->middleware('userInfo')
     ->name('users.show');
