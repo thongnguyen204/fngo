@@ -29,15 +29,6 @@ class ArticleCommentController extends Controller
         ->with('comments',$comments);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -66,39 +57,6 @@ class ArticleCommentController extends Controller
         ->with('have_comment',  $have_comment);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ArticleComment  $articleComment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ArticleComment $articleComment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ArticleComment  $articleComment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ArticleComment $articleComment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ArticleComment  $articleComment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ArticleComment $articleComment)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

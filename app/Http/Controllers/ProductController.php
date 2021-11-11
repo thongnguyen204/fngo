@@ -35,12 +35,12 @@ class ProductController extends Controller
         }
     }
     //
-    public function showProduct($code){
+    public function showProduct($code) {
         return $this->product->showProductDetail($code);
     }
-    public function sort(Request $request){
-        $product_type = $request->product_type;
-        $keyword = $request->keyword;
+    public function sort(Request $request) {
+        $product_type   = $request->product_type;
+        $keyword        = $request->keyword;
         
         $sort_type = $request->sort_type;
 
@@ -114,7 +114,4 @@ class ProductController extends Controller
         }
     }
 
-    // public function showProduct(Products $product){
-
-    // }
 }

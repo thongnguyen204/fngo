@@ -11,15 +11,19 @@ use Illuminate\Http\Request;
 class IncomeController extends Controller
 {
     private $receipt;
+
     private $income;
 
-    public function __construct(
-        IncomeServiceInterface $income,
+    public function __construct
+    (
+        IncomeServiceInterface  $income,
+
         ReceiptServiceInterface $receipt
-        )
+    )
     {
-        $this->income = $income;
-        $this->receipt = $receipt;
+        $this->income   = $income;
+
+        $this->receipt  = $receipt;
     }
     //
     public function index()
@@ -56,11 +60,11 @@ class IncomeController extends Controller
     }
     public function incomeCurrentDay()
     {
-        $now = Carbon::now();
-        $year = $now->year;
-        $month = $now->month;
-        $day  = $now->day;
-        $receipts = $this->receipt->whereDay($day,$month,$year);
+        $now        = Carbon::now();
+        $year       = $now->year;
+        $month      = $now->month;
+        $day        = $now->day;
+        $receipts   = $this->receipt->whereDay($day,$month,$year);
         
         return view('admin.income.day')
         ->with('receipts',  $receipts)
@@ -70,13 +74,13 @@ class IncomeController extends Controller
     }
     public function incomeCurrentMonth()
     {
-        $now = Carbon::now();
-        $year = $now->year;
-        $month = $now->month;
-        $day  = $now->day;
-        $totalMonthIncome = $this->income->getMonthIncome($month,$year);
-        $days =  $this->income->arrayOfDailyFunction($month, $year);
-        $receipt = new Receipt;
+        $now                = Carbon::now();
+        $year               = $now->year;
+        $month              = $now->month;
+        $day                = $now->day;
+        $totalMonthIncome   = $this->income->getMonthIncome($month,$year);
+        $days               =  $this->income->arrayOfDailyFunction($month, $year);
+        $receipt            = new Receipt;
         
         return view('admin.income.eachDay')->with('days',$days)
         ->with('month',     $month)
@@ -88,15 +92,16 @@ class IncomeController extends Controller
     }
     public function incomeCurrentYear()
     {
-        $now = Carbon::now();
-        $year = $now->year;
-        $month = $now->month;
-        $day  = $now->day;
-        $totalYearIncome = $this->income->getYearIncome($year);
-        $months =  $this->income->arrayOfMonthlyFunction($year);
-        $receipt = new Receipt;
+        $now                = Carbon::now();
+        $year               = $now->year;
+        $month              = $now->month;
+        $day                = $now->day;
+        $totalYearIncome    = $this->income->getYearIncome($year);
+        $months             =  $this->income->arrayOfMonthlyFunction($year);
+        $receipt            = new Receipt;
         
-        return view('admin.income.eachMonth')->with('months',$months)
+        return view('admin.income.eachMonth')
+        ->with('months',    $months)
         ->with('month',     $month)
         ->with('year',      $year)
         ->with('receipt',   $receipt)

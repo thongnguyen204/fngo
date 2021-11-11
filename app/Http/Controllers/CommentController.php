@@ -22,11 +22,7 @@ class CommentController extends Controller
         $this->comment = $comment;
         $this->productService = $productService;
     }
-    public function test()
-    {
-        return 'ok';
-    }
-
+    
     public function getCommentsOfProduct($product_code)
     {
         // return $this->comment->getAllCommentsOfProduct($product_code);

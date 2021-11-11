@@ -14,26 +14,32 @@ class HotelController extends Controller
 {
 
     private $hotel;
+
     private $comment;
+
     private $productService;
 
-    public function __construct(
+    public function __construct
+    (
+        
         CommentServiceInterface $comment,
-        HotelServiceInterface $hotel,
+
+        HotelServiceInterface   $hotel,
+
         ProductServiceInterface $productService
-        )
+    )
     {
-        $this->comment = $comment;
-        $this->hotel = $hotel;
-        $this->productService = $productService;
+        $this->comment          = $comment;
+
+        $this->hotel            = $hotel;
+
+        $this->productService   = $productService;
     }
     public function userOrAdmin()
     {
         if(!Auth::check() || Auth::user()->role->name == 'user')
            return 'user';
-        else{
-           return 'admin';
-        }
+        return 'admin';
     }
     /**
      * Display a listing of the resource.
@@ -49,12 +55,14 @@ class HotelController extends Controller
         else
             $hotels = $this->hotel->all();
 
-        $role = $this->userOrAdmin();
-        $CityProvinces = $this->hotel->getAllCityProvince();
-        $view = $role . ".hotel.index";
+        $role           = $this->userOrAdmin();
+
+        $CityProvinces  = $this->hotel->getAllCityProvince();
+
+        $view           = $role . ".hotel.index";
         
         return view($view)
-        ->with('hotels',$hotels)
+        ->with('hotels',        $hotels)
         ->with('CityProvinces',$CityProvinces);
         
     }
@@ -186,8 +194,8 @@ class HotelController extends Controller
 
     public function deleteManageAjax($id)
     {
-        $deleteHotel = $this->hotel->getHotelByID($id);
-        $ProductRoomTypes = $deleteHotel->roomtype;
+        $deleteHotel        = $this->hotel->getHotelByID($id);
+        $ProductRoomTypes   = $deleteHotel->roomtype;
 
         foreach($ProductRoomTypes as $roomType){
             $product= $this->productService->getProductByCode($roomType->product_code);

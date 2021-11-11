@@ -18,16 +18,6 @@ class RoomController extends Controller
     {
         $this->room = $room;
     }
-    /**
-     * Display a listing of the resource.
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -56,17 +46,6 @@ class RoomController extends Controller
         return redirect()->route('hotel.show',$room->hotel);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Room $room
-     * @param \App\Models\Hotel $hotel
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,9 +65,6 @@ class RoomController extends Controller
         ->with('hotel', $room->hotel)
         ->with('types', $types);
 
-        // return ($room);
-        
-        
     }
 
     /**
@@ -122,17 +98,16 @@ class RoomController extends Controller
         return redirect()->route('hotel.show',$temp);
         
     }
-    public function test()
-    {
-        return 'test';
-    }
-    public function order(Request $request)
-    {
-        //
-        $arrive = DateTime::createFromFormat('Y-m-d',
-            $request->arrive);
-        $checkout = DateTime::createFromFormat('Y-m-d',
-            $request->checkout);
-        $this->test();
-    }
+    
+    // public function order(Request $request)
+    // {
+    //     //
+    //     $arrive     = DateTime::createFromFormat('Y-m-d',
+    //         $request->arrive);
+
+    //     $checkout   = DateTime::createFromFormat('Y-m-d',
+    //         $request->checkout);
+
+    //     $this->test();
+    // }
 }

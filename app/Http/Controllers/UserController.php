@@ -21,9 +21,7 @@ class UserController extends Controller
     {
         if(Auth::user()->role->name == 'admin')
            return 'admin';
-        else{
-           return 'user';
-        }
+        return 'user';
     }
     /**
      * Display a listing of the resource.
@@ -34,6 +32,7 @@ class UserController extends Controller
     {
         //
         $users = $this->user->all();
+
         return view('admin.user.index')
         ->with('users',$users);
     }
@@ -41,20 +40,24 @@ class UserController extends Controller
     {
         //
         $users = $this->user->onlyRole($role);
+
         return view('admin.user.index')
         ->with('users',$users);
     }
     
     public function search(Request $request)
-    {   $keyword = $request->search;
-        $option = $request->searchOptions;
+    {   
+        $keyword    = $request->search;
+
+        $option     = $request->searchOptions;
         
-        $users = $this->user->search($keyword,$option);
+        $users      = $this->user->search($keyword,$option);
 
         // kiem tra co phan trang hay khong
         if($users instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {
             $view = "admin.user.index";
+
             return view($view)
             ->with('users',$users);
         } 
@@ -62,7 +65,6 @@ class UserController extends Controller
 
         if($users != null && !($users instanceof \Illuminate\Database\Eloquent\Collection))
             $users = array($users);
-        // var_dump ($users);
         
         $view = "admin.user.search";
         
@@ -70,26 +72,7 @@ class UserController extends Controller
         ->with('users',$users); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -122,8 +105,7 @@ class UserController extends Controller
 
         $view = $role . '.user.edit';
 
-        return (view($view)
-        ->with('user',$user));
+        return view($view)->with('user',$user);
         
     }
     
@@ -152,6 +134,7 @@ class UserController extends Controller
     {
         //
         $this->user->update($request,$user);
+
         return redirect()->route('users.show',[$user])
         ->with('message',__('user.Update profile'));
     }
@@ -166,18 +149,14 @@ class UserController extends Controller
     {
         //
         $this->user->delete($user->id);
-        return redirect()->route('users.index')
-        ;
+
+        return redirect()->route('users.index');
     }
+
     public function roleSort($role)
     {
         if($role == 'all')
-        {
             return redirect()->route('users.index');
-        }
-        else
-        {
-            return $this->onlyRole($role);
-        }
+        return $this->onlyRole($role);
     }
 }

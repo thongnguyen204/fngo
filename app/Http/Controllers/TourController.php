@@ -15,10 +15,12 @@ class TourController extends Controller
     private $tour;
     private $comment;
 
-    public function __construct(
+    public function __construct
+    (
         CommentServiceInterface $comment,
-        TourServiceInterface $tour
-        )
+
+        TourServiceInterface    $tour
+    )
     {
         $this->comment  = $comment;
         $this->tour     = $tour;
@@ -27,9 +29,7 @@ class TourController extends Controller
     {
         if(!Auth::check() || Auth::user()->role->name == 'user')
            return 'user';
-        else{
-           return 'admin';
-        }
+        return 'admin';
     }
     /**
      * Display a listing of the resource.
@@ -44,13 +44,15 @@ class TourController extends Controller
         else
             $trips = $this->tour->all();
 
-        $role = $this->userOrAdmin();
-        $CityProvinces = $this->tour->getAllCityProvince();
-        $view = $role . ".tour.index";
+        $role           = $this->userOrAdmin();
+
+        $CityProvinces  = $this->tour->getAllCityProvince();
+
+        $view           = $role . ".tour.index";
 
         return view($view)
-        ->with('trips',$trips)
-        ->with('CityProvinces',$CityProvinces);
+        ->with('trips',         $trips)
+        ->with('CityProvinces', $CityProvinces);
         
     }
     
@@ -92,12 +94,12 @@ class TourController extends Controller
     public function show(Tour $trip)
     {
         //
-        $role = $this->userOrAdmin();
+        $role       = $this->userOrAdmin();
 
-        $comments = $this->comment->getAllCommentsOfProduct($trip->product_code);
+        $comments   = $this->comment->getAllCommentsOfProduct($trip->product_code);
         
         // convert comments json to plain old PHP array
-        $array = json_decode($comments,true);
+        $array      = json_decode($comments,true);
         
         // check array have comment or not
         $have_comment = true;
@@ -106,7 +108,8 @@ class TourController extends Controller
         
         $view = $role . ".tour.detail";
 
-        return view($view)->with('trip',$trip->subTour)
+        return view($view)
+        ->with('trip',          $trip->subTour)
         ->with('tour',          $trip)
         ->with('comments',      $comments)      // json
         ->with('have_comment',  $have_comment); // boolean
@@ -163,12 +166,13 @@ class TourController extends Controller
 
     public function indexManage()
     {
-        $tours = $this->tour->all();
-        $CityProvinces = $this->tour->getAllCityProvince();
+        $tours          = $this->tour->all();
+        
+        $CityProvinces  = $this->tour->getAllCityProvince();
 
         return view('admin.manage tour.index')
-        ->with('tours',$tours)
-        ->with('CityProvinces',$CityProvinces);
+        ->with('tours',         $tours)
+        ->with('CityProvinces', $CityProvinces);
     }
 
     public function deleteManageAjax($id)
