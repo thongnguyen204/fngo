@@ -11,10 +11,12 @@ class RoomRepository implements RoomRepositoryInterface{
     {
         return RoomType::where('hotel_id',$room->hotel_id)->get();
     }
+    
     public function store(RoomType $room)
     {
         $room->save();
     }
+    
     public function getAllHotel()
     {
         return Hotel::all();

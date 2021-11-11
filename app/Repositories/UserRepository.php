@@ -18,20 +18,27 @@ class UserRepository implements UserRepositoryInterface{
         User::destroy($id);
     }
     public function update(Request $request, User $user){
-        $user->name =  $request->name;
-        $user->email =  $request->email;
-        $user->phone =  $request->phone;
-        $user->gender =  $request->gender;
-        if(!empty($request->role)){
+        $user->name     =  $request->name;
+
+        $user->email    =  $request->email;
+
+        $user->phone    =  $request->phone;
+
+        $user->gender   =  $request->gender;
+
+        if (!empty($request->role)){
             $user->role_id = $request->role;
         }
-        if(!empty($request->file('avatar')))
+
+        if (!empty($request->file('avatar')))
         {
             $uploadedFileUrl = Cloudinary::upload($request->file('avatar')->getRealPath(),[
                 'folder' => 'FnGO/UserAvatar',
             ])->getSecurePath();
-            $user->avatar =  $uploadedFileUrl;
+
+            $user->avatar = $uploadedFileUrl;
         }
+
         $user->save();
     }
 
@@ -39,14 +46,17 @@ class UserRepository implements UserRepositoryInterface{
     {
         return User::find($keyword);
     }
+
     public function searchName($keyword){
         return User::where('name','like','%'.$keyword.'%')
         ->get();
     }
+
     public function searchPhone($keyword){
         return User::where('phone','like','%'.$keyword.'%')
         ->get();
     }
+    
     public function searchEmail($keyword){
         return User::where('email','like','%'.$keyword.'%')
         ->get();

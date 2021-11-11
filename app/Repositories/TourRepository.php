@@ -36,6 +36,7 @@ class TourRepository implements TourRepositoryInterface
     public function searchCode($product_code){
         return Tour::where('product_code',$product_code)->first();
     }
+
     public function searchID($tour_id){
         return Tour::find($tour_id);
     }
@@ -44,6 +45,7 @@ class TourRepository implements TourRepositoryInterface
     {
         return CityProvince::all();
     }
+
     public function getTopPurchases($number)
     {
         return Tour::orderBy('purchases_number','DESC')
@@ -56,6 +58,7 @@ class TourRepository implements TourRepositoryInterface
             ->orderBy('price',$sort_type)
             ->paginate(12);
     }
+    
     public function searchPlace($place_id){
         return Tour::where('city_province_id',$place_id)
         ->paginate(12);

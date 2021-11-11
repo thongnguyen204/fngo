@@ -22,14 +22,17 @@ interface ReceiptRepositoryInterface{
     public function getAcceptedIndex();
 
     public function searchID($keyword);
+
     public function searchUserID($keyword);
 
     public function getPaidIndex();
+
     public function getPaidReceiptWithoutPaginateToday();
 
     public function getCanceledIndex();
 
     public function show(Receipt $receipt);
+    
     public function delete($id);
 
     public function store(Receipt $receipt);

@@ -9,22 +9,26 @@ use Illuminate\Support\Facades\Auth;
 
 class HotelRepository implements HotelRepositoryInterface
 {
-    public function all(){
+    public function all() {
         return Hotel::paginate(12);
     }
+
     public function search($keyword)
     {
         return Hotel::where('name','like','%'.$keyword.'%')
         ->paginate(12);
     }
+
     public function searchID($id){
         return Hotel::find($id);
     }
+
     public function searchCode($product_code)
     {
         return Hotel::where('product_code',$product_code)
         ->first();
     }
+
     public function store(Hotel $hotel)
     {
         $hotel->save();  
@@ -34,6 +38,7 @@ class HotelRepository implements HotelRepositoryInterface
     {
         Hotel::destroy($id);
     }
+
     public function show($id)
     {
         $hotel = Hotel::find($id);
@@ -44,18 +49,21 @@ class HotelRepository implements HotelRepositoryInterface
     {
         return CityProvince::all();
     }
+
     public function getTopPurchases($number)
     {
         return Hotel::orderBy('purchases_number','DESC')
         ->take($number)
         ->get();
     }
+
     public function searchAndSort($keyword,$sort_type)
     {
         return Hotel::where('name','like','%'.$keyword.'%')
         ->orderBy('price',$sort_type)
         ->paginate(12);
     }
+    
     public function searchPlace($place_id)
     {
         return Hotel::where('city_province_id',$place_id)
