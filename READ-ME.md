@@ -6,6 +6,8 @@ composer install - tạo ra tập tin vendor chứa các thư viện
 
 (tạo file env dựa theo file env.example có sẵn và cấu hình thông tin database theo máy) - tập tin cấu hình môi trường (database, mail ..)
 
+php artisan key:generate - tạo key mới trong file .env
+
 php artisan config:cache - cập nhật thông tin env mới
 
 php artisan migrate - tạo bảng

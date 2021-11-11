@@ -145,8 +145,6 @@ Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
     Route::get('/room/create/{hotel}','RoomController@create')
     ->name('room.create');
 
-    
-
     Route::resource('/tour','TourController')
     ->except([
         'index','show'
@@ -272,7 +270,6 @@ Route::middleware(['auth'])->group(function () {
     ->middleware('userInfo')
     ->name('users.update');
     
-
     Route::get('/test', 'UserController@profile')->name('test');    
     
     //comment
@@ -280,7 +277,6 @@ Route::middleware(['auth'])->group(function () {
     ->name('comment.add');
     
 
-    
     Route::resource('articleComment','ArticleCommentController')
     ->except(['destroy']);
 });
@@ -298,7 +294,9 @@ Route::get('/introduction',function(){
 Route::get('/search','HomeController@search')
 ->name('home.search');
 
-Route::get('/home', 'HomeController@index')->name('home');    
+Route::get('/home', 'HomeController@index')
+->name('home');    
+
 Route::get('tour','TourController@index')
 ->name('tour.index');
 
