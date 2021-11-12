@@ -68,7 +68,7 @@
                 <div class="card-body tour-info">
                     <div class="row">
                         <a href="{{route('tour.show',$trip)}}">
-                            <div class="col-md-12 tour-name"">{{$trip->name}}</div>
+                            <div class="col-md-12 tour-name">{{$trip->name}}</div>
                         </a>
                     </div>
 

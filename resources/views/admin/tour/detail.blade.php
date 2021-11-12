@@ -71,7 +71,7 @@
             <div class="make-me-sticky">
                 <div class="card">
                     <div class="card-body price-button">
-                        <p class="d-flex justify-content-center money"> {{$tour->money($tour->price)}}</p>
+                        <p class="d-flex justify-content-center money-detail"> {{$tour->money($tour->price)}}</p>
                         <div class="d-flex justify-content-center">
                             <button onclick="addCart('{{$tour->product_code}}')" type="button"
                                 class="btn btnAddCart btn-lg">

@@ -62,6 +62,11 @@ class BackendServiceProvider extends ServiceProvider
             'App\Repositories\ArticleCommentRepositoryInterface',
             'App\Repositories\ArticleCommentRepository',
         );
+
+        $this->app->bind(
+            'App\Repositories\BookingRepositoryInterface',
+            'App\Repositories\BookingRepository',
+        );
         
     }
 }

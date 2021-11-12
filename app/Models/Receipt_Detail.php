@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Receipt_Detail extends Model
 {
 
-    private int $receipt_id;
-    private String $product_code;
-    private String $product_name;
-    private int $quantity;
-    private int $price;
+    
 
     
     

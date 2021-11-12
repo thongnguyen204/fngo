@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
 {
-    private int $user_id;
-    private int $price_sum;
-    private String $description;
+    
 
     public $incrementing = false;
 
