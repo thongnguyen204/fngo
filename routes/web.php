@@ -21,13 +21,13 @@ use Illuminate\Support\Facades\Auth;
 //     return redirect(app()->getLocale());
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
     
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth','verified', 'role:admin'])->group(function () {
     
     Route::get('/admin', function () {
         return view('admin.index');
@@ -85,7 +85,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     
 });
-Route::middleware(['auth', 'roles:admin,employee'])->group(function () {
+Route::middleware(['auth','verified', 'roles:admin,employee'])->group(function () {
     
     // ----- receipt ------
     Route::get('/receiptAccepted','ReceiptController@acceptedIndex')
@@ -197,7 +197,7 @@ Route::middleware(['auth', 'roles:user,employee'])->group(function () {
 
 });
     
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
 
     //booking
     Route::get('create/{room}','HotelBookingController@create')
@@ -355,8 +355,12 @@ Route::post('/upload',function(Request $request){
 Route::get('language/{locale}','LanguageController@index')
     ->name('language');
     
-    
-    
+Route::get('/email', function () {
+    return view('mail/welcome');
+});
+
+Route::post('/email','MailController@test')
+->name('mail');
     
 
 
