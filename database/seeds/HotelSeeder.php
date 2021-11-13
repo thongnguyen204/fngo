@@ -26,9 +26,9 @@ class HotelSeeder extends Seeder
         //  3 - HCM
         // 4 = BR-VT
         Hotel::create([
-            'name' => 'Khach san 1',
+            'name' => 'Khách sạn Mường Thanh',
             'product_code' => 'hotel_1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955495/samples/people/kitchen-bar.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636695729/FnGO/HotelImage/etqirvvm47dyeyxezxbz.jpg',
             'price' => $random,
             'address' => '36 - 38 Lâm Hoành, Phước Mỹ, Sơn Trà, Đà Nẵng, Việt Nam, 550000',
             'city_province_id' => 1,

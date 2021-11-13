@@ -91,13 +91,13 @@ class ProductCodeSeeder extends Seeder
         Products::create([
             'product_code' => 'hotel_1_room_1',
             'name' => 'Room 1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
             'category_id' => 4,
         ]);
         Products::create([
             'product_code' => 'hotel_1_room_2',
             'name' => 'Room 2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314438/FnGO/hotelImage/roomType/1_double_bed_tupdnd.jpg',
             'category_id' => 4,
         ]);
 
@@ -106,13 +106,13 @@ class ProductCodeSeeder extends Seeder
         Products::create([
             'product_code' => 'hotel_2_room_1',
             'name' => 'Room 1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
             'category_id' => 4,
         ]);
         Products::create([
             'product_code' => 'hotel_2_room_2',
             'name' => 'Room 2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
             'category_id' => 4,
         ]);
 
@@ -120,13 +120,13 @@ class ProductCodeSeeder extends Seeder
         Products::create([
             'product_code' => 'hotel_3_room_1',
             'name' => 'Room 1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
             'category_id' => 4,
         ]);
         Products::create([
             'product_code' => 'hotel_3_room_2',
             'name' => 'Room 2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
             'category_id' => 4,
         ]);
 
@@ -134,13 +134,13 @@ class ProductCodeSeeder extends Seeder
         Products::create([
             'product_code' => 'hotel_4_room_1',
             'name' => 'Room 1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
             'category_id' => 4,
         ]);
         Products::create([
             'product_code' => 'hotel_4_room_2',
             'name' => 'Room 2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955491/sample.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
             'category_id' => 4,
         ]);
     }

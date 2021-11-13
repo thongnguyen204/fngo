@@ -31,5 +31,23 @@ class CityProvinceSeeder extends Seeder
         CityProvince::create([
             'name' => 'Quảng Ninh',
         ]);
+         CityProvince::create([
+            'name' => 'Lâm Đồng',
+        ]);
+          CityProvince::create([
+            'name' => 'Khánh Hoà',
+        ]);
+           CityProvince::create([
+            'name' => 'Điện Biên',
+        ]);
+            CityProvince::create([
+            'name' => 'Quảng Bình',
+        ]);
+             CityProvince::create([
+            'name' => 'Quảng Ninh',
+        ]); 
+             CityProvince::create([
+            'name' => 'Kiên Giang',
+        ]);
     }
 }
