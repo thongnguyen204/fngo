@@ -1,3 +1,2 @@
-{{$name}}
-{{$email}}
+
 {{$content}}
