@@ -64,26 +64,40 @@ class ProductCodeSeeder extends Seeder
         //hotel 
         Products::create([
             'product_code' => 'hotel_1',
-            'name' => 'Hotel 1',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955495/samples/people/kitchen-bar.jpg',
+            'name' => 'Khách Sạn Mường Thanh',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636695729/FnGO/HotelImage/etqirvvm47dyeyxezxbz.jpg',
             'category_id' => 1,
         ]);
         Products::create([
             'product_code' => 'hotel_2',
-            'name' => 'Hotel 2',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955498/samples/people/boy-snow-hoodie.jpg',
+            'name' => 'Khách Sạn Sheraton',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636704421/FnGO/HotelImage/jirjz04g4syjxbyttcpd.jpg',
             'category_id' => 1,
         ]);
         Products::create([
             'product_code' => 'hotel_3',
-            'name' => 'Hotel 3',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955499/samples/animals/three-dogs.jpg',
+            'name' => 'Khách Sạn Dạ Hương',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636695250/FnGO/HotelImage/q5qzbwh1jetpkeud5o3e.jpg',
             'category_id' => 1,
         ]);
         Products::create([
             'product_code' => 'hotel_4',
-            'name' => 'Hotel 4',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955505/samples/animals/kitten-playing.gif',
+            'name' => 'Palace Hotel',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636695624/FnGO/HotelImage/hssew7aazgjbxln5aiuf.jpg',
+            'category_id' => 1,
+        ]);
+
+        Products::create([
+            'product_code' => 'hotel_5',
+            'name' => 'Khách Sạn Rex',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636684715/FnGO/HotelImage/oijopyphwbahhszgjsky.jpg',
+            'category_id' => 1,
+        ]);
+
+         Products::create([
+            'product_code' => 'hotel_6',
+            'name' => 'Khách sạn Mường Thanh Luxury',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1635854168/FnGO/HotelImage/k1vismer6ozplsfm8qi1.jpg',
             'category_id' => 1,
         ]);
 
@@ -141,6 +155,38 @@ class ProductCodeSeeder extends Seeder
             'product_code' => 'hotel_4_room_2',
             'name' => 'Room 2',
             'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1633314428/FnGO/hotelImage/roomType/2_double_bed_zv5hjp.jpg',
+            'category_id' => 4,
+        ]);
+
+         Products::create([
+            'product_code' => 'hotel_5_room_1',
+            'name' => 'Room 1',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636894593/FnGO/roomImage/phongks3_brioev.jpg',
+            'category_id' => 4,
+        ]);
+        Products::create([
+            'product_code' => 'hotel_5_room_2',
+            'name' => 'Room 2',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636894593/FnGO/roomImage/phongks3_brioev.jpg',
+            'category_id' => 4,
+        ]);
+
+         Products::create([
+            'product_code' => 'hotel_6_room_1',
+            'name' => 'Room 1',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636894593/FnGO/roomImage/phongks3_brioev.jpg',
+            'category_id' => 4,
+        ]);
+        Products::create([
+            'product_code' => 'hotel_6_room_2',
+            'name' => 'Room 2',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636894593/FnGO/roomImage/phongks3_brioev.jpg',
+            'category_id' => 4,
+        ]);
+        Products::create([
+            'product_code' => 'hotel_6_room_3',
+            'name' => 'Room 3',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636894902/FnGO/roomImage/phongks4_ksrkpa.jpg',
             'category_id' => 4,
         ]);
     }

@@ -34,6 +34,7 @@ return [
     'price-high-low'    => 'Price: high to low',
     'place'             => 'Place',
     'All'               => 'All',
+    'Comment manage a'  => 'Comment manage (article)',
 ]
 
 ?>

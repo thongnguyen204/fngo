@@ -32,6 +32,7 @@ return [
     'CreateRoom'        => 'Create room',
     'RoomName'          => 'Room name',
     'Add room type'     => 'Add room type',
+    'Out of rooms'      => 'Out of rooms',
 ]
 
 ?>

@@ -32,6 +32,7 @@ return [
     'CreateRoom'        => 'Thêm phòng',
     'RoomName'          => 'Tên phòng',
     'Add room type'     => 'Thêm loại phòng',
+    'Out of rooms'      => 'Hết phòng',
 ]
 
 ?>
