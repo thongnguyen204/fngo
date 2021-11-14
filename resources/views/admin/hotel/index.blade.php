@@ -99,7 +99,7 @@
                         <i class="bi bi-geo-alt-fill"></i>
                         {{$hotel->CityProvince->name}}
                     </span>
-                    <div id="money" class="float-right" style="width: 130px">{{$hotel->money($hotel->price)}}</div>
+                    <div id="money" class="" style="width: 100%">{{$hotel->money($hotel->price)}}</div>
                 </div>
             </div>
             @endforeach
