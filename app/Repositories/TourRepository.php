@@ -5,6 +5,7 @@ use App\Http\Requests\TourRequest;
 use App\Models\CityProvince;
 use App\Models\SubTour;
 use App\Models\Tour;
+use App\Models\Transport;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use DateTime;
 use Illuminate\Http\Request;
@@ -44,6 +45,10 @@ class TourRepository implements TourRepositoryInterface
     public function getAllCityProvince()
     {
         return CityProvince::all();
+    }
+
+    public function getAllTransport() {
+        return Transport::all();
     }
 
     public function getTopPurchases($number)

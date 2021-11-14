@@ -110,9 +110,15 @@
                                 <span class="float-right">/ {{__('hotel.room')}} / {{__('hotel.night')}}
                                 </span>
                             </div>
-                            <form action="{{route('hotelbooking.create',$roomtype)}}" method="GET">
-                                <button id="bookbtn" type="submit" class="btn btnAddCart">{{__('hotel.Book now')}}</button>
-                            </form>
+                            @if($roomtype->room_quantity > $roomtype->purchases_number)
+                                <form action="{{route('hotelbooking.create',$roomtype)}}" method="GET">
+                                    <button id="bookbtn" type="submit" class="btn btnAddCart">{{__('hotel.Book now')}}</button>
+                                </form>
+                            @else
+                                <form>
+                                    <button id="bookbtn" type="button" class="btn btnOutOfRoom">{{__('hotel.Out of rooms')}}</button>
+                                </form>
+                            @endif
                         </div>
                     </div>
                 </div>

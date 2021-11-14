@@ -25,6 +25,7 @@ class CreateRoomTypesTable extends Migration
             $table->integer('purchases_number')->default(0);
             $table->integer('area')->unsigned();
             $table->integer('max_person');
+            $table->integer('room_quantity')->default(10);
             $table->boolean('refund')->default(0);
             $table->boolean('breakfast')->default(0);
             $table->integer('price');

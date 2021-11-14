@@ -9,6 +9,7 @@
 <link href="{{ asset('css/tour.css') }}" rel="stylesheet">
 <link href="{{ asset('css/comment.css') }}" rel="stylesheet">
 
+
 <div style="max-width: 1300px" class="container">
     <form action="{{route('tour.index')}}" method="GET">
         <div class="input-group mb-3 searchBar">
@@ -73,10 +74,21 @@
                     <div class="card-body price-button">
                         <p class="d-flex justify-content-center money-detail"> {{$tour->money($tour->price)}}</p>
                         <div class="d-flex justify-content-center">
-                            <button onclick="addCart('{{$tour->product_code}}')" type="button"
-                                class="btn btnAddCart btn-lg">
-                                {{__('tour.Add cart')}}
-                            </button>
+                            @auth
+                                @if ($tour->passenger_num > $tour->purchases_number)
+                                    <button onclick="addCart('{{$tour->product_code}}')" type="button"
+                                        class="btn btnAddCart btn-lg">
+                                        {{__('tour.Add cart')}}
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-secondary">{{__('tour.Full slot')}}</button>
+                                @endif
+                            @endauth
+                            @guest
+                                <a class="btn btnAddCart btn-lg" href="{{route('login')}}">
+                                    {{__('tour.Login to buy')}}
+                                </a>
+                            @endguest
                         </div>
                     </div>
                     <div style="padding: 0px" class="card-body">
@@ -94,9 +106,34 @@
                                     {{$tour->departure_time}}
                                 </li>
                                 <li class="list-group-item border-0">
+                                    <i class="fas fa-bus"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Main transport')}}:</strong>
+                                    {{-- {{$tour->transport->name}} --}}
+                                    @switch($tour->transport->name)
+                                        @case('Plane')
+                                            {{__('tour.Plane')}}
+                                            @break
+
+                                        @case('Coach')
+                                            {{__('tour.Coach')}}
+                                            @break
+
+                                        @case('Train')
+                                            {{__('tour.Train')}}
+                                            @break
+                                        @default
+                                            Not define ...
+                                    @endswitch
+                                </li>
+                                <li class="list-group-item border-0">
                                     <i class="bi bi-people-fill"></i>&nbsp&nbsp
                                     <strong>{{__('tour.Number of passengers')}}:</strong>
                                     {{$tour->passenger_num}}
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="bi bi-check-square-fill"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Remaining slots')}}:</strong>
+                                    {{$tour->passenger_num - $tour->purchases_number}}
                                 </li>
                             </ul>
                         </div>

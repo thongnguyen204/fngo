@@ -64,10 +64,12 @@ class TourController extends Controller
     public function create()
     {
         //
-        $CityProvince = $this->tour->getAllCityProvince();
+        $CityProvince   = $this->tour->getAllCityProvince();
+        $transports     = $this->tour->getAllTransport();
         
         return view('admin.tour.create')
-        ->with('cty_province',$CityProvince);
+        ->with('cty_province',  $CityProvince)
+        ->with('transports',    $transports);
     }
 
     /**
@@ -126,10 +128,12 @@ class TourController extends Controller
         
         //
         $CityProvince = $this->tour->getAllCityProvince();
+        $transports     = $this->tour->getAllTransport();
         
         return view('admin.tour.edit')
         ->with('tour',          $tour)
-        ->with('cty_province',  $CityProvince);
+        ->with('cty_province',  $CityProvince)
+        ->with('transports',    $transports);
     }
 
     /**

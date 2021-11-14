@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ProductCodeSeeder::class,
             HotelSeeder::class,
             TypeSeeder::class,
+            TransportSeeder::class,
             TourSeeder::class,
             SubTourSeeder::class,
             ReceiptStatusSeeder::class,

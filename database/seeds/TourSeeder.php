@@ -13,6 +13,7 @@ class TourSeeder extends Seeder
     public function run()
     {
         //
+        // 1 - coach 2-train 3-plane
         $price = rand(10000,30000);
         
             $tour =  Tour::create([
@@ -31,6 +32,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 3,
                 'purchases_number' => 2,
+                'transport_id'  => 1,
             ]);
 
             
@@ -50,6 +52,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 1,
                 'purchases_number' => 3,
+                'transport_id'  => 1,
             ]);
 
             $tour =  Tour::create([
@@ -68,6 +71,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 4,
                 'purchases_number' => 1,
+                'transport_id'  => 1,
             ]);
 
             Tour::create([
@@ -86,6 +90,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 3,
                 'purchases_number' => 4,
+                'transport_id'  => 1,
             ]);
 
             Tour::create([
@@ -104,6 +109,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 2,
                 'purchases_number' => 4,
+                'transport_id'  => 1,
             ]);
 
             Tour::create([
@@ -122,6 +128,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 4,
                 'purchases_number' => 4,
+                'transport_id'  => 3,
             ]);
 
             Tour::create([
@@ -140,6 +147,7 @@ class TourSeeder extends Seeder
                 'day_number' => 4,
                 'city_province_id' => 1,
                 'purchases_number' => 4,
+                'transport_id'  => 2,
             ]);
     }
 }

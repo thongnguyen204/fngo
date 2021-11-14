@@ -23,6 +23,8 @@ interface TourServiceInterface
     public function update(TourRequest $request, Tour $tour);
     
     public function getAllCityProvince();
+
+    public function getAllTransport();
     
     public function getTopPurchases($number);
 

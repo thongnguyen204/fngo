@@ -27,6 +27,12 @@ return [
     'day'                   => 'ngày',
     'night'                 => 'đêm',
     'Back'                  => 'Quay về',
+    'Full slot'             => 'Hết chỗ',
+    'Remaining slots'       => 'Chỗ còn lại',
+    'Main transport'        => 'Phương tiện chính',
+    'Plane'                 => 'Máy bay',
+    'Coach'                 => 'Xe khách',
+    'Train'                 => 'Tàu hỏa',
     
 
 ]

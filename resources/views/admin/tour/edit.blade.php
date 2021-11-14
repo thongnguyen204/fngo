@@ -83,6 +83,40 @@
                         @endforeach
                     @endif
                 </div>
+                <div class="col">
+                    <label for="transport">{{__('tour.Main transport')}}</label></td>
+                    <select class="form-control" id="transport" name="transport">
+                        @foreach ($transports as $transport)
+                            <option 
+                                @if ($tour->transport_id == $transport->id)
+                                    selected
+                                @endif
+                            value="{{$transport->id}}">
+                                {{-- {{$transport->name}} --}}
+                                @switch($transport->name)
+                                        @case('Plane')
+                                            {{__('tour.Plane')}}
+                                            @break
+
+                                        @case('Coach')
+                                            {{__('tour.Coach')}}
+                                            @break
+
+                                        @case('Train')
+                                            {{__('tour.Train')}}
+                                            @break
+                                        @default
+                                            Not define ...
+                                    @endswitch
+                            </option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('transport'))
+                        @foreach ($errors->get('transport') as $error)
+                            <strong>{{ $error }}</strong>
+                        @endforeach
+                    @endif
+                </div>
             </div>
             <div class="form-group  row">
                 <div class="col">

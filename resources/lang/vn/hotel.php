@@ -31,6 +31,7 @@ return [
     'Hotel'             => 'KHÁCH SẠN',
     'CreateRoom'        => 'Thêm phòng',
     'RoomName'          => 'Tên phòng',
+    'Add room type'     => 'Thêm loại phòng',
 ]
 
 ?>

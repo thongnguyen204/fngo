@@ -22,6 +22,8 @@ interface TourRepositoryInterface
 
     public function getAllCityProvince();
 
+    public function getAllTransport();
+
     public function getTopPurchases($number);
 
     public function searchAndSort($keyword,$sort_type);

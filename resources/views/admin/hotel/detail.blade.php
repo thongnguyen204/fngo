@@ -50,7 +50,7 @@
         </div>
     </div>
 <div style="margin-top: 20px" class="d-flex justify-content-end">
-    <a class="btn btn-success" href="{{route('room.create',$hotel)}}">Add room type</a>
+    <a class="btn btn-success" href="{{route('room.create',$hotel)}}">{{__('hotel.Add room type')}}</a>
 </div>
 </div>
 

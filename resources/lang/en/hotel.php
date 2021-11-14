@@ -28,9 +28,10 @@ return [
     'Average price'     => 'Average price',
     'Province/City'     => 'Province/City',
     'Update'            => 'Update',
-    'Hotel' => 'HOTELS',
-    'CreateRoom'    => 'Create room',
-    'RoomName'  => 'Room name',
+    'Hotel'             => 'HOTELS',
+    'CreateRoom'        => 'Create room',
+    'RoomName'          => 'Room name',
+    'Add room type'     => 'Add room type',
 ]
 
 ?>

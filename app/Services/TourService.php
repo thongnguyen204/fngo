@@ -61,6 +61,8 @@ class TourService implements TourServiceInterface
         
         $tour->city_province_id = $request->cityProvince;
 
+        $tour->transport_id     = $request->transport;
+
         // them so 0 vao dau gio va phut
         if($request->departure_hour < 10) 
             $departure_hour = "0".($request->departure_hour);
@@ -173,6 +175,8 @@ class TourService implements TourServiceInterface
 
         $tour->city_province_id = $request->cityProvince;
 
+        $tour->transport_id     = $request->transport;
+
         // them so 0 vao dau gio va phut
         if($request->departure_hour < 10)
             $departure_hour = "0".($request->departure_hour);
@@ -253,6 +257,10 @@ class TourService implements TourServiceInterface
     public function getAllCityProvince()
     {
         return $this->tour->getAllCityProvince();
+    }
+
+    public function getAllTransport() {
+        return $this->tour->getAllTransport();
     }
     
     public function getTopPurchases($number){

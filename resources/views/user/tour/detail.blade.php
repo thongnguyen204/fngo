@@ -61,11 +61,16 @@
                     <div class="card-body price-button">
                         <p class="d-flex justify-content-center money-detail"> {{$tour->money($tour->price)}}</p>
                         <div class="d-flex justify-content-center">
+
                             @auth
-                            <button onclick="addCart('{{$tour->product_code}}')" type="button"
-                                class="btn btnAddCart btn-lg">
-                                {{__('tour.Add cart')}}
-                            </button>
+                                @if ($tour->passenger_num > $tour->purchases_number)
+                                    <button onclick="addCart('{{$tour->product_code}}')" type="button"
+                                        class="btn btnAddCart btn-lg">
+                                        {{__('tour.Add cart')}}
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-secondary">{{__('tour.Full slot')}}</button>
+                                @endif
                             @endauth
                             @guest
                                 <a class="btn btnAddCart btn-lg" href="{{route('login')}}">

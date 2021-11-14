@@ -20,6 +20,12 @@ class Tour extends Model
     {
         return $this->hasMany(SubTour::class);
     }
+
+    public function transport()
+    {
+        return $this->belongsTo(Transport::class);
+    }
+
     public function CityProvince(){
         return $this->belongsTo(CityProvince::class);
     }
@@ -27,6 +33,8 @@ class Tour extends Model
     // {
     //     return $this->hasMany(Receipt_Detail::class,'product_code');
     // }
+
+
     public function day(){
         
         $date = $this->departure_date;

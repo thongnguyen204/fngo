@@ -28,6 +28,8 @@ class CreateToursTable extends Migration
             $table->integer('day_number');
             $table->integer('purchases_number')->default(0);
             $table->integer('tourGuide_id')->nullable();
+            $table->integer('transport_id')->unsigned()->nullable();
+
             $table->integer('city_province_id')->unsigned();
             //2 is tour
             

@@ -28,6 +28,12 @@ return [
     'day'                   => 'day',
     'night'                 => 'night',
     'Back'                  => 'Back',
+    'Full slot'             => 'Full slot',
+    'Remaining slots'       => 'Remaining slots',
+    'Main transport'        => 'Main transport',
+    'Plane'                 => 'Plane',
+    'Coach'                 => 'Coach',
+    'Train'                 => 'Train',
 ]
 
 ?>
