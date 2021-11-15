@@ -25,38 +25,44 @@ class ProductCodeSeeder extends Seeder
         ]);
         Products::create([
             'product_code' => 'tour_2',
-            'name' => 'TOUR NHA TRANG 3N3Đ- LỄ 30/04',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1632636749/FnGO/TourImage/main/hinh-anh-ho-xuan-huong-da-lat-ve-dem-hinh1_utcmrz.jpg',
+            'name' => 'TOUR NHA TRANG 3N3Đ - BÃI BIỂN ĐẸP NHẤT VIỆT NAM',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636948122/FnGO/TourImage/main/nhatrang3_vnr3qr.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_3',
-            'name' => 'ĐÀ LẠT – 3N2Đ – THÀNH PHỐ NGÀN HOA',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955501/samples/landscapes/beach-boat.jpg',
+            'name' => 'DU LỊCH TÂY BẮC - 3N-2Đ ',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636948123/FnGO/TourImage/main/taybac_kgqtk1.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_4',
-            'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955504/samples/landscapes/nature-mountains.jpg',
+            'name' => 'Quảng Ninh - Hạ Long - 3N2Đ',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636949900/FnGO/TourImage/main/vhl_u0ej4h.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_5',
             'name' => 'PHÚ YÊN – 3N2Đ – NƠI ĐẤT PHÚ TRỜI YÊN',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955497/samples/landscapes/girl-urban-view.jpg',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636950439/FnGO/TourImage/main/phuyen_rypn8z.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_6',
-            'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955500/samples/landscapes/architecture-signs.jpg',
+            'name' => 'Tour du khảo về nguồn Miền Tây - 3N2Đ',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636951384/FnGO/TourImage/main/mientay_ts682c.jpg',
             'category_id' => 2,
         ]);
         Products::create([
             'product_code' => 'tour_7',
-            'name' => 'NHA TRANG – 4N3Đ – THÀNH PHỐ BIỂN THƠ MỘNG',
-            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1631955495/samples/animals/reindeer.jpg',
+            'name' => 'Huế - Quảng Bình - 4N3Đ',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636951914/FnGO/TourImage/main/hue_oqln03.jpg',
+            'category_id' => 2,
+        ]);
+         Products::create([
+            'product_code' => 'tour_8',
+            'name' => 'TP.HCM - Hội An - 2N-2Đ',
+            'avatar' => 'https://res.cloudinary.com/dloeyqk30/image/upload/v1636952315/FnGO/TourImage/main/hoian_jwwwzs.jpg',
             'category_id' => 2,
         ]);
 
