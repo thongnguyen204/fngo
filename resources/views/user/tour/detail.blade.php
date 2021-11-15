@@ -183,6 +183,7 @@
                         </div>
                     @endif
                 @endauth
+                
                 @include('comment.layout.index') 
             </div>
         </div>

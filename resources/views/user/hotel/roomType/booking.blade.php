@@ -114,8 +114,15 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 com-lg-3">
-                                <button onclick="addCart()" type="button" class="btn btn-success btn-lg btn-block"><i
+                                @if (Auth::user()->hasVerifiedEmail())
+                                    <button onclick="addCart()" type="button" class="btn btn-success btn-lg btn-block"><i
                                         style="font-size: 25px" class="fa fa-cart-plus"></i></button>
+                                @else
+                                    <button type="button" class="btn btn-success btn-lg btn-block">
+                                        {{__('common.Email verify')}}
+                                    </button>
+                                @endif
+                                
                             </div>
                         </div>
                     </form>
