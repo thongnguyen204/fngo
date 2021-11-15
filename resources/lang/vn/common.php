@@ -35,6 +35,7 @@ return [
     'price-high-low'    => 'Giá: cao đến thấp',
     'place'             => 'Địa điểm',
     'All'               => 'Tất cả',
+    'Email verify'      => 'Xin vui lòng xác thực email của bạn.'
 ]
 
 ?>

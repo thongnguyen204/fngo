@@ -9,7 +9,7 @@ use App\Models\RoomType;
 use App\Models\Tour;
 use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class CartController extends Controller
@@ -59,6 +59,7 @@ class CartController extends Controller
      * @param String $product_code
      */
     public function AddCart(Request $request, $product_code){
+
         if($product_code != null){
             if(strpos($product_code,'tour')!==false)
             {

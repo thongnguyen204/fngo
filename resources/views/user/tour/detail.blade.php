@@ -64,10 +64,18 @@
 
                             @auth
                                 @if ($tour->passenger_num > $tour->purchases_number)
-                                    <button onclick="addCart('{{$tour->product_code}}')" type="button"
-                                        class="btn btnAddCart btn-lg">
-                                        {{__('tour.Add cart')}}
-                                    </button>
+                                    @if (!Auth::user()->hasVerifiedEmail())
+                                        <button type="button" class="btn btn-secondary">
+                                            {{__('common.Email verify')}}
+                                        </button>
+                                    @else
+                                        <button onclick="addCart('{{$tour->product_code}}')" type="button"
+                                            class="btn btnAddCart btn-lg">
+                                            {{__('tour.Add cart')}}
+                                        </button>
+                                    @endif
+                                    
+
                                 @else
                                     <button type="button" class="btn btn-secondary">{{__('tour.Full slot')}}</button>
                                 @endif
@@ -104,6 +112,26 @@
                                     <i class="bi bi-alarm"></i>&nbsp&nbsp
                                     <strong>{{__('tour.Departure time')}}:</strong>
                                     {{$tour->departure_time}}
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <i class="fas fa-bus"></i>&nbsp&nbsp
+                                    <strong>{{__('tour.Main transport')}}:</strong>
+                                    {{-- {{$tour->transport->name}} --}}
+                                    @switch($tour->transport->name)
+                                        @case('Plane')
+                                            {{__('tour.Plane')}}
+                                            @break
+
+                                        @case('Coach')
+                                            {{__('tour.Coach')}}
+                                            @break
+
+                                        @case('Train')
+                                            {{__('tour.Train')}}
+                                            @break
+                                        @default
+                                            Not define ...
+                                    @endswitch
                                 </li>
                                 <li class="list-group-item border-0">
                                     <i class="bi bi-people-fill"></i>&nbsp&nbsp
@@ -143,13 +171,18 @@
         <div class="d-flex justify-content-center row">
             <div style="width: 100%" class="coment-bottom bg-white">
                 @auth
-                <div class="input-comment d-flex flex-row add-comment-section mt-4 mb-4">
-                    <img class="img-fluid img-responsive rounded-circle mr-2" src="{{Auth::user()->avatar}}" width="38">
-                    <input id="comment" data-product="{{$tour->product_code}}" type="text" class="form-control mr-3" placeholder="Add comment">
-                    <button onclick="addComment('{{$tour->product_code}}')" class="btn btn-primary" type="button">Comment</button>
-                </div>
+                    @if (Auth::user()->hasVerifiedEmail())
+                        <div class="input-comment d-flex flex-row add-comment-section mt-4 mb-4">
+                            <img class="img-fluid img-responsive rounded-circle mr-2" src="{{Auth::user()->avatar}}" width="38">
+                            <input id="comment" data-product="{{$tour->product_code}}" type="text" class="form-control mr-3" placeholder="Add comment">
+                            <button onclick="addComment('{{$tour->product_code}}')" class="btn btn-primary" type="button">Comment</button>
+                        </div>
+                    @else
+                        <div class="input-comment d-flex flex-row add-comment-section mt-4 mb-4">
+                            {{__('common.Email verify')}}
+                        </div>
+                    @endif
                 @endauth
-        
                 @include('comment.layout.index') 
             </div>
         </div>

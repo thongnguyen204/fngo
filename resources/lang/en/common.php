@@ -35,6 +35,7 @@ return [
     'place'             => 'Place',
     'All'               => 'All',
     'Comment manage a'  => 'Comment manage (article)',
+    'Email verify'      => 'Please verify your email.'
 ]
 
 ?>
