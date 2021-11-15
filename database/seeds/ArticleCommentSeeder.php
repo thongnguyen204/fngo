@@ -43,3 +43,7 @@ class ArticleCommentSeeder extends Seeder
         }
     }
 }
+
+// vay thi dong seeder comment van hoat dong dc ma
+// m dang dinh lam gi
+// bug gi ? k co thi thoi giu cmt dichay thu xem co loi j kchua sav
