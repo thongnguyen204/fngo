@@ -1,4 +1,4 @@
-CHẠY NHỮNG CÂU LỆNH NÀY TRƯỚC KHI START WEB
+TRƯỚC KHI START WEB
 
 clone git
 
@@ -9,6 +9,8 @@ composer install - tạo ra tập tin vendor chứa các thư viện
 php artisan key:generate - tạo key mới trong file .env
 
 php artisan config:cache - cập nhật thông tin env mới
+
+(tạo db trắng trong mysql tên fngo)
 
 php artisan migrate - tạo bảng
 
@@ -30,4 +32,3 @@ pwd: 123456
 user: user@gmail.com
 pwd: 123456
 
-test git

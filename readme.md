@@ -1,15 +1,26 @@
-CHẠY NHỮNG CÂU LỆNH NÀY TRƯỚC KHI START WEB
+TRƯỚC KHI START WEB
 
 1. clone git
 2. composer install - tạo ra tập tin vendor chứa các thư viện
 3. (tạo file env dựa theo file env.example có sẵn và cấu hình thông tin database theo máy)  - tập tin cấu hình môi trường (database, mail ..)
 4. php artisan key:generate - tạo key mới trong file .env
 5. php artisan config:cache - cập nhật thông tin env mới
-6. php artisan migrate - tạo bảng
-7. php artisan db:seed - tạo dữ liệu mẫu
-8. php artisan serve - start server
+6. (tạo db trắng trong mysql tên fngo)
+7. php artisan migrate - tạo bảng
+8. php artisan db:seed - tạo dữ liệu mẫu
+9. php artisan serve - start server
+
+test account:
+
+admin: admin@gmail.com
+pwd: 123456
 
 
+employee: employee@gmail.com
+pwd: 123456
+
+user: user@gmail.com
+pwd: 123456
 
 
 
