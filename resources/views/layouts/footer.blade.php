@@ -38,12 +38,12 @@
 
                 <p>
                     <i class="bi bi-envelope"></i>
-                    1851010131Thong@ou.edu.vn
+                    1851010131me@ou.edu.vn
                 </p>
 
                 <p>
                     <i class="bi bi-envelope"></i>
-                    1851010144Trung@ou.edu.vn
+                    1851010144andMyFriend@ou.edu.vn
                 </p>
             </div>
             <div class="col-12 col-md-2">
@@ -57,7 +57,7 @@
                 <p>
                     <a class="footer-link" href="tel:0905200419">
                         <i class="bi bi-telephone"></i>
-                        0905200419
+                        090xxx0419
                     </a>
                 </p>
 

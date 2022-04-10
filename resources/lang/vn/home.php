@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'top tour'  => 'TOUR NỔI BẬT',
-    'top hotel'  => 'KHÁCH SẠN NỔI BẬT',
+    'top tour'  => 'ANH XIN LỖI EM',
+    'top hotel'  => 'VÌ TẤT CẢ',
     'More'  => 'Xem thêm',
-    'top article'  => 'BÀI VIẾT NHIỀU LƯỢT BÌNH LUẬN',
+    'top article'  => 'NHỮNG GÌ TRONG QUÁ KHỨ',
 ];
 
 ?>
