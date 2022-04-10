@@ -33,7 +33,7 @@
 
                 <p>
                     <i class="bi bi-telephone"></i>
-                    Hotline: 0905200419
+                    Hotline: 090xxx0419 
                 </p>
 
                 <p>
