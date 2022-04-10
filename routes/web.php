@@ -16,10 +16,9 @@ use App\Models\Room;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
-// Route::get('/', function () {
-//     return redirect(app()->getLocale());
-// });
+
 
 Auth::routes(['verify' => true]);
 

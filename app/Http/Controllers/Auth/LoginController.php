@@ -36,13 +36,7 @@ class LoginController extends Controller
     }
 
     protected function authenticated(){
-        // if(Auth::user()){
-        //     return redirect()->intended();
-        // }
-        // // if(Auth::user()->role->name == 'user'){
-        // //     return redirect()->route('user');
-        // // }
-        // return redirect()->route('home');
+        
 
         return redirect(session('link'));
 
