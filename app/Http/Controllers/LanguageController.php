@@ -7,7 +7,6 @@ use Session;
 
 class LanguageController extends Controller
 {
-    //
     public function index(Request $request,$locale)
     {
         if($locale){

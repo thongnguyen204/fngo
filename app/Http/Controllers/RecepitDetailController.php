@@ -9,29 +9,23 @@ use Illuminate\Http\Request;
 class RecepitDetailController extends Controller
 {
     private $receipt_detail;
-    
+
     public function __construct(ReceiptDetailRepositoryInterface $receipt_detail)
     {
         $this->receipt_detail = $receipt_detail;
     }
-    
-
-
-
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  Receipt_Detail $receipt;
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Receipt_Detail $receiptDetail)
     {
-        //
         return view('admin.receiptDetail.edit')
-        ->with('receiptDetail',$receiptDetail);
-        // return $receiptDetail;
+            ->with('receiptDetail', $receiptDetail);
     }
 
     /**
@@ -43,11 +37,10 @@ class RecepitDetailController extends Controller
      */
     public function update(Request $request, Receipt_Detail $receiptDetail)
     {
-        //
         $temp = $this->receipt_detail
-        ->update($request,$receiptDetail);
+            ->update($request, $receiptDetail);
 
-        return redirect()->route('receipt.show',$temp);
+        return redirect()->route('receipt.show', $temp);
     }
 
     /**
@@ -58,10 +51,9 @@ class RecepitDetailController extends Controller
      */
     public function destroy(Receipt_Detail $receipt_detail)
     {
-        //
         $temp = $this->receipt_detail
-        ->delete($receipt_detail);
-        
-        return redirect()->route('receipt.show',$temp);
+            ->delete($receipt_detail);
+
+        return redirect()->route('receipt.show', $temp);
     }
 }

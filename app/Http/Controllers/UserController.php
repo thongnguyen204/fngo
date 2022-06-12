@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Services\UserServiceInterface;
 use App\User;
 use Illuminate\Http\Request;
-use App\Services\UserServiceInterface;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +19,10 @@ class UserController extends Controller
     }
     public function userOrAdmin()
     {
-        if(Auth::user()->role->name == 'admin')
-           return 'admin';
+        if (Auth::user()->role->name == 'admin') {
+            return 'admin';
+        }
+
         return 'user';
     }
     /**
@@ -30,49 +32,43 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
         $users = $this->user->all();
 
         return view('admin.user.index')
-        ->with('users',$users);
+            ->with('users', $users);
     }
     public function onlyRole($role)
     {
-        //
         $users = $this->user->onlyRole($role);
 
         return view('admin.user.index')
-        ->with('users',$users);
+            ->with('users', $users);
     }
-    
-    public function search(Request $request)
-    {   
-        $keyword    = $request->search;
 
-        $option     = $request->searchOptions;
-        
-        $users      = $this->user->search($keyword,$option);
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $option = $request->searchOptions;
+        $users = $this->user->search($keyword, $option);
 
         // kiem tra co phan trang hay khong
-        if($users instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {
+        if ($users instanceof \Illuminate\Pagination\LengthAwarePaginator) {
             $view = "admin.user.index";
 
             return view($view)
-            ->with('users',$users);
-        } 
+                ->with('users', $users);
+        }
         // check collection vi get() tra ra collection, find thi khong
 
-        if($users != null && !($users instanceof \Illuminate\Database\Eloquent\Collection))
+        if ($users != null && !($users instanceof \Illuminate\Database\Eloquent\Collection)) {
             $users = array($users);
-        
+        }
+
         $view = "admin.user.search";
-        
+
         return view($view)
-        ->with('users',$users); 
+            ->with('users', $users);
     }
-
-
 
     /**
      * Display the specified resource.
@@ -82,13 +78,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
         $role = $this->userOrAdmin();
-
         $view = $role . '.user.edit';
 
         return (view($view)
-        ->with('user',$user));
+                ->with('user', $user));
     }
 
     /**
@@ -99,29 +93,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
-
         $role = $this->userOrAdmin();
-
         $view = $role . '.user.edit';
 
-        return view($view)->with('user',$user);
-        
+        return view($view)->with('user', $user);
     }
-    
-    // ham de test dual language
-    public function profile($lang){
-        // $user = User::find($id);
-        // $role = $user->role->name;
-        // $view = $role . '.user.edit';
-        // dd($lang);
-        
-        return(view('home')->with('user',Auth::user()));
-        // return view('test')->with('user',Auth::user());
-
-        // return (view('admin.user.edit')->with('user',Auth::user()));
-        
-    }   
 
     /**
      * Update the specified resource in storage.
@@ -132,11 +108,10 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        //
-        $this->user->update($request,$user);
+        $this->user->update($request, $user);
 
-        return redirect()->route('users.show',[$user])
-        ->with('message',__('user.Update profile'));
+        return redirect()->route('users.show', [$user])
+            ->with('message', __('user.Update profile'));
     }
 
     /**
@@ -147,16 +122,16 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
         $this->user->delete($user->id);
-
         return redirect()->route('users.index');
     }
 
     public function roleSort($role)
     {
-        if($role == 'all')
+        if ($role == 'all') {
             return redirect()->route('users.index');
+        }
+
         return $this->onlyRole($role);
     }
 }

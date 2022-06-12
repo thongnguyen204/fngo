@@ -11,16 +11,15 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     private $articleService;
+
     private $comment;
 
-    public function __construct
-        (
+    public function __construct(
         ArticleCommentServiceInterface $comment,
         ArticleServiceInterface $articleService
-        )
-    {
-        $this->comment          = $comment;
-        $this->articleService   = $articleService;
+    ) {
+        $this->comment = $comment;
+        $this->articleService = $articleService;
     }
     /**
      * Display a listing of the resource.
@@ -30,14 +29,14 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         //
-        if($request->search)
+        if ($request->search) {
             $articles = $this->articleService->search($request->search);
-        else
+        } else {
             $articles = $this->articleService->getAllArticles();
-        
+        }
+
         return view('article.index')
-        ->with('articles',$articles);
-        // return ($articles[0]->user);
+            ->with('articles', $articles);
     }
 
     /**
@@ -47,7 +46,6 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
         return view('article.create');
     }
 
@@ -59,10 +57,8 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        //
-        $article =  $this->articleService->store($request);
-        
-        return redirect()->route('article.show',$article);
+        $article = $this->articleService->store($request);
+        return redirect()->route('article.show', $article);
     }
 
     /**
@@ -73,23 +69,22 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
-
         $comments = $this->comment->getAllCommentsOfArticle($article->id);
-        
+
         // convert comments json to plain old PHP array
-        $array = json_decode($comments,true);
-        
+        $array = json_decode($comments, true);
+
         // check array have comment or not
         $have_comment = true;
-        if(!$array)
+        if (!$array) {
             $have_comment = false;
-        
+        }
+
         return view('article.detail')
-        ->with('article',       $article)
-        ->with('is_article',true) //for comment delete
-        ->with('comments',      $comments)      // json
-        ->with('have_comment',  $have_comment); // boolean
+            ->with('article', $article)
+            ->with('is_article', true) //for comment delete
+            ->with('comments', $comments) // json
+            ->with('have_comment', $have_comment); // boolean
     }
 
     /**
@@ -100,9 +95,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
         return view('article.edit')
-        ->with('article',$article);
+            ->with('article', $article);
     }
 
     /**
@@ -114,11 +108,8 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, Article $article)
     {
-        //
-        $this->articleService->update($request,$article);
-        
-        return redirect()->route('article.show',$article);
-        
+        $this->articleService->update($request, $article);
+        return redirect()->route('article.show', $article);
     }
 
     /**
@@ -129,29 +120,22 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
         $this->articleService->destroy($article);
-        
         return redirect()->route('article.index');
     }
     public function indexManage()
     {
         $articles = $this->articleService->getAllArticles();
-        
         return view('admin.manage article.index')
-        ->with('articles',$articles);
+            ->with('articles', $articles);
     }
 
     public function deleteManageAjax($id)
     {
         $deleteArticle = $this->articleService->getArticleByID($id);
-
         $this->articleService->destroy($deleteArticle);
-
         $articles = $this->articleService->getAllArticles();
-
         return view('admin.manage article.change')
-        ->with('articles',$articles);
-
+            ->with('articles', $articles);
     }
 }

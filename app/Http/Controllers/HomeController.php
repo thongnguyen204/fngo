@@ -8,7 +8,6 @@ use App\Services\HomeServiceInterface;
 use App\Services\HotelServiceInterface;
 use App\Services\RoomServiceInterface;
 use App\Services\TourServiceInterface;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -23,19 +22,17 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct(
-        HomeServiceInterface    $home,
+        HomeServiceInterface $home,
         ArticleServiceInterface $article,
-        RoomServiceInterface    $room,
-        TourServiceInterface    $tour,
-        HotelServiceInterface   $hotel
-        )
-    {
-        // $this->middleware('auth');
-        $this->article  = $article;
-        $this->tour     = $tour;
-        $this->room     = $room;
-        $this->hotel    = $hotel;
-        $this->home     = $home;
+        RoomServiceInterface $room,
+        TourServiceInterface $tour,
+        HotelServiceInterface $hotel
+    ) {
+        $this->article = $article;
+        $this->tour = $tour;
+        $this->room = $room;
+        $this->hotel = $hotel;
+        $this->home = $home;
     }
 
     /**
@@ -46,22 +43,19 @@ class HomeController extends Controller
 
     public function index()
     {
-        $top4tour    = $this->tour->getTopPurchases(4);
-        $top4room    = $this->room->getTopPurchases(4);
-        $top4hotel   = $this->hotel->getTopPurchases(4);
+        $top4tour = $this->tour->getTopPurchases(4);
+        $top4room = $this->room->getTopPurchases(4);
+        $top4hotel = $this->hotel->getTopPurchases(4);
         $top4article = $this->article->getTopArticle(4);
-        
+
         return view('home')
-        ->with('topTour',   $top4tour)
-        ->with('topRoom',   $top4room)
-        ->with('topHotel',  $top4hotel)
-        ->with('topArticle',$top4article);
+            ->with('topTour', $top4tour)
+            ->with('topRoom', $top4room)
+            ->with('topHotel', $top4hotel)
+            ->with('topArticle', $top4article);
     }
     public function search(HomeSearchRequest $request)
     {
         return $this->home->search($request);
-
-        // return $request;
-        
     }
 }
