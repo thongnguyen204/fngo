@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transport extends Model
 {
-    //
     protected $fillable = [
         'name',
     ];
 
     public $timestamps = false;
 
-    public function tour(){
+    public function tour()
+    {
         return $this->hasMany(Tour::class);
     }
 }

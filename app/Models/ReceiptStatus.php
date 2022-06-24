@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReceiptStatus extends Model
 {
-    //
     public $timestamps = false;
 
     public function receipt()

@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    //
     protected $fillable = [
-        'content','user_id','product_id'
+        'content', 'user_id', 'product_id',
     ];
 
     public function product()
@@ -22,12 +21,12 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function day(){
-        
+    public function day()
+    {
         $date = $this->created_at;
-        $day = date('d',strtotime($date));
-        $month = date('m',strtotime($date));
-        $year = date('Y',strtotime($date));
+        $day = date('d', strtotime($date));
+        $month = date('m', strtotime($date));
+        $year = date('Y', strtotime($date));
 
         return $day . "/" . $month . "/" . $year;
     }

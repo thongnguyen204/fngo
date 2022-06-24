@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    //
-
     protected $fillable = [
-        'category','description'
+        'category', 'description',
     ];
 
     public $timestamps = false;
 
-    public function hotel(){
+    public function hotel()
+    {
         return $this->hasMany(Hotel::class);
     }
 }

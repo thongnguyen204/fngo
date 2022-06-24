@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-include 'functions.php';
 use App\Models\Room;
+include 'functions.php';
+use Illuminate\Database\Eloquent\Model;
 
 class RoomType extends Model
 {
     public $day;
     public $checkin_date;
-    //
     protected $fillable = [
-        'name','hotel_id','max_person','price_per_night'
+        'name', 'hotel_id', 'max_person', 'price_per_night',
     ];
     public $timestamps = false;
 
@@ -24,7 +23,8 @@ class RoomType extends Model
     {
         return $this->belongsTo(Hotel::class);
     }
-    public function money($money){
+    public function money($money)
+    {
         return currency_format($money);
     }
 }

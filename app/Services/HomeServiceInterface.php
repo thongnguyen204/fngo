@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-
-interface HomeServiceInterface {
+interface HomeServiceInterface
+{
     public function search($request);
 }

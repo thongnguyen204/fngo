@@ -3,6 +3,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 
-interface BookingServiceInterface {
+interface BookingServiceInterface
+{
     public function store(Request $request);
 }

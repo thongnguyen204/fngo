@@ -4,7 +4,8 @@ namespace App\Repositories;
 use App\User;
 use Illuminate\Http\Request;
 
-interface UserRepositoryInterface{
+interface UserRepositoryInterface
+{
     public function all();
 
     public function allWithoutPaginate();
@@ -22,6 +23,6 @@ interface UserRepositoryInterface{
     public function searchEmail($keyword);
 
     public function onlyRole($role_id);
-    
+
     public function countNewUser();
 }

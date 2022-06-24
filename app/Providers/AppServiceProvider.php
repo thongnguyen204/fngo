@@ -15,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
         $this->app->register(
             BackendServiceProvider::class,
             
@@ -24,8 +23,6 @@ class AppServiceProvider extends ServiceProvider
             
             BackendServiceProvider1::class,
         );
-        
-        
     }
 
     /**

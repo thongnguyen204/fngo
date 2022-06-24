@@ -60,6 +60,6 @@ class BackendServiceProvider1 extends ServiceProvider
             'App\Services\MomoServiceInterface',
             'App\Services\MomoService',
         );
-        
+
     }
 }
